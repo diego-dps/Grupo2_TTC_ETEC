@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">SGBR</string>
+    //activity_main
+    <string name="main_titulo">SGBR</string>
+    <string name="main_subtitulo">Seja bem vindo ao restaurante!</string>
+    <string name="main_texto1">Digitalize o QrCode que está em sua mesa.Assim você poderá ter acesso ao MENU do restaurante e fazer seu pedido.</string>
+    <string name="main_btn_escanear">Escanear QrCode</string>
+    <string name="main_texto2">Caso prefira digitar o código</string>
+    <string name="main_texto3">Digite aqui?</string>
+    <string name="main_btn_digitar_codigo">Confirmar</string>
+    <string name="main_link">Você trabalha aqui?</string>
+
+    //activity_login
+    <string name="login_titulo">Login</string>
+    <string name="login_usuario">Usuário</string>
+    <string name="login_senha">Senha</string>
+    <string name="login_btn">Entrar</string>
+
+    //activity_recuperar_senha
+    <string name="recuperar_senha_titulo">Recuperar Senha</string>
+    <string name="recuperar_senha_campo_email">Digite seu email</string>
+    <string name="recuperar_senha_texto">Enviaremos um código de verificação no seu email</string>
+    <string name="recuperar_senha_btn">Continuar</string>
+
+    //activity_codigo_recuperar_senha
+    <string name="codigo_recuperar_senha_titulo">Recuperar Senha</string>
+    <string name="codigo_recuperar_senha_campo_email">Digite o Código</string>
+    <string name="codigo_recuperar_senha_texto">Digite o código enviado no seu email</string>
+    <string name="codigo_recuperar_senha_btn">Continuar</string>
+
+    //activity_alterar_senha
+    <string name="alterar_senha_titulo">Alterar Senha</string>
+    <string name="alterar_senha_senha">Nova Senha</string>
+    <string name="alterar_senha_confirmar_senha">Confirmar Nova Senha</string>
+    <string name="alterar_senha_btn">Confirmar</string>
+
+    //activity_categoria_cardapio
+    <string name="toolbar_categoria_cardapio">Cardapio</string>
+
+    //Layout categoria_cardapio
+    <string name="layout_btn_add">Adicionar</string>
+</resources>

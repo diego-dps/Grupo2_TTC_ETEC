@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/card_view_background"
+    tools:showIn="@layout/activity_categoria_cardapio">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:textSize="24sp"
+            android:background="@drawable/ic_baseline_image_24"
+            />
+        <TextView
+            android:id="@+id/txt_nome_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            tools:text="Nome do prato ou item"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/img_item"
+            android:layout_alignTop="@id/img_item"
+            android:textColor="@color/colorTextDark"
+            />
+
+
+
+
+        <TextView
+            android:id="@+id/txt_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:textSize="16sp"
+            android:layout_below="@id/txt_nome_item"
+            android:layout_alignStart="@id/txt_nome_item"
+            tools:text="Ex: hamburguer, alface, queijo, pão, tomate etc..."
+            android:textColor="@color/colorTextDark"
+            />
+
+        <TextView
+            android:id="@+id/txt_moeda2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="R$"
+            android:textSize="22sp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:layout_toEndOf="@id/img_item"
+            android:layout_below="@id/txt_preview"
+            android:layout_alignParentBottom="true"/>
+
+        <TextView
+            android:id="@+id/txt_valor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="00,00"
+            android:textSize="22sp"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:layout_toEndOf="@id/txt_moeda2"
+            android:layout_below="@id/txt_preview"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageButton
+            android:id="@+id/img_add"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_toEndOf="@id/txt_valor"
+            android:layout_below="@id/txt_preview"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_baseline_add_24"
+            />
+
+        <TextView
+            android:id="@+id/txt_num_itens"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:paddingBottom="5dp"
+            tools:text="0"
+            android:layout_below="@+id/txt_preview"
+            android:layout_toEndOf="@id/img_add"
+            android:layout_alignParentBottom="true"/>
+
+        <ImageButton
+            android:id="@+id/img_remove"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_toEndOf="@id/txt_num_itens"
+            android:layout_below="@id/txt_preview"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/ic_baseline_remove_24" />
+        <Button
+            android:layout_width="96dp"
+            android:layout_height="42dp"
+            android:background="@drawable/botao_comum"
+            android:layout_toEndOf="@id/img_remove"
+            android:layout_below="@id/txt_preview"
+            android:layout_alignParentBottom="true"
+            android:text="@string/layout_btn_add"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackgroundActivity"
+    tools:context=".ui.LoginActivity">
+
+    <TextView
+    android:id="@+id/Login_text_Titulo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/login_titulo"
+    android:gravity="center"
+    android:textColor="@color/colorTextPrimary"
+    android:textSize="40dp"
+    android:layout_marginTop="50dp"
+    />
+
+    <TextView
+        android:id="@+id/Login_text_Usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_usuario"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        />
+
+    <EditText
+        android:id="@+id/Login_editText_Usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/plain_text_comum"
+        android:textSize="20dp"
+        android:ems="10"
+        android:hint="Digite seu Usuario ou Email"
+        android:inputType="textPersonName"
+        />
+
+    <TextView
+        android:id="@+id/Login_text_Senha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/login_senha"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/colorTextPrimary"
+        />
+
+    <EditText
+        android:id="@+id/Login_editText_Senha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/plain_text_comum"
+        android:textSize="20dp"
+        android:ems="10"
+        android:hint="Digite sua Senha"
+        android:inputType="textPersonName"
+        />
+
+
+    <Button
+        android:id="@+id/Login_btn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:background="@drawable/botao_comum"
+        android:text="@string/login_btn"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        />
+</LinearLayout>
