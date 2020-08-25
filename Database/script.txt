@@ -1,0 +1,100 @@
+CREATE DATABASE tcc
+/*nome a revisar*/
+default character set utf8
+default collate utf8_general_ci;
+
+use tcc; 
+
+/*criando as tabelas*/
+/*Tabela Cardapio*/
+create table Cardapio(
+cod_Cardapio int(100) unsigned not null auto_increment primary key,
+categoria_Cardapio VARCHAR(100) NOT NULL
+);
+/*Tabela Item*/
+create table Item (
+cod_Item int(100) unsigned not null auto_increment primary key,
+nome_Item VARCHAR(100) NOT NULL,
+preco_Item DECIMAL(10,2) NOT NULL,
+descricao_Item VARCHAR(100) NOT NULL,
+cod_Cardapio int(100) unsigned not null
+);
+/*Tabela Mesa*/
+create table Mesa(
+qr_Code int(100) unsigned not null auto_increment primary key,
+numero_Mesa INT(100) NOT NULL,
+cod_Cardapio int(100) unsigned not null
+);
+/*tabela Pedido*/
+create table Pedido(
+cod_Pedido INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
+horario_Pedido DATETIME NOT NULL,
+itens_Pedidos INT(100) NOT NULL,
+observacao_Pedido VARCHAR(200) NOT NULL,
+qr_Code INT(100) UNSIGNED NOT NULL,
+cod_Item INT(100) UNSIGNED NOT NULL
+);
+/*tabela Funcionario*/
+create table Funcionario(
+cod_Funcionario INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
+nome_Funcionario VARCHAR(100) NOT NULL,
+cpf_Funcionario INT(100) NOT NULL,
+telefone_Funcionario VARCHAR(100) NOT NULL,
+tipo_Funcionario ENUM('Garçom','Cozinheiro','ADM'),
+email_Funcionario VARCHAR(100) NOT NULL,
+senha VARCHAR(50) NOT NULL
+);
+/*tabela Garçom*/ 
+ create table Garcom(
+ cod_Funcionario INT(100) UNSIGNED NOT NULL,
+ cod_Pedido INT(100) UNSIGNED NOT NULL
+ );
+ /*tabela Cozinha*/
+ create table Cozinha(
+ cod_Funcionario INT(100) UNSIGNED NOT NULL,
+ cod_Pedido INT(100) UNSIGNED NOT NULL
+ );
+ /*tabela Administracao*/
+ create table Administrador(
+ cod_Administracao INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
+ cod_Funcionario INT(100) UNSIGNED NOT NULL
+ );
+show tables;
+
+/*adicionando a chaves estrangeiras em suas respectivas tabelas*/
+ALTER TABLE Item ADD CONSTRAINT FK_cod_Cardapio
+FOREIGN KEY (cod_Cardapio)
+REFERENCES Cardapio (cod_Cardapio);
+
+ALTER TABLE Mesa ADD CONSTRAINT FK_Cardapio
+FOREIGN KEY (cod_Cardapio)
+REFERENCES Cardapio (cod_Cardapio);
+
+ALTER TABLE Pedido ADD CONSTRAINT FK_qrCode
+FOREIGN KEY (qr_Code)
+REFERENCES Mesa (qr_Code);
+
+ALTER TABLE Pedido ADD CONSTRAINT FK_Item_Pedido/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+FOREIGN KEY (cod_Item)
+REFERENCES Item (cod_Item);
+
+ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Funcionario/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+FOREIGN KEY (cod_Funcionario)
+REFERENCES Funcionario (cod_Funcionario);
+
+ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Pedido/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+FOREIGN KEY (cod_Pedido)
+REFERENCES Pedido (cod_Pedido);
+
+ALTER TABLE Garcom ADD CONSTRAINT FK_codFuncionario/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+FOREIGN KEY (cod_Funcionario)
+REFERENCES Funcionario (cod_Funcionario);
+
+ALTER TABLE Garcom ADD CONSTRAINT FK_codPedido/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+FOREIGN KEY (cod_Pedido)
+REFERENCES Pedido (cod_Pedido);
+
+ALTER TABLE Administrador ADD CONSTRAINT FK_codFuncionario_adm/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+FOREIGN KEY (cod_Funcionario)
+REFERENCES Funcionario (cod_Funcionario);
+
