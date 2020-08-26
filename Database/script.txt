@@ -9,7 +9,8 @@ use tcc;
 /*Tabela Cardapio*/
 create table Cardapio(
 cod_Cardapio int(100) unsigned not null auto_increment primary key,
-categoria_Cardapio VARCHAR(100) NOT NULL
+categoria_Cardapio VARCHAR(100) NOT NULL,
+foto_Cardapio blob not null
 );
 /*Tabela Item*/
 create table Item (
@@ -18,7 +19,7 @@ nome_Item VARCHAR(100) NOT NULL,
 preco_Item DECIMAL(10,2) NOT NULL,
 descricao_Item VARCHAR(100) NOT NULL,
 cod_Cardapio int(100) unsigned not null,
-foto_Item lob not null /*Utilização de Blob para armazenar a Imagem*/
+foto_Item blob not null /*Utilização de Blob para armazenar a Imagem*/
 );
 /*Tabela Mesa*/
 create table Mesa(
