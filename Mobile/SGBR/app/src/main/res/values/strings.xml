@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">SGBR</string>
+
     //activity_main
     <string name="main_titulo">SGBR</string>
     <string name="main_subtitulo">Seja bem vindo ao restaurante!</string>
@@ -37,6 +38,12 @@
     //activity_categoria_cardapio
     <string name="toolbar_categoria_cardapio">Cardapio</string>
 
-    //Layout categoria_cardapio
-    <string name="layout_btn_add">Adicionar</string>
+    //activity_carrinho_compras
+    <string name="toolbar_carrinho_compras">Carrinho de Compras</string>
+
+    //Layout Strings comuns
+    <string name="btn_add">Adicionar</string>
+    <string name="btn_remove">Remover</string>
+
+
 </resources>

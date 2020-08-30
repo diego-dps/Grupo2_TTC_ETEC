@@ -1,8 +1,10 @@
-package com.example.sgbr;
+package com.example.sgbr.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.sgbr.R;
 
 public class CardapioActivity extends AppCompatActivity {
 

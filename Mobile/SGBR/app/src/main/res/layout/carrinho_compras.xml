@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@drawable/card_view_background"
-    tools:showIn="@layout/activity_categoria_cardapio">
+    tools:showIn="@layout/activity_carrinho_compras">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -33,8 +33,6 @@
             android:layout_alignTop="@id/img_item"
             android:textColor="@color/colorTextDark"
             />
-
-
 
 
         <TextView
@@ -109,7 +107,6 @@
             android:layout_toEndOf="@id/img_remove"
             android:layout_below="@id/txt_preview"
             android:layout_alignParentBottom="true"
-            android:text="@string/btn_add"/>
-
+            android:text="@string/btn_remove"/>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
