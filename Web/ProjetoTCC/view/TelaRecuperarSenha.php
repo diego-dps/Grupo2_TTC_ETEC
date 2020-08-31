@@ -4,47 +4,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperação Senha</title>
+    <title>Recuperar Senha</title>
     <link rel="stylesheet" href="../css/bootstrap.css">
-
-    <style>
-        body {
-            background-color: #d3d3d3;
-        }
-
-        .titulo{
-            padding-top: 0.5em;
-        }
-
-        .caixaLogin {
-            width: 25em;
-            height: 30em;
-            background-color: #345D7E;
-            border-radius: 10px;
-        }
-
-        .botao {
-            background-color: #A64D79;
-            margin-left: 12.5em;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/estilo.css">
 </head>
 
 <body>
 
-    <div class="caixaLogin mx-auto mt-5">
-        <h2 class="text-white text-center titulo">Recuperação de Senha</h2>
-        <form>
-            <div class="mt-5">
-                <div class="form-group mx-auto col-lg-10">
-                    <label for="email" class="text-white">Seu E-mail</label>
-                    <input type="text" class="form-control" id="email" name="email">
+    <div class="mt-5 d-none d-md-block">
+        <div class="caixaLogin mx-auto mt-5">
+            <h2 class="text-center titulo">Recuperação de Senha</h2>
+            <form>
+                <div class="mt-5">
+                    <div class="form-group mx-auto col-10">
+                        <label for="email" class="font-weight-bold">Seu E-mail</label>
+                        <input type="text" class="form-control  font-weight-bold" id="email" name="email">
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn botaoForm text-white">Enviar nova senha</button>
+                    </div>
                 </div>
-                <div class="">
-                    <button type="submit" class="btn botao text-white">Enviar nova senha</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="d-md-none d-sm-block">
+        <div class="caixaLoginP mt-4">
+            <h2 class="text-center titulo">Recuperação de Senha</h2>
+            <form>
+                <div class="mt-5">
+                    <div class="form-group mx-auto col-12">
+                        <label for="email" class="font-weight-bold">Seu E-mail</label>
+                        <input type="text" class="form-control  font-weight-bold" id="email" name="email">
+                    </div>
+                    <div class="">
+                        <button type="submit" class="btn botaoForm mt-4 text-white rounded mx-auto d-block">Enviar nova senha</button>
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 
 
