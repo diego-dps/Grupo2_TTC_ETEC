@@ -1,0 +1,140 @@
+/*CSS TELA DE LOGIN*/
+
+body {
+    background-image: url("../img/food2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.caixaLogin {
+    width: 25em;
+    height: 30em;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.caixaLoginP {
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid white 15px;
+}
+
+.titulo {
+    padding-top: 0.5em;
+}
+
+
+/*CSS TELA RECUPERAÇÂO DE SENHA*/
+
+.titulo {
+    padding-top: 0.5em;
+}
+
+.btnForm {
+    margin-left: 12.5em;
+}
+
+
+/*CSS TELAS WEB*/
+
+
+.fonte {
+    font-size: x-large;
+}
+
+.fontep {
+    font-size: 10px;
+    color: black;
+}
+
+.container {
+    width: 100%;
+    height: 540px;
+    background-color: white;
+    border: solid white 15px;
+    border-radius: 10px;
+}
+
+.container2 {
+    width: 100%;
+    height: 400px;
+    background-color: white;
+    border: solid white 15px;
+    border-radius: 10px;
+}
+
+.containerform {
+    width: 600px;
+    height: 420px;
+    background-color: white;
+    border: solid white 15px;
+    border-radius: 10px;
+    /*box-shadow: 10px 10px 5px gray;*/
+}
+
+.containerformp {
+    width: 100%;
+    height: 500px;
+    background-color: white;
+    border: solid white 15px;
+    border-radius: 10px;
+}
+
+.containerPedidos {
+    width: 100%;
+    height: 540px;
+    background-color: white;
+    border: solid white 15px;
+    border-radius: 10px;
+}
+
+
+/*CSS TELA DE ITENS*/
+
+.borda {
+    border: solid black 0.5px;
+    height: 70px;
+}
+
+.borda2 {
+    border: solid black 0.5px;
+    height: 100px;
+}
+
+.divTeste {
+    background-color: white;
+    border: 1px solid #000;
+}
+
+
+/*CSS TELA DE ALTERAÇÃO DE SENHA*/
+
+.btnOK {
+    width: 5em;
+}
+
+
+/*CSS TELA CADASTRO DE FUNCIONÁRIO*/
+
+.caixaCadastro {
+    width: 38em;
+    height: 30em;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.btnCadastrar {
+    margin-left: 5em;
+}
+
+.caixaCadastroP {
+    width: 100%;
+    height: 800px;
+    background-color: white;
+    border-radius: 10px;
+    border: solid white 15px;
+}
