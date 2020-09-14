@@ -1,3 +1,14 @@
+/*GERAL*/
+a:link{
+    text-decoration: none;
+    
+}
+a:hover{
+    color:white; text-decoration:none; cursor:pointer;
+}
+a{
+    color: #ffffff;
+}
 /*CSS TELA DE LOGIN*/
 
 body {
@@ -26,7 +37,12 @@ body {
 .titulo {
     padding-top: 0.5em;
 }
-
+.A{
+    color: red;
+}
+.A:hover{
+    color: rgb(119, 11, 11);
+}
 
 /*CSS TELA RECUPERAÇÂO DE SENHA*/
 
@@ -130,3 +146,8 @@ body {
     border-radius: 10px;
     border: solid white 15px;
 }
+
+ul li{
+    display: inline-block;
+}
+

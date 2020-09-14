@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Senha</title>
+    <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
 </head>
@@ -28,13 +29,17 @@
                         <label for="ConfNovaSenha" class="font-weight-bold">Confirmar Nova Senha</label>
                         <input type="text" class="form-control font-weight-bold" id="ConfNovaSenha" name="ConfNovaSenha">
                     </div>
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-lg btn-danger btnOK text-white">OK</button>
+                    <div class="form-row">
+                        <div class="" style="position: relative; left: 35px; top: 21px;">
+                            <button type="submit" class="btn btn-danger btn-lg btnCadastrar">OK</button>
+                        </div>
+                        <div class="" style="position: relative; left: 55px; top: 5px;">
+                            <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="">Voltar</a></button>
+                        </div> 
                     </div>
                 </div>
             </form>
         </div>
-        <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="TelaADM.php">Voltar</a></button>
     </div>
 
     <div class="d-md-none d-sm-block">
@@ -54,13 +59,17 @@
                         <label for="ConfNovaSenha" class="font-weight-bold">Confirmar Nova Senha</label>
                         <input type="text" class="form-control font-weight-bold" id="ConfNovaSenha" name="ConfNovaSenha">
                     </div>
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-lg btn-danger btnOK text-white">OK</button>
+                    <div class="form-row">
+                        <div class="" style="position: relative; left: 75px; top: 21px;">
+                            <button type="submit" class="btn btn-danger btn-lg btnCadastrar">OK</button>
+                        </div>
+                        <div class="" style="position: relative; left: 150px; top: 5px;">
+                            <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="">Voltar</a></button>
+                        </div> 
                     </div>
                 </div>
             </form>
         </div>
-        <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="TelaADM.php">Voltar</a></button>
     </div>
 
 

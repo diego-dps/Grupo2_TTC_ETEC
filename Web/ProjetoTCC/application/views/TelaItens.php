@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
     <title>Itens</title>
@@ -14,9 +15,9 @@
     <div class="d-none d-md-block">
         <div class="container1 mx-auto mt-4">
             <div class="row mx-auto mt-2">
-                <h1 class="my-auto display-5 text-center col-8">Lista de Itens</h1>
+                <h1 class="my-auto display-5 text-center col-8" style=" position: relative; left: 265px; top: -10px;">Lista de Itens</h1>
                 <form class="col-4" action="">
-                    <input class="my-auto form-control bg-dark text-white" type="search" placeholder="Pesquisar">
+                    <input class="my-auto form-control bg-dark text-white" style="position: relative; left: 15px;" type="search" placeholder="Pesquisar">
                 </form>
             </div>
             <table class="table table-dark table-hover text-center">

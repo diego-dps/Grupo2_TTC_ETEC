@@ -5,8 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Funcionário</title>
+    <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#cpf").mask("000.000.000-00", {reverse: false})
+            $("#CPF").mask("000.000.000-00", {reverse: false})
+            $("#celular").mask("(00) 00000-0000")
+            $("#CELULAR").mask("(00) 00000-0000")
+        });
+    </script>
 </head>
 
 <body>
@@ -33,8 +43,8 @@
                     <input type="password" class="form-control" id="pass" name="pass">
                 </div>
                 <div class="form-group mx-auto col-5">
-                    <label for="tel">Telefone</label>
-                    <input type="text" class="form-control" id="tel" name="tel">
+                    <label for="tel">Celular</label>
+                    <input type="text" class="form-control" id="celular" name="celular">
                 </div>
                 <div class="form-group mx-auto col-5">
                     <label for="ConfPass">Confirmar Senha</label>
@@ -49,12 +59,16 @@
                         <option>Garçom</option>
                     </select>
                 </div>
-                <div class="text-center mt-4">
-                    <button type="submit" class="btn btn-danger btn-lg btnCadastrar">Cadastrar</button>
+                <div class="form-row">
+                    <div class="" style="position: relative; right: 35px; top: 21px;">
+                        <button type="submit" class="btn btn-danger btn-lg btnCadastrar">Cadastrar</button>
+                    </div>
+                    <div class="" style="position: relative; right: 25px; top: 5px;">
+                        <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="">Voltar</a></button>
+                    </div>                       
                 </div>
             </form>
         </div>
-        <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="TelaADM.php">Voltar</a></button>
     </div>
 
     <div class="d-md-none d-sm-block">
@@ -71,15 +85,15 @@
                 </div>
                 <div class="form-group mx-auto col-12">
                     <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" id="cpf" name="cpf">
+                    <input type="text" class="form-control" id="CPF" name="CPF">
                 </div>
                 <div class="form-group mx-auto col-12">
                     <label for="pass">Senha</label>
                     <input type="password" class="form-control" id="pass" name="pass">
                 </div>
                 <div class="form-group mx-auto col-12">
-                    <label for="tel">Telefone</label>
-                    <input type="text" class="form-control" id="tel" name="tel">
+                    <label for="tel">Celular</label>
+                    <input type="text" class="form-control" id="CELULAR" name="CELULAR">
                 </div>
                 <div class="form-group mx-auto col-12">
                     <label for="ConfPass">Confirmar Senha</label>
@@ -94,11 +108,10 @@
                         <option>Garçom</option>
                     </select>
                 </div>
-                    <button type="submit" class="btn btn-lg mt-3 btn-danger text-white rounded 
-                    mx-auto d-block">Cadastrar</button>
+                <button type="submit" class="btn btn-lg mt-3 btn-danger text-white rounded mx-auto d-block">Cadastrar</button>
+                <button class="btn btn-lg mt-3 btn-danger text-white rounded mx-auto d-block"><a href="">Voltar</a></button>
             </form>
         </div>
-        <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="TelaADM.php">Voltar</a></button>
     </div>
 
 
@@ -106,6 +119,7 @@
     <script src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/popper.js/dist/umd/popper.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/bootstrap/dist/js/bootstrap.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url("assets/node_modules/jquery/dist/jquery.mask.min.js"); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/sweetalert2/dist/sweetalert2.all.js'); ?>"></script>
 
 </body>

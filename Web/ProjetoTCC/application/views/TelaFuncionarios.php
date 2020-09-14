@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
     <title>Funcionários</title>
@@ -13,9 +14,9 @@
     <div class="d-none d-md-block">
         <div class="container1 mt-4">
             <div class="row mx-auto">
-                <h1 class="display-5 col-8 text-center my-auto">Lista de Funcionários</h1>
+                <h1 class="display-5 col-8 text-center my-auto" style=" position: relative; left: 260px; top: -10px;">Lista de Funcionários</h1>
                 <form class="col-4" action="">
-                    <input class="my-auto form-control bg-dark text-white" type="search" placeholder="Pesquisar">
+                    <input class="my-auto form-control bg-dark text-white" style="position: relative; left: 15px;" type="search" placeholder="Pesquisar">
                 </form>
             </div>
             <table class="table table-dark table-hover text-center">

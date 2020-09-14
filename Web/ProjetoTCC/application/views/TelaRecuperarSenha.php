@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Senha</title>
+    <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
 </head>
@@ -13,15 +14,18 @@
 
     <div class="mt-5 d-none d-md-block">
         <div class="caixaLogin mx-auto mt-5">
+            <br>
             <h2 class="text-center titulo">Recuperação de Senha</h2>
+            <br>
             <form>
                 <div class="mt-5">
                     <div class="form-group mx-auto col-10">
                         <label for="email" class="font-weight-bold">Seu E-mail</label>
                         <input type="text" class="form-control  font-weight-bold" id="email" name="email">
                     </div>
+                    <br>
                     <div class="">
-                        <button type="submit" class="btn btnForm btn-danger text-white">Enviar nova senha</button>
+                        <button type="submit" class="btn btnForm btn-danger text-white" style="position: relative; right: 80px;">Enviar nova senha</button>
                     </div>
                 </div>
             </form>

@@ -3,21 +3,47 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
     <title>Página Inicial</title>
+    <script type="text/javascript">
+        function time()
+        {
+        today=new Date();
+        h=today.getHours();
+        m=today.getMinutes();
+        s=today.getSeconds();
+        document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+        setTimeout('time()',500);
+        }
+    </script>
+    <script language=javascript type="text/javascript">
+        dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+        monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro","novembro", "dezembro")
+        now = new Date
+    </script>
 </head>
 
-<body>
+<body onload="time()">
+    <br><br><br><br><br><br>
     <div class="mt-5 d-none d-md-block">
         <div class="row mx-auto my-auto">
             <div class="mt-4 col-6">
                 <h1 class="text-center text-white display-4">Nome do Usuário</h1>
             </div>
             <div class="col-6">
-                <h1 class="text-white display-4">20 de Agosto de 2020</>
-                    <h1 class="text-white display-4">Quinta-feira 16:00</h1>
+                <h1 class="text-white display-4">
+                    <script language=javascript type="text/javascript">
+                        document.write (now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + ".")
+                    </script>
+                    <br>
+                    <script>
+                        document.write(dayName[now.getDay() ] + " " + "- feira")
+                    </script>
+                    <div id="txt"></div>
+                </h1>    
             </div>
         </div>
         <br><br><br>
