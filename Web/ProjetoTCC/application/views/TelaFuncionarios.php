@@ -11,49 +11,47 @@
 
 <body>
     <div class="d-none d-md-block">
-        <div class="row mx-auto mt-2">
-            <h1 class="display-4 col-6 divTeste text-center my-auto d-none d-md-block">Lista de Funcionários</h1>
-            <form class="my-auto col-4" action="">
-                <input class="my-auto form-control" type="search" placeholder="Pesquisar">
-            </form>
-        </div>
-    </div>
-
-    <div class="d-md-none d-sm-block">
-        <div class="row mx-auto mt-2">
-            <h1 class="display-5 col-12 text-center my-auto text-white d-md-none d-sm-blok">Lista de Funcionários</h1>
-            <form class="mx-auto my-auto col-9" action="">
-                <input class="mx-auto my-auto form-control" type="search" placeholder="Pesquisar">
-            </form>
-        </div>
-    </div>
-
-    <div class="d-none d-md-block">
-        <div class="containerPedidos mt-4">
+        <div class="container1 mt-4">
+            <div class="row mx-auto">
+                <h1 class="display-5 col-8 text-center my-auto">Lista de Funcionários</h1>
+                <form class="col-4" action="">
+                    <input class="my-auto form-control bg-dark text-white" type="search" placeholder="Pesquisar">
+                </form>
+            </div>
             <table class="table table-dark table-hover text-center">
                 <thead>
-                    <tr>
+                    <tr class="text-danger">
                         <th scope="col">Nome</th>
                         <th scope="col">Cargo</th>
+                        <th scope="col"><a class="text-danger badge badge-dark" href="#">Adicionar Funcionário</a></th>
                         <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"><a class="badge badge-dark" href="#">Adicionar Funcionário</a></th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="col">Fulano de tal</th>
+                        <th scope="col">Zezinho</th>
                         <th scope="col">Garçom</th>
-                        <th scope="col"></th>
-                        <th scope="col">Remover</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                     <tr>
-                        <th scope="col">Fulano de tal</th>
+                        <th scope="col">Maria</th>
                         <th scope="col">Administrador</th>
-                        <th scope="col"></th>
-                        <th scope="col">Remover</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">José</th>
+                        <th scope="col">Cozinheiro</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Rubens</th>
+                        <th scope="col">Garçom</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                 </tbody>
             </table>
@@ -63,30 +61,46 @@
 
     <div class="d-md-none d-sm-block">
         <div class="container2 mx-auto mt-4 table-responsive-sm">
-            <table class="table table-dark table-hover text-center">
+            <div class="row mx-auto mt-2">
+                <h1 class="display-5 col-12 text-center">Lista de Funcionários</h1>
+                <form class="mx-auto mt-2 col-12" action="">
+                    <input class="mx-auto bg-dark form-control" type="search" placeholder="Pesquisar">
+                </form>
+            </div>
+            <table class="mt-2 table table-dark table-hover text-center">
                 <thead>
-                    <tr>
+                    <tr class="text-danger">
                         <th scope="col">Nome</th>
                         <th scope="col">Cargo</th>
+                        <th scope="col"><a class="text-danger badge badge-dark" href="#">Adicionar Funcionário</a></th>
                         <th scope="col"></th>
-                        <th scope="col"></th>
-                        <th scope="col"><a class="badge badge-dark" href="#">Adicionar Funcionário</a></th>
+
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="col">Fulano de tal</th>
+                        <th scope="col">Zezinho</th>
                         <th scope="col">Garçom</th>
-                        <th scope="col"></th>
-                        <th scope="col">Remover</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                     <tr>
-                        <th scope="col">Fulano de tal</th>
+                        <th scope="col">Maria</th>
                         <th scope="col">Administrador</th>
-                        <th scope="col"></th>
-                        <th scope="col">Remover</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">José</th>
+                        <th scope="col">Cozinheiro</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Rubens</th>
+                        <th scope="col">Garçom</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                 </tbody>
             </table>

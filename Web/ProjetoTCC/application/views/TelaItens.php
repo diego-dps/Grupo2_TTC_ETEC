@@ -12,35 +12,21 @@
 <body>
 
     <div class="d-none d-md-block">
-        <div class="row mx-auto mt-2">
-            <h1 class="display-4 col-6 text-center my-auto text-white d-none d-md-block">Lista de Itens</h1>
-            <form class="my-auto col-4" action="">
-                <input class="my-auto form-control" type="search" placeholder="Pesquisar">
-            </form>
-            <a href="#" class="col-1 mx-auto my-auto"> <img class="rounded mx-auto d-block" src="../img/icons8-plus-52.png" alt=""></a>
-        </div>
-    </div>
-
-    <div class="d-md-none d-sm-block">
-        <div class="row mx-auto mt-2">
-            <h1 class="display-5 col-12 text-center my-auto text-white d-md-none d-sm-blok">Lista de Itens</h1>
-            <form class="mx-auto my-auto col-9" action="">
-                <input class="mx-auto my-auto form-control" type="search" placeholder="Pesquisar">
-            </form>
-            <a href="#" class="col-3 mx-auto my-auto"> <img class="rounded mx-auto d-block" src="../img/icons8-plus-52.png" alt=""></a>
-        </div>
-    </div>
-
-    <div class="d-none d-md-block">
-        <div class="container mx-auto mt-4">
-        <table class="table table-dark table-hover text-center">
+        <div class="container1 mx-auto mt-4">
+            <div class="row mx-auto mt-2">
+                <h1 class="my-auto display-5 text-center col-8">Lista de Itens</h1>
+                <form class="col-4" action="">
+                    <input class="my-auto form-control bg-dark text-white" type="search" placeholder="Pesquisar">
+                </form>
+            </div>
+            <table class="table table-dark table-hover text-center">
                 <thead>
-                    <tr>
+                    <tr class="text-danger">
                         <th scope="col">Nome</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Preço</th>
+                        <th scope="col"><a class="text-danger badge badge-dark" href="#">Adicionar Item</a></th>
                         <th scope="col"></th>
-                        <th scope="col"><a class="badge badge-dark" href="#">Adicionar Item</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,15 +34,29 @@
                         <th scope="col">Pizza Mussarela</th>
                         <th scope="col">Mussarela e Tomate</th>
                         <th scope="col">R$32,00</th>
-                        <th scope="col">Remover</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                     <tr>
-                        <th scope="col">Pizza Mussarela</th>
-                        <th scope="col">Mussarela e Tomate</th>
-                        <th scope="col">R$32,00</th>
-                        <th scope="col">Remover</th>
+                        <th scope="col">Pizza Calabresa</th>
+                        <th scope="col">Calabresa e Cebola</th>
+                        <th scope="col">R$34,00</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Coca-cola</th>
+                        <th scope="col">Coca-cola 2l</th>
+                        <th scope="col">R$9,00</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Fanta Laranja</th>
+                        <th scope="col">Fanta Laranja 350ml</th>
+                        <th scope="col">R$4,00</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                 </tbody>
             </table>
@@ -66,14 +66,20 @@
 
     <div class="d-md-none d-sm-block">
         <div class="container2 mx-auto mt-4 table-responsive-sm">
-        <table class="table table-dark table-hover text-center">
+            <div class="row mx-auto mt-2">
+                <h1 class="display-5 col-12 text-center my-auto">Lista de Itens</h1>
+                <form class="mx-auto my-auto col-12" action="">
+                    <input class="mx-auto bg-dark form-control" type="search" placeholder="Pesquisar">
+                </form>
+            </div>
+            <table class="mt-2 table table-dark table-hover text-center">
                 <thead>
-                    <tr>
+                    <tr class="text-danger">
                         <th scope="col">Nome</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Preço</th>
+                        <th scope="col"><a class="text-danger badge badge-dark" href="#">Adicionar Item</a></th>
                         <th scope="col"></th>
-                        <th scope="col"><a class="badge badge-dark" href="#">Adicionar Item</a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,15 +87,29 @@
                         <th scope="col">Pizza Mussarela</th>
                         <th scope="col">Mussarela e Tomate</th>
                         <th scope="col">R$32,00</th>
-                        <th scope="col">Remover</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                     <tr>
-                        <th scope="col">Pizza Mussarela</th>
-                        <th scope="col">Mussarela e Tomate</th>
-                        <th scope="col">R$32,00</th>
-                        <th scope="col">Remover</th>
+                        <th scope="col">Pizza Calabresa</th>
+                        <th scope="col">Calabresa e Cebola</th>
+                        <th scope="col">R$34,00</th>
                         <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Coca-cola</th>
+                        <th scope="col">Coca-cola 2l</th>
+                        <th scope="col">R$9,00</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
+                    </tr>
+                    <tr>
+                        <th scope="col">Fanta Laranja</th>
+                        <th scope="col">Fanta Laranja 350ml</th>
+                        <th scope="col">R$4,00</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Remover</th>
                     </tr>
                 </tbody>
             </table>

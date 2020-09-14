@@ -51,17 +51,9 @@ body {
     color: black;
 }
 
-.container {
-    width: 100%;
-    height: 540px;
-    background-color: white;
-    border: solid white 15px;
-    border-radius: 10px;
-}
-
 .container2 {
     width: 100%;
-    height: 400px;
+    height: 500px;
     background-color: white;
     border: solid white 15px;
     border-radius: 10px;
@@ -84,7 +76,7 @@ body {
     border-radius: 10px;
 }
 
-.containerPedidos {
+.container1 {
     width: 100%;
     height: 540px;
     background-color: white;
