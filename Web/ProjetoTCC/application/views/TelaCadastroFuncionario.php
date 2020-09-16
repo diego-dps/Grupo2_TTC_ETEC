@@ -25,7 +25,7 @@
         <div class="caixaCadastro mx-auto mt-5 font-weight-bold">
             <h2 class="text-center titulo">Cadastro</h2>
 
-            <form class="form-row mt-5">
+            <form action="<?php echo base_url("index.php/CadastroFuncionario/validarCadastroFuncionario"); ?>" method="POST" id="cadastroFuncionario" class="form-row">
                 <div class="form-group mx-auto col-5">
                     <label for="nome">Nome</label>
                     <input type="text" class="form-control" id="nome" name="nome">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group col-5 ml-4">
                     <label for="SelecionarCargo">Selecionar Cargo</label>
-                    <select class="form-control" id="SelecionarCargo">
+                    <select class="form-control" id="SelecionarCargo" name="cargo">
                         <option></option>
                         <option>Administrador</option>
                         <option>Cozinheiro</option>
@@ -120,6 +120,7 @@
     <script src="<?php echo base_url('assets/node_modules/popper.js/dist/umd/popper.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/bootstrap/dist/js/bootstrap.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/node_modules/jquery/dist/jquery.mask.min.js"); ?>"></script>
+    <script src="<?php echo base_url('assets/javascript/validacoes.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/sweetalert2/dist/sweetalert2.all.js'); ?>"></script>
 
 </body>

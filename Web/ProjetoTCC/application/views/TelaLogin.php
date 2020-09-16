@@ -15,7 +15,7 @@
     <div class="mt-5 d-none d-md-block">
         <div class="caixaLogin mx-auto my-auto">
             <h2 class="text-center titulo">Login</h2>
-            <form>
+            <form action="<?php echo base_url("index.php/Login/validarLogin"); ?>" method="POST" id="login">
                 <div class="mt-4 ">
                     <div class="form-group mx-auto col-10">
                         <label for="user" class="font-weight-bold">Usuário</label>
@@ -39,7 +39,7 @@
     <div class="d-md-none d-sm-block">
         <div class="caixaLoginP mt-4">
             <h2 class="text-center titulo">Login</h2>
-            <form>
+            <form action="<?php echo base_url("index.php/Login/validarLogin"); ?>" method="POST" id="loginResponsivo">
                 <div class="mt-4 ">
                     <div class="form-group mx-auto col-12">
                         <label for="user" class="font-weight-bold">Usuário</label>
@@ -65,6 +65,7 @@
     <script src="<?php echo base_url('assets/node_modules/popper.js/dist/umd/popper.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/bootstrap/dist/js/bootstrap.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/sweetalert2/dist/sweetalert2.all.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/javascript/validacoes.js'); ?>"></script>
 
 </body>
 
