@@ -1,0 +1,48 @@
+.modal-header, h4, .close {
+    background-color: #343a40;
+    color: #ffffff !important;
+    text-align: center;
+    font-size: 30px;
+}
+.modal-footer{
+background-color: #343a40;
+}
+label{
+    color: black;
+}
+.nomeitem{
+    position: relative;
+    margin-right: 89%;
+}
+.preco{
+    position: relative;
+    margin-right: 64%;
+}
+.desc{
+    position: relative;
+    margin-right: 85%;
+}
+.foto{
+    position: relative;
+    margin-right: 80%;
+}
+
+/*Responsivo*/
+.nomeitemresponsivo{
+    position: relative;
+    margin-right: 80%;
+}
+.precoresponsivo{
+    position: relative;
+    margin-right: 39%;
+}
+.descresponsivo{
+    position: relative;
+    margin-right: 75%;
+}
+.fotoresponsivo{
+    position: relative;
+    right: 34%;
+}
+
+/*ajuste da tela de funcionarios*/

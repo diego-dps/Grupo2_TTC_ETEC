@@ -117,7 +117,11 @@ body {
     background-color: white;
     border: 1px solid #000;
 }
-
+.pesquisa{
+    width: 525px;
+    position: relative;
+    right: 3%;
+}
 
 /*CSS TELA DE ALTERAÇÃO DE SENHA*/
 
@@ -150,4 +154,3 @@ body {
 ul li{
     display: inline-block;
 }
-

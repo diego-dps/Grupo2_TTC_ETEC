@@ -28,11 +28,11 @@
             <form action="<?php echo base_url("index.php/CadastroFuncionario/validarCadastroFuncionario"); ?>" method="POST" id="cadastroFuncionario" class="form-row">
                 <div class="form-group mx-auto col-5">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome">
+                    <input type="text" class="form-control" id="nome" name="nome" autocomplete="off">
                 </div>
                 <div class="form-group mx-auto col-5">
                     <label for="email">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="email" name="email" autocomplete="off">
                 </div>
                 <div class="form-group mx-auto col-5">
                     <label for="cpf">CPF</label>
@@ -50,9 +50,9 @@
                     <label for="ConfPass">Confirmar Senha</label>
                     <input type="password" class="form-control" id="ConfPass" name="ConfPass">
                 </div>
-                <div class="form-group col-5 ml-4">
-                    <label for="SelecionarCargo">Selecionar Cargo</label>
-                    <select class="form-control" id="SelecionarCargo" name="cargo">
+                <div class="form-group col-5 ml-4 selecionarcargo">
+                    <label class="selecionarcargo" for="SelecionarCargo">Selecionar Cargo</label>
+                    <select class="form-control selecionarcargo" id="SelecionarCargo" name="SelecionarCargo">
                         <option></option>
                         <option>Administrador</option>
                         <option>Cozinheiro</option>
@@ -74,39 +74,39 @@
     <div class="d-md-none d-sm-block">
         <div class="caixaCadastroP mt-4 font-weight-bold">
             <h2 class="text-center titulo">Cadastro</h2>
-            <form class="form-row mt-2">
+            <form class="form-row mt-2" action="<?php echo base_url("index.php/CadastroFuncionario/validarCadastroFuncionarioresponsivo"); ?>" method="POST" id="cadastroFuncionarioresponsivo">
                 <div class="form-group mx-auto col-12">
                     <label for="nome">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome">
+                    <input type="text" class="form-control" id="NOME" name="NOME" autocomplete="off">
                 </div>
                 <div class="form-group mx-auto col-12">
                     <label for="email">E-mail</label>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="EMAIL" name="EMAIL" autocomplete="off">
                 </div>
                 <div class="form-group mx-auto col-12">
                     <label for="cpf">CPF</label>
                     <input type="text" class="form-control" id="CPF" name="CPF">
                 </div>
                 <div class="form-group mx-auto col-12">
-                    <label for="pass">Senha</label>
-                    <input type="password" class="form-control" id="pass" name="pass">
-                </div>
-                <div class="form-group mx-auto col-12">
                     <label for="tel">Celular</label>
                     <input type="text" class="form-control" id="CELULAR" name="CELULAR">
                 </div>
-                <div class="form-group mx-auto col-12">
-                    <label for="ConfPass">Confirmar Senha</label>
-                    <input type="password" class="form-control" id="ConfPass" name="ConfPass">
-                </div>
                 <div class="form-group col-12">
                     <label for="SelecionarCargo">Selecionar Cargo</label>
-                    <select class="form-control" id="SelecionarCargo">
+                    <select class="form-control" id="SELECIONARCARGO" name="SELECIONARCARGO">
                         <option></option>
                         <option>Administrador</option>
                         <option>Cozinheiro</option>
                         <option>Garçom</option>
                     </select>
+                </div>
+                <div class="form-group mx-auto col-12">
+                    <label for="pass">Senha</label>
+                    <input type="password" class="form-control" id="PASS" name="PASS">
+                </div>
+                <div class="form-group mx-auto col-12">
+                    <label for="ConfPass">Confirmar Senha</label>
+                    <input type="password" class="form-control" id="CONFPASS" name="CONFPASS">
                 </div>
                 <button type="submit" class="btn btn-lg mt-3 btn-danger text-white rounded mx-auto d-block">Cadastrar</button>
                 <button class="btn btn-lg mt-3 btn-danger text-white rounded mx-auto d-block"><a href="">Voltar</a></button>
