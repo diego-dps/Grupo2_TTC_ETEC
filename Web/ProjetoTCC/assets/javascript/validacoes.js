@@ -1,5 +1,4 @@
 /*Validações do Login*/
-
 $(function() {
         $('#login').submit(function() {
             var obj = this;
@@ -47,11 +46,9 @@ $(function() {
             return false;
         })
     }
-
 );
 
 /*Validações do Login  Responsivo*/
-
 $(function() {
         $('#loginResponsivo').submit(function() {
             var obj = this;
@@ -99,11 +96,9 @@ $(function() {
             return false;
         })
     }
-
 );
 
 /*Validações do Cadastro de Funcionários*/
-
 $(function() {
         $('#cadastroFuncionario').submit(function() {
             var obj = this;
@@ -221,9 +216,7 @@ $(function() {
 
 );
 
-
 /*Validações do Cadastro de Funcionários responsivo*/
-
 $(function() {
     $('#cadastroFuncionarioresponsivo').submit(function() {
         var obj = this;
@@ -338,13 +331,9 @@ $(function() {
         })
         return false;
     })
-}
-
-);
-
+});
 
 /*Validações do editar de Funcionários*/
-
 $(function() {
     $('#UpdateFuncionario').submit(function() {
         var obj = this;
@@ -463,8 +452,7 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
 
 /*Validações do editar de Funcionários responsivo*/
 $(function() {
@@ -585,8 +573,7 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
 
 /*Cadastro de itens - tela Itens */
 $(function() {
@@ -650,8 +637,7 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
 
 /*Cadastro de itens responsivo - tela Itens */
 $(function() {
@@ -715,11 +701,9 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
 
 /*Update de intens - tela Itens */
-
 $(function() {
     $('#UpdateItens').submit(function() {
         var obj = this;
@@ -785,12 +769,9 @@ $(function() {
         })
         return false;
     })
-}
-
-);
+});
 
 /*Update de intens - tela Itens */
-
 $(function() {
     $('#UpdateItensresponsivo').submit(function() {
         var obj = this;
@@ -856,8 +837,7 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
 
 /**exclusão de itens */
 $(function() {
@@ -896,8 +876,7 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
 
 /**Exclusão de itens responsivos */
 $(function() {
@@ -936,8 +915,7 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
 
 /**Exclusão de funcionario*/
 $(function() {
@@ -976,8 +954,7 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
 
 /**Exclusão de funcionario responsivos */
 $(function() {
@@ -1016,5 +993,219 @@ $(function() {
         })
         return false;
     })
-}
-);
+});
+
+/*Validações do Recuperação de Senha*/
+$(function() {
+    $('#RecuperarSenha').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroEmail") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de email está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'E-mail de redefinição de senha enviado!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Validações do Recuperação de Senha Responsivo*/
+$(function() {
+    $('#RecuperarSenhaResponsivo').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroEmail") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de email está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'E-mail de redefinição de senha enviado!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Validações do Alterar Senha*/
+$(function() {
+    $('#AlterarSenha').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroNovaSenha") {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de nova senha está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroConfNovaSenha") {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de confirmar nova senha está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroSenhaNaoConfere") {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro ao preencher campos',
+                        text: 'As senhas não coincidem!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "Sucesso") {
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Senha alterada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.replace("");
+                        }
+                    })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Validações do Alterar Senha Responsivo*/
+
+$(function() {
+    $('#AlterarSenhaResponsivo').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroSenhaAtual") {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de senha atual está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+
+                if (data == "ErroNovaSenha") {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de nova senha está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+
+                if (data == "ErroConfNovaSenha") {
+
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de confirmar nova senha está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+
+                if (data == "ErroSenhaNaoConfere") {
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro ao preencher campos',
+                        text: 'As senhas não coincidem!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+
+                if (data == "Sucesso") {
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Senha alterada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.replace("");
+                        }
+                    })
+                }
+            }
+        })
+        return false;
+    })
+});

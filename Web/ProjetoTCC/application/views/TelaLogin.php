@@ -19,7 +19,7 @@
                 <div class="mt-4 ">
                     <div class="form-group mx-auto col-10">
                         <label for="user" class="font-weight-bold">Usuário</label>
-                        <input type="text" class="form-control font-weight-bold" id="user" name="user">
+                        <input type="text" autocomplete="off" class="form-control font-weight-bold" id="user" name="user">
                     </div>
                     <div class="form-group mx-auto col-10">
                         <label for="pass" class="font-weight-bold">Senha</label>
@@ -43,7 +43,7 @@
                 <div class="mt-4 ">
                     <div class="form-group mx-auto col-12">
                         <label for="user" class="font-weight-bold">Usuário</label>
-                        <input type="text" class="form-control font-weight-bold" id="user" name="user">
+                        <input type="text" autocomplete="off" class="form-control font-weight-bold" id="user" name="user">
                     </div>
                     <div class="form-group mx-auto col-12">
                         <label for="pass" class="font-weight-bold">Senha</label>
@@ -53,7 +53,11 @@
                         <button type="submit" class="btn btn-lg btn-danger text-white">Entrar</button>
                     </div>
                     <div class="text-center mt-5">
+<<<<<<< HEAD
                         <a href="<?php echo base_url('index.php/Telas/telaRecuperarSenha');?>" class="font-weight-bold A-do-login">Esqueci minha senha</a>
+=======
+                        <a href="#" class="font-weight-bold A">Esqueci minha senha</a>
+>>>>>>> 1b6f2de3efb5fce05da1ff6d0a0225485baa7a68
                     </div>
                 </div>
             </form>
