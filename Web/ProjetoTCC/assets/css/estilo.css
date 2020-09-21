@@ -154,3 +154,8 @@ body {
 ul li{
     display: inline-block;
 }
+
+.alinhamentodecaixas{
+    display: inline-block;
+    text-align: center;
+}

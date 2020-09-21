@@ -20,7 +20,7 @@
         }
     </script>
     <script language=javascript type="text/javascript">
-        dayName = new Array ("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+        dayName = new Array ("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado")
         monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro","novembro", "dezembro")
         now = new Date
     </script>
@@ -40,7 +40,7 @@
                     </script>
                     <br>
                     <script>
-                        document.write(dayName[now.getDay() ] + " " + "- feira")
+                        document.write(dayName[now.getDay() ] + " ")
                     </script>
                     <div id="txt"></div>
                 </h1>    
