@@ -126,7 +126,7 @@
                 </div>
             </table>
         </div>
-        <button class="mt-4 btn btn-lg btn-danger rounded mx-auto d-block"><a class="badge badge-danger" href="TelaADM.php">Voltar</a></button>
+        <button class="mt-4 btn btn-lg btn-danger rounded mx-auto d-block"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
     </div>
 
     <!-- Responsivo-->
@@ -222,7 +222,7 @@
                 </tbody>
             </table>
         </div>
-        <button class="mt-4 btn btn-danger rounded mx-auto d-block"><a class="badge badge-danger" href="TelaADM.php">Voltar</a></button>
+        <button class="mt-4 btn btn-danger rounded mx-auto d-block"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
     </div>
 
     <script type="text/javascript" src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>

@@ -52,9 +52,4 @@ class Telas extends CI_Controller {
 	{
 		$this->load->view('TelaItens');
 	}
-	
-	public function teste()
-	{
-		$this->load->view('TelaADMteste');
-    }
 }
