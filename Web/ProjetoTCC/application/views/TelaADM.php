@@ -19,13 +19,8 @@
         }
     </script>
     <script language=javascript type="text/javascript">
-<<<<<<< HEAD
         dayName = new Array("Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado")
         monName = new Array("Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro")
-=======
-        dayName = new Array ("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado")
-        monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro","novembro", "dezembro")
->>>>>>> 1b6f2de3efb5fce05da1ff6d0a0225485baa7a68
         now = new Date
     </script>
 </head>
