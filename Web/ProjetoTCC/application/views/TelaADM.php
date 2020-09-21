@@ -3,32 +3,38 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
+    <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png") ?>" type="image/x-png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
     <title>Página Inicial</title>
     <script type="text/javascript">
-        function time()
-        {
-        today=new Date();
-        h=today.getHours();
-        m=today.getMinutes();
-        s=today.getSeconds();
-        document.getElementById('txt').innerHTML=h+":"+m+":"+s;
-        setTimeout('time()',500);
+        function time() {
+            today = new Date();
+            h = today.getHours();
+            m = today.getMinutes();
+            s = today.getSeconds();
+            document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+            setTimeout('time()', 500);
         }
     </script>
     <script language=javascript type="text/javascript">
+<<<<<<< HEAD
         dayName = new Array ("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado")
         monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro","novembro", "dezembro")
+=======
+        dayName = new Array("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
+        monName = new Array("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro")
+>>>>>>> 9634822ebf2fbed9ff682b598ae7421a320ce124
         now = new Date
     </script>
 </head>
 
 <body onload="time()">
-    <br><br><br><br><br><br>
-    <div class="mt-5 d-none d-md-block">
+
+    <div class="mt-2 d-none d-md-block">
+    <button class="ml-2 mr-auto btn btn-danger btn-lg"><a class="badge badge-danger" href="#">Sair</a></button>
+        <br><br><br><br><br>
         <div class="row mx-auto my-auto">
             <div class="mt-4 col-6">
                 <h1 class="text-center text-white display-4">Nome do Usuário</h1>
@@ -36,54 +42,42 @@
             <div class="col-6">
                 <h1 class="text-white display-4">
                     <script language=javascript type="text/javascript">
-                        document.write (now.getDate () + " de " + monName [now.getMonth() ]   +  " de "  +     now.getFullYear () + ".")
+                        document.write(now.getDate() + " de " + monName[now.getMonth()] + " de " + now.getFullYear())
                     </script>
                     <br>
                     <script>
+<<<<<<< HEAD
                         document.write(dayName[now.getDay() ] + " ")
+=======
+                        document.write(dayName[now.getDay()] + " " + "- feira")
+>>>>>>> 9634822ebf2fbed9ff682b598ae7421a320ce124
                     </script>
                     <div id="txt"></div>
-                </h1>    
+                </h1>
             </div>
         </div>
-        <br><br><br>
-        <div class="mt-5 row mx-auto">
-            <div class="col-4">
-                <h1 class="text-center text-white display-4">Itens</h1>
-                <img class="mt-5 rounded mx-auto d-block" src="<?php echo base_url("assets/img/icone_itens.png")?>" alt="" width="120px" height="120px">
+        <br><br>
+        <div class="row mx-auto">
+            <div class="tamanhobotao mx-auto col-4">
+                <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; left: 160px;"><a class="badge badge-danger" href="">Itens</a></button>
             </div>
-            <div class="col-4">
-                <h1 class="text-center text-white display-4">Funcionários</h1>
-                <img class="mt-5 rounded mx-auto d-block" src="<?php echo base_url("assets/img/icone_itens.png")?>" alt="" width="120px" height="120px">
+            <div class="tamanhobotao mx-auto col-4">
+                <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5"><a class="badge badge-danger" href="">Funcionários</a></button>
             </div>
-            <div class="mr-0 col-4">
-                <h1 class="text-center text-white display-4">Configurações</h1>
-                <img class="mt-5 rounded mx-auto d-block" src="<?php echo base_url("assets/img/icone_config.png")?>" alt="" width="120px" height="120px">
+            <div class="tamanhobotao mx-auto col-4">
+                <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; right: 160px;"><a class="badge badge-danger" href="">Configurações</a></button>
             </div>
+            
         </div>
     </div>
-    <div class="mt-5 d-sm-block d-md-none">
+    <div class="d-sm-block d-md-none">
+        <button class="ml-2 mt-2 btn btn-danger btn-sm"><a class="badge badge-danger" href="#">Sair</a></button>
+        <br><br><br>
         <h1 class="text-center text-white display-5">Nome do Usuário</h1>
-        <div class="mt-4">
-            <a href="#">
-                <h1 class="text-center text-white display-5">Itens</h1>
-                <img class="rounded mx-auto d-block" src="<?php echo base_url("assets/img/icone_itens.png")?>" alt="" width="120px" height="120px">
-            </a>
-
-        </div>
-        <div class="mt-4">
-            <a href="#">
-                <h1 class="text-center text-white display-5">Funcionários</h1>
-                <img class="rounded mx-auto d-block" src="<?php echo base_url("assets/img/icone_funcionarios.png")?>" alt="" width="120px" height="120px">
-            </a>
-
-        </div>
-        <div class="mt-4 mb-4">
-            <a href="#">
-                <h1 class="text-center text-white display-5">Configurações</h1>
-                <img class="rounded mx-auto d-block" src="<?php echo base_url("assets/img/icone_config.png")?>" alt="" width="120px" height="120px">
-            </a>
-
+        <div class="tamanhobotaop mx-auto">
+            <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block"><a class="badge badge-danger" href="">Itens</a></button>
+            <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block"><a class="badge badge-danger" href="">Funcionários</a></button>
+            <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block"><a class="badge badge-danger" href="">Configurações</a></button>
         </div>
     </div>
 
