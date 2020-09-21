@@ -19,13 +19,8 @@
         }
     </script>
     <script language=javascript type="text/javascript">
-<<<<<<< HEAD
         dayName = new Array ("domingo", "segunda-feira", "terça-feira", "quarta-feira", "quinta-feira", "sexta-feira", "sábado")
         monName = new Array ("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro","novembro", "dezembro")
-=======
-        dayName = new Array("domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado")
-        monName = new Array("janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro")
->>>>>>> 9634822ebf2fbed9ff682b598ae7421a320ce124
         now = new Date
     </script>
 </head>
@@ -46,11 +41,7 @@
                     </script>
                     <br>
                     <script>
-<<<<<<< HEAD
                         document.write(dayName[now.getDay() ] + " ")
-=======
-                        document.write(dayName[now.getDay()] + " " + "- feira")
->>>>>>> 9634822ebf2fbed9ff682b598ae7421a320ce124
                     </script>
                     <div id="txt"></div>
                 </h1>
