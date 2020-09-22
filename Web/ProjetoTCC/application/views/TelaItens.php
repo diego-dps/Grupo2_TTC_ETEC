@@ -75,7 +75,7 @@
                                                 </div>                                        
                                                 </div>
                                                 <div class="modal-footer flex-center">
-                                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Calcelar</button>
+                                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Cancelar</button>
                                                     <input  type="submit" class="btn btn-primary btn-lg" style="position: static;" value="Salvar">
                                                 </div>
                                             </form>
@@ -93,7 +93,7 @@
                         </th>
                         <th scope="col">
                             <form action="<?php echo base_url("index.php/Itens/excluirItem");?>" method="POST" id="ExcluirItens">
-                                <input type="submit" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Romover">
+                                <input type="submit" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Remover">
                             </form>
                         </th>
                     </tr>
@@ -104,7 +104,7 @@
                         <th scope="col">Calabresa e Cebola</th>
                         <th scope="col">R$34,00</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                     <tr>
                         <th scope="col">Foto</th>
@@ -112,7 +112,7 @@
                         <th scope="col">Coca-cola 2l</th>
                         <th scope="col">R$9,00</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                     <tr>
                         <th scope="col">Foto</th>
@@ -120,7 +120,7 @@
                         <th scope="col">Fanta Laranja 350ml</th>
                         <th scope="col">R$4,00</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                 </tbody>
                 </div>
@@ -183,7 +183,7 @@
                                                     </div>                                        
                                                     </div>
                                                     <div class="modal-footer flex-center">
-                                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Calcelar</button>
+                                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Cancelar</button>
                                                         <input  type="submit" class="btn btn-primary btn-lg" style="position: static;" value="Salvar">
                                                     </div>
                                                 </form>
@@ -210,14 +210,14 @@
                         <th scope="col">Calabresa e Cebola</th>
                         <th scope="col">R$34,00</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                     <tr>
                         <th scope="col">Coca-cola</th>
                         <th scope="col">Coca-cola 2l</th>
                         <th scope="col">R$9,00</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                 </tbody>
             </table>
