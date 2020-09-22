@@ -35,11 +35,25 @@
     <string name="alterar_senha_confirmar_senha">Confirmar Nova Senha</string>
     <string name="alterar_senha_btn">Confirmar</string>
 
+    //activity_alterar_senha
+    <string name="toolbar_cardapio">Alterar Senha</string>
+
     //activity_categoria_cardapio
     <string name="toolbar_categoria_cardapio">Cardapio</string>
 
     //activity_carrinho_compras
     <string name="toolbar_carrinho_compras">Carrinho de Compras</string>
+
+    //activity_observação
+    <string name="observacao_toolbar">Observações</string>
+    <string name="observacao_titulo">Alguma Obsevação?</string>
+    <string name="observacao_hint">EX: Retirar cebola, tomate, etc...</string>
+    <string name="observacao_btn">Enviar</string>
+
+    //activity_pagamento
+    <string name="pagamento_radio_credito">Credito</string>
+    <string name="pagamento_radio_debito">Debito</string>
+    <string name="pagamento_radio_dinheiro">Dinheiro</string>
 
     //Layout Strings comuns
     <string name="btn_add">Adicionar</string>
