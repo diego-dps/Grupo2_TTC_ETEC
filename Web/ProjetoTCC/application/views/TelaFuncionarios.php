@@ -91,7 +91,7 @@
                                                 </div>
                                                 </div>
                                                 <div class="modal-footer flex-center">
-                                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Calcelar</button>
+                                                    <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Cancelar</button>
                                                     <input  type="submit" class="btn btn-primary btn-lg" style="position: static;" value="Salvar">
                                                 </div>
                                             </form>
@@ -109,7 +109,7 @@
                         </th>
                         <th scope="col">
                             <form action="<?php echo base_url("index.php/CadastroFuncionario/excluirFuncionario");?>" method="POST" id="ExcluirFuncionario">
-                                <input type="submit" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Romover">
+                                <input type="submit" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Remover">
                             </form>
                         </th>
                     </tr>
@@ -117,19 +117,19 @@
                         <th scope="col">Maria</th>
                         <th scope="col">Administrador</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                     <tr>
                         <th scope="col">José</th>
                         <th scope="col">Cozinheiro</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                     <tr>
                         <th scope="col">Rubens</th>
                         <th scope="col">Garçom</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                 </tbody>
             </table>
@@ -208,7 +208,7 @@
                                                 </div>                                       
                                                     </div>
                                                     <div class="modal-footer flex-center">
-                                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Calcelar</button>
+                                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Cancelar</button>
                                                         <input  type="submit" class="btn btn-primary btn-lg" style="position: static;" value="Salvar">
                                                     </div>
                                                 </form>
@@ -234,13 +234,13 @@
                         <th scope="col">Maria</th>
                         <th scope="col">Administrador</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                     <tr>
                         <th scope="col">José</th>
                         <th scope="col">Cozinheiro</th>
                         <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Romover</button></th>
+                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
                     </tr>
                 </tbody>
             </table>

@@ -4,9 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorBackgroundActivity"
+    android:orientation="vertical"
     tools:context=".ui.ObservacaoActivity">
 
 
+    <EditText
+        android:id="@+id/editTextTextMultiLine"
+        android:layout_width="261dp"
+        android:layout_height="276dp"
+        android:background="#FFFFFF"
+        android:ems="10"
+        android:hint="@string/observacao_hint"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:text="@string/observacao_titulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="61dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/observacao_btn"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:background="@drawable/botao_comum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="602dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
