@@ -1,5 +1,6 @@
-CREATE DATABASE tcc
-/*nome a revisar*/
+-- CRIANDO O BANCO DE DADOS
+DROP DATABASE IF EXISTS tcc;
+CREATE DATABASE IF NOT EXISTS tcc
 default character set utf8
 default collate utf8_general_ci;
 
@@ -14,61 +15,62 @@ foto_Cardapio blob not null
 );
 /*Tabela Item*/
 create table Item (
-cod_Item int(100) unsigned not null auto_increment primary key,
-nome_Item VARCHAR(100) NOT NULL,
-preco_Item DECIMAL(10,2) NOT NULL,
-descricao_Item VARCHAR(100) NOT NULL,
+cod_Item int(100) not null auto_increment primary key,
 cod_Cardapio int(100) unsigned not null,
+nome_Item VARCHAR(100) NOT NULL,
+descricao_Item VARCHAR(100) NOT NULL,
+preco_Item DECIMAL(10,2) NOT NULL,
 foto_Item blob not null /*Utilização de Blob para armazenar a Imagem*/
 );
 /*Tabela Mesa*/
 create table Mesa(
-qr_Code int(100) unsigned not null auto_increment primary key,
-numero_Mesa INT(100) NOT NULL,
-cod_Cardapio int(100) unsigned not null
+qr_Code VARCHAR(100) UNIQUE not null primary key,
+numero_Mesa VARCHAR(100) NOT NULL
 );
 /*tabela Pedido*/
 create table Pedido(
-cod_Pedido INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
-horario_Pedido DATETIME NOT NULL,
-itens_Pedidos INT(100) NOT NULL,
+cod_Pedido INT(100) NOT NULL AUTO_INCREMENT primary key,
+horario_Pedido timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 observacao_Pedido VARCHAR(200) NOT NULL,
-qr_Code INT(100) UNSIGNED NOT NULL,
-cod_Item INT(100) UNSIGNED NOT NULL
+qr_Code VARCHAR(100) NOT NULL
 );
+
+/*tabela ItemPedido*/
+create table ItemPedido(
+cod_Pedido INT(100) NOT NULL,
+cod_Item int(100) not null,
+quantidade INT(100) not null
+);
+
 /*tabela Funcionario*/
 create table Funcionario(
 cod_Funcionario INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
 nome_Funcionario VARCHAR(100) NOT NULL,
-cpf_Funcionario INT(100) NOT NULL,
-telefone_Funcionario VARCHAR(100) NOT NULL,
-tipo_Funcionario ENUM('Garçom','Cozinheiro','ADM'),
-email_Funcionario VARCHAR(100) NOT NULL,
+cpf_Funcionario varchar(14) unique not null,
+telefone_Funcionario varchar(16) not null,
+cargo_Funcionario ENUM('Garçom','Cozinheiro','ADM'),
+email_Funcionario VARCHAR(100) unique NOT NULL,
 senha VARCHAR(50) NOT NULL
 );
 /*tabela Garçom*/ 
  create table Garcom(
  cod_Funcionario INT(100) UNSIGNED NOT NULL,
- cod_Pedido INT(100) UNSIGNED NOT NULL
+ cod_Pedido INT(100) NOT NULL
  );
  /*tabela Cozinha*/
  create table Cozinha(
  cod_Funcionario INT(100) UNSIGNED NOT NULL,
- cod_Pedido INT(100) UNSIGNED NOT NULL
+ cod_Pedido INT(100) NOT NULL
  );
  /*tabela Administracao*/
  create table Administrador(
- cod_Administracao INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
+ cod_ADM INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
  cod_Funcionario INT(100) UNSIGNED NOT NULL
  );
-show tables;
+
 
 /*adicionando a chaves estrangeiras em suas respectivas tabelas*/
 ALTER TABLE Item ADD CONSTRAINT FK_cod_Cardapio
-FOREIGN KEY (cod_Cardapio)
-REFERENCES Cardapio (cod_Cardapio);
-
-ALTER TABLE Mesa ADD CONSTRAINT FK_Cardapio
 FOREIGN KEY (cod_Cardapio)
 REFERENCES Cardapio (cod_Cardapio);
 
@@ -76,15 +78,19 @@ ALTER TABLE Pedido ADD CONSTRAINT FK_qrCode
 FOREIGN KEY (qr_Code)
 REFERENCES Mesa (qr_Code);
 
-ALTER TABLE Pedido ADD CONSTRAINT FK_Item_Pedido/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+ALTER TABLE ItemPedido ADD CONSTRAINT FK_Item_Pedido/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
 FOREIGN KEY (cod_Item)
 REFERENCES Item (cod_Item);
+
+ALTER TABLE ItemPedido ADD CONSTRAINT FK_codigo_Pedidos/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+FOREIGN KEY (cod_Pedido)
+REFERENCES Pedido (cod_Pedido);
 
 ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Funcionario/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
 FOREIGN KEY (cod_Funcionario)
 REFERENCES Funcionario (cod_Funcionario);
 
-ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Pedido/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Ped/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
 FOREIGN KEY (cod_Pedido)
 REFERENCES Pedido (cod_Pedido);
 
@@ -99,3 +105,57 @@ REFERENCES Pedido (cod_Pedido);
 ALTER TABLE Administrador ADD CONSTRAINT FK_codFuncionario_adm/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
 FOREIGN KEY (cod_Funcionario)
 REFERENCES Funcionario (cod_Funcionario);
+
+INSERT INTO cardapio (categoria_cardapio, foto_Cardapio) VALUES
+('Lanches','teste.jpg'),
+('Sobremesas','teste.jpg'), 
+('Bebidas','teste.jpg'), 
+('Pratos','teste.jpg');
+SELECT * FROM cardapio;
+
+INSERT INTO item (nome_Item, preco_Item, descricao_Item, cod_Cardapio, foto_Item) values
+('X-salada', 13.00, 'hambúrguer de carne bovina 100g, pâo de hambúrguer, salada, tomate e mussarela', 1, 'teste.jpg'),
+('X-egg', 14.00, 'hambúrguer de carne bovina 100g, pâo de hambúrguer, salada, tomate, mussarela e 2 ovos', 1, 'teste.jpg'),
+('Açai', 20.00, 'Açai na tigela 500ml, Acompanhamentos: 2 frutas, granola, leite em pó, leite condensado', 2, 'teste.jpg'),
+('Bolo de brigadeiro', 7.00, 'Massa de chocolate com recheio e cobertura de brigadeiro e granulado de chocolate de pote de 250ml', 2, 'teste.jpg'),
+('Coca-Cola', 6.00, 'Cola-cola 400ml', 3, 'teste.jpg'),
+('Heineken', 12.00, 'Heineken 400ml', 3, 'teste.jpg'),
+('File Acebolado', 21.00, 'File Acebolado com arroz soltinho, feijão fresco, faroja e salada', 4, 'teste.jpg'),
+('File Grelhado', 21.00, 'File Grelhado com arroz soltinho, feijão fresco, faroja e salada', 4, 'teste.jpg');
+select * from item;
+
+INSERT INTO mesa (qr_Code, numero_Mesa) VALUES 
+('qrcode1','Mesa 01'),
+('qrcode2','Mesa 02');
+SELECT * FROM mesa;
+
+
+INSERT INTO pedido (observacao_Pedido, qr_Code) VALUES 
+('X-SALADA SEM SALADA e COCA SEM GELO','qrcode1'),
+('X-EGG SEM OVO','qrcode2');   
+select * from pedido;
+
+INSERT INTO itempedido (cod_Pedido, cod_Item, quantidade) VALUES 
+(1,1,1),
+(1,5,1),
+(2,2,1);
+SELECT * FROM itempedido;
+
+INSERT INTO funcionario (nome_Funcionario, cpf_Funcionario, telefone_Funcionario, cargo_Funcionario, email_Funcionario, senha) VALUES 
+('Breno André Roberto Teixeira', '408.097.038-23', '(11) 98116-1538', 'ADM', 'brenoandre@gmail.com', '123'),
+('Rafael Guilherme Matheus Ferreira', '585.746.378-58', '(11) 98761-3752', 'Garçom', 'rafaelguilherme@gmail.com', '123'),
+('Carla Natália Porto', '956.669.328-10', '(11) 98911-6170', 'Cozinheiro', 'carlaporto@gmail.com', '123');
+select * from funcionario;
+
+INSERT INTO cozinha (cod_Funcionario, cod_Pedido) VALUES 
+(3,1),
+(3,1),
+(3,2);
+
+INSERT INTO garcom (cod_Funcionario, cod_Pedido) VALUES 
+(2,1),
+(2,1),
+(2,2);
+
+INSERT INTO administrador (cod_Funcionario) VALUES 
+(1);
