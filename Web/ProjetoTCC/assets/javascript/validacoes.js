@@ -208,6 +208,16 @@ $(function() {
                             confirmButtonText: 'OK'
                         })
                     }
+
+                    if (data == "ErroBanco") {
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Erro ao Cadastrar!',
+                            confirmButtonColor: " #dc3545",
+                            confirmButtonText: 'OK'
+                        })
+                    }
                 }
             })
             return false;
