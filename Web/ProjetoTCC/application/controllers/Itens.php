@@ -1,62 +1,75 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Itens extends CI_Controller {
+class Itens extends CI_Controller
+{
 
-    public function validarCadastroItens(){
+    public function validarCadastroItens()
+    {
 
         $dados = [
-            'Nome' => $this->input->post('nomeItem'),
-            'Descricao' => $this->input->post('descricao'),
-            'Preco' => $this->input->post('preco'),
-            'AddFoto' => $this->input->post('addFoto'),
+            'nome_Item' => $this->input->post('nomeItem'),
+            'descricao_Item' => $this->input->post('descricao'),
+            'preco_Item' => $this->input->post('preco'),
+            'foto_Item' => $this->iput->post('addFoto'),
         ];
 
-        if(empty($dados['Nome'])){
+
+        $this->load->model('CadastrosModel');
+
+        if (empty($dados['nome_Item'])) {
             die("ErroNome");
         }
 
-        if(empty($dados['Descricao'])){
+        if (empty($dados['descricao_Item'])) {
             die("ErroDescricao");
         }
 
-        if(empty($dados['Preco'])){
+        if (empty($dados['preco_Item'])) {
             die("ErroPreco");
         }
-
-        echo "Sucesso";
-
+/*
+        if ($this->CadastrosModel->CadastrarItem($dados)) {
+            echo "Sucesso";
+            die();
+        } else {
+            echo "ErroBanco";
+            die();
+        }
+        */
     }
 
-    public function validarCadastroItensresponsivo(){
-        
+    public function validarCadastroItensresponsivo()
+    {
+
         $dados = [
             'Nome' => $this->input->post('NOMEITEM'),
             'Descricao' => $this->input->post('DESCRICAO'),
             'Preco' => $this->input->post('PRECO'),
             'AddFoto' => $this->input->post('ADDFOTO'),
         ];
-        if(empty($dados['Nome'])){
+        if (empty($dados['Nome'])) {
             echo "ErroNomeItem";
             die();
         }
-        if(empty($dados['Descricao'])){
+        if (empty($dados['Descricao'])) {
             echo "ErroDescricao";
             die();
         }
-        if(empty($dados['Preco'])){
+        if (empty($dados['Preco'])) {
             echo "ErroPreco";
             die();
         }
-        if(!is_numeric($dados['Preco'])){
+        if (!is_numeric($dados['Preco'])) {
             die("Erroletra");
         }
 
         echo "Sucesso";
     }
 
-	public function validarUpdateItens(){
-        
+    public function validarUpdateItens()
+    {
+
         $dados = [
             'NomeItem' => $this->input->post('nomeItem'),
             'Descricao' => $this->input->post('descricao'),
@@ -64,31 +77,31 @@ class Itens extends CI_Controller {
             'AddFoto' => $this->input->post('addFoto'),
         ];
 
-        if(empty($dados['NomeItem'])){
+        if (empty($dados['NomeItem'])) {
             echo "ErroNomeItem";
             die();
         }
 
-        if(empty($dados['Descricao'])){
+        if (empty($dados['Descricao'])) {
             echo "ErroDescricao";
             die();
         }
 
-        if(empty($dados['Preco'])){
+        if (empty($dados['Preco'])) {
             echo "ErroPreco";
             die();
         }
 
-        if(!is_numeric($dados['Preco'])){
+        if (!is_numeric($dados['Preco'])) {
             die("Erroletra");
         }
 
         echo "Sucesso";
     }
-    
-    public function excluirItem(){
+
+    public function excluirItem()
+    {
 
         echo "Excluir";
     }
 }
-?>

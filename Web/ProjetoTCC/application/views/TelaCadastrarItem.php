@@ -19,9 +19,9 @@
 
 <body>
     <div class="d-none d-md-block">
-        <h1 class="text-center display-3 text-white">Cadastrar Item</h1>
-        <div class="containerform mx-auto mt-2">
-            <form class="form-row mt-2" action="<?php echo base_url("index.php/Itens/validarCadastroItens");?>" method="POST" id="CadastroItens">
+        <div class="caixaCadastro mx-auto mt-5 font-weight-bold">
+        <h2 class="text-center titulo">Cadastrar Item</h2>
+            <form class="form-row mt-2 mx-auto" action="<?php echo base_url("index.php/Itens/validarCadastroItens");?>" method="POST" enctype="multipart/form-data" id="CadastroItens">
                 <div class="form-group col-12">
                     <label for="nomeItem">Nome do Item</label>
                     <input type="text" class="form-control" autocomplete="off" id="nomeItem" name="nomeItem">
@@ -42,8 +42,8 @@
                     <div class="" style="position: relative; left: 80px; top: 21px;">
                         <input type="submit" class="btn btn-danger btn-lg btnCadastrar" value="Cadastrar">
                     </div>
-                    <div class="" style="position: relative; left: 105px; top: 5px;">
-                        <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="">Voltar</a></button>
+                    <div class="text-white" style="position: relative; left: 105px; top: 5px;">
+                        <a class="btn btn-lg  btn-danger mx-auto d-block mt-3" href="<?php echo base_url('index.php/Telas/telaItens');?>">Voltar</a></button>
                     </div>                       
                 </div>
             </form>
@@ -51,8 +51,8 @@
     </div>
 
     <div class="d-md-none d-sm-block">
-        <h1 class="text-center display-5 text-white">Cadastrar Item</h1>
-        <div class="containerformp mx-auto mt-2">
+        <div class="caixaCadastroP mt-4 font-weight-bold">
+        <h2 class="text-center titulo">Cadastrar Item</h2>
             <form class="form-row mt-2" action="<?php echo base_url("index.php/Itens/validarCadastroItensresponsivo");?>" method="POST" id="CadastroItensresponsivo">
                 <div class="form-group col-12">
                     <label for="nomeItem">Nome do Item</label>
@@ -70,14 +70,13 @@
                     <label for="addFoto">Adicionar foto</label>
                     <input type="file" class="form-control" id="ADDFOTO" name="ADDFOTO">
                 </div>
-                <div class="form-row">
-                    <div class="" style="position: relative; left: 56px; top: 21px;">
-                        <button type="submit" class="btn btn-danger btn-lg btnCadastrar">Cadastrar</button>
-                    </div>
-                    <div class="" style="position: relative; left: 85px; top: 5px;">
-                        <button class="mt-3 btn btn-lg btn-danger mx-auto d-block"><a href="">Voltar</a></button>
-                    </div>                       
-                </div>
+                
+                    
+                        <button type="submit" class="btn btn-danger btn-lg mx-auto d-block mt-3">Cadastrar</button>
+                    
+                        <a class="btn btn-lg  btn-danger mx-auto d-block mt-3 col-4" href="<?php echo base_url('index.php/Telas/telaItens');?>">Voltar</a></button>
+                                          
+                
             </form>
         </div>
     </div>

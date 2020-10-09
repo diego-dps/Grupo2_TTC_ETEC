@@ -20,15 +20,15 @@
                 <div class="mt-4">
                     <div class="form-group mx-auto col-10">
                         <label class="font-weight-bold">Nova Senha</label>
-                        <input type="text" class="form-control" autocomplete="off" id="NovaSenha" name="NovaSenha">
+                        <input type="password" class="form-control" autocomplete="off" id="NovaSenha" name="NovaSenha">
                     </div>
                     <div class="form-group mx-auto col-10">
                         <label for="ConfNovaSenha" class="font-weight-bold">Confirmar Nova Senha</label>
-                        <input type="text" class="form-control" id="ConfNovaSenha" autocomplete="off" name="ConfNovaSenha">
+                        <input type="password" class="form-control" id="ConfNovaSenha" autocomplete="off" name="ConfNovaSenha">
                     </div>
                     <div class="text-center mt-5">
-                        <input type="submit" class="btn btn-lg btn-danger text-white" value="OK" style="position: relative; right: 10px;">
-                        <button class="btn btn-lg btn-danger text-white" style="position: relative; left: 10px;">Voltar</button>
+                        <input type="submit" class="btn btn-lg btn-danger text-white col-3" value="OK" style="position: relative; right: 10px">
+                        <a class="btn btn-lg btn-danger text-white col-3" style="position: relative; left: 10px"  href="<?php echo base_url('index.php/Telas/telaLogin');?>">Voltar</a>
                     </div>
                 </div>
             </form>
@@ -50,8 +50,8 @@
                         <input type="text" class="form-control" id="ConfNovaSenha" autocomplete="off" name="ConfNovaSenha">
                     </div>
                     <div class="text-center mt-5">
-                        <button type="submit" class="btn btn-lg btn-danger text-white" style="position: relative; right: 10px;">OK</button>
-                        <button type="submit" class="btn btn-lg btn-danger text-white" style="position: relative; left: 10px;">Voltar</button>
+                        <button type="submit" class="btn btn-lg btn-danger text-white col-3" style="position: relative; right: 10px;">OK</button>
+                        <a type="submit" class="btn btn-lg btn-danger text-white col-3" style="position: relative; left: 10px;" href="<?php echo base_url('index.php/Telas/telaLogin');?>">Voltar</a>
                     </div>
                 </div>
             </form>

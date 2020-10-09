@@ -28,7 +28,7 @@
 <body onload="time()">
 
     <div class="mt-2 d-none d-md-block">
-    <button class="ml-2 mr-auto btn btn-danger btn-lg"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaLogin');?>">Sair</a></button>
+        <a class="ml-2 mr-auto btn btn-danger btn-lg" href="<?php echo base_url('index.php/Telas/telaLogin'); ?>">Sair</a></button>
         <br><br><br><br><br>
         <div class="row mx-auto my-auto">
             <div class="mt-4 col-6">
@@ -41,7 +41,7 @@
                     </script>
                     <br>
                     <script>
-                        document.write(dayName[now.getDay() ] + " ")
+                        document.write(dayName[now.getDay()] + " ")
                     </script>
                     <div id="txt"></div>
                 </h1>
@@ -50,25 +50,25 @@
         <br><br>
         <div class="row mx-auto">
             <div class="tamanhobotao mx-auto col-4">
-                <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; left: 160px;"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaItens');?>">Itens</a></button>
+                <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; left: 160px;" href="<?php echo base_url('index.php/Telas/telaItens'); ?>">Itens</a></button>
             </div>
             <div class="tamanhobotao mx-auto col-4">
-                <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaFuncionarios');?>">Funcionários</a></button>
+                <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" href="<?php echo base_url('index.php/Telas/telaFuncionarios'); ?>">Funcionários</a></button>
             </div>
             <div class="tamanhobotao mx-auto col-4">
-                <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; right: 160px;"><a class="badge badge-danger" href="">Configurações</a></button>
+                <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; right: 160px;" href="">Configurações</a></button>
             </div>
-            
+
         </div>
     </div>
     <div class="d-sm-block d-md-none">
-        <button class="ml-2 mt-2 btn btn-danger btn-sm"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaLogin');?>">Sair</a></button>
+        <a class="ml-2 mt-2 btn btn-danger btn-sm" href="<?php echo base_url('index.php/Telas/telaLogin'); ?>">Sair</a></button>
         <br><br><br>
         <h1 class="text-center text-white display-5">Nome do Usuário</h1>
         <div class="tamanhobotaop mx-auto">
-            <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaItens');?>">Itens</a></button>
-            <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaFuncionarios');?>">Funcionários</a></button>
-            <button class="btn btn-danger btn-lg btn-block rounded mx-auto d-block"><a class="badge badge-danger" href="">Configurações</a></button>
+            <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block" href="<?php echo base_url('index.php/Telas/telaItens'); ?>">Itens</a></button>
+            <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block" href="<?php echo base_url('index.php/Telas/telaFuncionarios'); ?>">Funcionários</a></button>
+            <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block" href="">Configurações</a></button>
         </div>
     </div>
 

@@ -23,9 +23,12 @@
         <div class="container1 mx-auto mt-4">
             <div class="row mx-auto mt-2">
                 <h1 class="my-auto display-5 text-center col-8" style=" position: relative; left: 190px; top: -10px;">Itens</h1>
-                <form class="col-4" action="">
+                <form class="col-3" action="">
                     <input class="my-auto form-control bg-dark text-white" style="position: relative; left: 15px;" type="search" placeholder="Pesquisar">
                 </form>
+                <div class="col-1 mx-auto my-auto">
+                    <a href=" <?php echo base_url('index.php/Telas/TelaCadastrarItem')?>"><img class="rounded mx-auto d-block" src="<?php echo base_url('assets/img/add.png');?>" alt=""></a>
+                </div>
             </div>
             <table class="table table-dark table-hover text-center">
                 <thead>
@@ -93,7 +96,7 @@
                         </th>
                         <th scope="col">
                             <form action="<?php echo base_url("index.php/Itens/excluirItem");?>" method="POST" id="ExcluirItens">
-                                <input type="submit" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Remover">
+                                <input type="submit" class="mt-4 mb-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Remover">
                             </form>
                         </th>
                     </tr>
@@ -126,7 +129,7 @@
                 </div>
             </table>
         </div>
-        <button class="mt-4 btn btn-lg btn-danger rounded mx-auto d-block"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
+        <a class="mt-4 mb-5 btn btn-lg btn-danger rounded mx-auto d-block col-1" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a>
     </div>
 
     <!-- Responsivo-->
@@ -222,7 +225,7 @@
                 </tbody>
             </table>
         </div>
-        <button class="mt-4 btn btn-danger rounded mx-auto d-block"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
+        <a class="mt-4 btn btn-danger rounded mx-auto d-block col-3" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
     </div>
 
     <script type="text/javascript" src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>

@@ -26,9 +26,12 @@
         <div class="container1 mt-4">
             <div class="row mx-auto">
                 <h1 class="display-5 col-8 text-center my-auto" style="position: relative; left: 152px; top: -10px;">Funcionários</h1>
-                <form class="col-4" action="">
+                <form class="col-3" action="">
                     <input class="my-auto form-control bg-dark text-white" style="position: relative; left: 15px;" type="search" placeholder="Pesquisar">
                 </form>
+                <div class="col-1 mx-auto my-auto">
+                    <a href=" <?php echo base_url('index.php/Telas/telaCadastrarFuncionario')?>"><img class="rounded mx-auto d-block" src="<?php echo base_url('assets/img/icons8-add-user-male-30.png');?>" alt=""></a>
+                </div>
             </div>
             <table class="table table-dark table-hover text-center">
                 <thead>
@@ -37,7 +40,6 @@
                         <th scope="col">Cargo</th>
                         <th scope="col">Editar Funcionário</th>
                         <th scope="col">Excluir</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -134,7 +136,7 @@
                 </tbody>
             </table>
         </div>
-        <button class="mt-4 btn btn-lg btn-danger rounded mx-auto d-block"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
+        <a class="mt-4 mb-5 btn btn-lg btn-danger rounded mx-auto d-block col-1" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
     </div>
 
     <div class="d-md-none d-sm-block">
@@ -245,7 +247,7 @@
                 </tbody>
             </table>
         </div>
-        <button class="mt-4 btn btn-danger rounded mx-auto d-block"><a class="badge badge-danger" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
+        <a class="mt-4 btn btn-danger rounded mx-auto d-block col-3" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
     </div>
 
 
