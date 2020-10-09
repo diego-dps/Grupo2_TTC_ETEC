@@ -26,25 +26,25 @@
                 <tbody>
                     <tr>
                         <th scope="col">1</th>
-                        <th scope="col">Pizza Mussarela e Coca-cola 2l</th>
+                        <th scope="col" class="alinhamentodetexto">Pizza Mussarela e Coca-cola 2l</th>
                         <th scope="col">12:00</th>
                         <th scope="col">Pronto</th>
                     </tr>
                     <tr>
                         <th scope="col">3</th>
-                        <th scope="col">X-Bacon</th>
+                        <th scope="col" class="alinhamentodetexto">X-Bacon</th>
                         <th scope="col">12:05</th>
                         <th scope="col">Preparando</th>
                     </tr>
                     <tr>
                         <th scope="col">5</th>
-                        <th scope="col">Baião de dois</th>
+                        <th scope="col" class="alinhamentodetexto">Baião de dois</th>
                         <th scope="col">12:17</th>
                         <th scope="col">Preparando</th>
                     </tr>
                     <tr>
                         <th scope="col">6</th>
-                        <th scope="col">X-Salada</th>
+                        <th scope="col" class="alinhamentodetexto">X-Salada</th>
                         <th scope="col">12:20</th>
                         <th scope="col">Pronto</th>
                     </tr>
