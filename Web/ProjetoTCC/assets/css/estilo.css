@@ -156,10 +156,6 @@ body {
 ul li {
 	display: inline-block;
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> d12f9e5c5d8e04cd6b2767e268a84fd1b7ca05e0
 
 .tamanhobotao {
 	width: 180px;
@@ -174,22 +170,14 @@ ul li {
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
-<<<<<<< HEAD
-=======
-
-
->>>>>>> d12f9e5c5d8e04cd6b2767e268a84fd1b7ca05e0
 .alinhamentodecaixas{
     display: inline-block;
     text-align: center;
 }
 
-<<<<<<< HEAD
 /*CSS TELA PEDIDOS*/
 
 .alinhamentodetexto{
 width: 32em; 
 word-wrap: break-word;
 }
-=======
->>>>>>> d12f9e5c5d8e04cd6b2767e268a84fd1b7ca05e0
