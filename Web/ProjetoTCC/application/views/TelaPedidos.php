@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,56 +8,44 @@
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
     <title>Lista de Pedidos</title>
 </head>
-
 <body>
     <div class="d-none d-md-block">
-        <div class="container1 mt-4">
+        <div class="container-fluid mt-4" style="background-color: white; border: solid white 15px; border-radius: 10px;">
             <h1 class="text-center display-5">Pedidos Pendentes</h1>
             <table class="table table-dark table-hover text-center">
                 <thead>
                     <tr class="text-danger">
+                        <th scope="col" class="alinhamentodetexto2">Codigo do Pedido</th>
                         <th scope="col">Mesa</th>
                         <th scope="col">Pedido</th>
+                        <th scope="col">Observação</th>
+                        <th scope="col">Quantidade</th>
                         <th scope="col">Horário</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($pedido as $pedidos) : ?>
                     <tr>
-                        <th scope="col">1</th>
-                        <th scope="col" class="alinhamentodetexto">Pizza Mussarela e Coca-cola 2l</th>
-                        <th scope="col">12:00</th>
+                        <th scope="col"><?php echo $pedidos['cod_Pedido'] ?></th>
+                        <th scope="col"><?php echo $pedidos['numero_Mesa'] ?></th>
+                        <th scope="col" class="alinhamentodetexto"><?php echo $pedidos['nome_Item'] ?></th>
+                        <th scope="col" class="alinhamentodetexto"><?php echo $pedidos['observacao_Pedido'] ?></th>
+                        <th scope="col"><?php echo $pedidos['quantidade'] ?></th>
+                        <th scope="col"><?php echo FormatarData($pedidos['horario_Pedido']) ?></th>
                         <th scope="col">Pronto</th>
                     </tr>
-                    <tr>
-                        <th scope="col">3</th>
-                        <th scope="col" class="alinhamentodetexto">X-Bacon</th>
-                        <th scope="col">12:05</th>
-                        <th scope="col">Preparando</th>
-                    </tr>
-                    <tr>
-                        <th scope="col">5</th>
-                        <th scope="col" class="alinhamentodetexto">Baião de dois</th>
-                        <th scope="col">12:17</th>
-                        <th scope="col">Preparando</th>
-                    </tr>
-                    <tr>
-                        <th scope="col">6</th>
-                        <th scope="col" class="alinhamentodetexto">X-Salada</th>
-                        <th scope="col">12:20</th>
-                        <th scope="col">Pronto</th>
-                    </tr>
+                <?php endforeach ?>
                 </tbody>
             </table>
+            <br>
         </div>
-        <button class="btn btn-lg btn-danger rounded mx-auto mt-4 d-block">Finalizar Pedido</button>
+        <br>
     </div>
 
     <div class="d-md-none d-sm-block">
         <h1 class="text-center mt-4 display-5 text-white">Somente funcionários da cozinha podem acessar essa página :) !! </h1>
     </div>
-
-
 
     <script src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/popper.js/dist/umd/popper.js'); ?>"></script>
