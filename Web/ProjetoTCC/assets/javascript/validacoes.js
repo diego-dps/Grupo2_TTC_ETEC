@@ -204,8 +204,18 @@ $(function() {
                         Swal.fire({
                             icon: 'success',
                             title: 'Cadastro realizado com sucesso!',
-                            confirmButtonColor: " #dc3545",
-                            confirmButtonText: 'OK'
+                            text: 'Deseja cadastrar novamente ?',
+                            cancelButtonColor: "#d33",
+                            cancelButtonText: 'Não',
+                                        showCancelButton: true,  
+                            confirmButtonColor: "#3085d6",
+                            confirmButtonText: 'Sim'
+                        }).then((result) => {
+                            if (result.value){
+                              window.location.replace("");
+                            }else{
+                                window.location.replace("TelaFuncionarios");
+                            }
                         })
                     }
 
@@ -639,9 +649,19 @@ $(function() {
                     Swal.fire({
                         icon: 'success',
                         title: 'Cadastro realizado com sucesso!',
-                        confirmButtonColor: " #dc3545",
-                        confirmButtonText: 'OK'
-                    });
+                        text: 'Deseja cadastrar novamente ?',
+                            cancelButtonColor: "#d33",
+                            cancelButtonText: 'Não',
+                                        showCancelButton: true,  
+                            confirmButtonColor: "#3085d6",
+                            confirmButtonText: 'Sim'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("");
+                        }else{
+                            window.location.replace("TelaItens");
+                        }
+                    })
                 }
             }
         })
