@@ -1,5 +1,13 @@
 /*GERAL*/
-
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+}
+a:link{
+	text-decoration: none;
+}
 
 /*CSS TELA DE LOGIN*/
 
@@ -149,7 +157,6 @@ ul li {
 	display: inline-block;
 }
 
-
 .tamanhobotao {
 	width: 180px;
 }
@@ -163,10 +170,18 @@ ul li {
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 }
-
-
 .alinhamentodecaixas{
     display: inline-block;
     text-align: center;
 }
 
+/*CSS TELA PEDIDOS*/
+
+.alinhamentodetexto{
+width: 32em; 
+word-wrap: break-word;
+}
+.alinhamentodetexto2{
+	width: 15em; 
+	word-wrap: break-word;
+}

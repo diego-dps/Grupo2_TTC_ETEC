@@ -11,7 +11,7 @@ class Itens extends CI_Controller
             'nome_Item' => $this->input->post('nomeItem'),
             'descricao_Item' => $this->input->post('descricao'),
             'preco_Item' => $this->input->post('preco'),
-            'foto_Item' => $this->iput->post('addFoto'),
+            'foto_Item' => $this->input->post('addFoto'),
         ];
 
 
@@ -28,7 +28,7 @@ class Itens extends CI_Controller
         if (empty($dados['preco_Item'])) {
             die("ErroPreco");
         }
-/*
+
         if ($this->CadastrosModel->CadastrarItem($dados)) {
             echo "Sucesso";
             die();
@@ -36,7 +36,7 @@ class Itens extends CI_Controller
             echo "ErroBanco";
             die();
         }
-        */
+
     }
 
     public function validarCadastroItensresponsivo()
@@ -69,13 +69,15 @@ class Itens extends CI_Controller
 
     public function validarUpdateItens()
     {
-
         $dados = [
+            'id_Item' => $this->input->post('id_item'),
             'NomeItem' => $this->input->post('nomeItem'),
             'Descricao' => $this->input->post('descricao'),
             'Preco' => $this->input->post('preco'),
             'AddFoto' => $this->input->post('addFoto'),
         ];
+
+        $this->load->model('UpdateItemModel');
 
         if (empty($dados['NomeItem'])) {
             echo "ErroNomeItem";
@@ -92,16 +94,17 @@ class Itens extends CI_Controller
             die();
         }
 
-        if (!is_numeric($dados['Preco'])) {
-            die("Erroletra");
+        if ($this->UpdateItemModel->atualizarItem($dados)){
+            echo "Sucesso";
+            die();
+        } else {
+            echo "ErroBanco";
+            die();
         }
-
-        echo "Sucesso";
     }
 
     public function excluirItem()
     {
-
         echo "Excluir";
     }
 }

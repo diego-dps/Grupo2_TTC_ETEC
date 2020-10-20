@@ -30,7 +30,10 @@ class Telas extends CI_Controller {
 
     public function telaFuncionarios()
 	{
-		$this->load->view('TelaFuncionarios');
+		$this->load->model("BuscarFuncionarioModel");
+        $lista = $this->BuscarFuncionarioModel->buscarFuncionario();
+        $dados = array("funcionario" => $lista);
+		$this->load->view('TelaFuncionarios', $dados);
     }
 
     public function telaLogin()
@@ -45,11 +48,17 @@ class Telas extends CI_Controller {
 
     public function telaPedidos()
 	{
-		$this->load->view('TelaPedidos');
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidos();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidos', $dados);
     }
 
     public function telaItens()
 	{
-		$this->load->view('TelaItens');
+		$this->load->model("BuscarItemModel");
+        $lista = $this->BuscarItemModel->buscarTodos();
+        $dados = array("item" => $lista);
+        $this->load->view('TelaItens', $dados);
 	}
 }

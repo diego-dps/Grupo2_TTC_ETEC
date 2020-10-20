@@ -48,7 +48,7 @@ cod_Funcionario INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
 nome_Funcionario VARCHAR(100) NOT NULL,
 cpf_Funcionario varchar(14) unique not null,
 telefone_Funcionario varchar(16) not null,
-cargo_Funcionario ENUM('Garçom','Cozinheiro','ADM'),
+cargo_Funcionario ENUM('Garçom','Cozinheiro','Administrador'),
 email_Funcionario VARCHAR(100) unique NOT NULL,
 senha VARCHAR(50) NOT NULL
 );
@@ -128,23 +128,29 @@ select * from item;
 
 INSERT INTO mesa (qr_Code, numero_Mesa) VALUES 
 ('qrcode1','Mesa 01'),
-('qrcode2','Mesa 02');
+('qrcode2','Mesa 02'),
+('qrcode3','Mesa 03'),
+('qrcode4','Mesa 04'),
+('qrcode5','Mesa 05');
 SELECT * FROM mesa;
 
 
 INSERT INTO pedido (observacao_Pedido, qr_Code) VALUES 
 ('X-SALADA SEM SALADA e COCA SEM GELO','qrcode1'),
-('X-EGG SEM OVO','qrcode2');   
+('X-EGG SEM OVO','qrcode2'),
+(null,'qrcode3'),
+(null,'qrcode4');   
 select * from pedido;
 
 INSERT INTO itempedido (cod_Pedido, cod_Item, quantidade) VALUES 
 (1,1,1),
 (1,5,1),
-(2,2,1);
+(2,2,1),
+(3,7,1);
 SELECT * FROM itempedido;
 
 INSERT INTO funcionario (nome_Funcionario, cpf_Funcionario, telefone_Funcionario, cargo_Funcionario, email_Funcionario, senha) VALUES 
-('Breno André Roberto Teixeira', '408.097.038-23', '(11) 98116-1538', 'ADM', 'brenoandre@gmail.com', '123'),
+('Breno André Roberto Teixeira', '408.097.038-23', '(11) 98116-1538', 'Administrador', 'brenoandre@gmail.com', '123'),
 ('Rafael Guilherme Matheus Ferreira', '585.746.378-58', '(11) 98761-3752', 'Garçom', 'rafaelguilherme@gmail.com', '123'),
 ('Carla Natália Porto', '956.669.328-10', '(11) 98911-6170', 'Cozinheiro', 'carlaporto@gmail.com', '123');
 select * from funcionario;
@@ -161,3 +167,7 @@ INSERT INTO garcom (cod_Funcionario, cod_Pedido) VALUES
 
 INSERT INTO administrador (cod_Funcionario) VALUES 
 (1);
+
+select c.cod_Pedido, d.numero_Mesa, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido
+from itempedido a, item b, pedido c, mesa d
+where a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and d.qr_Code = c.qr_Code;  
