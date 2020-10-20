@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorBackgroundActivity"
+            android:background="@color/azulClaro"
             app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
             app:title="@string/toolbar_carrinho_compras">
 

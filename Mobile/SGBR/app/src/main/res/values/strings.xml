@@ -59,5 +59,15 @@
     <string name="btn_add">Adicionar</string>
     <string name="btn_remove">Remover</string>
 
+    //activity_pagamento
+    <string name="pagamento_title">Forma de Pagamento</string>
+    <string name="pagamento_finalizar">Finalizar Pedido</string>
+    <string name="pagamento_radio_credito">Cartão de Credito</string>
+    <string name="pagamento_radio_debito">Cartão de Debito</string>
+    <string name="pagamento_radio_dinheiro">Dinheiro</string>
+    <string name="pagamento_quantidade">Quantidade:</string>
+    <string name="pagamento_total">Total:</string>
+    <string name="pagamento_preco_total">Preço Total:</string>
+
 
 </resources>

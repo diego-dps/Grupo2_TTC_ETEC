@@ -52,6 +52,8 @@ cargo_Funcionario ENUM('Garçom','Cozinheiro','ADM'),
 email_Funcionario VARCHAR(100) unique NOT NULL,
 senha VARCHAR(50) NOT NULL
 );
+
+select * from Funcionario;
 /*tabela Garçom*/ 
  create table Garcom(
  cod_Funcionario INT(100) UNSIGNED NOT NULL,

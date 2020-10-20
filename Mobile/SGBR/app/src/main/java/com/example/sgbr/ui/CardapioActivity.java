@@ -1,48 +1,38 @@
 package com.example.sgbr.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.Adapter;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;;
 
 import com.example.sgbr.R;
 import com.example.sgbr.controller.CardapioAdapter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class CardapioActivity extends AppCompatActivity {
-    RecyclerView dataList;
-    List<String> titulos;
-    List<Integer> imagens;
-    CardapioAdapter adapter;
+
+    GridView gridView;
+
+    String[] tituloCategoria = {"Prato do Dia", "Churrasco", "Lanches", "Pizzas", "Vegetariana", "Sobremesas"};
+
+    int[] imagemCategoria = {R.drawable.pratofeito, R.drawable.pratofeito, R.drawable.pratofeito,
+            R.drawable.pratofeito, R.drawable.pratofeito, R.drawable.pratofeito
+    };
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardapio);
-        dataList = findViewById(R.id.dataList);
 
-        titulos = new ArrayList<>();
-        imagens = new ArrayList<>();
+        gridView = findViewById(R.id.gridView_cardapio);
 
-        titulos.add("Pizzas");
-        titulos.add("Bebidas");
-        titulos.add("Sobremesas");
-        titulos.add("Promoções do dia");
+        CardapioAdapter adapter = new CardapioAdapter(tituloCategoria, imagemCategoria, this);
 
-        imagens.add(R.mipmap.ic_launcher);
-        imagens.add(R.mipmap.ic_launcher);
-        imagens.add(R.mipmap.ic_launcher);
-        imagens.add(R.mipmap.ic_launcher);
+        gridView.setAdapter(adapter);
 
-        adapter = new CardapioAdapter(this,titulos,imagens);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false);
-        dataList.setLayoutManager(gridLayoutManager);
-        dataList.setAdapter(adapter);
     }
+
 }
