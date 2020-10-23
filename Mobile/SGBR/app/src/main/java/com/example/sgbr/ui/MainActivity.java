@@ -2,8 +2,10 @@ package com.example.sgbr.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         //Atribuição de id
 
         TextView main_text_Titulo = (TextView) findViewById(R.id.Main_text_Titulo);
-        TextView main_text_Subtitulo= (TextView) findViewById(R.id.Main_text_Subtitulo);
+        TextView main_text_Subtitulo = (TextView) findViewById(R.id.Main_text_Subtitulo);
         TextView main_text_Texto1 = (TextView) findViewById(R.id.Main_text_Texto1);
         TextView main_text_Texto2 = (TextView) findViewById(R.id.Main_text_Texto2);
         TextView main_text_Texto3 = (TextView) findViewById(R.id.Main_text_Texto3);
@@ -42,5 +44,15 @@ public class MainActivity extends AppCompatActivity {
         main_text_Link.setTypeface(font);
         main_btn_Escanear.setTypeface(font);
         main_btn_ConfirmarCodigo.setTypeface(font);
+
+
+
     }
+/* TESTE
+    public void testeTelas(View v){
+
+        Intent it = new Intent(MainActivity.this, CardapioActivity.class);
+        startActivity(it);
+    }
+*/
 }

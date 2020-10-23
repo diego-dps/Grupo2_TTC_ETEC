@@ -54,6 +54,8 @@ email_Funcionario VARCHAR(100) unique NOT NULL,
 Ativo tinyint(1) default 1 not null,
 senha VARCHAR(50) NOT NULL
 );
+
+select * from Funcionario;
 /*tabela Garçom*/ 
  create table Garcom(
  cod_Funcionario INT(100) UNSIGNED NOT NULL,

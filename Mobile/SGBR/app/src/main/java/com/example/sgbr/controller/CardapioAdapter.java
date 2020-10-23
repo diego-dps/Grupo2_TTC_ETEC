@@ -4,55 +4,57 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
 
-import java.util.List;
 
-public class CardapioAdapter extends RecyclerView.Adapter<CardapioAdapter.ViewHolder> {
+public class CardapioAdapter extends BaseAdapter{
+    private String[] titulos;
+    private int[] imagens;
+    private Context context;
+    private LayoutInflater inflater;
 
-    List<String> titulos;
-    List<Integer> imagens;
-    Context context;
-    LayoutInflater inflater;
-
-    public CardapioAdapter(Context context, List<String> titulos, List<Integer> imagens){
+    public CardapioAdapter(String[] titulos, int[] imagens, Context context) {
         this.titulos = titulos;
         this.imagens = imagens;
-        this.inflater = LayoutInflater.from(context);
-    }
-
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.activity_cardapio,parent, false);
-        return new ViewHolder(view);
+        this.context = context;
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.titulo.setText(titulos.get(position));
-        holder.imgGrid.setImageResource(imagens.get(position));
+    public int getCount() {
+        return imagens.length;
     }
 
     @Override
-    public int getItemCount() {
-        return titulos.size();
+    public Object getItem(int position) {
+        return null;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView titulo;
-        ImageView imgGrid;
+    @Override
+    public long getItemId(int position) {
+        return 0;
+    }
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            titulo = itemView.findViewById(R.id.txt_item_cardapio);
-            imgGrid = itemView.findViewById(R.id.img_item_cardapio);
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        if (convertView == null){
+            convertView = inflater.inflate(R.layout.cardapio_cliente, parent, false);
         }
+
+        TextView tv = convertView.findViewById(R.id.titulo_categoria);
+        ImageView iv = convertView.findViewById(R.id.img_categoria);
+
+        tv.setText(titulos[position]);
+        iv.setImageResource(imagens[position]);
+
+
+        return convertView;
     }
 }
+

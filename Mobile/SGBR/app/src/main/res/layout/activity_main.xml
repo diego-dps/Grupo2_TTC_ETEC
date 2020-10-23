@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorBackgroundActivity"
+    android:background="@color/azulClaro"
     tools:context=".ui.MainActivity">
 
     <LinearLayout
@@ -107,19 +107,19 @@
         android:inputType="textPersonName"
         />
 
-    <Button
-        android:id="@+id/Main_btn_ConfirmarCodigo"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:background="@drawable/botao_comum"
-        android:text="@string/main_btn_digitar_codigo"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        />
+        <Button
+            android:id="@+id/Main_btn_ConfirmarCodigo"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/botao_comum"
+            android:gravity="center"
+            android:onClick="testeTelas"
+            android:text="@string/main_btn_digitar_codigo"
+            android:textColor="#FFFFFF"
+            android:textSize="25dp" />
 
     <TextView
         android:id="@+id/Main_text_Link"
