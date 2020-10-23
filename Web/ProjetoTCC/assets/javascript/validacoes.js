@@ -459,7 +459,7 @@ $(function() {
 
                     Swal.fire({
                         icon: 'success',
-                        title: 'Cadastro realizado com sucesso!',
+                        title: 'Edição realizado com sucesso!',
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
@@ -887,7 +887,7 @@ $(function() {
                     Swal.fire({
                         title: 'Você tem certeza?',
                         text: "Você não poderá reverter isso!",
-                        icon: 'warning',
+                        icon: 'success',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
@@ -963,22 +963,16 @@ $(function() {
             success: function(data) {
                 if (data == "Excluir") {
                     Swal.fire({
-                        title: 'Você tem certeza?',
-                        text: "Você não poderá reverter isso!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sim, exclua!'
+                        title: 'Excluido!',
+                        text: "Funcionario excluido com sucesso",
+                        icon: 'success',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
                       }).then((result) => {
-                        if (result.isConfirmed) {
-                          Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                          )
-                        }
-                      })
+                        if (result.value){
+                            window.location.replace("TelaFuncionarios");
+                          }
+                        })
                 }
             }
         })

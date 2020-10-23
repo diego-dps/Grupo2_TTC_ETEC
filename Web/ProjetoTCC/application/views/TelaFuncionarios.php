@@ -39,6 +39,7 @@
                         <th scope="col">Cargo</th>
                         <th scope="col">CPF</th>
                         <th scope="col">Telefone</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Editar Funcionário</th>
                         <th scope="col">Excluir</th>
                     </tr>
@@ -50,19 +51,24 @@
                             <th scope="col"><?php echo $funcionarios['cargo_Funcionario'] ?></th>
                             <th scope="col"><?php echo $funcionarios['cpf_Funcionario'] ?></th>
                             <th scope="col"><?php echo $funcionarios['telefone_Funcionario'] ?></th>
+                            <th scope="col"><?php echo $funcionarios['email_Funcionario'] ?></th>
                             <th scope="col">
                                 <button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" 
                                     style="position: relative; top: -25px;" data-toggle="modal" 
                                     data-target="#exampleModal" data-whatever="<?php echo $funcionarios['cod_Funcionario']?>" 
                                     data-whatevernome="<?php echo $funcionarios['nome_Funcionario']?>" data-whatevercargo="<?php echo $funcionarios['cargo_Funcionario']?>"
                                     data-whatevercpf="<?php echo $funcionarios['cpf_Funcionario']?>" data-whatevertelefone="<?php echo $funcionarios['telefone_Funcionario']?>"
-                                    data-whateveremail="<?php echo $funcionarios['email_Funcionario']?>">Editar
+                                    data-whateveremail="<?php echo $funcionarios['email_Funcionario']?>" data-whateversenha="<?php echo $funcionarios['senha']?>">Editar
                                 </button>
-                                </th>
+                            </th>
                             <th scope="col">
-                                <form action="<?php echo base_url("index.php/CadastroFuncionario/excluirFuncionario");?>" method="POST" id="ExcluirFuncionario">
-                                    <input type="submit" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Remover">
-                                </form>
+                                <!--<form action="<?php echo base_url("index.php/CadastroFuncionario/excluirFuncionario");?>" method="POST" id="ExcluirFuncionario">
+                                    <input type="submit" id="id" name="id" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Remover">
+                                </form>-->
+                                <button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" data-toggle="modal" data-target="#ExemploModalCentralizado"
+                                data-whateverid="<?php echo $funcionarios['cod_Funcionario']?>">
+                                    Remover
+                                </button>
                             </th>
                         </tr>
                     <?php endforeach ?>
@@ -72,7 +78,7 @@
         <a class="mt-4 mb-5 btn btn-lg btn-danger rounded mx-auto d-block col-1" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
     </div>
 
-    <!--Inicio modal-->
+    <!--Inicio modal Editar-->
     <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <!-- Modal content-->
@@ -107,6 +113,7 @@
                                 <label for="ConfPass">Confirmar Senha</label>
                                 <input type="password" class="form-control" id="ConfPass" name="ConfPass">
                             </div>
+                            <input type="hidden" id="id_Funcionario" name="id_Funcionario">
                             <div class="form-group col-5 ml-4">
                                 <label for="SelecionarCargo">Selecionar Cargo</label>
                                 <select class="form-control" id="SelecionarCargo" name="SelecionarCargo">
@@ -127,6 +134,27 @@
     </div>
     <!--Final do modal-->
 
+    <!-- Modal Excluir-->
+    <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h2 class="modal-title" id="TituloModalCentralizado" style="position: relative; left: 40%;">Excluir</h2>
+                </div>
+                <div class="modal-body">
+                    <h6>Tem certeza de que deseja excluir o item selecionado?</h6>
+                    <form action="<?php echo base_url("index.php/CadastroFuncionario/excluirFuncionario");?>" method="POST" id="ExcluirFuncionario">
+                    <input type="hidden" id="id" name="id">
+                </div>
+                <div class="modal-footer bg-white">
+                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger btn-lg">Apagar</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- responsivo -->
     <div class="d-md-none d-sm-block">
         <div class="container2 mx-auto mt-4 table-responsive-sm">
@@ -141,9 +169,11 @@
                     <tr class="text-danger">
                         <th scope="col">Nome</th>
                         <th scope="col">Cargo</th>
-                        <th scope="col">Editar Funcionário</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Editar</th>
                         <th scope="col">Excluir</th>
-
                     </tr>
                 </thead>
                 <tbody>
@@ -251,8 +281,6 @@
         <a class="mt-4 btn btn-danger rounded mx-auto d-block col-3" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
     </div>
 
-
-
     <script src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/popper.js/dist/umd/popper.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/bootstrap/dist/js/bootstrap.js'); ?>"></script>
@@ -268,17 +296,28 @@
         var recipientcargo = button.data('whatevercargo')
         var recipientcpf = button.data('whatevercpf')
         var recipienttelefone = button.data('whatevertelefone')
+        var recipientsenha = button.data('whateversenha')
         // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
         // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this)
         modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('#id_Funcionario').val(recipient)
         modal.find('#nome').val(recipientnome)
         modal.find('#email').val(recipientemail)
         modal.find('#SelecionarCargo').val(recipientcargo)
         modal.find('#cpf').val(recipientcpf)
         modal.find('#celular').val(recipienttelefone)
+        modal.find('#pass').val(recipientsenha)
+        modal.find('#ConfPass').val(recipientsenha)
+        })
+    </script>
+    <script type="text/javascript">
+        $('#ExemploModalCentralizado').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var recipient = button.data('whateverid')
+        var modal = $(this)
+        modal.find('#id').val(recipient)
         })
     </script>
 </body>
-
 </html>

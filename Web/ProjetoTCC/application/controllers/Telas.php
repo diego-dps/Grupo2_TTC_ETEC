@@ -39,11 +39,11 @@ class Telas extends CI_Controller {
     public function telaLogin()
 	{
 		$this->load->view('TelaLogin');
-    }
+  }
 
     public function telaRecuperarSenha()
-	{
-		$this->load->view('TelaRecuperarSenha');
+	  {
+		  $this->load->view('TelaRecuperarSenha');
     }
 
     public function telaPedidos()

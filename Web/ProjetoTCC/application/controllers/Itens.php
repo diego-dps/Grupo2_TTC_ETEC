@@ -11,7 +11,7 @@ class Itens extends CI_Controller
             'nome_Item' => $this->input->post('nomeItem'),
             'descricao_Item' => $this->input->post('descricao'),
             'preco_Item' => $this->input->post('preco'),
-            'foto_Item' => $this->input->post('addFoto'),
+            /*'foto_Item' => $this->input->post('addFoto'),*/
         ];
 
 

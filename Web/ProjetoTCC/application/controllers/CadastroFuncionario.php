@@ -138,6 +138,7 @@ class CadastroFuncionario extends CI_Controller
     {
 
         $dados = [
+            'cod_Funcionario' => $this->input->post("id_Funcionario"),
             'nome' => $this->input->post("nome"),
             'email' => $this->input->post("email"),
             'cpf' => $this->input->post("cpf"),
@@ -146,6 +147,9 @@ class CadastroFuncionario extends CI_Controller
             'ConfSenha' => $this->input->post("ConfPass"),
             'Cargo' => $this->input->post("SelecionarCargo"),
         ];
+
+        $this->load->model('UpdateFuncionarioModel');
+
         if (empty($dados['nome'])) {
             echo "ErroNome";
             die();
@@ -180,6 +184,14 @@ class CadastroFuncionario extends CI_Controller
         }
         if ($dados['ConfSenha'] != $dados['senha']) {
             echo "ErroSenhaNaoConfere";
+            die();
+        }
+
+        if ($this->UpdateFuncionarioModel->atualizarFuncionario($dados)) {
+            echo "Sucesso";
+            die();
+        } else {
+            echo "ErroBanco";
             die();
         }
     }
@@ -237,6 +249,16 @@ class CadastroFuncionario extends CI_Controller
 
     public function excluirFuncionario()
     {
-        echo "Excluir";
+        $id = $this->input->post("id");
+
+        $this->load->model('ExcluirFuncionarioModel');
+
+        if ($this->ExcluirFuncionarioModel->excluirFuncionario($id)) {
+            echo "Excluir";
+            die();
+        } else {
+            echo "ErroBanco";
+            die();
+        }
     }
 }
