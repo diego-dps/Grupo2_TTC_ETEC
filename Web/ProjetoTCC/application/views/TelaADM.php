@@ -28,7 +28,7 @@
 <body onload="time()">
 
     <div class="mt-2 d-none d-md-block">
-        <a class="ml-2 mr-auto btn btn-danger btn-lg" href="<?php echo base_url('index.php/Welcome/telaLogin'); ?>">Sair</a></button>
+        <a class="ml-2 mr-auto btn btn-danger btn-lg" href="<?php echo base_url('index.php/Welcome/index'); ?>">Sair</a></button>
         <br><br><br><br><br>
         <div class="row mx-auto my-auto">
             <div class="mt-4 col-6">

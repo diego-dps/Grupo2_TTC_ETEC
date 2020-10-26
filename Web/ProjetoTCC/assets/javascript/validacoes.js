@@ -39,7 +39,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("index.php/Welcome/TelaGarcom");
+                            window.location.replace("TelaGarcom");
                           }
                         })
                       }
@@ -50,7 +50,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("index.php/Welcome/TelaCozinheiro");
+                            window.location.replace("TelaCozinheiro");
                           }
                         });
                       }
@@ -61,7 +61,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("index.php/Welcome/TelaADM");
+                            window.location.replace("TelaADM");
                           }
                         });
                       }      
