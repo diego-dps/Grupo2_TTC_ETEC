@@ -3,23 +3,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('TelaLogin');
+	}
+	public function telaADM()
+	{
+	  $this->load->view('TelaADM');
+	}  
+  	public function telaAlterarSenha()
+	{
+		$this->load->view('TelaAlterarSenha');
+  	}    
+  	public function telaCadastrarItem()
+	{
+		$this->load->view('TelaCadastrarItem');
+  	}
+  	public function telaCadastrarFuncionario()
+	{
+		$this->load->view('TelaCadastroFuncionario');
+  	}
+  	public function telaFuncionarios()
+	{
+		$this->load->model("BuscarFuncionarioModel");
+        $lista = $this->BuscarFuncionarioModel->buscarFuncionario();
+        $dados = array("funcionario" => $lista);
+		$this->load->view('TelaFuncionarios', $dados);
+  	}
+  	public function telaRecuperarSenha()
+	{
+		$this->load->view('TelaRecuperarSenha');
+  	}
+    public function telaPedidos()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidos();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidos', $dados);
+    }
+    public function telaItens()
+	{
+		$this->load->model("BuscarItemModel");
+        $lista = $this->BuscarItemModel->buscarTodos();
+        $dados = array("item" => $lista);
+        $this->load->view('TelaItens', $dados);
 	}
 }
