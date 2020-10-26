@@ -32,7 +32,7 @@
         <br><br><br><br><br>
         <div class="row mx-auto my-auto">
             <div class="mt-4 col-6">
-                <h1 class="text-center text-white display-4">Nome do Usuário</h1>
+                <h1 class="text-center text-white display-4">!!!Pagina Em Manuteção!!!</h1>
             </div>
             <div class="col-6">
                 <h1 class="text-white display-4">
