@@ -64,7 +64,7 @@
                         <button type="submit" class="btn btn-danger btn-lg btnCadastrar">Cadastrar</button>
                     </div>
                     <div class="" style="position: relative; right: 25px; top: 5px;">
-                        <a class="btn btn-lg  btn-danger mx-auto d-block mt-3" href="<?php echo base_url('index.php/Telas/telaFuncionarios');?>">Voltar</a></button>
+                        <a class="btn btn-lg  btn-danger mx-auto d-block mt-3" href="<?php echo base_url('index.php/Welcome/telaFuncionarios');?>">Voltar</a></button>
                     </div>                       
                 </div>
             </form>
@@ -109,7 +109,7 @@
                     <input type="password" class="form-control" id="CONFPASS" name="CONFPASS">
                 </div>
                 <button type="submit" class="btn btn-lg mt-3 btn-danger text-white rounded mx-auto d-block">Cadastrar</button>
-                <a class="btn btn-lg  btn-danger mx-auto d-block mt-3 col-4" href="<?php echo base_url('index.php/Telas/telaFuncionarios');?>">Voltar</a></button>
+                <a class="btn btn-lg  btn-danger mx-auto d-block mt-3 col-4" href="<?php echo base_url('index.php/Welcome/telaFuncionarios');?>">Voltar</a></button>
             </form>
         </div>
     </div>

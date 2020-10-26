@@ -28,7 +28,7 @@
                     </div>
                     <div class="text-center mt-5">
                         <input type="submit" class="btn btn-lg btn-danger text-white col-3" value="OK" style="position: relative; right: 10px">
-                        <a class="btn btn-lg btn-danger text-white col-3" style="position: relative; left: 10px"  href="<?php echo base_url('index.php/Telas/telaLogin');?>">Voltar</a>
+                        <a class="btn btn-lg btn-danger text-white col-3" style="position: relative; left: 10px"  href="<?php echo base_url('index.php/Welcome/telaLogin');?>">Voltar</a>
                     </div>
                 </div>
             </form>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="text-center mt-5">
                         <button type="submit" class="btn btn-lg btn-danger text-white col-3" style="position: relative; right: 10px;">OK</button>
-                        <a type="submit" class="btn btn-lg btn-danger text-white col-3" style="position: relative; left: 10px;" href="<?php echo base_url('index.php/Telas/telaLogin');?>">Voltar</a>
+                        <a type="submit" class="btn btn-lg btn-danger text-white col-3" style="position: relative; left: 10px;" href="<?php echo base_url('index.php/Welcome/telaLogin');?>">Voltar</a>
                     </div>
                 </div>
             </form>

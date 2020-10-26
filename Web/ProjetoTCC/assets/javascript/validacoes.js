@@ -32,15 +32,47 @@ $(function() {
                             confirmButtonText: 'OK'
                         });
                     }
-                    if (data == "Sucesso") {
-
+                    if(data == "SucessoGarçom"){
                         Swal.fire({
-                            icon: 'success',
-                            title: 'Login efetuado com sucesso!',
-                            confirmButtonColor: " #dc3545",
-                            confirmButtonText: 'OK'
+                          title: 'Login realizado com sucesso!',
+                          icon: 'success',
+                          confirmButtonText: 'OK'
+                        }).then((result) => {
+                          if (result.value){
+                            window.location.replace("index.php/Welcome/TelaGarcom");
+                          }
                         })
-                    }
+                      }
+                      if(data == "SucessoCozinheiro"){
+                        Swal.fire({
+                          title: 'Login realizado com sucesso!',
+                          icon: 'success',
+                          confirmButtonText: 'OK'
+                        }).then((result) => {
+                          if (result.value){
+                            window.location.replace("index.php/Welcome/TelaCozinheiro");
+                          }
+                        });
+                      }
+                      if(data == "SucessoADM"){
+                        Swal.fire({
+                          title: 'Login realizado com sucesso!',
+                          icon: 'success',
+                          confirmButtonText: 'OK'
+                        }).then((result) => {
+                          if (result.value){
+                            window.location.replace("index.php/Welcome/TelaADM");
+                          }
+                        });
+                      }      
+                      if(data == "FalhaLogin"){
+                        Swal.fire({
+                          title: 'ERRO!',
+                          text: 'Usuário ou senha inválidos!',
+                          icon: 'error',
+                          confirmButtonText: 'OK'
+                        });
+                      } 
                 }
             })
             return false;
@@ -82,15 +114,47 @@ $(function() {
                             confirmButtonText: 'OK'
                         });
                     }
-                    if (data == "Sucesso") {
-
+                    if(data == "SucessoGarçom"){
                         Swal.fire({
-                            icon: 'success',
-                            title: 'Login efetuado com sucesso!',
-                            confirmButtonColor: " #dc3545",
-                            confirmButtonText: 'OK'
+                          title: 'Login realizado com sucesso!',
+                          icon: 'success',
+                          confirmButtonText: 'OK'
+                        }).then((result) => {
+                          if (result.value){
+                            window.location.replace("index.php/Welcome/TelaGarcom");
+                          }
                         })
-                    }
+                      }
+                      if(data == "SucessoCozinheiro"){
+                        Swal.fire({
+                          title: 'Login realizado com sucesso!',
+                          icon: 'success',
+                          confirmButtonText: 'OK'
+                        }).then((result) => {
+                          if (result.value){
+                            window.location.replace("index.php/Welcome/TelaCozinheiro");
+                          }
+                        });
+                      }
+                      if(data == "SucessoADM"){
+                        Swal.fire({
+                          title: 'Login realizado com sucesso!',
+                          icon: 'success',
+                          confirmButtonText: 'OK'
+                        }).then((result) => {
+                          if (result.value){
+                            window.location.replace("index.php/Welcome/TelaADM");
+                          }
+                        });
+                      }      
+                      if(data == "FalhaLogin"){
+                        Swal.fire({
+                          title: 'ERRO!',
+                          text: 'Usuário ou senha inválidos!',
+                          icon: 'error',
+                          confirmButtonText: 'OK'
+                        });
+                    } 
                 }
             })
             return false;
@@ -131,6 +195,14 @@ $(function() {
                             confirmButtonText: 'OK'
                         });
                     }
+                    if(data == "ErroEmailExiste"){
+                        Swal.fire({
+                          title: 'Erro ao preencher campos!',
+                          text: 'Email já cadastrado!',
+                          icon: 'error',
+                          confirmButtonText: 'Legal, vou refazer'
+                        });
+                    }            
                     if (data == "Errocpf") {
 
                         Swal.fire({
@@ -149,6 +221,14 @@ $(function() {
                         confirmButtonText: 'Legal, vou refazer'
                         });
                     }
+                    if(data == "ErroCPFExiste"){
+                        Swal.fire({
+                          title: 'Erro ao preencher campos!',
+                          text: 'CPF já cadastrado!',
+                          icon: 'error',
+                          confirmButtonText: 'Legal, vou refazer'
+                        });
+                      }
                     if (data == "ErroPass") {
 
                         Swal.fire({
@@ -169,6 +249,14 @@ $(function() {
                             confirmButtonText: 'OK'
                         });
                     }
+                    if(data == "ErroCelularExiste"){
+                        Swal.fire({
+                          title: 'Erro ao preencher campos!',
+                          text: 'Celular já cadastrado!',
+                          icon: 'error',
+                          confirmButtonText: 'Legal, vou refazer'
+                        });
+                    }                  
                     if (data == "ErroConfSenha") {
 
                         Swal.fire({

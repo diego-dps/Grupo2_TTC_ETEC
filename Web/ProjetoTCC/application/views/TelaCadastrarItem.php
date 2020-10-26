@@ -43,7 +43,7 @@
                         <input type="submit" class="btn btn-danger btn-lg btnCadastrar" value="Cadastrar">
                     </div>
                     <div class="text-white" style="position: relative; left: 105px; top: 5px;">
-                        <a class="btn btn-lg  btn-danger mx-auto d-block mt-3" href="<?php echo base_url('index.php/Telas/telaItens');?>">Voltar</a></button>
+                        <a class="btn btn-lg  btn-danger mx-auto d-block mt-3" href="<?php echo base_url('index.php/Welcome/telaItens');?>">Voltar</a></button>
                     </div>                       
                 </div>
             </form>
@@ -74,7 +74,7 @@
                     
                         <button type="submit" class="btn btn-danger btn-lg mx-auto d-block mt-3">Cadastrar</button>
                     
-                        <a class="btn btn-lg  btn-danger mx-auto d-block mt-3 col-4" href="<?php echo base_url('index.php/Telas/telaItens');?>">Voltar</a></button>
+                        <a class="btn btn-lg  btn-danger mx-auto d-block mt-3 col-4" href="<?php echo base_url('index.php/Welcome/telaItens');?>">Voltar</a></button>
                                           
                 
             </form>

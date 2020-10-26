@@ -29,7 +29,7 @@
                         <button type="submit" class="btn btn-danger btn-lg text-white">Entrar</button>
                     </div>
                     <div class="text-center mt-5">
-                        <a href="<?php echo base_url('index.php/Telas/telaRecuperarSenha');?>" class="font-weight-bold A">Esqueci minha senha</a>
+                        <a href="<?php echo base_url('index.php/Welcome/telaRecuperarSenha');?>" class="font-weight-bold A">Esqueci minha senha</a>
                     </div>
                 </div>
             </form>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="text-center mt-5">
 
-                        <a href="<?php echo base_url('index.php/Telas/telaRecuperarSenha');?>" class="font-weight-bold A">Esqueci minha senha</a>
+                        <a href="<?php echo base_url('index.php/Welcome/telaRecuperarSenha');?>" class="font-weight-bold A">Esqueci minha senha</a>
                     </div>
                 </div>
             </form>

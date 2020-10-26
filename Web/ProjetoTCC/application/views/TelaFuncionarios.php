@@ -29,7 +29,7 @@
                     <input class="my-auto form-control bg-dark text-white" style="position: relative; left: 15px;" type="search" placeholder="Pesquisar">
                 </form>
                 <div class="col-1 mx-auto my-auto">
-                    <a href=" <?php echo base_url('index.php/Telas/telaCadastrarFuncionario')?>"><img class="rounded mx-auto d-block" src="<?php echo base_url('assets/img/icons8-add-user-male-30.png');?>" alt=""></a>
+                    <a href=" <?php echo base_url('index.php/Welcome/telaCadastrarFuncionario')?>"><img class="rounded mx-auto d-block" src="<?php echo base_url('assets/img/icons8-add-user-male-30.png');?>" alt=""></a>
                 </div>
             </div>
             <table class="table table-dark table-hover text-center">
@@ -75,7 +75,7 @@
                 </tbody>
             </table>
         </div>
-        <a class="mt-4 mb-5 btn btn-lg btn-danger rounded mx-auto d-block col-1" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
+        <a class="mt-4 mb-5 btn btn-lg btn-danger rounded mx-auto d-block col-1" href="<?php echo base_url('index.php/Welcome/telaADM');?>">Voltar</a></button>
     </div>
 
     <!--Inicio modal Editar-->
@@ -278,7 +278,7 @@
                 </tbody>
             </table>
         </div>
-        <a class="mt-4 btn btn-danger rounded mx-auto d-block col-3" href="<?php echo base_url('index.php/Telas/telaADM');?>">Voltar</a></button>
+        <a class="mt-4 btn btn-danger rounded mx-auto d-block col-3" href="<?php echo base_url('index.php/Welcome/telaADM');?>">Voltar</a></button>
     </div>
 
     <script src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>

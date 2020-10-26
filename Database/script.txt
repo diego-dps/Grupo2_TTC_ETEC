@@ -48,14 +48,12 @@ create table Funcionario(
 cod_Funcionario INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
 nome_Funcionario VARCHAR(100) NOT NULL,
 cpf_Funcionario varchar(14) unique not null,
-telefone_Funcionario varchar(16) not null,
+telefone_Funcionario varchar(16) unique not null,
 cargo_Funcionario ENUM('Garçom','Cozinheiro','Administrador'),
 email_Funcionario VARCHAR(100) unique NOT NULL,
 Ativo tinyint(1) default 1 not null,
 senha VARCHAR(50) NOT NULL
 );
-
-select * from Funcionario;
 /*tabela Garçom*/ 
  create table Garcom(
  cod_Funcionario INT(100) UNSIGNED NOT NULL,

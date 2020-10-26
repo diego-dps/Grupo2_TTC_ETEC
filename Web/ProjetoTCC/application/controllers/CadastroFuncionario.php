@@ -35,8 +35,22 @@ class CadastroFuncionario extends CI_Controller
             die();
         }
 
+        $linhaCpf = $this->CadastrosModel->VerificarCPF($dados);
+
+        if(!empty($linhaCpf['cpf_Funcionario'])){
+            echo "ErroCPFExiste";
+            die();
+        }
+
         if (empty($dados['telefone_Funcionario'])) {
             echo "ErroCelular";
+            die();
+        }
+
+        $linhaCelular = $this->CadastrosModel->VerificarCelular($dados);
+
+        if(!empty($linhaCelular['telefone_Funcionario'])){
+            echo "ErroCelularExiste";
             die();
         }
 
@@ -47,6 +61,13 @@ class CadastroFuncionario extends CI_Controller
 
         if (empty($dados['email_Funcionario'])) {
             echo "ErroEmail";
+            die();
+        }
+
+        $linhaEmail = $this->CadastrosModel->VerificarEmail($dados);
+
+        if(!empty($linhaEmail['email_Funcionario'])){
+            echo "ErroEmailExiste";
             die();
         }
 

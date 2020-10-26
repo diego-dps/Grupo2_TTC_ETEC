@@ -28,7 +28,7 @@
 <body onload="time()">
 
     <div class="mt-2 d-none d-md-block">
-        <a class="ml-2 mr-auto btn btn-danger btn-lg" href="<?php echo base_url('index.php/Telas/telaLogin'); ?>">Sair</a></button>
+        <a class="ml-2 mr-auto btn btn-danger btn-lg" href="<?php echo base_url('index.php/Welcome/telaLogin'); ?>">Sair</a></button>
         <br><br><br><br><br>
         <div class="row mx-auto my-auto">
             <div class="mt-4 col-6">
@@ -50,10 +50,10 @@
         <br><br>
         <div class="row mx-auto">
             <div class="tamanhobotao mx-auto col-4">
-                <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; left: 160px;" href="<?php echo base_url('index.php/Telas/telaItens'); ?>">Itens</a></button>
+                <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; left: 160px;" href="<?php echo base_url('index.php/Welcome/telaItens'); ?>">Itens</a></button>
             </div>
             <div class="tamanhobotao mx-auto col-4">
-                <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" href="<?php echo base_url('index.php/Telas/telaFuncionarios'); ?>">Funcionários</a></button>
+                <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" href="<?php echo base_url('index.php/Welcome/telaFuncionarios'); ?>">Funcionários</a></button>
             </div>
             <div class="tamanhobotao mx-auto col-4">
                 <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block col-5" style="position: relative; right: 160px;" href="">Configurações</a></button>
@@ -62,12 +62,12 @@
         </div>
     </div>
     <div class="d-sm-block d-md-none">
-        <a class="ml-2 mt-2 btn btn-danger btn-sm" href="<?php echo base_url('index.php/Telas/telaLogin'); ?>">Sair</a></button>
+        <a class="ml-2 mt-2 btn btn-danger btn-sm" href="<?php echo base_url('index.php/Welcome/telaLogin'); ?>">Sair</a></button>
         <br><br><br>
         <h1 class="text-center text-white display-5">Nome do Usuário</h1>
         <div class="tamanhobotaop mx-auto">
-            <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block" href="<?php echo base_url('index.php/Telas/telaItens'); ?>">Itens</a></button>
-            <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block" href="<?php echo base_url('index.php/Telas/telaFuncionarios'); ?>">Funcionários</a></button>
+            <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block" href="<?php echo base_url('index.php/Welcome/telaItens'); ?>">Itens</a></button>
+            <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block" href="<?php echo base_url('index.php/Welcome/telaFuncionarios'); ?>">Funcionários</a></button>
             <a class="btn btn-danger btn-lg btn-block rounded mx-auto d-block" href="">Configurações</a></button>
         </div>
     </div>

@@ -10,6 +10,14 @@ class Welcome extends CI_Controller {
 	public function telaADM()
 	{
 	  $this->load->view('TelaADM');
+	}
+	public function telaCozinheiro()
+	{
+	  $this->load->view('TelaCozinheiro');
+	}
+	public function telaGarcom()
+	{
+	  $this->load->view('TelaGarcom');
 	}  
   	public function telaAlterarSenha()
 	{

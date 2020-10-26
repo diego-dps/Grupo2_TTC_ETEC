@@ -18,13 +18,27 @@ class Login extends CI_Controller {
             die();
         }
 
-        if(empty($senha)){
-            echo "ErroSenha";
-            die();
-        }
-
-
-        echo "Sucesso";
-		
+        $this->load->model('BuscarLoginModel');
+        $resultado = $this->BuscarLoginModel->logarUsuario($usuario, $senha);
+        
+        /*var_dump($resultado);*/
+        if(empty($resultado)){
+            echo "FalhaLogin";
+        }else{
+            switch($resultado['cargo_Funcionario']){
+                case 'Garçom':
+                    echo "SucessoGarçom";
+                    break;
+                case 'Administrador':
+                    echo "SucessoADM";
+                    break;
+                case 'Cozinheiro':
+                    echo "SucessoCozinheiro";
+                    break;
+                default:
+                    echo "ErroLogin";
+                break;
+            }
+        }	
 	}
 }
