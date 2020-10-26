@@ -5,7 +5,11 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('TelaLogin');
+		$this->load->view('Home');
+	}
+	public function telaLogin()
+	{
+	  $this->load->view('TelaLogin');
 	}
 	public function telaADM()
 	{

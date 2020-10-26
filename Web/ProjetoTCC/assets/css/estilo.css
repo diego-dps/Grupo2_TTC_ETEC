@@ -9,6 +9,13 @@ a:link{
 	text-decoration: none;
 }
 
+/*CSS HOME*/
+.borda{
+    border-bottom-width: medium;
+    border-bottom-style: solid;
+    border-bottom-color: #EE6829;
+}
+
 /*CSS TELA DE LOGIN*/
 
 body {

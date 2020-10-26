@@ -8,9 +8,24 @@
     <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/home.css'); ?>" rel="stylesheet">
 </head>
 
 <body>
+    <nav class="navbar navbar-dark bg-dark borda">
+        <span class="navbar-brand mb-0 h1 logo"><a href="<?php echo base_url("index.php/Welcome/index"); ?>"><img class="respo" src="<?php echo base_url("assets/img/logo.png")?>" alt=""></a></span>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url("index.php/Welcome/index"); ?>">Início</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="<?php echo base_url("index.php/Welcome/telaLogin"); ?>">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="<?php echo base_url(""); ?>">Recados</a>
+            </li>
+        </ul>
+    </nav>
 
     <div class="mt-5 d-none d-md-block">
         <div class="caixaLogin mx-auto my-auto">

@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: helvetica;
+    color: #323232;
+    border: none;
+}
+body {
+    font-family: montserrat;
+    background-image: url("../img/food2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+}
+nav {
+	background: #20295F;
+}
+nav ul li a{
+    color: white;
+	font-size: 17px;
+	padding: 7px 13px;
+	border-radius: 3px;
+    text-transform: uppercase;
+    margin-right: 0.99px;
+}
+nav ul li a:hover, a.active{
+    background:  rgb(60, 182, 212);
+	transition: .5s;
+}
+.borda{
+    border-bottom-width: medium;
+    border-bottom-style: solid;
+    border-bottom-color: #EE6829;
+}
+img{
+    width: 512px;
+    height: 430px;
+}
+.respo{
+	width: 61px;
+	height: 40px;
+}
+h1{
+	color: #fff;
+	font-size: 45px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: initial;
+    text-align: center;
+}
+.paragrafo{
+	color: #fff;
+	font-size: 30px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-style: initial;
+}
+p{
+	color: #fff;
+	font-size: 18px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.cor{
+	font-family: montserrat;
+	background-color: #eb550f;
+}
+.cor1{
+	font-family: montserrat;
+	background-color: #003791;
+}
+.cor2{
+	font-family: montserrat;
+	background-color: black;
+}
+.imagem{
+	width: 100%; 
+	height: 225px;
+}

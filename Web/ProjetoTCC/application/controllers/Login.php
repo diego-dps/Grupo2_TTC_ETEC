@@ -40,5 +40,10 @@ class Login extends CI_Controller {
                 break;
             }
         }	
-	}
+    }
+    
+    public function logout(){
+        $this->session->unset_userdata($resultado);
+        redirect('/');
+    }
 }
