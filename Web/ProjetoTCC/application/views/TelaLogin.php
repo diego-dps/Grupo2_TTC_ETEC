@@ -33,7 +33,7 @@
             <form action="<?php echo base_url("index.php/Login/validarLogin"); ?>" method="POST" id="login">
                 <div class="mt-4 ">
                     <div class="form-group mx-auto col-10">
-                        <label for="user" class="font-weight-bold">Usuário</label>
+                        <label for="user" class="font-weight-bold">E-mail</label>
                         <input type="text" autocomplete="off" class="form-control font-weight-bold" id="user" name="user">
                     </div>
                     <div class="form-group mx-auto col-10">
@@ -57,7 +57,7 @@
             <form action="<?php echo base_url("index.php/Login/validarLogin"); ?>" method="POST" id="loginResponsivo">
                 <div class="mt-4 ">
                     <div class="form-group mx-auto col-12">
-                        <label for="user" class="font-weight-bold">Usuário</label>
+                        <label for="user" class="font-weight-bold">E-mail </label>
                         <input type="text" autocomplete="off" class="form-control font-weight-bold" id="user" name="user">
                     </div>
                     <div class="form-group mx-auto col-12">

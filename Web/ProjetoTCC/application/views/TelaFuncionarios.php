@@ -117,6 +117,7 @@
                             <div class="form-group col-5 ml-4">
                                 <label for="SelecionarCargo">Selecionar Cargo</label>
                                 <select class="form-control" id="SelecionarCargo" name="SelecionarCargo">
+                                    <option></option>
                                     <option>Administrador</option>
                                     <option>Cozinheiro</option>
                                     <option>Garçom</option>
