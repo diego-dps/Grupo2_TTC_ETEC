@@ -2,11 +2,11 @@ const database = require('../database/connection');
 
 class PedidoController{
     CadastrarPedido (request, response){
-        const {horario_Pedido, observacao_Pedido, qr_Code} = request.body
-        console.log(horario_Pedido, observacao_Pedido, qr_Code);
+        const {observacao_Pedido, qr_Code} = request.body
+        console.log( observacao_Pedido, qr_Code);
 
 
-        database.insert({horario_Pedido, observacao_Pedido, qr_Code}).table("Pedido").then(data=>{
+        database.insert({ observacao_Pedido, qr_Code}).table("Pedido").then(data=>{
             console.log(data)
             response.json({message:"Usuario criado com sucesso!"})
         }).catch(error=>{
@@ -24,8 +24,19 @@ class PedidoController{
         })
     }
 
-    AtualizarPedido(){
+    AtualizarPedido(request, response){
+        const cod_Pedido = request.params
+        const {observacao_Pedido} = request.body
 
+        database.where({cod_Pedido:cod_Pedido}).update({observacao_Pedido:observacao_Pedido}).table("Pedido").then(data=>{
+            response.json({message:"Pedido Atualizado!"})
+        }).catch(error=>{
+            response.json(error)
+        })
+    }
+
+    DeletarPedido(request, response){
+        
     }
 }
 
