@@ -1,18 +1,24 @@
 {
-  "name": "API_Rest",
+  "name": "api_rest",
   "version": "1.0.0",
-  "description": "",
+  "description": "API Rest desenvolvida para tcc",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "knex": "^0.21.7",
-    "mysql2": "^2.2.5",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.6"
   }
 }
