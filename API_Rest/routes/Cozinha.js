@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
             'INSERT INTO Cozinha (cod_Funcionario, cod_Pedido) VALUE (?,?)',
-            [req.body.qr_Code, req.body.numero_Mesa],
+            [req.body.cod_Funcionario, req.body.cod_Pedido],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {
@@ -62,7 +62,7 @@ router.patch('/', (req, res, next) => {
         conn.query(
             `UPDATE Cozinha
                 SET cod_Pedido        = ?,
-                WHERE cod_Funcionario  ?`
+                WHERE cod_Funcionario =?`
             [
                 req.body.cod_Funcionario,
                 req.body.cod_Pedido    

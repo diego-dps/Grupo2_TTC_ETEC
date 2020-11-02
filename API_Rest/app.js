@@ -10,6 +10,9 @@ const rotaCardapio = require('./routes/Cardapio');
 const rotaItem = require('./routes/Item');
 const rotaItemPedido = require('./routes/ItemPedido');
 const rotaFuncionario = require('./routes/Funcionario');
+const rotaCozinha = require('./routes/Cozinha');
+const rotaGarcom = require('./routes/Garcom');
+const rotaAdministrador = require('./routes/Administrador');
 
 //Tratamento de Erros
 app.use((req, res, next) => {
@@ -33,6 +36,10 @@ app.use('/Pedido', rotaPedido);
 app.use('/Cardapio', rotaCardapio);
 app.use('/ItemPedido', rotaItemPedido);
 app.use('/Funcionario', rotaFuncionario);
+app.use('/Item', rotaItem);
+app.use('/Administrador', rotaAdministrador);
+app.use('Garcom', rotaGarcom);
+app.use('/Cozinha', rotaCozinha);
 
 
 app.use((req, res, next) => {
