@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM Pedido;',
+            'SELECT * FROM Cardapio;',
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
@@ -20,8 +20,8 @@ router.post('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'INSERT INTO Pedido (observacao_Pedido, qr_Code) VALUE (?,?);',
-            [req.body.observacao_Pedido, req.body.qr_Code],
+            'INSERT INTO Cardapio (categoria_Cardapio) VALUE (?)',
+            [req.body.categoria_Cardapio],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {
@@ -31,7 +31,8 @@ router.post('/', (req, res, next) => {
                     });
                 }
                 res.status(201).send({
-                    mensagem: 'Pedido inserido com sucesso!',
+                    mensagem: 'Cardapio inserido com sucesso!',
+                    cod_Cardapio: resultado.cod_Cardapio
                 })
             }
         )
@@ -39,18 +40,19 @@ router.post('/', (req, res, next) => {
 
 });
 
-router.get('/:cod_Pedido', (req, res, next) => {
+router.get('/:cod_Cardapio', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM Pedido WHERE cod_Pedido = ?;',
-            [req.params.id_produto],
+            'SELECT * FROM Cardapio WHERE cod_Cardapio = ?;',
+            [req.params.cod_Cardapio],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
             }
         )
     });
+
 });
 
 router.patch('/', (req, res, next) => {
@@ -58,13 +60,11 @@ router.patch('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            `UPDATE Pedido
-                SET observacao_Pedido = ?
-                WHERE cod_Pedido      = ?`,
+            `UPDATE Cardapio
+                SET categoria_Cardapio = ?
+                WHERE cod_Cardapio   = ?`,
             [
-                req.body.horario_Pedido,
-                req.body.observacao_Pedido,
-                req.body.cod_Pedido
+                req.body.categoria_Cardapio
             ],
             (error, resultado, field) => {
                 conn.release();
@@ -75,7 +75,7 @@ router.patch('/', (req, res, next) => {
                     });
                 }
                 res.status(202).send({
-                    mensagem: 'Pedido alterado com sucesso!',
+                    mensagem: 'Mesa alterada com sucesso!',
                 })
             }
         )
@@ -86,8 +86,8 @@ router.delete('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            `DELETE FROM Pedido WHERE cod_Pedido = ?`,
-            [req.body.id_produto],
+            `DELETE FROM Cardapio WHERE cod_Cardapio = ?`,
+            [req.body.qr_Code],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {
@@ -97,11 +97,12 @@ router.delete('/', (req, res, next) => {
                     });
                 }
                 res.status(202).send({
-                    mensagem: 'Pedido removido com sucesso com sucesso!',
+                    mensagem: 'Cardapio removido com sucesso!',
                 })
             }
         )
     });
 });
+
 
 module.exports = router;

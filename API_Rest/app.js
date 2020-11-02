@@ -6,10 +6,10 @@ const bodyParser = require('body-parser');
 
 const rotaMesa = require('./routes/Mesa');
 const rotaPedido = require('./routes/Pedido');
-
-
-
-
+const rotaCardapio = require('./routes/Cardapio');
+const rotaItem = require('./routes/Item');
+const rotaItemPedido = require('./routes/ItemPedido');
+const rotaFuncionario = require('./routes/Funcionario');
 
 //Tratamento de Erros
 app.use((req, res, next) => {
@@ -24,12 +24,16 @@ app.use((req, res, next) => {
 });
 
 app.use(morgan('dev'));
-app.use('/uploads', express.static('uploads'));
-app.use(bodyParser.urlencoded({ extended: false }));  // apenas dados simples
-app.use(bodyParser.json()); // json de entrada no body
+//app.use('/uploads', express.static('uploads'));
+app.use(bodyParser.urlencoded({ extended: false }));  
+app.use(bodyParser.json()); 
 
 app.use('/Mesa', rotaMesa);
 app.use('/Pedido', rotaPedido);
+app.use('/Cardapio', rotaCardapio);
+app.use('/ItemPedido', rotaItemPedido);
+app.use('/Funcionario', rotaFuncionario);
+
 
 app.use((req, res, next) => {
     const erro = new Error('Não encontrado');

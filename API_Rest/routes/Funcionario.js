@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM Pedido;',
+            'SELECT * FROM Funcionario;',
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
@@ -20,8 +20,15 @@ router.post('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'INSERT INTO Pedido (observacao_Pedido, qr_Code) VALUE (?,?);',
-            [req.body.observacao_Pedido, req.body.qr_Code],
+            'INSERT INTO Funcionario (nome_Funcionario, cpf_Funcionario, telefone_Funcionario, cargo_Funcionario, email_funcionario, senha) VALUE (?,?,?,?,?,?)',
+            [
+                req.body.nome_Funcionario,
+                req.body.cpf_Funcionario,
+                req.body.telefone_Fucionario,
+                req.body.cargo_Fucionario,
+                req.body.email_Fucionario,
+                req.body.senha
+            ],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {
@@ -31,7 +38,8 @@ router.post('/', (req, res, next) => {
                     });
                 }
                 res.status(201).send({
-                    mensagem: 'Pedido inserido com sucesso!',
+                    mensagem: 'Cardapio inserido com sucesso!',
+                    cod_Funcionario: resultado.cod_Funcionario
                 })
             }
         )
@@ -39,18 +47,19 @@ router.post('/', (req, res, next) => {
 
 });
 
-router.get('/:cod_Pedido', (req, res, next) => {
+router.get('/:cod_Funcionario', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM Pedido WHERE cod_Pedido = ?;',
-            [req.params.id_produto],
+            'SELECT * FROM Funcionario WHERE cod_Funcionario = ?;',
+            [req.params.cod_Funcionario],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
             }
         )
     });
+
 });
 
 router.patch('/', (req, res, next) => {
@@ -58,13 +67,16 @@ router.patch('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            `UPDATE Pedido
-                SET observacao_Pedido = ?
-                WHERE cod_Pedido      = ?`,
+            `UPDATE Funcionario
+                SET nome_Funcionario     = ?,
+                    cpf_Funcionario  =   = ?,
+                    telefone_Funcionario = ?,
+                    cargo_Funcionario    = ?,
+                    email.Funcionario    = ?,
+                    senha
+                WHERE cod_Cardapio   = ?`,
             [
-                req.body.horario_Pedido,
-                req.body.observacao_Pedido,
-                req.body.cod_Pedido
+                req.body.cod_Funcionario
             ],
             (error, resultado, field) => {
                 conn.release();
@@ -75,7 +87,7 @@ router.patch('/', (req, res, next) => {
                     });
                 }
                 res.status(202).send({
-                    mensagem: 'Pedido alterado com sucesso!',
+                    mensagem: 'Mesa alterada com sucesso!',
                 })
             }
         )
@@ -86,8 +98,8 @@ router.delete('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            `DELETE FROM Pedido WHERE cod_Pedido = ?`,
-            [req.body.id_produto],
+            `DELETE FROM Funcionario WHERE cod_Funcionario = ?`,
+            [req.body.qr_Code],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {
@@ -97,11 +109,12 @@ router.delete('/', (req, res, next) => {
                     });
                 }
                 res.status(202).send({
-                    mensagem: 'Pedido removido com sucesso com sucesso!',
+                    mensagem: 'Funcionário removido com sucesso!',
                 })
             }
         )
     });
 });
+
 
 module.exports = router;
