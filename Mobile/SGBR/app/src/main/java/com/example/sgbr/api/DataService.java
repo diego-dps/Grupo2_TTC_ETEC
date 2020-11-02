@@ -1,6 +1,7 @@
 package com.example.sgbr.api;
 
 import com.example.sgbr.model.Cardapio;
+import com.example.sgbr.model.Funcionario;
 import com.example.sgbr.model.Item;
 import com.example.sgbr.model.Mesa;
 import com.example.sgbr.model.Pedido;
@@ -64,9 +65,22 @@ public interface DataService {
     Call<Pedido> inserirPedido(@Body Pedido pedido);
 
     @PATCH()
-    Call<Mesa> atualizarPedido(@Path("cod_Pedido") int cod_Pedido, @Body Pedido pedido);
+    Call<Pedido> atualizarPedido(@Path("cod_Pedido") int cod_Pedido, @Body Pedido pedido);
 
     @DELETE()
     Call<Void> removerPedido(@Path("cod_Pedido") int cod_Pedido);
+
+    //REQUISIÇÕES FUNCIONÁRIO
+    @GET(/*Caminho da ação desejada*/)
+    Call<List<Funcionario>> recuperarFuncionários();
+
+    @POST()
+    Call<Funcionario> inserirFuncionario(@Body Funcionario funcionario);
+
+    @PATCH()
+    Call<Funcionario> atualizarFunionario(@Path("cod_Funcionario") int cod_Funcionario, @Body Funcionario funcionario);
+
+    @DELETE()
+    Call<Void> removerFuncionario(@Path("cod_Funcionario") int cod_Funcionario);
 }
 
