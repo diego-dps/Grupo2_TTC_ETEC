@@ -61,11 +61,21 @@ router.patch('/', (req, res, next) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
             `UPDATE Item
-                SET numero_Mesa = ?
-                WHERE qr_Code   = ?`,
+                SET cod_Cardapio   = ?,
+                    nome_Item      = ?,
+                    descricao_Item = ?,
+                    preco_Item     = ?,
+                    Ativo          = ?
+                    foto_Item      = ?,
+                    WHERE cod_Item = ?`,
             [
-                req.body.numero_Mesa,
-                req.body.qr_Code
+                req.body.cod_Item,
+                req.body.nome_Item,
+                req.body.descricao_Item,
+                req.body.preco_Item,
+                req.body.Ativo,
+                req.body.foto_Item,
+                req.body.cod_Item
             ],
             (error, resultado, field) => {
                 conn.release();
@@ -76,7 +86,7 @@ router.patch('/', (req, res, next) => {
                     });
                 }
                 res.status(202).send({
-                    mensagem: 'Mesa alterada com sucesso!',
+                    mensagem: 'Item alterado com sucesso!',
                 })
             }
         )
@@ -87,8 +97,8 @@ router.delete('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            `DELETE FROM Mesa WHERE qr_Code = ?`,
-            [req.body.qr_Code],
+            `DELETE FROM Item WHERE cod_Item = ?`,
+            [req.body.cod_Item],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {
@@ -98,7 +108,7 @@ router.delete('/', (req, res, next) => {
                     });
                 }
                 res.status(202).send({
-                    mensagem: 'Mesa removida com sucesso!',
+                    mensagem: 'Item removido com sucesso!',
                 })
             }
         )

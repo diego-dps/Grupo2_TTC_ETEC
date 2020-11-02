@@ -75,7 +75,7 @@ router.patch('/', (req, res, next) => {
                     });
                 }
                 res.status(202).send({
-                    mensagem: 'Mesa alterada com sucesso!',
+                    mensagem: 'Cardapio alterado com sucesso!',
                 })
             }
         )
