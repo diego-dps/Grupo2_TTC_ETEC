@@ -26,8 +26,15 @@ class CadastrosModel extends CI_Model {
         return $linhaCelular;
     }
 	
-    public function CadastrarItem($dados)
+    public function CadastrarItem($dados, $nome_arquivo)
 	{
-		return $this->db->insert('Item', $dados);
+        $query = [
+            'cod_Cardapio' => $dados['cod_Cardapio'],
+            'nome_Item' => $dados['nome_Item'],
+            'descricao_Item' => $dados['descricao_Item'],
+            'preco_Item' => $dados['preco_Item'],
+            'foto_Item' => $nome_arquivo,
+        ];
+		return $this->db->insert('Item', $query);
 	}
 }

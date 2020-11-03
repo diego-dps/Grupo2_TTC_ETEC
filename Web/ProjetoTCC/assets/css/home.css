@@ -6,6 +6,19 @@
     color: #323232;
     border: none;
 }
+/*GERAL*/
+a{
+	text-decoration: none;
+	color: white;
+}
+a:hover{
+	text-decoration: none;
+	color: white;
+}
+a:link{
+	text-decoration: none;
+	color: white;
+}
 body {
     font-family: montserrat;
     background-image: url("../img/food2.jpg");
@@ -26,6 +39,7 @@ nav ul li a{
     margin-right: 0.99px;
 }
 nav ul li a:hover, a.active{
+	text-decoration-color: white;
     background:  #dc3545;
 	transition: .5s;
 }

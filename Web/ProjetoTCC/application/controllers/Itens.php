@@ -8,6 +8,7 @@ class Itens extends CI_Controller
     {
 
         $dados = [
+            'cod_Cardapio' => $this->input->post('SELECIONARCARDAPIO'),
             'nome_Item' => $this->input->post('nomeItem'),
             'descricao_Item' => $this->input->post('descricao'),
             'preco_Item' => $this->input->post('preco'),
@@ -29,7 +30,30 @@ class Itens extends CI_Controller
             die("ErroPreco");
         }
 
-        if ($this->CadastrosModel->CadastrarItem($dados)) {
+        if (empty($dados['cod_Cardapio'])) {
+            die("ErroCardapio");
+        }
+
+        /**img */
+        $config["upload_path"] = FCPATH . "assets/img/itens";
+        $config["allowed_types"] = "jpg|jpeg|gif|png";
+        $config["encrypt_name"] = TRUE;
+
+        $this->load->library("upload", $config);
+        if($this->upload->do_upload('addFoto'))
+        {
+            $info_arquivo = $this->upload->data();
+            $nome_arquivo = $info_arquivo["file_name"];
+        }else
+        {
+            $erros = $this->upload->display_errors();
+            $alerta = array(
+                "class" => "danger",
+                "mensagem" => "ERRO.<br>". $erros
+            );
+        }
+
+        if ($this->CadastrosModel->CadastrarItem($dados, $nome_arquivo)) {
             echo "Sucesso";
             die();
         } else {
@@ -94,7 +118,26 @@ class Itens extends CI_Controller
             die();
         }
 
-        if ($this->UpdateItemModel->atualizarItem($dados)){
+        /**img */
+        $config["upload_path"] = FCPATH . "assets/img/itens";
+        $config["allowed_types"] = "jpg|jpeg|gif|png";
+        $config["encrypt_name"] = TRUE;
+  
+        $this->load->library("upload", $config);
+        if($this->upload->do_upload('addFoto'))
+        {
+            $info_arquivo = $this->upload->data();
+            $nome_arquivo = $info_arquivo["file_name"];
+        }else
+        {
+            $erros = $this->upload->display_errors();
+            $alerta = array(
+                "class" => "danger",
+                "mensagem" => "ERRO.<br>". $erros
+            );
+        }
+
+        if ($this->UpdateItemModel->atualizarItem($dados,$nome_arquivo)){
             echo "Sucesso";
             die();
         } else {
@@ -105,6 +148,16 @@ class Itens extends CI_Controller
 
     public function excluirItem()
     {
-        echo "Excluir";
+        $id = $this->input->post("id");
+
+        $this->load->model('ExcluirItensModel');
+
+        if ($this->ExcluirItensModel->excluirItens($id)) {
+            echo "Excluir";
+            die();
+        } else {
+            echo "ErroBanco";
+            die();
+        }
     }
 }

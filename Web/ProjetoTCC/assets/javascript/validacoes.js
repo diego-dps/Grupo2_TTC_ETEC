@@ -724,6 +724,15 @@ $(function() {
                         confirmButtonText: 'OK'
                     });
                 }
+                if (data == "ErroCardapio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo selecionar cardapio está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
                 if (data == "ErroFoto") {
                     Swal.fire({
                         icon: 'warning',
@@ -973,22 +982,16 @@ $(function() {
             success: function(data) {
                 if (data == "Excluir") {
                     Swal.fire({
-                        title: 'Você tem certeza?',
-                        text: "Você não poderá reverter isso!",
+                        title: 'Excluido!',
+                        text: "Funcionario excluido com sucesso",
                         icon: 'success',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sim, exclua!'
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
                       }).then((result) => {
-                        if (result.isConfirmed) {
-                          Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                          )
-                        }
-                      })
+                        if (result.value){
+                            window.location.replace("TelaItens");
+                          }
+                        })
                 }
             }
         })
@@ -1012,22 +1015,16 @@ $(function() {
             success: function(data) {
                 if (data == "Excluir") {
                     Swal.fire({
-                        title: 'Você tem certeza?',
-                        text: "Você não poderá reverter isso!",
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sim, exclua!'
+                        title: 'Excluido!',
+                        text: "Funcionario excluido com sucesso",
+                        icon: 'success',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
                       }).then((result) => {
-                        if (result.isConfirmed) {
-                          Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                          )
-                        }
-                      })
+                        if (result.value){
+                            window.location.replace("TTelaItens");
+                          }
+                        })
                 }
             }
         })

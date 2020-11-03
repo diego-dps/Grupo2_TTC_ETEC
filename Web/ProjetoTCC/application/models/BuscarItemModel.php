@@ -9,4 +9,12 @@ class BuscarItemModel extends CI_Model {
         return $this->db->get("item")->result_array();
     }
 
+    public function buscar(){
+
+        $termo = $this->input->post('pesquisar');
+        $this->db->select('*');
+        $this->db->like('nome_Item', $termo);
+        return $this->db->get("item")->result_array();
+    }
+
 }

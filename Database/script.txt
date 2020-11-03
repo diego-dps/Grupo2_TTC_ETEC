@@ -11,7 +11,7 @@ use tcc;
 create table Cardapio(
 cod_Cardapio int(100) unsigned not null auto_increment primary key,
 categoria_Cardapio VARCHAR(100) NOT NULL,
-foto_Cardapio blob not null
+foto_Cardapio VARCHAR(100) not null
 );
 /*Tabela Item*/
 create table Item (
@@ -21,7 +21,7 @@ nome_Item VARCHAR(100) NOT NULL,
 descricao_Item VARCHAR(100) NOT NULL,
 preco_Item DECIMAL(10,2) NOT NULL,
 Ativo tinyint(1) default 1 not null,
-foto_Item blob /*Utilização de Blob para armazenar a Imagem*/
+foto_Item VARCHAR(100) not null/*Utilização de Blob para armazenar a Imagem*/
 );
 /*Tabela Mesa*/
 create table Mesa(
@@ -54,21 +54,21 @@ email_Funcionario VARCHAR(100) unique NOT NULL,
 Ativo tinyint(1) default 1 not null,
 senha VARCHAR(50) NOT NULL
 );
-/*tabela Garçom*/ 
+/*tabela Garçom 
  create table Garcom(
  cod_Funcionario INT(100) UNSIGNED NOT NULL,
  cod_Pedido INT(100) NOT NULL
  );
- /*tabela Cozinha*/
+ tabela Cozinha
  create table Cozinha(
  cod_Funcionario INT(100) UNSIGNED NOT NULL,
  cod_Pedido INT(100) NOT NULL
  );
- /*tabela Administracao*/
+ /*tabela Administracao
  create table Administrador(
  cod_ADM INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
  cod_Funcionario INT(100) UNSIGNED NOT NULL
- );
+ );*/
 
 
 /*adicionando a chaves estrangeiras em suas respectivas tabelas*/
@@ -89,29 +89,29 @@ ALTER TABLE ItemPedido ADD CONSTRAINT FK_codigo_Pedidos/*as FK nao tem o mesmo n
 FOREIGN KEY (cod_Pedido)
 REFERENCES Pedido (cod_Pedido);
 
-ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Funcionario/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+/*ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Funcionario
 FOREIGN KEY (cod_Funcionario)
 REFERENCES Funcionario (cod_Funcionario)
 ON DELETE CASCADE;
 
-ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Ped/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+ALTER TABLE Cozinha ADD CONSTRAINT FK_cod_Ped
 FOREIGN KEY (cod_Pedido)
 REFERENCES Pedido (cod_Pedido);
 
-ALTER TABLE Garcom ADD CONSTRAINT FK_codFuncionario/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+ALTER TABLE Garcom ADD CONSTRAINT FK_codFuncionario
 FOREIGN KEY (cod_Funcionario)
 REFERENCES Funcionario (cod_Funcionario)
 ON DELETE CASCADE;
 
-ALTER TABLE Garcom ADD CONSTRAINT FK_codPedido/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+ALTER TABLE Garcom ADD CONSTRAINT FK_codPedido
 FOREIGN KEY (cod_Pedido)
 REFERENCES Pedido (cod_Pedido)
 ON DELETE CASCADE;
 
-ALTER TABLE Administrador ADD CONSTRAINT FK_codFuncionario_adm/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
+ALTER TABLE Administrador ADD CONSTRAINT FK_codFuncionario_adm
 FOREIGN KEY (cod_Funcionario)
 REFERENCES Funcionario (cod_Funcionario)
-ON DELETE CASCADE;
+ON DELETE CASCADE;*/
 
 INSERT INTO cardapio (categoria_cardapio, foto_Cardapio) VALUES
 ('Lanches','teste.jpg'),
@@ -121,14 +121,14 @@ INSERT INTO cardapio (categoria_cardapio, foto_Cardapio) VALUES
 SELECT * FROM cardapio;
 
 INSERT INTO item (nome_Item, preco_Item, descricao_Item, cod_Cardapio, foto_Item) values
-('X-salada', 13.00, 'hambúrguer de carne bovina 100g, pâo de hambúrguer, salada, tomate e mussarela', 1, 'teste.jpg'),
-('X-egg', 14.00, 'hambúrguer de carne bovina 100g, pâo de hambúrguer, salada, tomate, mussarela e 2 ovos', 1, 'teste.jpg'),
-('Açai', 20.00, 'Açai na tigela 500ml, Acompanhamentos: 2 frutas, granola, leite em pó, leite condensado', 2, 'teste.jpg'),
-('Bolo de brigadeiro', 7.00, 'Massa de chocolate com recheio e cobertura de brigadeiro e granulado de chocolate de pote de 250ml', 2, 'teste.jpg'),
-('Coca-Cola', 6.00, 'Cola-cola 400ml', 3, 'teste.jpg'),
-('Heineken', 12.00, 'Heineken 400ml', 3, 'teste.jpg'),
-('File Acebolado', 21.00, 'File Acebolado com arroz soltinho, feijão fresco, faroja e salada', 4, 'teste.jpg'),
-('File Grelhado', 21.00, 'File Grelhado com arroz soltinho, feijão fresco, faroja e salada', 4, 'teste.jpg');
+('X-salada', 13.00, 'hambúrguer de carne bovina 100g, pâo de hambúrguer, salada, tomate e mussarela', 1, '7b4c618f83bacc5d24ba9673855db486.jpg'),
+('X-egg', 14.00, 'hambúrguer de carne bovina 100g, pâo de hambúrguer, salada, tomate, mussarela e 2 ovos', 1, '2606da6d5e082d3145b51659c7d6e889.jpg'),
+('Açai', 20.00, 'Açai na tigela 500ml, Acompanhamentos: 2 frutas, granola, leite em pó, leite condensado', 2, '905d3549f6be6dc19b86ac79c53ddc2d.jpg'),
+('Bolo de brigadeiro', 7.00, 'Massa de chocolate com recheio e cobertura de brigadeiro e granulado de chocolate de pote de 250ml', 2, '16e65a2ddddbaa9be773f1057e86c1fb.jpg'),
+('Coca-Cola', 6.00, 'Cola-cola 400ml', 3, 'f3580ae5eeddaa04d744704679a586a9.jpg'),
+('Heineken', 12.00, 'Heineken 400ml', 3, '2aecc7e9ed2d33e259312f6da778fad1.jpg'),
+('File Acebolado', 21.00, 'File Acebolado com arroz soltinho, feijão fresco, faroja e salada', 4, '3a63dbaece1242ec415c61904ad8bb81.jpg'),
+('File Grelhado', 21.00, 'File Grelhado com arroz soltinho, feijão fresco, faroja e salada', 4, 'adada571f32b663cefbaad29ec7ce38e.jpg');
 select * from item;
 
 INSERT INTO mesa (qr_Code, numero_Mesa) VALUES 
@@ -162,7 +162,7 @@ INSERT INTO funcionario (nome_Funcionario, cpf_Funcionario, telefone_Funcionario
 select * from funcionario 
 order by nome_Funcionario asc;
 
-INSERT INTO cozinha (cod_Funcionario, cod_Pedido) VALUES 
+/*INSERT INTO cozinha (cod_Funcionario, cod_Pedido) VALUES 
 (3,1),
 (3,1),
 (3,2);
@@ -174,8 +174,16 @@ INSERT INTO garcom (cod_Funcionario, cod_Pedido) VALUES
 
 INSERT INTO administrador (cod_Funcionario) VALUES 
 (1);
-SELECT * FROM administrador;
+SELECT * FROM administrador;*/
 
-select c.cod_Pedido, d.numero_Mesa, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido
-from itempedido a, item b, pedido c, mesa d
-where a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and d.qr_Code = c.qr_Code; 
+select c.cod_Pedido, d.numero_Mesa, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, b.cod_Cardapio, e.categoria_Cardapio
+from itempedido a, item b, pedido c, mesa d, cardapio e
+where a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and d.qr_Code = c.qr_Code and b.cod_Cardapio = e.cod_Cardapio; 
+
+select a.cod_Item, a.cod_Cardapio, a.nome_Item, a.descricao_Item, a.preco_Item, a.Ativo, a.foto_Item, b.categoria_Cardapio
+from item a, cardapio b
+where a.cod_Cardapio = b.cod_Cardapio and a.Ativo = 1
+order by a.nome_Item asc;
+
+select * from item a
+where a.cod_Cardapio = 1;

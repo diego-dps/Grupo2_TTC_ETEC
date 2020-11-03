@@ -35,6 +35,15 @@
                     <input type="text" class="form-control" id="preco" name="preco">
                 </div>
                 <div class="form-group col-9">
+                    <label for="SelecionarCargo">Selecionar Cardapio</label>
+                    <select class="form-control" id="SELECIONARCARDAPIO" name="SELECIONARCARDAPIO">
+                        <option></option>
+                        <?php foreach ($cardapio as $cardapios) : ?>
+                        <option><?php echo $cardapios['cod_Cardapio'] ?> - <?php echo $cardapios['categoria_Cardapio'] ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+                <div class="form-group col-9">
                     <label for="addFoto">Adicionar foto</label>
                     <input type="file" class="form-control" id="addFoto" name="addFoto">
                 </div>
@@ -85,7 +94,7 @@
     <script src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/popper.js/dist/umd/popper.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url("assets/node_modules/jquery/dist/jquery.mask.min.js"); ?>"></script>
-    <!--<script type="text/javascript" src="<?php echo base_url('assets/javascript/validacoes.js'); ?>"></script>-->
+    <script type="text/javascript" src="<?php echo base_url('assets/javascript/validacoes.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/bootstrap/dist/js/bootstrap.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/sweetalert2/dist/sweetalert2.all.js'); ?>"></script>
 </body>

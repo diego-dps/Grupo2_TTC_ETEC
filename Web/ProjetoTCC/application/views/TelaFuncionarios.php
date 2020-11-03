@@ -25,8 +25,8 @@
         <div class="container-fluid mt-4" style="background-color: white; border: solid white 15px; border-radius: 10px;">
             <div class="row mx-auto">
                 <h1 class="display-5 col-8 text-center my-auto" style="position: relative; left: 152px; top: -10px;">Funcionários</h1>
-                <form class="col-3" action="">
-                    <input class="my-auto form-control bg-dark text-white" style="position: relative; left: 15px;" type="search" placeholder="Pesquisar">
+                <form class="col-3" action="<?php echo base_url('index.php/Welcome/pesquisarFuncionarios')?>" method="post">
+                    <input class="my-auto form-control bg-dark text-white" style="position: relative; left: 15px;" type="search" name="pesquisar" id="pesquisar" placeholder="Pesquisar">
                 </form>
                 <div class="col-1 mx-auto my-auto">
                     <a href=" <?php echo base_url('index.php/Welcome/telaCadastrarFuncionario')?>"><img class="rounded mx-auto d-block" src="<?php echo base_url('assets/img/icons8-add-user-male-30.png');?>" alt=""></a>
@@ -161,8 +161,9 @@
         <div class="container2 mx-auto mt-4 table-responsive-sm">
             <div class="row mx-auto mt-2">
                 <h1 class="display-5 col-12 text-center">Funcionários</h1>
-                <form class="mx-auto mt-2 col-12" action="">
-                    <input class="mx-auto bg-dark form-control text-white pesquisa" type="search" placeholder="Pesquisar">
+                <form class="mx-auto mt-2 col-12" action="<?php echo base_url('index.php/Welcome/pesquisarFuncionarios')?>" method="post">
+                    <input class="mx-auto bg-dark form-control text-white pesquisa" type="search" name="pesquisar" id="pesquisar" placeholder="Pesquisar">
+                    <a href=" <?php echo base_url('index.php/Welcome/telaCadastrarFuncionario')?>"><img class="rounded mx-auto d-block" src="<?php echo base_url('assets/img/icons8-add-user-male-30.png');?>" alt=""></a>
                 </form>
             </div>
             <table class="mt-2 table table-dark table-hover text-center">
@@ -178,104 +179,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="col">Zezinho</th>
-                        <th scope="col">Garçom</th>
-                        <th scope="col">
-                        <div class="container">
-                                <button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn2">Editar</button>
-                                <div class="modal fade bd-example-modal-lg" tabindex="-1" id="myModal2" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                            <div class="modal-header" style="padding:35px 50px;">
-                                                <h4 style="position: relative; left: 170px;">Editar</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="<?php echo base_url("index.php/CadastroFuncionario/validarEdicaoFuncionarioresponsivo");?>" method="POST" id="UpdateFuncionarioresponsivo">
-                                                    <div class="row justify-content-around">
-                                                    <div class="form-group mx-auto col-5">
-                                                        <label for="nome">Nome</label>
-                                                        <input type="text" class="form-control" id="NOME" name="NOME" autocomplete="off">
-                                                    </div>
-                                                    <div class="form-group mx-auto col-5">
-                                                        <label for="email">E-mail</label>
-                                                        <input type="email" class="form-control" id="EMAIL" name="EMAIL" autocomplete="off">
-                                                    </div>
-                                                    <div class="form-group mx-auto col-5">
-                                                        <label for="cpf">CPF</label>
-                                                        <input type="text" class="form-control" id="CPF" name="CPF">
-                                                    </div>
-                                                    <div class="form-group mx-auto col-5">
-                                                    <label for="pass">Senha</label>
-                                                    <input type="password" class="form-control" id="PASS" name="PASS">
-                                                </div>
-                                                <div class="form-group mx-auto col-5">
-                                                    <label for="tel">Celular</label>
-                                                    <input type="text" class="form-control" id="CELULAR" name="CELULAR">
-                                                </div>
-                                                <div class="form-group mx-auto col-5">
-                                                    <label for="ConfPass">Confirmar Senha</label>
-                                                    <input type="password" class="form-control" id="CONFPASS" name="CONFPASS">
-                                                </div>
-                                                <div class="form-group col-5 ml-4">
-                                                    <label for="SelecionarCargo">Selecionar Cargo</label>
-                                                    <select class="form-control" id="SELECIONARCARGO" name="SELECIONARCARGO">
-                                                        <option></option>
-                                                        <option>Administrador</option>
-                                                        <option>Cozinheiro</option>
-                                                        <option>Garçom</option>
-                                                    </select>
-                                                </div>
-                                                </div>                                       
-                                                    </div>
-                                                    <div class="modal-footer flex-center">
-                                                        <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Cancelar</button>
-                                                        <input  type="submit" class="btn btn-primary btn-lg" style="position: static;" value="Salvar">
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                            <script>
-                                $(document).ready(function(){
-                                    $("#myBtn2").click(function(){
-                                    $("#myModal2").modal();
-                                    });
-                                });
-                            </script>
-                        </th>
-                        <th scope="col">
-                            <form action="<?php echo base_url("index.php/CadastroFuncionario/excluirFuncionario");?>" method="POST" id="ExcluirFuncionarioresponsivo">
-                                <input type="submit" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Romover">
-                            </form>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th scope="col">Maria</th>
-                        <th scope="col">Administrador</th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
-                    </tr>
-                    <tr>
-                        <th scope="col">José</th>
-                        <th scope="col">Cozinheiro</th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
-                    </tr>
-                    <tr>
-                        <th scope="col">José</th>
-                        <th scope="col">Cozinheiro</th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
-                    </tr>
-                    <tr>
-                        <th scope="col">José</th>
-                        <th scope="col">Cozinheiro</th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Editar</button></th>
-                        <th scope="col"><button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" id="myBtn">Remover</button></th>
-                    </tr>
+                    <?php foreach ($funcionario as $funcionarios) : ?>
+                        <tr>
+                            <th scope="col"><?php echo $funcionarios['nome_Funcionario'] ?></th>
+                            <th scope="col"><?php echo $funcionarios['cargo_Funcionario'] ?></th>
+                            <th scope="col"><?php echo $funcionarios['cpf_Funcionario'] ?></th>
+                            <th scope="col"><?php echo $funcionarios['telefone_Funcionario'] ?></th>
+                            <th scope="col"><?php echo $funcionarios['email_Funcionario'] ?></th>
+                            <th scope="col">
+                                <button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" 
+                                    style="position: relative; top: -25px;" data-toggle="modal" 
+                                    data-target="#exampleModal" data-whatever="<?php echo $funcionarios['cod_Funcionario']?>" 
+                                    data-whatevernome="<?php echo $funcionarios['nome_Funcionario']?>" data-whatevercargo="<?php echo $funcionarios['cargo_Funcionario']?>"
+                                    data-whatevercpf="<?php echo $funcionarios['cpf_Funcionario']?>" data-whatevertelefone="<?php echo $funcionarios['telefone_Funcionario']?>"
+                                    data-whateveremail="<?php echo $funcionarios['email_Funcionario']?>" data-whateversenha="<?php echo $funcionarios['senha']?>">Editar
+                                </button>
+                            </th>
+                            <th scope="col">
+                                <!--<form action="<?php echo base_url("index.php/CadastroFuncionario/excluirFuncionario");?>" method="POST" id="ExcluirFuncionario">
+                                    <input type="submit" id="id" name="id" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" value="Remover">
+                                </form>-->
+                                <button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" data-toggle="modal" data-target="#ExemploModalCentralizado"
+                                data-whateverid="<?php echo $funcionarios['cod_Funcionario']?>">
+                                    Remover
+                                </button>
+                            </th>
+                        </tr>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
