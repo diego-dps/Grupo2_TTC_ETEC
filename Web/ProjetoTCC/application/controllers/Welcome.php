@@ -95,9 +95,9 @@ class Welcome extends CI_Controller {
 	}
 	public function itensCardapio()
 	{
-		$this->load->model("BuscarItensCardapio");
-        $lista = $this->BuscarItensCardapio->buscarTodos();
-        $dados = array("item" => $lista);
-		$this->load->view('ItensCardapio', $dados);
+		$this->load->model('BuscarItensCardapio');
+		$lista = $this->BuscarItensCardapio->buscarTodos();
+		$itens = array("item" => $lista);
+		$this->load->view('ItensCardapio', $itens);
 	}
 }

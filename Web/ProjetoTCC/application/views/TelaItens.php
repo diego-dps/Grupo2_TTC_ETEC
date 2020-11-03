@@ -93,10 +93,6 @@
                                 <label class="preco">Preço</label>
                                 <input type="text" class="form-control" name="preco" id="preco">
                             </div>
-                            <div class="form-group col-12">
-                                <label class="foto">Adicionar foto</label>
-                                <input type="file" class="form-control" name="addFoto" id="addFoto">
-                            </div>
                             <input type="hidden" id="id_item" name="id_item">      
                         </div>
                         </div>

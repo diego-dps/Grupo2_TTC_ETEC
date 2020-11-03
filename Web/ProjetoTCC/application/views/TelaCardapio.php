@@ -28,26 +28,29 @@
         <div class="wrapper">
             <div class="cards_wrap">
             <?php foreach ($cardapio as $cardapios) : ?>
-                <div class="card_item">
-                    <div class="card_inner">
-                        <div class="card_top">
-                            <img src="<?php echo base_url('assets/img/sobremesa.jpg'); ?>" alt="car" />
-                        </div>
-                        <input type="text" name="" id="" value="<?php echo $cardapios['cod_Cardapio'] ?>">
-                        <p><?php echo $cardapios['categoria_Cardapio'] ?></p>
-                        <div class="card_bottom">
-                            <div class="card_category">
-                            <!--<button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" 
-                                    style="position: relative; top: -25px;" data-toggle="modal" 
-                                    data-target="#exampleModal" data-whatever="<?php echo $funcionarios['cod_Funcionario']?>" 
-                                    data-whatevernome="<?php echo $funcionarios['nome_Funcionario']?>" data-whatevercargo="<?php echo $funcionarios['cargo_Funcionario']?>"
-                                    data-whatevercpf="<?php echo $funcionarios['cpf_Funcionario']?>" data-whatevertelefone="<?php echo $funcionarios['telefone_Funcionario']?>"
-                                    data-whateveremail="<?php echo $funcionarios['email_Funcionario']?>" data-whateversenha="<?php echo $funcionarios['senha']?>"><?php echo $cardapios['categoria_Cardapio']?>
-                                </button>-->
+                <form action="<?php echo base_url("index.php/Welcome/itensCardapio")?>" method="post">
+                    <div class="card_item">
+                        <div class="card_inner">
+                            <div class="card_top">
+                                <img src="<?php echo base_url('assets/img/sobremesa.jpg'); ?>" alt="car" />
+                            </div>
+                            <input type="text" name="id" id="id" value="<?php echo $cardapios['cod_Cardapio'] ?>">
+                            <p><?php echo $cardapios['categoria_Cardapio'] ?></p>
+                            <div class="card_bottom">
+                                <div class="card_category">
+                                <button type="submit">VER</button>
+                                <!--<button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" 
+                                        style="position: relative; top: -25px;" data-toggle="modal" 
+                                        data-target="#exampleModal" data-whatever="<?php echo $funcionarios['cod_Funcionario']?>" 
+                                        data-whatevernome="<?php echo $funcionarios['nome_Funcionario']?>" data-whatevercargo="<?php echo $funcionarios['cargo_Funcionario']?>"
+                                        data-whatevercpf="<?php echo $funcionarios['cpf_Funcionario']?>" data-whatevertelefone="<?php echo $funcionarios['telefone_Funcionario']?>"
+                                        data-whateveremail="<?php echo $funcionarios['email_Funcionario']?>" data-whateversenha="<?php echo $funcionarios['senha']?>"><?php echo $cardapios['categoria_Cardapio']?>
+                                    </button>-->
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             <?php endforeach ?>
             </div>
         </div>

@@ -118,26 +118,7 @@ class Itens extends CI_Controller
             die();
         }
 
-        /**img */
-        $config["upload_path"] = FCPATH . "assets/img/itens";
-        $config["allowed_types"] = "jpg|jpeg|gif|png";
-        $config["encrypt_name"] = TRUE;
-  
-        $this->load->library("upload", $config);
-        if($this->upload->do_upload('addFoto'))
-        {
-            $info_arquivo = $this->upload->data();
-            $nome_arquivo = $info_arquivo["file_name"];
-        }else
-        {
-            $erros = $this->upload->display_errors();
-            $alerta = array(
-                "class" => "danger",
-                "mensagem" => "ERRO.<br>". $erros
-            );
-        }
-
-        if ($this->UpdateItemModel->atualizarItem($dados,$nome_arquivo)){
+        if ($this->UpdateItemModel->atualizarItem($dados)){
             echo "Sucesso";
             die();
         } else {
