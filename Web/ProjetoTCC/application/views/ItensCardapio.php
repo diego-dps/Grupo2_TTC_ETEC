@@ -37,6 +37,8 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Descrição</th>
                         <th scope="col">Preço</th>
+                        <th scope="col">Editar Item</th>
+                        <th scope="col">Excluir</th>
                     </tr>
                 </thead>
                 <div>
@@ -47,6 +49,19 @@
                                 <th scope="col"><?php echo $itens['nome_Item'] ?></th>
                                 <th scope="col" class="alinhamentodetexto"><?php echo $itens['descricao_Item'] ?></th>
                                 <th scope="col"><?php echo reais($itens['preco_Item']) ?></th>
+                                <th scope="col">
+                                    <button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" 
+                                    style="position: relative; top: -25px;" data-toggle="modal" 
+                                    data-target="#exampleModal" data-whatever="<?php echo $itens['cod_Item']?>" 
+                                    data-whatevernome="<?php echo $itens['nome_Item'] ?>" data-whateverdescricao="<?php echo $itens['descricao_Item'] ?>"
+                                    data-whateverpreco="<?php echo reais($itens['preco_Item']) ?>" data-whatevercodCardapio="<?php echo $itens['cod_Cardapio'] ?>">Editar</button>
+                                </th>
+                                <th scope="col">
+                                <button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" data-toggle="modal" data-target="#ExemploModalCentralizado"
+                                    data-whateverid="<?php echo $itens['cod_Item']?>">
+                                    Remover
+                                </button>
+                                </th>
                             </tr>
                         <?php endforeach ?>
                     </tbody>
@@ -54,6 +69,63 @@
             </table>
         </div>
         <a class="mt-4 mb-5 btn btn-lg btn-danger rounded mx-auto d-block col-1" href="<?php echo base_url('index.php/Welcome/telaCardapio');?>">Voltar</a>
+    </div>
+
+    <!--inicio modal-->
+    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                    <h4 style="position: relative; left: 41.9%;">Editar</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="<?php echo base_url("index.php/Itens/validarUpdateItens");?>" method="POST" id="UpdateCardapioItens">
+                        <div class="form-row">
+                            <div class="form-group col-12">
+                                <label class="nomeitem">Nome</label>
+                                <input type="text" class="form-control" autocomplete="off" name="nomeItem" id="nomeItem">
+                            </div>
+                            <div class="form-group col-12">
+                                <label class="desc">Descrição</label>
+                                <textarea type="text" class="form-control" name="descricao" id="descricao" rows="3"></textarea>
+                            </div>
+                            <div class="form-group col-4">
+                                <label class="preco">Preço</label>
+                                <input type="text" class="form-control" name="preco" id="preco">
+                            </div>
+                            <input type="hidden" id="id_item" name="id_item">      
+                        </div>
+                        </div>
+                         <div class="modal-footer flex-center">
+                            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" style="position: static;">Cancelar</button>
+                            <input  type="submit" class="btn btn-primary btn-lg" style="position: static;" value="Salvar">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <!--fim do modal-->
+
+    <!-- Modal Excluir-->
+    <div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h2 class="modal-title" id="TituloModalCentralizado" style="position: relative; left: 40%;">Excluir</h2>
+                </div>
+                <div class="modal-body">
+                    <h6>Tem certeza de que deseja excluir o item selecionado?</h6>
+                    <form action="<?php echo base_url("index.php/Itens/excluirItem");?>" method="POST" id="ExcluirItens">
+                    <input type="hidden" id="id" name="id">
+                </div>
+                <div class="modal-footer bg-white">
+                    <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger btn-lg">Apagar</button>
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <!-- Responsivo-->

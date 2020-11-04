@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-/* TESTE
+
     public void testeTelas(View v){
 
         Intent it = new Intent(MainActivity.this, CardapioActivity.class);
         startActivity(it);
     }
-*/
+
 }

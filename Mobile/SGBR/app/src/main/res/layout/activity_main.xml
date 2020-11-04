@@ -18,8 +18,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_launcher_background"
-        />
+         />
     <TextView
         android:id="@+id/Main_text_Titulo"
         android:layout_width="match_parent"
@@ -57,7 +56,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/qrcode96px"
+        android:background="@drawable/qrcode96px"
         />
 
     <Button
@@ -100,7 +99,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/plain_text_comum"
+        android:background="@drawable/plain_text"
         android:textSize="20dp"
         android:ems="10"
         android:hint="Digite o código"

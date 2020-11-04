@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="text-center my-auto cor">
-        <h1 class="estilo">PRODUTOS</h1>
+        <h1 class="estilo">CARDAPIO</h1>
     </div>    
     <div class="container-fluid mt-4">
         <!--<div class="row mx-auto">
@@ -28,13 +28,13 @@
         <div class="wrapper">
             <div class="cards_wrap">
             <?php foreach ($cardapio as $cardapios) : ?>
-                <form action="<?php echo base_url("index.php/Welcome/itensCardapio")?>" method="post">
-                    <div class="card_item">
+                <form class="card_item" action="<?php echo base_url("index.php/Welcome/itensCardapio")?>" method="post">
+                   
                         <div class="card_inner">
                             <div class="card_top">
                                 <img src="<?php echo base_url('assets/img/sobremesa.jpg'); ?>" alt="car" />
                             </div>
-                            <input type="text" name="id" id="id" value="<?php echo $cardapios['cod_Cardapio'] ?>">
+                            <input type="hidden" name="id" id="id" value="<?php echo $cardapios['cod_Cardapio'] ?>">
                             <p><?php echo $cardapios['categoria_Cardapio'] ?></p>
                             <div class="card_bottom">
                                 <div class="card_category">
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    
                 </form>
             <?php endforeach ?>
             </div>
