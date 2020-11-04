@@ -10,7 +10,7 @@ public class Conexao {
     public Retrofit conexao(){
         //CONFIGURAÇÃO RETROFIT
         retrofit = new  Retrofit.Builder()
-                .baseUrl("http://192.168.15.8:3000/")
+                .baseUrl("http://192.168.15.14:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

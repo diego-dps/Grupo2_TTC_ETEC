@@ -1,5 +1,7 @@
 package com.example.sgbr.adapter;
 
+import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,29 +21,35 @@ import java.util.List;
 
 public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCardapio.MyViewHolder> {
 
+    private Activity activity;
     private  List<Item> listaItens;
-    public AdapterItensCardapio(List<Item> lista) {
-        this.listaItens = lista;
+
+    public  void InserirListaItens(List<Item> listaItens){
+
+    }
+    public AdapterItensCardapio(Activity activity, List<Item> listaItens) {
+        this.listaItens = listaItens;
+        this.activity = activity;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemCardapio = LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.categoria_cardapio_item, parent, false);
 
-        return new MyViewHolder(itemCardapio);
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-            Item item = listaItens.get(position);
-            holder.txt_nome_item.setText(item.getNome_Item());
-            holder.txt_preview.setText(item.getDescricao_Item());
-            holder.txt_moeda2.setText("R$");
-            holder.txt_valor.setText(item.getPreco_Item());
+        Item item = listaItens.get(position);
+                holder.txt_nome_item.setText(item.getNome_Item());
+                holder.txt_preview.setText(item.getDescricao_Item());
+                holder.txt_moeda2.setText("R$");
+                holder.txt_valor.setText(item.getPreco_Item());
     }
 
     @Override

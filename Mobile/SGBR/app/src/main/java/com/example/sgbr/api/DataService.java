@@ -32,10 +32,12 @@ public interface DataService {
     Call<Void> removerCardapio(@Path("cod_Cardapio") int cod_Cardapio);
 
     //REQUISIÇÕES ITEM
-    @GET(/*Caminho da ação desejada*/)
-    Call<List<Item>> recuperarItens();
+    @GET("/Item")
+    Call<Item> recuperarItens(
 
-    @POST()
+    );
+
+    @POST("/Item")
     Call<Item> inserirItem(@Body Item item);
 
     @PATCH()

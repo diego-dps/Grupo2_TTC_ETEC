@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent it = new Intent(MainActivity.this, CategoriaCardapioActivity.class);
         startActivity(it);
+
+        CategoriaCardapioActivity cardapioActivity = new CategoriaCardapioActivity();
     }
 
 }
