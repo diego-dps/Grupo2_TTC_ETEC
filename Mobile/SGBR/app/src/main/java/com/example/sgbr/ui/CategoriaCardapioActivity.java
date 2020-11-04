@@ -1,14 +1,18 @@
 package com.example.sgbr.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.example.sgbr.R;
+import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Conexao;
 import com.example.sgbr.model.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -21,7 +25,8 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
     private Conexao conexao;
     private Retrofit retrofit;
     private DataService service;
-    private List<Item> listaItens;
+    private List<Item> listaItens = new ArrayList<>();
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,19 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
 
         retrofit = conexao.conexao();
         service = retrofit.create(DataService.class);
+        recyclerView = findViewById(R.id.recyclerciew_categoria_cardapio);
+
+        //Lista de Itens
+        recuperarItens();
+
+        //Configura o Adapter
+        AdapterItensCardapio itensCardapio = new AdapterItensCardapio(listaItens);
+
+        //Configura o RecycleView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(itensCardapio);
     }
 
     private void recuperarItens(){
@@ -39,6 +57,9 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Item>>() {
             @Override
             public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
+                if (response.isSuccessful()){
+                    listaItens = response.body();
+                }
 
             }
 
