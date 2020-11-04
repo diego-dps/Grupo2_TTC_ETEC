@@ -58,6 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/qrcode96px"
+        tools:ignore="VectorDrawableCompat"
         />
 
     <Button
@@ -100,7 +101,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/plain_text_comum"
+
         android:textSize="20dp"
         android:ems="10"
         android:hint="Digite o código"

@@ -16,11 +16,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:background="@color/azulClaro">
-=======
+
             android:background="@color/colorBackgroundActivity">
->>>>>>> 3fab723718672dafdc8284c2455940fa9fbdc83c
+
 
             <TextView
                 android:id="@+id/txt_icon_back"

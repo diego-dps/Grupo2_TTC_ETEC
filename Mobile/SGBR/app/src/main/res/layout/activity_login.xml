@@ -39,7 +39,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/plain_text_comum"
+
         android:textSize="20dp"
         android:ems="10"
         android:hint="Digite seu Usuario ou Email"
@@ -65,7 +65,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/plain_text_comum"
+
         android:textSize="20dp"
         android:ems="10"
         android:hint="Digite sua Senha"
