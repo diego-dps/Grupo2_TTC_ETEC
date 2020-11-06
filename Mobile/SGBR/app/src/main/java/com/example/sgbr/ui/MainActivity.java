@@ -5,14 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.sgbr.R;
+import com.example.sgbr.model.Mesa;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private GarcomHomeActivity objCodigo = new GarcomHomeActivity();
+    private EditText main_editText_Codigo;
+    private List<Mesa> listaMesas = new ArrayList<>();
+    private Mesa mesa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText main_editText_Codigo = (EditText) findViewById(R.id.Main_editText_Codigo);
 
+
         Button main_btn_Escanear = (Button) findViewById(R.id.Main_btn_Escanear);
         Button main_btn_ConfirmarCodigo = (Button) findViewById(R.id.Main_btn_ConfirmarCodigo);
 
@@ -45,15 +57,30 @@ public class MainActivity extends AppCompatActivity {
         main_btn_Escanear.setTypeface(font);
         main_btn_ConfirmarCodigo.setTypeface(font);
 
+        main_btn_ConfirmarCodigo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(main_editText_Codigo.getText().toString())){
+                    main_editText_Codigo.setError("*");
+                    main_editText_Codigo.requestFocus();
+                }
+                else {
+                    Intent it = new Intent(MainActivity.this, CategoriaCardapioActivity.class);
+                    startActivity(it);
+                }
+            }
+        });
 
 
     }
-    public void testeTelas(View v){
 
-        Intent it = new Intent(MainActivity.this, CategoriaCardapioActivity.class);
-        startActivity(it);
+    private void recuperarCodigo(){
+        listaMesas = objCodigo.recuperarMesas();
+        for (int i=0; i < listaMesas.size(); i++){
+            Mesa mesa = listaMesas.get(i);
+            Log.d("Resultado: ", "recuperarCodigo: " + mesa.getNumero_Mesa());
+        }
 
-        CategoriaCardapioActivity cardapioActivity = new CategoriaCardapioActivity();
     }
 
 }

@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
 
-    android:padding="20dp"
-    android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    android:padding="20dp"
+    app:layout_gravity="center">
 
 
     <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
         android:id="@+id/img_categoria"
-        android:src="@drawable/pratofeito"/>
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        android:src="@drawable/pratofeito" />
 
     <TextView
-        android:layout_below="@+id/img_categoria"
+        android:id="@+id/titulo_categoria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/colorTextPrimary"
-        android:text="PRATOS"
-        android:id="@+id/titulo_categoria"
+        android:layout_below="@+id/img_categoria"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"/>
+        android:text="PRATOS"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="20sp" />
 
 </RelativeLayout>
