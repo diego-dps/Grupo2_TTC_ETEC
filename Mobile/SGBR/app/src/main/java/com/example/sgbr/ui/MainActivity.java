@@ -1,7 +1,6 @@
 package com.example.sgbr.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -9,8 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sgbr.R;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
 
         //Atribuição de id
 
-        TextView main_text_Titulo = (TextView) findViewById(R.id.Main_text_Titulo);
-        TextView main_text_Subtitulo = (TextView) findViewById(R.id.Main_text_Subtitulo);
-        TextView main_text_Texto1 = (TextView) findViewById(R.id.Main_text_Texto1);
-        TextView main_text_Texto2 = (TextView) findViewById(R.id.Main_text_Texto2);
-        TextView main_text_Texto3 = (TextView) findViewById(R.id.Main_text_Texto3);
-        TextView main_text_Link = (TextView) findViewById(R.id.Main_text_Link);
+        TextView main_text_Titulo = findViewById(R.id.Main_text_Titulo);
+        TextView main_text_Subtitulo = findViewById(R.id.Main_text_Subtitulo);
+        TextView main_text_Texto1 = findViewById(R.id.Main_text_Texto1);
+        TextView main_text_Texto2 = findViewById(R.id.Main_text_Texto2);
+        TextView main_text_Texto3 = findViewById(R.id.Main_text_Texto3);
+        TextView main_text_Link = findViewById(R.id.Main_text_Link);
 
-        EditText main_editText_Codigo = (EditText) findViewById(R.id.Main_editText_Codigo);
+        EditText main_editText_Codigo = findViewById(R.id.Main_editText_Codigo);
 
-        Button main_btn_Escanear = (Button) findViewById(R.id.Main_btn_Escanear);
-        Button main_btn_ConfirmarCodigo = (Button) findViewById(R.id.Main_btn_ConfirmarCodigo);
+        Button main_btn_Escanear = findViewById(R.id.Main_btn_Escanear);
+        Button main_btn_ConfirmarCodigo = findViewById(R.id.Main_btn_ConfirmarCodigo);
 
         //Definição de Fontes:
 
@@ -44,16 +49,46 @@ public class MainActivity extends AppCompatActivity {
         main_text_Link.setTypeface(font);
         main_btn_Escanear.setTypeface(font);
         main_btn_ConfirmarCodigo.setTypeface(font);
+        final Activity activity = this;
 
-
+        main_btn_Escanear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IntentIntegrator integrator = new IntentIntegrator(activity);
+                integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+                integrator.setPrompt("Scan a barcode");
+                integrator.setCameraId(0);  // Use a specific camera of the device
+               // integrator.setBeepEnabled(false);
+                //integrator.setBarcodeImageEnabled(true);
+                integrator.initiateScan();
+            }
+        });
 
     }
-    public void testeTelas(View v){
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+
+        if (result != null) {
+            if (result.getContents() != null) {
+                alert(result.getContents());
+            } else {
+                alert("Scan Cancelado");
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+    private void alert (String msg){
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    public void testeTelas (View v){
 
         Intent it = new Intent(MainActivity.this, CategoriaCardapioActivity.class);
         startActivity(it);
 
         CategoriaCardapioActivity cardapioActivity = new CategoriaCardapioActivity();
     }
-
 }
