@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 IntentIntegrator integrator = new IntentIntegrator(activity);
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
-                integrator.setPrompt("Scan a barcode");
-                integrator.setCameraId(0);  // Use a specific camera of the device
-                // integrator.setBeepEnabled(false);
-                //integrator.setBarcodeImageEnabled(true);
+                integrator.setPrompt("Scaneie o QrCode que está em sua mesa");
+                integrator.setCameraId(0);
+                integrator.setBeepEnabled(false);
+                integrator.setBarcodeImageEnabled(true);
                 integrator.initiateScan();
             }
         });
