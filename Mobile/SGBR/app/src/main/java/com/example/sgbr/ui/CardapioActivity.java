@@ -4,16 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;;
 
 import com.example.sgbr.R;
 import com.example.sgbr.api.DataService;
-import com.example.sgbr.controller.CardapioAdapter;
+import com.example.sgbr.adapter.AdapterCategoriaCardapio;
 import com.example.sgbr.model.Cardapio;
-import com.example.sgbr.model.Conexao;
+import com.example.sgbr.api.Conexao;
 
 import java.util.List;
 
@@ -21,33 +19,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CardapioActivity extends AppCompatActivity {
 
-
-    private  Retrofit retrofit;
-    private DataService service;
+    private Conexao conexao = new Conexao();
     private  List<Cardapio> listaCardapio;
-    private Conexao conexao;
     private GridView gridView;
-    private String[] tituloCategoria =  {"Prato do Dia", "Churrasco", "Lanches", "Pizzas", "Vegetariana", "Sobremesas"};
-    private int[] imagemCategoria = {R.drawable.pratofeito, R.drawable.pratofeito, R.drawable.pratofeito,
-            R.drawable.pratofeito, R.drawable.pratofeito, R.drawable.pratofeito
-    };
-
+    private AdapterCategoriaCardapio adapterCategoriaCardapio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardapio);
 
-        retrofit = conexao.conexao();
-        service = retrofit.create(DataService.class);
-
         gridView = findViewById(R.id.gridView_cardapio);
-        CardapioAdapter adapter = new CardapioAdapter(tituloCategoria, imagemCategoria, this);
-        gridView.setAdapter(adapter);
 
         recuperarCardapio();
 
@@ -55,6 +40,7 @@ public class CardapioActivity extends AppCompatActivity {
 
     private void recuperarCardapio(){
 
+        DataService service = conexao.conexao().create(DataService.class);
         Call<List<Cardapio>> call = service.recuperarCardapio();
 
         call.enqueue(new Callback<List<Cardapio>>() {
@@ -62,13 +48,12 @@ public class CardapioActivity extends AppCompatActivity {
             public void onResponse(Call<List<Cardapio>> call, Response<List<Cardapio>> response) {
                 if (response.isSuccessful()){
                     listaCardapio = response.body();
-                    for(int i=0; i < listaCardapio.size(); i++){
-                        Cardapio cardapio = listaCardapio.get(i);
-                        Log.d("resultado", "resultado " + cardapio.getCategoria_Cardapio());
 
+                        Log.d("Resultado: ", "Aqui tem informação " + response.code());
+                        AdapterCategoriaCardapio adapterCategoriaCardapio = new AdapterCategoriaCardapio(listaCardapio, CardapioActivity.this);
+                        gridView.setAdapter(adapterCategoriaCardapio);
                     }
                 }
-            }
 
             @Override
             public void onFailure(Call<List<Cardapio>> call, Throwable t) {
@@ -79,6 +64,7 @@ public class CardapioActivity extends AppCompatActivity {
 
     private void inserirCardapio(){
 
+        DataService service = conexao.conexao().create(DataService.class);
         Cardapio cardapio = new Cardapio("Churrasco", "imagem");
         Call<Cardapio> call = service.inserirCardapio(cardapio);
 
@@ -99,6 +85,8 @@ public class CardapioActivity extends AppCompatActivity {
     }
 
     private  void atualizarCardapio(){
+
+        DataService service = conexao.conexao().create(DataService.class);
         Cardapio cardapio = new Cardapio("Churrasco", "imagem");
         Call<Cardapio> call = service.atualizarCardapio(1, cardapio);
 
@@ -119,6 +107,7 @@ public class CardapioActivity extends AppCompatActivity {
 
     private void removerCardapio(){
 
+        DataService service = conexao.conexao().create(DataService.class);
         Call<Void> call = service.removerCardapio(1);
         call.enqueue(new Callback<Void>() {
             @Override

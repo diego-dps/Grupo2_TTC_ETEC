@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,10 +16,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sgbr.R;
+<<<<<<< HEAD
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+=======
+import com.example.sgbr.model.Mesa;
+
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> a4ca1f566e2b99da01f0d6e398019f9b3db55f94
 
 public class MainActivity extends AppCompatActivity {
+
+    private GarcomHomeActivity objCodigo = new GarcomHomeActivity();
+    private EditText main_editText_Codigo;
+    private List<Mesa> listaMesas = new ArrayList<>();
+    private Mesa mesa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
         EditText main_editText_Codigo = findViewById(R.id.Main_editText_Codigo);
 
+<<<<<<< HEAD
         Button main_btn_Escanear = findViewById(R.id.Main_btn_Escanear);
         Button main_btn_ConfirmarCodigo = findViewById(R.id.Main_btn_ConfirmarCodigo);
+=======
+
+        Button main_btn_Escanear = (Button) findViewById(R.id.Main_btn_Escanear);
+        Button main_btn_ConfirmarCodigo = (Button) findViewById(R.id.Main_btn_ConfirmarCodigo);
+>>>>>>> a4ca1f566e2b99da01f0d6e398019f9b3db55f94
 
         //Definição de Fontes:
 
@@ -64,7 +84,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
     }
+=======
+        main_btn_ConfirmarCodigo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TextUtils.isEmpty(main_editText_Codigo.getText().toString())){
+                    main_editText_Codigo.setError("*");
+                    main_editText_Codigo.requestFocus();
+                }
+                else {
+                    Intent it = new Intent(MainActivity.this, CategoriaCardapioActivity.class);
+                    startActivity(it);
+                }
+            }
+        });
+>>>>>>> a4ca1f566e2b99da01f0d6e398019f9b3db55f94
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -83,12 +119,18 @@ public class MainActivity extends AppCompatActivity {
     private void alert (String msg){
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
+<<<<<<< HEAD
 
     public void testeTelas (View v){
+=======
+>>>>>>> a4ca1f566e2b99da01f0d6e398019f9b3db55f94
 
-        Intent it = new Intent(MainActivity.this, CategoriaCardapioActivity.class);
-        startActivity(it);
+    private void recuperarCodigo(){
+        listaMesas = objCodigo.recuperarMesas();
+        for (int i=0; i < listaMesas.size(); i++){
+            Mesa mesa = listaMesas.get(i);
+            Log.d("Resultado: ", "recuperarCodigo: " + mesa.getNumero_Mesa());
+        }
 
-        CategoriaCardapioActivity cardapioActivity = new CategoriaCardapioActivity();
     }
 }
