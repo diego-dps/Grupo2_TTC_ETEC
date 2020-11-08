@@ -1,10 +1,17 @@
 package com.example.sgbr.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.Toast;;
 
 import com.example.sgbr.R;
@@ -24,7 +31,7 @@ public class CardapioActivity extends AppCompatActivity {
 
     private Conexao conexao = new Conexao();
     private  List<Cardapio> listaCardapio;
-    private GridView gridView;
+    private RecyclerView recyclerView;
     private AdapterCategoriaCardapio adapterCategoriaCardapio;
 
     @Override
@@ -32,7 +39,13 @@ public class CardapioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardapio);
 
-        gridView = findViewById(R.id.gridView_cardapio);
+        recyclerView =findViewById(R.id.recyclerview_cardapio);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+        recyclerView.setAdapter(adapterCategoriaCardapio);
+
 
         recuperarCardapio();
 
@@ -49,11 +62,11 @@ public class CardapioActivity extends AppCompatActivity {
                 if (response.isSuccessful()){
                     listaCardapio = response.body();
 
-                        Log.d("Resultado: ", "Aqui tem informação " + response.code());
-                        AdapterCategoriaCardapio adapterCategoriaCardapio = new AdapterCategoriaCardapio(listaCardapio, CardapioActivity.this);
-                        gridView.setAdapter(adapterCategoriaCardapio);
-                    }
+                    Log.d("Resultado: ", "Aqui tem informação " + response.code());
+                    AdapterCategoriaCardapio adapterCategoriaCardapio = new AdapterCategoriaCardapio(listaCardapio, CardapioActivity.this);
+                    recyclerView.setAdapter(adapterCategoriaCardapio);
                 }
+            }
 
             @Override
             public void onFailure(Call<List<Cardapio>> call, Throwable t) {

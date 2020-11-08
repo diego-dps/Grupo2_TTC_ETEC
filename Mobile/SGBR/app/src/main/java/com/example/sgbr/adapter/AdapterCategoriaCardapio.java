@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
 import com.example.sgbr.model.Cardapio;
@@ -20,7 +21,7 @@ import com.example.sgbr.model.Cardapio;
 import java.util.List;
 
 
-public class AdapterCategoriaCardapio extends BaseAdapter {
+public class AdapterCategoriaCardapio extends RecyclerView.Adapter<AdapterCategoriaCardapio.CategoriaViewHolder> {
 
     private List<Cardapio> listaCardapio;
     private Context context;
@@ -30,31 +31,40 @@ public class AdapterCategoriaCardapio extends BaseAdapter {
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public int getCount() {
+    public CategoriaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.cardapio_cliente, parent, false);
+
+        return new CategoriaViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull CategoriaViewHolder holder, int position) {
+
+        Cardapio cardapio = listaCardapio.get(position);
+
+        holder.txt_nome_categoria.setText(cardapio.getCategoria_Cardapio());
+
+    }
+
+    @Override
+    public int getItemCount() {
         return listaCardapio.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
+    public class CategoriaViewHolder extends RecyclerView.ViewHolder{
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+        ImageView img_categoria;
+        TextView txt_nome_categoria;
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+        public CategoriaViewHolder(@NonNull View itemView) {
+            super(itemView);
 
-        View view = LayoutInflater.from(context).inflate(R.layout.cardapio_cliente, null);
-
-        TextView categoria_Cardapio = view.findViewById(R.id.titulo_categoria);
-
-        categoria_Cardapio.setText(listaCardapio.get(position).getCategoria_Cardapio());
-
-        return view;
+            img_categoria = itemView.findViewById(R.id.img_categoria);
+            txt_nome_categoria = itemView.findViewById(R.id.txt_nome_Categoria);
+        }
     }
 }
-
