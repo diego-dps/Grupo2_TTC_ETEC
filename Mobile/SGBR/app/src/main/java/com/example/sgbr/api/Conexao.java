@@ -1,4 +1,4 @@
-package com.example.sgbr.model;
+package com.example.sgbr.api;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -10,7 +10,7 @@ public class Conexao {
     public Retrofit conexao(){
         //CONFIGURAÇÃO RETROFIT
         retrofit = new  Retrofit.Builder()
-                .baseUrl("http://192.168.15.8:3000/")
+                .baseUrl("http://192.168.15.7:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

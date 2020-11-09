@@ -3,6 +3,7 @@ package com.example.sgbr.api;
 import com.example.sgbr.model.Cardapio;
 import com.example.sgbr.model.Funcionario;
 import com.example.sgbr.model.Item;
+import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.model.Mesa;
 import com.example.sgbr.model.Pedido;
 
@@ -19,7 +20,7 @@ import retrofit2.http.Path;
 public interface DataService {
 
     //REQUISIÇÕES CARDÁPIO
-    @GET(/*Caminho da ação desejada*/)
+    @GET("/Cardapio")
     Call<List<Cardapio>> recuperarCardapio();
 
     @POST()
@@ -32,10 +33,12 @@ public interface DataService {
     Call<Void> removerCardapio(@Path("cod_Cardapio") int cod_Cardapio);
 
     //REQUISIÇÕES ITEM
-    @GET(/*Caminho da ação desejada*/)
-    Call<List<Item>> recuperarItens();
+    @GET("/Item")
+    Call<List<Item>> recuperarItens(
 
-    @POST()
+    );
+
+    @POST("/Item")
     Call<Item> inserirItem(@Body Item item);
 
     @PATCH()
@@ -43,6 +46,19 @@ public interface DataService {
 
     @DELETE()
     Call<Void> removerItem(@Path("cod_Item") int cod_Item);
+
+    //REQUISIÇÕES ITEM PEDIDO
+    @GET("/ItemPedido")
+    Call<List<ItemPedido>> recuperarItemPedido();
+
+    @POST()
+    Call<ItemPedido> inserirPedido(@Body ItemPedido itemPedido);
+
+    @PATCH()
+    Call<Mesa> atualizarItemPedido(@Path("cod_Pedido") int cod_Pedido, @Body ItemPedido itemPedido);
+
+    @DELETE()
+    Call<Void> removerItemPedido(@Path("cod_Pedido") int cod_Pedido);
 
     //REQUISIÇÕES MESA
     @GET(/*Caminho da ação desejada*/)
@@ -58,7 +74,7 @@ public interface DataService {
     Call<Void> removerMesa(@Path("qr_Code") int qr_Code);
 
     //REQUISIÇÕES PEDIDO
-    @GET(/*Caminho da ação desejada*/)
+    @GET("/Pedido")
     Call<List<Pedido>> recuperarPedido();
 
     @POST()

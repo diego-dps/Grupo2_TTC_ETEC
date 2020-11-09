@@ -5,73 +5,106 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.example.sgbr.R;
 import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.api.DataService;
-import com.example.sgbr.model.Conexao;
+import com.example.sgbr.api.Conexao;
 import com.example.sgbr.model.Item;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class CategoriaCardapioActivity extends AppCompatActivity {
 
-    private Conexao conexao;
-    private Retrofit retrofit;
-    private DataService service;
-    private List<Item> listaItens = new ArrayList<>();
+    private Conexao conexao = new Conexao();
     private RecyclerView recyclerView;
+    private AdapterItensCardapio adapterItensCardapio;
+    private List<Item> listaItens = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categoria_cardapio);
 
-        retrofit = conexao.conexao();
-        service = retrofit.create(DataService.class);
         recyclerView = findViewById(R.id.recyclerciew_categoria_cardapio);
 
-        //Lista de Itens
-        recuperarItens();
-
         //Configura o Adapter
-        AdapterItensCardapio itensCardapio = new AdapterItensCardapio(listaItens);
+        adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this,listaItens);
 
         //Configura o RecycleView
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(itensCardapio);
+
+        recyclerView.setAdapter(adapterItensCardapio);
+
+        recuperarItens();
+
     }
 
-    private void recuperarItens(){
+    public void recuperarItens(){
 
+        DataService service = conexao.conexao().create(DataService.class);
         Call<List<Item>> call = service.recuperarItens();
 
         call.enqueue(new Callback<List<Item>>() {
             @Override
             public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful() && response.body() != null){
+
+                    Log.d("Resultado", "Aqui tem informação");
                     listaItens = response.body();
+                    for (int i=0; i < listaItens.size(); i++){
+                        listaItens.get(i);
+                        Log.d("Resultado: ", "Aqui tem informação " + response.code());
+                        adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this,listaItens);
+                        recyclerView.setAdapter(adapterItensCardapio);
+                    }
                 }
 
             }
 
             @Override
             public void onFailure(Call<List<Item>> call, Throwable t) {
+                Log.d("Resultado", "onFailure: Falhou"+ t.getMessage());
 
             }
         });
     }
 
+   /* private void Resultado(JSONArray jsonArray) {
+
+        for (int i=0; i < jsonArray.length(); i++){
+            try {
+                JSONObject object = jsonArray.getJSONObject(i);
+                Item item = new Item();
+                item.setNome_Item(object.getString("nome_Item"));
+                listaItens.add(item);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this,listaItens);
+            recyclerView.setAdapter(adapterItensCardapio);
+        }
+    }*/
+
+
     private void inserirItem(){
 
+        DataService service = conexao.conexao().create(DataService.class);
         Item item = new Item(null, null, null, null, null, null);
         Call<Item> call = service.inserirItem(item);
 
@@ -83,12 +116,15 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Item> call, Throwable t) {
+                Toast.makeText(CategoriaCardapioActivity.this, "Falhou", Toast.LENGTH_SHORT).show();
 
             }
         });
     }
 
     private void  atualizarItem(){
+
+        DataService service = conexao.conexao().create(DataService.class);
         Item item = new Item(null, null, null, null, null, null);
         Call<Item> call = service.atualizarItem(1, item);
 
@@ -107,6 +143,7 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
 
     private  void removerItem(){
 
+        DataService service = conexao.conexao().create(DataService.class);
         Call<Void> call = service.removerItem(1);
 
         call.enqueue(new Callback<Void>() {

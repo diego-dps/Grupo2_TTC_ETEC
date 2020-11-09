@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/azulClaro"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    tools:context=".ui.CategoriaCardapioActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -18,50 +16,24 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/dangerColor"
-            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_baseline_menu_24"
-                android:tint="@android:color/white"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:textColor="@android:color/white"
-                android:text="SGBR - Menu Cardápio"/>
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_baseline_more_vert_24"
-                android:layout_marginLeft="140dp"
-                android:tint="@android:color/white"
-                />
+            android:background="@color/azulClaro"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+            app:title="@string/toolbar_categoria_cardapio">
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-        <GridView
-            android:id="@+id/gridView_cardapio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/app_bar"
-            android:layout_marginTop="10dp"
-            android:background="@color/azulClaro"
-            android:numColumns="2"
-            android:horizontalSpacing="2dp"
-            android:verticalSpacing="2dp"
-            >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_cardapio"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/app_bar"
+        android:layout_marginTop="-71dp"
+        android:background="@color/colorPrimaryLigth"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/cardapio_cliente">
 
-        </GridView>
-
-
-
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

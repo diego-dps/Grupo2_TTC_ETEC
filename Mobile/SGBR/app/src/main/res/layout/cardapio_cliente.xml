@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-
-    android:padding="20dp"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:layout_gravity="center">
+    android:background="@drawable/card_view_background"
+    tools:showIn="@layout/activity_cardapio">
 
-
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:id="@+id/img_categoria"
-        android:src="@drawable/pratofeito"/>
-
-    <TextView
-        android:layout_below="@+id/img_categoria"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/colorTextPrimary"
-        android:text="PRATOS"
-        android:id="@+id/titulo_categoria"
-        android:layout_marginTop="5dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp">
 
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/img_categoria"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:textSize="24sp"
+            android:background="@drawable/ic_baseline_image_24"/>
+
+        <TextView
+            android:id="@+id/txt_nome_Categoria"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Nome da Categoria"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@id/img_categoria"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/colorTextDark"
+            />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

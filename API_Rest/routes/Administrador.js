@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
             'SELECT * FROM Administrador;',
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
-                return res.status(200).send({ response: resultado })
+                return res.status(200).send(resultado)
             }
         )
     });

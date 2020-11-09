@@ -10,6 +10,10 @@ public class Item {
     private String Ativo;
     private String foto_Item;
 
+    public Item() {
+
+    }
+
     public Item(String cod_Cardapio, String nome_Item, String descricao_Item, String preco_Item, String ativo, String foto_Item) {
         this.cod_Cardapio = cod_Cardapio;
         this.nome_Item = nome_Item;

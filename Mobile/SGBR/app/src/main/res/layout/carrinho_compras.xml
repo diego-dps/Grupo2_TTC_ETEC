@@ -100,13 +100,15 @@
             android:layout_below="@id/txt_preview"
             android:layout_alignParentBottom="true"
             android:src="@drawable/ic_baseline_remove_24" />
+
         <Button
+            android:id="@+id/btn_remove_item"
             android:layout_width="96dp"
             android:layout_height="42dp"
-            android:background="@drawable/botao_comum"
-            android:layout_toEndOf="@id/img_remove"
             android:layout_below="@id/txt_preview"
             android:layout_alignParentBottom="true"
-            android:text="@string/btn_remove"/>
+            android:layout_toEndOf="@id/img_remove"
+            android:background="@drawable/botao_comum"
+            android:text="@string/btn_remove" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
