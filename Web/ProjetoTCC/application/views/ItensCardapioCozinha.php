@@ -10,7 +10,7 @@
     <link href="<?php echo base_url('assets/css/modal.css'); ?>" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Itens</title>
+    <title>Itens do Cardapio</title>
     <script>
         $(document).ready(function() {
             $('#preco').mask('#.##0,00', {reverse: true})
@@ -20,7 +20,7 @@
 
 <body>
     <div class="d-none d-md-block">
-        <div class="container-fluid mt-4" style="background-color: #17a2b8; border: solid #17a2b8 15px; border-radius: 10px;">
+        <div class="container-fluid mt-4" style="background-color: white; border: solid white 15px; border-radius: 10px;">
             <div class="row mx-auto mt-2">
                 <h1 class="my-auto display-5 text-center col-8" style=" position: relative; left: 190px; top: -10px;">Itens</h1>
                 <form class="col-3" action="<?php echo base_url("index.php/Welcome/pesquisarItens")?>" method="post">
@@ -68,7 +68,7 @@
                 </div>
             </table>
         </div>
-        <a class="mt-4 mb-5 btn btn-lg btn-danger rounded mx-auto d-block col-1" href="<?php echo base_url('index.php/Welcome/telaADM');?>">Voltar</a>
+        <a class="mt-4 mb-5 btn btn-lg btn-danger rounded mx-auto d-block col-1" href="<?php echo base_url('index.php/Welcome/telaCardapioGarcom');?>">Voltar</a>
     </div>
 
     <!--inicio modal-->
@@ -79,7 +79,7 @@
                     <h4 style="position: relative; left: 41.9%;">Editar</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="<?php echo base_url("index.php/Itens/validarUpdateItens");?>" method="POST" id="UpdateItens">
+                    <form action="<?php echo base_url("index.php/Itens/validarUpdateItens");?>" method="POST" id="UpdateCardapioItensCozinha">
                         <div class="form-row">
                             <div class="form-group col-12">
                                 <label class="nomeitem">Nome</label>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="modal-body">
                     <h6>Tem certeza de que deseja excluir o item selecionado?</h6>
-                    <form action="<?php echo base_url("index.php/Itens/excluirItem");?>" method="POST" id="ExcluirItens">
+                    <form action="<?php echo base_url("index.php/Itens/excluirItem");?>" method="POST" id="ExcluirItensCozinha">
                     <input type="hidden" id="id" name="id">
                 </div>
                 <div class="modal-footer bg-white">
@@ -172,7 +172,7 @@
                 </tbody>
             </table>
         </div>
-        <a class="mt-4 btn btn-danger rounded mx-auto d-block col-3" href="<?php echo base_url('index.php/Welcome/telaADM');?>">Voltar</a></button>
+        <a class="mt-4 btn btn-danger rounded mx-auto d-block col-3" href="<?php echo base_url('index.php/Welcome/telaCardapioGarcom');?>">Voltar</a></button>
     </div>
 
     <script type="text/javascript" src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>

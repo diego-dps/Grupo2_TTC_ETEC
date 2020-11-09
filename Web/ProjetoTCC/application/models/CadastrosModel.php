@@ -36,5 +36,19 @@ class CadastrosModel extends CI_Model {
             'foto_Item' => $nome_arquivo,
         ];
 		return $this->db->insert('Item', $query);
-	}
+    }
+    
+    public function CadastrarCardapio($nome, $nome_arquivo)
+	{
+        $data = [
+            'categoria_Cardapio' => $nome,
+            'foto_Cardapio' => $nome_arquivo
+        ];
+		return $this->db->insert('Cardapio', $data);
+    }
+    
+    public function alterarStatus($id, $Status){
+
+        
+    }
 }

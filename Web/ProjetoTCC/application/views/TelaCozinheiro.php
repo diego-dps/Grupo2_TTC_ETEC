@@ -19,9 +19,15 @@
                 </li>
                 <br>
                 <li>
-                    <a href="<?php echo base_url('index.php/Welcome/telaPedidos'); ?>">
+                    <a href="<?php echo base_url('index.php/Welcome/telaPedidosCozinha'); ?>">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/contrato.png'); ?>"></i>
                         <span class="nav-text">Pedidos</span>
+                    </a>  
+                </li>
+                <li>
+                    <a href="<?php echo base_url('index.php/Welcome/telaCardapioCozinha'); ?>">
+                        <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/cardapio.png'); ?>"></i>
+                        <span class="nav-text">Cardapio</span>
                     </a>  
                 </li>
                 <li class="has-subnav">

@@ -20,11 +20,11 @@
 </head>
 
 <body>
-
+    <br>
     <div class="d-none d-md-block">
-        <div class="caixaCadastro mx-auto mt-5 font-weight-bold">
-            <h2 class="text-center titulo">Cadastro</h2>
-
+        <div class="caixaCadastroFuncionarios mx-auto mt-5 font-weight-bold">
+            <h2 class="text-center titulo">Cadastrar Funcionario</h2>
+            <br>
             <form action="<?php echo base_url("index.php/CadastroFuncionario/validarCadastroFuncionario"); ?>" method="POST" id="cadastroFuncionario" class="form-row">
                 <div class="form-group mx-auto col-5">
                     <label for="nome">Nome</label>
@@ -72,8 +72,8 @@
     </div>
 
     <div class="d-md-none d-sm-block">
-        <div class="caixaCadastroP mt-4 font-weight-bold">
-            <h2 class="text-center titulo">Cadastro</h2>
+        <div class="caixaCadastroPFuncionarios mt-4 font-weight-bold">
+            <h2 class="text-center titulo">Cadastrar Funcionario</h2>
             <form class="form-row mt-2" action="<?php echo base_url("index.php/CadastroFuncionario/validarCadastroFuncionarioresponsivo"); ?>" method="POST" id="cadastroFuncionarioresponsivo">
                 <div class="form-group mx-auto col-12">
                     <label for="nome">Nome</label>
@@ -112,6 +112,7 @@
                 <a class="btn btn-lg  btn-danger mx-auto d-block mt-3 col-4" href="<?php echo base_url('index.php/Welcome/telaFuncionarios');?>">Voltar</a></button>
             </form>
         </div>
+        <br><br>
     </div>
 
 

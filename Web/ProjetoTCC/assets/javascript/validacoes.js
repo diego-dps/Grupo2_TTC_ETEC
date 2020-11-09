@@ -1034,6 +1034,208 @@ $(function() {
     })
 });
 
+/*Update de intens - tela Itens */
+$(function() {
+    $('#UpdateCardapioItensGarcom').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroNomeItem") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de nome está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "ErroDescricao") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de descrição está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroPreco") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de preço está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroFoto") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'Nenhuma foto foi selecionada!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaCardapioGarcom");
+                        }
+                    })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/**exclusão de itens */
+$(function() {
+    $('#ExcluirItensGarcom').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "Excluir") {
+                    Swal.fire({
+                        title: 'Excluido!',
+                        text: "Funcionario excluido com sucesso",
+                        icon: 'success',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                      }).then((result) => {
+                        if (result.value){
+                            window.location.replace("TelaCardapioGarcom");
+                          }
+                        })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Update de intens - tela Itens */
+$(function() {
+    $('#UpdateCardapioItensCozinha').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroNomeItem") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de nome está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "ErroDescricao") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de descrição está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroPreco") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de preço está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroFoto") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'Nenhuma foto foi selecionada!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaCardapioCozinha");
+                        }
+                    })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/**exclusão de itens */
+$(function() {
+    $('#ExcluirItensCozinha').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "Excluir") {
+                    Swal.fire({
+                        title: 'Excluido!',
+                        text: "Funcionario excluido com sucesso",
+                        icon: 'success',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                      }).then((result) => {
+                        if (result.value){
+                            window.location.replace("TelaCardapioCozinha");
+                          }
+                        })
+                }
+            }
+        })
+        return false;
+    })
+});
+
 /**exclusão de itens */
 $(function() {
     $('#ExcluirItens').submit(function() {
@@ -1057,7 +1259,7 @@ $(function() {
                         confirmButtonText: 'OK'
                       }).then((result) => {
                         if (result.value){
-                            window.location.replace("TelaItens");
+                            window.location.replace("TelaCardapio");
                           }
                         })
                 }
@@ -1380,6 +1582,88 @@ $(function() {
                             window.location.replace("");
                         }
                     })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Cadastro do Cardaoio*/
+$(function() {
+    $('#CadastroCardapio').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroNomeCardapio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de nome está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaItens");
+                        }
+                      })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Cadastro do Cardaoio*/
+$(function() {
+    $('#CadastroCardapioresponsivo').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroNomeCardapio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de nome está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaItens");
+                        }
+                      })
                 }
             }
         })

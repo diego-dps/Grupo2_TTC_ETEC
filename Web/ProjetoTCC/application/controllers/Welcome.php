@@ -62,6 +62,83 @@ class Welcome extends CI_Controller {
         $lista = $this->BuscarPedidoModel->buscarpedidos();
         $dados = array("pedido" => $lista);
 		$this->load->view('TelaPedidos', $dados);
+	}
+	public function telaPedidosGarcom()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidos();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidosGarcom', $dados);
+	}
+	public function telaPedidosCozinha()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidos();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidosCozinha', $dados);
+	}
+	public function telaPedidosEntregues()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidosentregues();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidos', $dados);
+	}
+	public function telaPedidosEntreguesGarcom()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidosentregues();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidosGarcom', $dados);
+	}
+	public function telaPedidosEntreguesCozinha()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidosentregues();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidosCozinha', $dados);
+	}
+	public function telaPedidosPendentes()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidospendentes();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidos', $dados);
+	}
+	public function telaPedidosPendentesGarcom()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidospendentes();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidosGarcom', $dados);
+	}
+	public function telaPedidosPendentesCozinha()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidospendentes();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidosCozinha', $dados);
+	}
+	public function telaPedidosConcluidos()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidosconcluidos();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidos', $dados);
+	}
+	public function telaPedidosConcluidosGarcom()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidosconcluidos();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidosGarcom', $dados);
+	}
+	public function telaPedidosConcluidosCozinha()
+	{
+		$this->load->model("BuscarPedidoModel");
+        $lista = $this->BuscarPedidoModel->buscarpedidosconcluidos();
+        $dados = array("pedido" => $lista);
+		$this->load->view('TelaPedidosCozinha', $dados);
     }
     public function telaItens()
 	{
@@ -86,12 +163,23 @@ class Welcome extends CI_Controller {
         $dados = array("cardapio" => $lista);
 		$this->load->view('TelaCardapio', $dados);
 	}
+	public function telaCardapioGarcom()
+	{
+		$this->load->model("BuscarCardapio");
+        $lista = $this->BuscarCardapio->buscarTodos();
+        $dados = array("cardapio" => $lista);
+		$this->load->view('TelaCardapioGarcom', $dados);
+	}
+	public function telaCardapioCozinha()
+	{
+		$this->load->model("BuscarCardapio");
+        $lista = $this->BuscarCardapio->buscarTodos();
+        $dados = array("cardapio" => $lista);
+		$this->load->view('TelaCardapioCozinha', $dados);
+	}
 	public function telaCadastroCardapio()
 	{
-		$this->load->model("BuscarItemModel");
-        $lista = $this->BuscarItemModel->buscarTodos();
-        $dados = array("item" => $lista);
-		$this->load->view('TelaCadastroCardapio', $dados);
+		$this->load->view('TelaCadastroCardapio');
 	}
 	public function itensCardapio()
 	{
@@ -99,5 +187,19 @@ class Welcome extends CI_Controller {
 		$lista = $this->BuscarItensCardapio->buscarTodos();
 		$itens = array("item" => $lista);
 		$this->load->view('ItensCardapio', $itens);
+	}
+	public function itensCardapioGarcom()
+	{
+		$this->load->model('BuscarItensCardapio');
+		$lista = $this->BuscarItensCardapio->buscarTodos();
+		$itens = array("item" => $lista);
+		$this->load->view('ItensCardapioGarcom', $itens);
+	}
+	public function itensCardapioCozinha()
+	{
+		$this->load->model('BuscarItensCardapio');
+		$lista = $this->BuscarItensCardapio->buscarTodos();
+		$itens = array("item" => $lista);
+		$this->load->view('ItensCardapioCozinha', $itens);
 	}
 }

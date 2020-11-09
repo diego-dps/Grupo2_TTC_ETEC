@@ -19,10 +19,16 @@
                 </li>
                 <br>
                 <li>
-                    <a href="<?php echo base_url('index.php/Welcome/telaPedidos'); ?>">
+                    <a href="<?php echo base_url('index.php/Welcome/telaPedidosGarcom'); ?>">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/contrato.png'); ?>"></i>
                         <span class="nav-text">Pedidos</span>
                     </a>  
+                </li>
+                <li class="has-subnav">
+                    <a href="<?php echo base_url('index.php/Welcome/telaCardapioGarcom'); ?>">
+                        <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/cardapio.png'); ?>"></i>
+                        <span class="nav-text">Cardapio</span>
+                    </a>        
                 </li>
                 <li class="has-subnav">
                     <a href="#">
@@ -90,7 +96,6 @@
         </div>
     </div>
 
-
     <div class="d-md-none d-sm-block">
         <nav class="fixed-top">
             <input type="checkbox" id="check">
@@ -99,11 +104,10 @@
             </label>
             <img class="logo" src="<?php echo base_url('assets/img/logo.png'); ?>">
             <ul>
-                <li><a href="<?php echo base_url("index.php/Welcome/index"); ?>">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#">Vendas</a></li>
-                <li><a href="#">Feedback</a></li>
+                <li><a href="<?php echo base_url("index.php/Welcome/telaPedidosGarcom"); ?>">Pedidos</a></li>
+                <li><a href="#">Cardapio</a></li>
+                <li><a href="#">Configurações</a></li>
+                <li><a href="#">Logout</a></li>
             </ul>
         </nav>
         <br><br><br><br>

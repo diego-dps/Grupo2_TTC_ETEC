@@ -21,11 +21,11 @@ a:link{
 }
 body {
     font-family: montserrat;
-    background-image: url("../img/food2.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	background-attachment: fixed;
+	background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../img/home2.jpg");
 }
 nav {
 	background: #20295F;
@@ -64,14 +64,13 @@ h1{
     text-align: center;
 }
 .paragrafo{
-	color: #fff;
-	font-size: 30px;
+	font-size: 22px;
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 	font-style: initial;
 }
 p{
 	color: #fff;
-	font-size: 18px;
+	font-size: 30px;
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .cor{
@@ -89,4 +88,15 @@ p{
 .imagem{
 	width: 100%; 
 	height: 225px;
+}
+.alinhamentodetexto{
+	width: 32em; 
+	word-wrap: break-word;
+}
+.alinhamentodetexto2{
+	width: 15em; 
+	word-wrap: break-word;
+}
+.des{
+	margin-top: 210px;
 }

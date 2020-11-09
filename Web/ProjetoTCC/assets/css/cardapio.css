@@ -90,9 +90,37 @@ img {
   padding-top: 10px;
   width: 100%;
 }
+.cor2{
+  background: #212121;
+  height: 55px;
+  padding-top: 10px;
+  width: 100%;
+}
 .estilo{
   color: #fff;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 80px;
-  margin-left: 15px;
+  font-size: 60px;
+  margin-right: 35px;
+  margin-top: 10px;
+}
+ul li {
+  display: inline-block;
+  margin-top: -20px;
+}
+ul li a{ 
+  margin-top: -20px;
+}
+.borda{
+  border-bottom-width: medium;
+  border-bottom-style: solid;
+  border-bottom-color: white;
+}
+.sub{
+  margin-top: 80px;
+}
+.imagens2{
+	height: 12em;
+	width : 100%;
+	background-size: cover;
+	overflow: hidden;
 }

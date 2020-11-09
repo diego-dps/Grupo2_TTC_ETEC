@@ -11,8 +11,14 @@ class RecuperaSenha extends CI_Controller {
             echo "ErroEmail";
             die();
         }
+        $this->load->model('BuscarLoginModel');
 
-        echo "Sucesso";
+        if ($this->BuscarLoginModel->verificar_dados($email)) {
+            echo "Sucesso";
+        } else {
+            echo "ErroBanco";
+            die();
+        }
     }
     
 }

@@ -18,12 +18,13 @@
             <li class="nav-item">
                 <a class="nav-link " href="<?php echo base_url("index.php/Welcome/telaLogin"); ?>">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link " href="<?php echo base_url("index.php/Welcome/telaLogin"); ?>">Recados</a>
-            </li>
         </ul>
     </nav>
     <br>
-    <h1>!!!Pagina Em Manuteção!!!</h1>
+    <div class="title mx-auto des">
+        <h1 class="text-center text">BEM VINDO</h1>
+        <h1 class="text-center text">A LOGISTICA DO SEU SOFTWARE</h1>
+        <p class="text-center">Faça login e administre sua empresa</p>
+    </div>
 </body>
 </html>

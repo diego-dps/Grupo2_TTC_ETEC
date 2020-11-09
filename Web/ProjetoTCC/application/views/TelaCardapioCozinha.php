@@ -17,15 +17,14 @@
     </div>
     <div class="text-center my-auto cor2 borda sub">
         <ul>
-            <li><a class="btn btn-danger" href="<?php echo base_url('index.php/Welcome/telaCadastroCardapio'); ?>" style="position: relative; right: 35px;">Adicionar</a></li>
-            <li><a class="btn btn-danger" href="<?php echo base_url('index.php/Welcome/telaADM'); ?>" style="position: relative; right: 10px;">Voltar</a></li>
+            <li><a class="btn btn-danger" href="<?php echo base_url('index.php/Welcome/telaCozinheiro'); ?>" style="position: relative; right: 18px;">Voltar</a></li>
         </ul>
     </div>      
     <div class="container-fluid mt-4">
         <div class="wrapper">
             <div class="cards_wrap">
             <?php foreach ($cardapio as $cardapios) : ?>
-                <form class="card_item" action="<?php echo base_url("index.php/Welcome/itensCardapio")?>" method="post">
+                <form class="card_item" action="<?php echo base_url("index.php/Welcome/itensCardapioCozinha")?>" method="post">
                 <div class="card_inner">
                     <div class="card mb-2 shadow-sm" style="background: #212121;">
                         <img class="card-img-top imagens2" src="<?php echo base_url("assets/img/cardapio/" . $cardapios['foto_Cardapio']) ?>" alt="Card image cap">
