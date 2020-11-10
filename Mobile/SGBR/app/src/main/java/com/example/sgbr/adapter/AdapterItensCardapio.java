@@ -22,11 +22,12 @@ import java.util.List;
 public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCardapio.ItensViewHolder> {
 
     private  List<Item> listaItens;
-    private Activity activity;
+    private Context context;
+    private Double resultado = 0.0;
 
-    public AdapterItensCardapio(Activity activity, List<Item> listaItens) {
+    public AdapterItensCardapio(Context context, List<Item> listaItens) {
         this.listaItens = listaItens;
-        this.activity = activity;
+        this.context = context;
     }
 
     @NonNull
@@ -47,6 +48,26 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                 holder.txt_preview.setText(item.getDescricao_Item());
                 holder.txt_moeda2.setText("R$");
                 holder.txt_valor.setText(item.getPreco_Item());
+
+                holder.img_add.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        resultado = Double.parseDouble(item.getPreco_Item()) + Double.parseDouble(holder.txt_valor.getText().toString());
+                        holder.txt_valor.setText(resultado.toString());
+                    }
+                });
+
+        holder.img_remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultado = resultado - Double.parseDouble(item.getPreco_Item());
+                if (resultado < Double.parseDouble(item.getPreco_Item()))
+                {
+                    resultado = Double.parseDouble(item.getPreco_Item());
+                }
+                holder.txt_valor.setText(resultado.toString());
+            }
+        });
     }
 
     @Override
