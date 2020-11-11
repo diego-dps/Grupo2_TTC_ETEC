@@ -39,7 +39,7 @@
             </ul>
             <ul class="logout">
                 <li>
-                    <a href="#">
+                    <a href="<?php echo base_url("index.php/Welcome/telaLogin"); ?>">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/logout.png'); ?>"></i>
                         <span class="nav-text">Logout</span>
                     </a>
