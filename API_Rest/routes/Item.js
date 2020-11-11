@@ -48,7 +48,23 @@ router.get('/:cod_Item', (req, res, next) => {
             [req.params.cod_Item],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
-                return res.status(200).send({ response: resultado })
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+
+});
+
+//PUXAR OS ITENS DE UMA CATEGORIA
+router.get('/Cardapio/:cod_Cardapio', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Item WHERE cod_Cardapio = ?;',
+            [req.params.cod_Cardapio],
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
             }
         )
     });
@@ -69,6 +85,7 @@ router.patch('/', (req, res, next) => {
                     foto_Item      = ?,
                     WHERE cod_Item = ?`,
             [
+
                 req.body.cod_Item,
                 req.body.nome_Item,
                 req.body.descricao_Item,
