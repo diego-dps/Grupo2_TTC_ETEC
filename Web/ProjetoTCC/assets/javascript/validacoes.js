@@ -39,7 +39,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("TelaGarcom");
+                            window.location.replace("TelaPedidosGarcom");
                           }
                         })
                       }
@@ -50,7 +50,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("TelaCozinheiro");
+                            window.location.replace("TelaPedidosCozinha");
                           }
                         });
                       }
@@ -121,7 +121,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("index.php/Welcome/TelaGarcom");
+                            window.location.replace("TelaPedidosGarcom");
                           }
                         })
                       }
@@ -132,7 +132,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("index.php/Welcome/TelaCozinheiro");
+                            window.location.replace("TelaPedidosCozinha");
                           }
                         });
                       }
@@ -143,7 +143,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("index.php/Welcome/TelaADM");
+                            window.location.replace("TelaADM");
                           }
                         });
                       }      
@@ -1662,6 +1662,129 @@ $(function() {
                     }).then((result) => {
                         if (result.value){
                           window.location.replace("TelaItens");
+                        }
+                      })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Alterarar Status*/
+$(function() {
+    $('#AlterararStatus').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroStatusVazio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao Selecionar Status',
+                        text: 'O campo de Status está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaPedidos");
+                        }
+                      })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Alterarar Status*/
+$(function() {
+    $('#AlterararStatusGarcom').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroStatusVazio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao Selecionar Status',
+                        text: 'O campo de Status está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaPedidosGarcom");
+                        }
+                      })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Alterarar Status*/
+$(function() {
+    $('#AlterararStatusCozinha').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroStatusVazio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao Selecionar Status',
+                        text: 'O campo de Status está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaPedidosCozinha");
                         }
                       })
                 }

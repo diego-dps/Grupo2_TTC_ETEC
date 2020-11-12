@@ -67,7 +67,7 @@
                 </div>
                 <div class="modal-body">
                     <h6>Deseja alterar o status do pedido ?</h6>
-                    <form action="<?php echo base_url("index.php/Itens/excluirItem");?>" method="POST" id="ExcluirItens">
+                    <form action="<?php echo base_url("index.php/Pedidos/validarStatusPedido");?>" method="POST" id="AlterararStatus">
                     <input type="hidden" id="id" name="id">
                     <div class="form-group col-12">
                         <label for="SelecionarStatus">Selecionar Status</label>
@@ -96,6 +96,7 @@
     <script src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/popper.js/dist/umd/popper.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/bootstrap/dist/js/bootstrap.js'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/javascript/validacoes.js'); ?>"></script>
     <script src="<?php echo base_url('assets/node_modules/sweetalert2/dist/sweetalert2.all.js'); ?>"></script>
     <script type="text/javascript">
         $('#ExemploModalCentralizado').on('show.bs.modal', function (event) {

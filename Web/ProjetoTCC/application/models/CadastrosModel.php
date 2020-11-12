@@ -48,7 +48,13 @@ class CadastrosModel extends CI_Model {
     }
     
     public function alterarStatus($id, $Status){
-
         
+        $data = [
+            'status_Pedido' => $Status
+        ];
+
+        $this->db->where('cod_Pedido', $id);
+        $this->db->set($data);
+        return $this->db->update("Pedido",$data);
     }
 }

@@ -48,13 +48,13 @@
                                 <th scope="col"> <img class="imagens" src="<?php echo base_url("assets/img/itens/" . $itens['foto_Item']) ?>" alt="Card image cap"></th>
                                 <th scope="col"><?php echo $itens['nome_Item'] ?></th>
                                 <th scope="col" class="alinhamentodetexto"><?php echo $itens['descricao_Item'] ?></th>
-                                <th scope="col"><?php echo reais($itens['preco_Item']) ?></th>
+                                <th scope="col">R$ <?php echo $itens['preco_Item'] ?></th>
                                 <th scope="col">
                                     <button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" 
                                     style="position: relative; top: -25px;" data-toggle="modal" 
                                     data-target="#exampleModal" data-whatever="<?php echo $itens['cod_Item']?>" 
                                     data-whatevernome="<?php echo $itens['nome_Item'] ?>" data-whateverdescricao="<?php echo $itens['descricao_Item'] ?>"
-                                    data-whateverpreco="<?php echo reais($itens['preco_Item']) ?>" data-whatevercodCardapio="<?php echo $itens['cod_Cardapio'] ?>">Editar</button>
+                                    data-whateverpreco="<?php echo $itens['preco_Item'] ?>" data-whatevercodCardapio="<?php echo $itens['cod_Cardapio'] ?>">Editar</button>
                                 </th>
                                 <th scope="col">
                                 <button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" data-toggle="modal" data-target="#ExemploModalCentralizado"
@@ -153,13 +153,13 @@
                             <th scope="col"><img class="imagens2" src="<?php echo base_url("assets/img/itens/" . $itens['foto_Item']) ?>" alt="Card image cap"></th>
                             <th scope="col"><?php echo $itens['nome_Item'] ?></th>
                             <th scope="col" class="alinhamentodetexto"><?php echo $itens['descricao_Item'] ?></th>
-                            <th scope="col"><?php echo reais($itens['preco_Item']) ?></th>
+                            <th scope="col"><?php echo $itens['preco_Item'] ?></th>
                             <th scope="col">
                             <button type="button" class="mt-4 btn btn-primary rounded mx-auto d-block" 
                                 style="position: relative; top: -25px;" data-toggle="modal" 
                                 data-target="#exampleModal" data-whatever="<?php echo $itens['cod_Item']?>" 
                                 data-whatevernome="<?php echo $itens['nome_Item'] ?>" data-whateverdescricao="<?php echo $itens['descricao_Item'] ?>"
-                                data-whateverpreco="<?php echo reais($itens['preco_Item']) ?>" data-whatevercodCardapio="<?php echo $itens['cod_Cardapio'] ?>">Editar</button>
+                                data-whateverpreco="<?php echo $itens['preco_Item'] ?>" data-whatevercodCardapio="<?php echo $itens['cod_Cardapio'] ?>">Editar</button>
                             </th>
                             <th scope="col">
                             <button type="button" class="mt-4 btn btn-danger rounded mx-auto d-block" style="position: relative; top: -25px;" data-toggle="modal" data-target="#ExemploModalCentralizado"
