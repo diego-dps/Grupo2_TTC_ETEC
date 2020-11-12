@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="d-none d-md-block">
-        <div class="container-fluid mt-4" style="background-color: #17a2b8; border: solid #17a2b8 15px; border-radius: 10px;">
+        <div class="container-fluid mt-4" style="background-color: white; border: solid white 15px; border-radius: 10px;">
             <ul class="justify-content-end ">
                 <li><h1 style="position: relative; right: 55px; top: 6px;">Pedidos</h1></li>
                 <li><a class="btn btn-danger" href="<?php echo base_url('index.php/Welcome/telaPedidosPendentesCozinha'); ?>">Pedidos Pendentes</a></li>

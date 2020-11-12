@@ -19,7 +19,7 @@
 
 <body>
     <div class="d-none d-md-block">
-        <div class="container-fluid mt-4" style="background-color: #17a2b8; border: solid #17a2b8 15px; border-radius: 10px;">
+        <div class="container-fluid mt-4" style="background-color: white; border: solid white 15px; border-radius: 10px;">
             <div class="row mx-auto mt-2">
                 <h1 class="my-auto display-5 text-center col-8" style=" position: relative; left: 190px; top: -10px;">Itens</h1>
                 <form class="col-3" action="<?php echo base_url("index.php/Welcome/pesquisarItens")?>" method="post">
