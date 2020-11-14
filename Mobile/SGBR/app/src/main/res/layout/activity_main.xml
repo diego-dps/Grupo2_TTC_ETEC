@@ -118,15 +118,15 @@
             android:textColor="#FFFFFF"
             android:textSize="25dp" />
 
-    <TextView
-        android:id="@+id/Main_text_Link"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/main_link"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/colorTextPrimary"
-        />
+        <TextView
+            android:id="@+id/Main_text_Link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:onClick="testeTelasCarrinho"
+            android:text="@string/main_link"
+            android:textColor="@color/colorTextPrimary" />
     </LinearLayout>
 </ScrollView>

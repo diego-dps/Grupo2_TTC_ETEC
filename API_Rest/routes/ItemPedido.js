@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM ItemPedido;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido ORDER BY c.cod_Pedido ASC;',
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
@@ -44,7 +44,7 @@ router.get('/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM ItemPedido WHERE cod_Pedido = ?;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }

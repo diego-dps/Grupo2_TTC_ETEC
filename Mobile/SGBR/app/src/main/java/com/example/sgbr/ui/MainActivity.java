@@ -121,6 +121,12 @@ public class MainActivity extends AppCompatActivity {
                      startActivity(it);
     }
 
+    public void testeTelasCarrinho(View v) {
+
+        Intent it = new Intent(MainActivity.this, PagamentoActivity.class);
+        startActivity(it);
+    }
+
     private void recuperarCodigo() {
         listaMesas = objCodigo.recuperarMesas();
         for (int i = 0; i < listaMesas.size(); i++) {
