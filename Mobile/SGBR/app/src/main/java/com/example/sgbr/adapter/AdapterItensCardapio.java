@@ -2,6 +2,7 @@ package com.example.sgbr.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
 import com.example.sgbr.model.Item;
+import com.example.sgbr.ui.CarrinhoComprasActivity;
+import com.example.sgbr.ui.CategoriaCardapioActivity;
+import com.example.sgbr.ui.MainActivity;
 
 import java.util.List;
 
@@ -53,7 +57,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                     @Override
                     public void onClick(View v) {
                         resultado = Double.parseDouble(item.getPreco_Item()) + Double.parseDouble(holder.txt_valor.getText().toString());
-                        holder.txt_valor.setText(resultado.toString());
+                        holder.txt_valor.setText(resultado.toString() + "0");
                     }
                 });
 
@@ -65,9 +69,10 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                 {
                     resultado = Double.parseDouble(item.getPreco_Item());
                 }
-                holder.txt_valor.setText(resultado.toString());
+                holder.txt_valor.setText(resultado.toString() + "0");
             }
         });
+
     }
 
     @Override

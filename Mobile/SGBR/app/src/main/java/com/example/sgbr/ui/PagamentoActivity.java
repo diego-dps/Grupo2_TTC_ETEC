@@ -42,7 +42,7 @@ public class PagamentoActivity extends AppCompatActivity {
     private void recuperarItens() {
 
         DataService service = conexao.conexao().create(DataService.class);
-        Call<List<Item>> call = service.recuperarItens();
+        Call<List<Item>> call = service.recuperarItens("1");
 
         call.enqueue(new Callback<List<Item>>() {
             @Override

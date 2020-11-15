@@ -17,6 +17,7 @@ import android.widget.Toast;;
 import com.example.sgbr.R;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.adapter.AdapterCategoriaCardapio;
+import com.example.sgbr.controller.RecyclerItemClickListener;
 import com.example.sgbr.model.Cardapio;
 import com.example.sgbr.api.Conexao;
 
@@ -31,8 +32,9 @@ public class CardapioActivity extends AppCompatActivity {
 
     private Conexao conexao = new Conexao();
     private  List<Cardapio> listaCardapio;
-    private RecyclerView recyclerView;
+    public RecyclerView recyclerView;
     private AdapterCategoriaCardapio adapterCategoriaCardapio;
+    public Cardapio cod_Cardapio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,39 @@ public class CardapioActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapterCategoriaCardapio);
 
 
+        //EVENTO CLICK DO RECYCLERVIEW
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        getApplicationContext(),
+                        recyclerView,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                cod_Cardapio = listaCardapio.get(position);
+
+                                Toast.makeText(CardapioActivity.this, "Você selecionou " + cod_Cardapio.getCod_Cardapio(), Toast.LENGTH_SHORT).show();
+                                Intent it = new Intent(CardapioActivity.this, CategoriaCardapioActivity.class);
+                                startActivity(it);
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+
+                )
+        );
+
         recuperarCardapio();
 
     }
+
 
     private void recuperarCardapio(){
 
@@ -74,6 +106,8 @@ public class CardapioActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void inserirCardapio(){
 

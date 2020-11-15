@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void testeTelas(View v) {
 
-        Intent it = new Intent(MainActivity.this, CategoriaCardapioActivity.class);
+        Intent it = new Intent(MainActivity.this, CardapioActivity.class);
                      startActivity(it);
     }
 

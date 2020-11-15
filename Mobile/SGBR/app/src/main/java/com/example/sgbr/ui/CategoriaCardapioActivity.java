@@ -12,15 +12,10 @@ import com.example.sgbr.R;
 import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.api.Conexao;
+import com.example.sgbr.model.Cardapio;
 import com.example.sgbr.model.Item;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,10 +50,11 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
 
     }
 
+
     public void recuperarItens(){
 
         DataService service = conexao.conexao().create(DataService.class);
-        Call<List<Item>> call = service.recuperarItens();
+        Call<List<Item>> call = service.recuperarItens("2");
 
         call.enqueue(new Callback<List<Item>>() {
             @Override
