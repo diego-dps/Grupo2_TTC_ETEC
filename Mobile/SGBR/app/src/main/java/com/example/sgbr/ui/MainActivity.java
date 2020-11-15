@@ -15,7 +15,6 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.sgbr.R;
-import com.example.sgbr.model.Mesa;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
@@ -25,10 +24,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final GarcomHomeActivity objCodigo = new GarcomHomeActivity();
-    private EditText main_editText_Codigo;
-    private List<Mesa> listaMesas = new ArrayList<>();
-    private Mesa mesa;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,20 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // main_btn_ConfirmarCodigo.setOnClickListener(new View.OnClickListener() {
-    //     @Override
-    //     public void onClick(View v) {
-    //        if (TextUtils.isEmpty(main_editText_Codigo.getText().toString())){
-    //             main_editText_Codigo.setError("*");
-    //            main_editText_Codigo.requestFocus();
-    //        }
-    //        else {
-    //           Intent it = new Intent(MainActivity.this, CategoriaCardapioActivity.class);
-    //             startActivity(it);
-    //       }
-    //   }
-    //    });
-
+    private String numeroQrCode(int requestCode, int resultCode, @Nullable Intent data){
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        String codQrcode = result.getContents().toString();
+        return codQrcode;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -101,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (result != null) {
             if (result.getContents() != null) {
-                alert(result.getContents());
+                alert("Scan realizado com sucesso!");
+                    Intent intent = new Intent(MainActivity.this,CardapioActivity.class);
+                    startActivity(intent);
             } else {
                 alert("Scan Cancelado");
             }
@@ -110,10 +99,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     private void alert(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 
+
+
+
+
+
+    ////////////////////////----Métodos para testes----/////////////////////////////
 
     public void testeTelas(View v) {
 
@@ -121,12 +117,9 @@ public class MainActivity extends AppCompatActivity {
                      startActivity(it);
     }
 
-    private void recuperarCodigo() {
-        listaMesas = objCodigo.recuperarMesas();
-        for (int i = 0; i < listaMesas.size(); i++) {
-            Mesa mesa = listaMesas.get(i);
-            Log.d("Resultado: ", "recuperarCodigo: " + mesa.getNumero_Mesa());
-        }
+    public void testeTelasCarrinho(View v) {
 
+        Intent it = new Intent(MainActivity.this, PagamentoActivity.class);
+        startActivity(it);
     }
 }

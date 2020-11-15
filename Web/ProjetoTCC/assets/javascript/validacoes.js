@@ -1,28 +1,28 @@
 /*Validações do Login*/
 $(function() {
-        $('#login').submit(function() {
-            var obj = this;
-            var form = $(obj);
-            var dados = new FormData(obj);
-            $.ajax({
-                url: form.attr('action'),
-                type: form.attr('method'),
-                data: dados,
-                processData: false,
-                cache: false,
-                contentType: false,
-                success: function(data) {
-                    if (data == "ErroUsuario") {
+    $('#login').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroUsuario") {
 
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Erro ao preencher campos',
-                            text: 'O campo de usuário está vazio!',
-                            confirmButtonColor: " #dc3545",
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                    if (data == "ErroSenha") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de usuário está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroSenha") {
 
                         Swal.fire({
                             icon: 'warning',
@@ -39,7 +39,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("TelaGarcom");
+                            window.location.replace("TelaPedidosGarcom");
                           }
                         })
                       }
@@ -50,7 +50,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("TelaCozinheiro");
+                            window.location.replace("TelaPedidosCozinha");
                           }
                         });
                       }
@@ -62,58 +62,56 @@ $(function() {
                         }).then((result) => {
                           if (result.value){
                             window.location.replace("TelaADM");
-                          }
-                        });
-                      }      
-                      if(data == "FalhaLogin"){
-                        Swal.fire({
-                          title: 'ERRO!',
-                          text: 'Usuário ou senha inválidos!',
-                          icon: 'error',
-                          confirmButtonText: 'OK'
-                        });
-                      } 
+                        }
+                    });
                 }
-            })
-            return false;
+                if (data == "FalhaLogin") {
+                    Swal.fire({
+                        title: 'ERRO!',
+                        text: 'Usuário ou senha inválidos!',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+            }
         })
-    }
-);
+        return false;
+    })
+});
 
 /*Validações do Login  Responsivo*/
 $(function() {
-        $('#loginResponsivo').submit(function() {
-            var obj = this;
-            var form = $(obj);
-            var dados = new FormData(obj);
-            $.ajax({
-                url: form.attr('action'),
-                type: form.attr('method'),
-                data: dados,
-                processData: false,
-                cache: false,
-                contentType: false,
-                success: function(data) {
-                    if (data == "ErroUsuario") {
+    $('#loginResponsivo').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroUsuario") {
 
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Erro ao preencher campos',
-                            text: 'O campo de usuário está vazio!',
-                            confirmButtonColor: " #dc3545",
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                    if (data == "ErroSenha") {
-
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Erro ao preencher campos',
-                            text: 'O campo de senha está vazio!',
-                            confirmButtonColor: " #dc3545",
-                            confirmButtonText: 'OK'
-                        });
-                    }
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de usuário está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroSenha") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de senha está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
                     if(data == "SucessoGarçom"){
                         Swal.fire({
                           title: 'Login realizado com sucesso!',
@@ -121,7 +119,7 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("index.php/Welcome/TelaGarcom");
+                            window.location.replace("TelaPedidosGarcom");
                           }
                         })
                       }
@@ -132,35 +130,34 @@ $(function() {
                           confirmButtonText: 'OK'
                         }).then((result) => {
                           if (result.value){
-                            window.location.replace("index.php/Welcome/TelaCozinheiro");
+                            window.location.replace("TelaPedidosCozinha");
                           }
                         });
                       }
-                      if(data == "SucessoADM"){
-                        Swal.fire({
-                          title: 'Login realizado com sucesso!',
-                          icon: 'success',
-                          confirmButtonText: 'OK'
-                        }).then((result) => {
-                          if (result.value){
-                            window.location.replace("index.php/Welcome/TelaADM");
-                          }
-                        });
-                      }      
+                       if(data == "SucessoADM"){
+                           Swal.fire({
+                               title: 'Login realizado com sucesso!',
+                               icon: 'success',
+                               confirmButtonText: 'OK'
+                           }).then((result) => {
+                           if (result.value){
+                               window.location.replace("TelaADM");
+                           }
+                           });
+                       }      
                       if(data == "FalhaLogin"){
                         Swal.fire({
                           title: 'ERRO!',
                           text: 'Usuário ou senha inválidos!',
                           icon: 'error',
                           confirmButtonText: 'OK'
-                        });
-                    } 
-                }
-            })
-            return false;
+                    });
+                } 
+            }
         })
-    }
-);
+        return false;
+    })
+});
 
 /*Validações do Cadastro de Funcionários*/
 $(function() {
@@ -195,14 +192,14 @@ $(function() {
                             confirmButtonText: 'OK'
                         });
                     }
-                    if(data == "ErroEmailExiste"){
+                    if (data == "ErroEmailExiste") {
                         Swal.fire({
-                          title: 'Erro ao preencher campos!',
-                          text: 'Email já cadastrado!',
-                          icon: 'error',
-                          confirmButtonText: 'Legal, vou refazer'
+                            title: 'Erro ao preencher campos!',
+                            text: 'Email já cadastrado!',
+                            icon: 'error',
+                            confirmButtonText: 'Legal, vou refazer'
                         });
-                    }            
+                    }
                     if (data == "Errocpf") {
 
                         Swal.fire({
@@ -213,22 +210,22 @@ $(function() {
                             confirmButtonText: 'OK'
                         });
                     }
-                    if(data == "CPfdeve11"){
+                    if (data == "CPfdeve11") {
                         Swal.fire({
-                        title: 'Erro ao preencher campos!',
-                        text: 'Campo CPF deve conter 11 digitos!',
-                        icon: 'error',
-                        confirmButtonText: 'Legal, vou refazer'
+                            title: 'Erro ao preencher campos!',
+                            text: 'Campo CPF deve conter 11 digitos!',
+                            icon: 'error',
+                            confirmButtonText: 'Legal, vou refazer'
                         });
                     }
-                    if(data == "ErroCPFExiste"){
+                    if (data == "ErroCPFExiste") {
                         Swal.fire({
-                          title: 'Erro ao preencher campos!',
-                          text: 'CPF já cadastrado!',
-                          icon: 'error',
-                          confirmButtonText: 'Legal, vou refazer'
+                            title: 'Erro ao preencher campos!',
+                            text: 'CPF já cadastrado!',
+                            icon: 'error',
+                            confirmButtonText: 'Legal, vou refazer'
                         });
-                      }
+                    }
                     if (data == "ErroPass") {
 
                         Swal.fire({
@@ -249,14 +246,14 @@ $(function() {
                             confirmButtonText: 'OK'
                         });
                     }
-                    if(data == "ErroCelularExiste"){
+                    if (data == "ErroCelularExiste") {
                         Swal.fire({
-                          title: 'Erro ao preencher campos!',
-                          text: 'Celular já cadastrado!',
-                          icon: 'error',
-                          confirmButtonText: 'Legal, vou refazer'
+                            title: 'Erro ao preencher campos!',
+                            text: 'Celular já cadastrado!',
+                            icon: 'error',
+                            confirmButtonText: 'Legal, vou refazer'
                         });
-                    }                  
+                    }
                     if (data == "ErroConfSenha") {
 
                         Swal.fire({
@@ -295,13 +292,13 @@ $(function() {
                             text: 'Deseja cadastrar novamente ?',
                             cancelButtonColor: "#d33",
                             cancelButtonText: 'Não',
-                                        showCancelButton: true,  
+                            showCancelButton: true,
                             confirmButtonColor: "#3085d6",
                             confirmButtonText: 'Sim'
                         }).then((result) => {
-                            if (result.value){
-                              window.location.replace("");
-                            }else{
+                            if (result.value) {
+                                window.location.replace("");
+                            } else {
                                 window.location.replace("TelaFuncionarios");
                             }
                         })
@@ -368,12 +365,12 @@ $(function() {
                         confirmButtonText: 'OK'
                     });
                 }
-                if(data == "CPfdeve11"){
+                if (data == "CPfdeve11") {
                     Swal.fire({
-                    title: 'Erro ao preencher campos!',
-                    text: 'Digite um CPF de celular válido!',
-                    icon: 'error',
-                    confirmButtonText: 'Legal, vou refazer'
+                        title: 'Erro ao preencher campos!',
+                        text: 'Digite um CPF de celular válido!',
+                        icon: 'error',
+                        confirmButtonText: 'Legal, vou refazer'
                     });
                 }
                 if (data == "ErroPass") {
@@ -485,12 +482,12 @@ $(function() {
                         confirmButtonText: 'OK'
                     });
                 }
-                if(data == "CPfdeve11"){
+                if (data == "CPfdeve11") {
                     Swal.fire({
-                    title: 'Erro ao preencher campos!',
-                    text: 'Digite um CPF de celular válido!',
-                    icon: 'error',
-                    confirmButtonText: 'Legal, vou refazer'
+                        title: 'Erro ao preencher campos!',
+                        text: 'Digite um CPF de celular válido!',
+                        icon: 'error',
+                        confirmButtonText: 'Legal, vou refazer'
                     });
                 }
                 if (data == "ErroPass") {
@@ -551,10 +548,10 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("TelaFuncionarios");
+                        if (result.value) {
+                            window.location.replace("TelaFuncionarios");
                         }
-                      })
+                    })
                 }
             }
         })
@@ -606,12 +603,12 @@ $(function() {
                         confirmButtonText: 'OK'
                     });
                 }
-                if(data == "CPfdeve11"){
+                if (data == "CPfdeve11") {
                     Swal.fire({
-                    title: 'Erro ao preencher campos!',
-                    text: 'Digite um CPF de celular válido!',
-                    icon: 'error',
-                    confirmButtonText: 'Legal, vou refazer'
+                        title: 'Erro ao preencher campos!',
+                        text: 'Digite um CPF de celular válido!',
+                        icon: 'error',
+                        confirmButtonText: 'Legal, vou refazer'
                     });
                 }
                 if (data == "ErroPass") {
@@ -672,10 +669,10 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("TelaFuncionarios");
+                        if (result.value) {
+                            window.location.replace("TelaFuncionarios");
                         }
-                      })
+                    })
                 }
             }
         })
@@ -747,15 +744,15 @@ $(function() {
                         icon: 'success',
                         title: 'Cadastro realizado com sucesso!',
                         text: 'Deseja cadastrar novamente ?',
-                            cancelButtonColor: "#d33",
-                            cancelButtonText: 'Não',
-                                        showCancelButton: true,  
-                            confirmButtonColor: "#3085d6",
-                            confirmButtonText: 'Sim'
+                        cancelButtonColor: "#d33",
+                        cancelButtonText: 'Não',
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        confirmButtonText: 'Sim'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("");
-                        }else{
+                        if (result.value) {
+                            window.location.replace("");
+                        } else {
                             window.location.replace("TelaItens");
                         }
                     })
@@ -887,10 +884,10 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("TelaItens");
+                        if (result.value) {
+                            window.location.replace("TelaItens");
                         }
-                      })
+                    })
                 }
             }
         })
@@ -955,10 +952,10 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("TelaItens");
+                        if (result.value) {
+                            window.location.replace("TelaItens");
                         }
-                      })
+                    })
                 }
             }
         })
@@ -1023,8 +1020,8 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("TelaCardapio");
+                        if (result.value) {
+                            window.location.replace("TelaCardapio");
                         }
                     })
                 }
@@ -1091,8 +1088,8 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("TelaCardapioGarcom");
+                        if (result.value) {
+                            window.location.replace("TelaCardapioGarcom");
                         }
                     })
                 }
@@ -1123,11 +1120,11 @@ $(function() {
                         icon: 'success',
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
-                      }).then((result) => {
-                        if (result.value){
+                    }).then((result) => {
+                        if (result.value) {
                             window.location.replace("TelaCardapioGarcom");
-                          }
-                        })
+                        }
+                    })
                 }
             }
         })
@@ -1192,8 +1189,8 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("TelaCardapioCozinha");
+                        if (result.value) {
+                            window.location.replace("TelaCardapioCozinha");
                         }
                     })
                 }
@@ -1224,11 +1221,11 @@ $(function() {
                         icon: 'success',
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
-                      }).then((result) => {
-                        if (result.value){
+                    }).then((result) => {
+                        if (result.value) {
                             window.location.replace("TelaCardapioCozinha");
-                          }
-                        })
+                        }
+                    })
                 }
             }
         })
@@ -1257,11 +1254,11 @@ $(function() {
                         icon: 'success',
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
-                      }).then((result) => {
-                        if (result.value){
+                    }).then((result) => {
+                        if (result.value) {
                             window.location.replace("TelaCardapio");
-                          }
-                        })
+                        }
+                    })
                 }
             }
         })
@@ -1290,11 +1287,11 @@ $(function() {
                         icon: 'success',
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
-                      }).then((result) => {
-                        if (result.value){
+                    }).then((result) => {
+                        if (result.value) {
                             window.location.replace("TTelaItens");
-                          }
-                        })
+                        }
+                    })
                 }
             }
         })
@@ -1323,11 +1320,11 @@ $(function() {
                         icon: 'success',
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
-                      }).then((result) => {
-                        if (result.value){
+                    }).then((result) => {
+                        if (result.value) {
                             window.location.replace("TelaFuncionarios");
-                          }
-                        })
+                        }
+                    })
                 }
             }
         })
@@ -1358,15 +1355,15 @@ $(function() {
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Sim, exclua!'
-                      }).then((result) => {
+                    }).then((result) => {
                         if (result.isConfirmed) {
-                          Swal.fire(
-                            'Deleted!',
-                            'Your file has been deleted.',
-                            'success'
-                          )
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
                         }
-                      })
+                    })
                 }
             }
         })
@@ -1619,10 +1616,10 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
-                        if (result.value){
-                          window.location.replace("TelaItens");
+                        if (result.value) {
+                            window.location.replace("TelaItens");
                         }
-                      })
+                    })
                 }
             }
         })
@@ -1660,8 +1657,131 @@ $(function() {
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
+                        if (result.value) {
+                            window.location.replace("TelaItens");
+                        }
+                    })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Alterarar Status*/
+$(function() {
+    $('#AlterararStatus').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroStatusVazio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao Selecionar Status',
+                        text: 'O campo de Status está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
                         if (result.value){
-                          window.location.replace("TelaItens");
+                          window.location.replace("TelaPedidos");
+                        }
+                      })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Alterarar Status*/
+$(function() {
+    $('#AlterararStatusGarcom').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroStatusVazio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao Selecionar Status',
+                        text: 'O campo de Status está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaPedidosGarcom");
+                        }
+                      })
+                }
+            }
+        })
+        return false;
+    })
+});
+
+/*Alterarar Status*/
+$(function() {
+    $('#AlterararStatusCozinha').submit(function() {
+        var obj = this;
+        var form = $(obj);
+        var dados = new FormData(obj);
+        $.ajax({
+            url: form.attr('action'),
+            type: form.attr('method'),
+            data: dados,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(data) {
+                if (data == "ErroStatusVazio") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao Selecionar Status',
+                        text: 'O campo de Status está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK',
+                    });
+                }
+                if (data == "Sucesso") {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Atualização realizada com sucesso!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                          window.location.replace("TelaPedidosCozinha");
                         }
                       })
                 }

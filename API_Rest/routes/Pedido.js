@@ -15,12 +15,25 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/Itenspedido', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT  c.cod_Pedido, d.numero_Mesa, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, b.cod_Cardapio, e.categoria_Cardapio, c.status_Pedido FROM itempedido a, item b, pedido c, mesa d, cardapio e where a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and d.qr_Code = c.qr_Code and b.cod_Cardapio = e.cod_Cardapio;',
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
 router.post('/', (req, res, next) => {
 
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'INSERT INTO Pedido (observacao_Pedido, qr_Code) VALUE (?,?);',
+            'CALL SP_CadastrarPedido(?, ?, ?, ?, ?, ?, ?);',
             [req.body.observacao_Pedido, req.body.qr_Code],
             (error, resultado, field) => {
                 conn.release();

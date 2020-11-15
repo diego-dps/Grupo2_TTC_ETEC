@@ -9,6 +9,8 @@ class Pedidos extends CI_Controller
         $id = $_POST['id'];
         $Status = $_POST['SelecionarStatus'];
 
+        $this->load->model('CadastrosModel');
+        
         if (empty($Status)) {
             die("ErroStatusVazio");
         }
