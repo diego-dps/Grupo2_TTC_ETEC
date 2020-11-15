@@ -5,7 +5,10 @@ public class Mesa {
     private String qr_Code;
     private String numero_Mesa;
 
-    public Mesa(){}
+    public Mesa(String qr_Code, String numero_Mesa){
+        this.qr_Code = qr_Code;
+        this.numero_Mesa = numero_Mesa;
+    }
 
     public Mesa(String numero_Mesa) {
         this.numero_Mesa = numero_Mesa;

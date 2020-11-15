@@ -6,9 +6,9 @@ public class ItemPedido {
     private String cod_Item;
     private String nome_Item;
     private String observacao_Pedido;
-    private int quantidade;
+    private String quantidade;
 
-    public ItemPedido(String cod_Pedido, String cod_Item, String nome_Item, String observacao_Pedido, int quantidade) {
+    public ItemPedido(String cod_Pedido, String cod_Item, String nome_Item, String observacao_Pedido, String quantidade) {
         this.cod_Pedido = cod_Pedido;
         this.cod_Item = cod_Item;
         this.nome_Item = nome_Item;
@@ -46,11 +46,11 @@ public class ItemPedido {
 
     public void setobservacao_Pedido(String observacao_Pedido) { this.observacao_Pedido = observacao_Pedido; }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 }

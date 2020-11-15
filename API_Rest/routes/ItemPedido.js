@@ -40,7 +40,7 @@ router.post('/', (req, res, next) => {
 
 });
 
-router.get('/:cod_Pedido', (req, res, next) => {
+router.get('/Pedido/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
@@ -48,7 +48,7 @@ router.get('/:cod_Pedido', (req, res, next) => {
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
-                return res.status(200).send({ response: resultado })
+                return res.status(200).send(resultado)
             }
         )
     });

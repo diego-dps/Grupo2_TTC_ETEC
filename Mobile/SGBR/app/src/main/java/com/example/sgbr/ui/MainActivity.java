@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,17 +14,35 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
+import com.example.sgbr.adapter.AdapterMesa;
+import com.example.sgbr.adapter.AdapterPagamento;
+import com.example.sgbr.api.Conexao;
+import com.example.sgbr.api.DataService;
+import com.example.sgbr.model.Cardapio;
+import com.example.sgbr.model.ItemPedido;
+import com.example.sgbr.model.Mesa;
+import com.example.sgbr.model.Pedido;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class MainActivity extends AppCompatActivity {
 
+    private Conexao conexao = new Conexao();
+    private RecyclerView recyclerView;
+    private List<Pedido> listaPedido;
+    private AdapterMesa adapterMesa;
+    private List<Mesa> listaMesas = new ArrayList<>();
 
 
     @Override
@@ -88,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (result != null) {
             if (result.getContents() != null) {
+                inserirPedido();
                 alert("Scan realizado com sucesso!");
                     Intent intent = new Intent(MainActivity.this,CardapioActivity.class);
                     startActivity(intent);
@@ -99,15 +119,29 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     private void alert(String msg) {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 
+    private void inserirPedido(){
+        DataService service = conexao.conexao().create(DataService.class);
+        Pedido pedido = new Pedido("", "qrcode1");
+        Call<Pedido> call = service.inserirPedido(pedido);
 
+        call.enqueue(new Callback<Pedido>() {
+            @Override
+            public void onResponse(retrofit2.Call<Pedido> call, Response<Pedido> response) {
+                if (response.isSuccessful()){
+                    //CASO RETORNAR ALGUM DADO TRATAR AQUI
+                }
+            }
 
+            @Override
+            public void onFailure(retrofit2.Call<Pedido> call, Throwable t) {
 
-
+            }
+        });
+    }
 
     ////////////////////////----Métodos para testes----/////////////////////////////
 

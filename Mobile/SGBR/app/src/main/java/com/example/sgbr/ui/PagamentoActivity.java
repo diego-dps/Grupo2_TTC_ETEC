@@ -43,11 +43,7 @@ public class PagamentoActivity extends AppCompatActivity {
     private void recuperarItensPedidos() {
 
         DataService service = conexao.conexao().create(DataService.class);
-<<<<<<< HEAD
-        Call<List<Item>> call = service.recuperarItens("1");
-=======
-        Call<List<ItemPedido>> call = service.recuperarItemPedido();
->>>>>>> c37831cb1df3bea27bd80f37fbddfca232b0e893
+        Call<List<ItemPedido>> call = service.recuperarItemPedido("1");
 
         call.enqueue(new Callback<List<ItemPedido>>() {
             @Override

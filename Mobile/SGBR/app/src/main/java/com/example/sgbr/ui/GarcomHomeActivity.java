@@ -43,11 +43,11 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
 
 
-        recuperarPedido();
+        //recuperarPedido();
         //recuperarMesas();
     }
 
-    private void recuperarPedido() {
+    /*private void recuperarPedido() {
 
         DataService service = conexao.conexao().create(DataService.class);
         Call<List<Pedido>> call = service.recuperarPedido();
@@ -73,12 +73,12 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
             }
         });
-    }
+    }*/
 
     public List<Mesa> recuperarMesas(){
 
         DataService service = conexao.conexao().create(DataService.class);
-        Call<List<Mesa>> call = service.recuperarMesa();
+        Call<List<Mesa>> call = service.recuperarMesa("qrcode1");
 
         call.enqueue(new Callback<List<Mesa>>() {
             @Override

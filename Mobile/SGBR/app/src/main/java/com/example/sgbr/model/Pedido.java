@@ -9,8 +9,7 @@ public class Pedido {
     private String observacao_Pedido;
     private String qr_Code;
 
-    public Pedido(String horario_Pedido, String observacao_Pedido, String qr_Code) {
-        this.horario_Pedido = horario_Pedido;
+    public Pedido(String observacao_Pedido, String qr_Code) {
         this.observacao_Pedido = observacao_Pedido;
         this.qr_Code = qr_Code;
     }
@@ -27,17 +26,11 @@ public class Pedido {
         return horario_Pedido;
     }
 
-    public void setHorario_Pedido(String horario_Pedido) {
-        this.horario_Pedido = horario_Pedido;
-    }
-
     public String getObservacao_Pedido() {
         return observacao_Pedido;
     }
 
-    public void setObservacao_Pedido(String observacao_Pedido) {
-        this.observacao_Pedido = observacao_Pedido;
-    }
+    public void setObservacao_Pedido(String observacao_Pedido) { this.observacao_Pedido = observacao_Pedido; }
 
     public String getQr_Code() {
         return qr_Code;

@@ -50,8 +50,8 @@ public interface DataService {
     Call<Void> removerItem(@Path("cod_Item") int cod_Item);
 
     //REQUISIÇÕES ITEM PEDIDO
-    @GET("/ItemPedido")
-    Call<List<ItemPedido>> recuperarItemPedido();
+    @GET("/ItemPedido/Pedido/{cod_Pedido}")
+    Call<List<ItemPedido>> recuperarItemPedido(@Path("cod_Pedido") String cod_Pedido);
 
     @POST()
     Call<ItemPedido> inserirPedido(@Body ItemPedido itemPedido);
@@ -63,8 +63,8 @@ public interface DataService {
     Call<Void> removerItemPedido(@Path("cod_Pedido") int cod_Pedido);
 
     //REQUISIÇÕES MESA
-    @GET(/*Caminho da ação desejada*/)
-    Call<List<Mesa>> recuperarMesa();
+    @GET("/Mesa/{qr_Code}")
+    Call<List<Mesa>> recuperarMesa(@Path("qr_Code") String qr_Code);
 
     @POST()
     Call<Mesa> inserirMesa(@Body Mesa mesa);
@@ -79,7 +79,7 @@ public interface DataService {
     @GET("/Pedido")
     Call<List<Pedido>> recuperarPedido();
 
-    @POST()
+    @POST("/Pedido/")
     Call<Pedido> inserirPedido(@Body Pedido pedido);
 
     @PATCH()

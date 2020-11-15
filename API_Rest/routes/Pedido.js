@@ -33,7 +33,7 @@ router.post('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'CALL SP_CadastrarPedido(?, ?, ?, ?, ?, ?, ?);',
+            'INSERT INTO pedido (observacao_Pedido, qr_Code) VALUE (?,?);',
             [req.body.observacao_Pedido, req.body.qr_Code],
             (error, resultado, field) => {
                 conn.release();

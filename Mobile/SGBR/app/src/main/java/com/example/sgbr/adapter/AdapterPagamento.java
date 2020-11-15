@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,7 +22,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
     private List<ItemPedido> listaItensPedido;
     private Context context;
 
-    public AdapterPagamento(List<ItemPedido> listaItem, Context context) {
+    public AdapterPagamento(List<ItemPedido> listaItensPedido, Context context) {
         this.listaItensPedido = listaItensPedido;
         this.context = context;
     }
@@ -42,19 +44,20 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
                 holder.txt_titulo.setText(itemPedido.getnome_Item());
                 holder.txt_descricao.setText(itemPedido.getobservacao_Pedido());
                 holder.txt_total.setText("Total:");
-                holder.txt_total.setText("10");
+                holder.txt_valor.setText("10");
                 holder.txt_quantidade.setText("Quantidade:");
                 holder.txt_detalhes.setText("...");
-                holder.txt_valor_quantidade.setText("11");
+                holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return listaItensPedido.size();
     }
 
     public class PagamentoViewHolder extends RecyclerView.ViewHolder{
 
+        ImageView txt_img;
         TextView txt_titulo;
         TextView txt_descricao;
         TextView txt_total;
@@ -67,6 +70,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
 
             super(PagamentoView);
 
+            txt_img = PagamentoView.findViewById(R.id.txt_img);
             txt_titulo = PagamentoView.findViewById(R.id.txt_titulo);
             txt_descricao = PagamentoView.findViewById(R.id.txt_descricao);
             txt_total = PagamentoView.findViewById(R.id.txt_total);

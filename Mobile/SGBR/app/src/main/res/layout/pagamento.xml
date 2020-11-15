@@ -110,17 +110,17 @@
 
         <TextView
             android:id="@+id/txt_detalhes"
-            android:textColor="@color/darkergray"
-            android:singleLine="true"
-            android:ellipsize="marquee"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            tools:text="..."
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textColor="@color/darkergray"
             android:textSize="18sp"
             android:textStyle="bold"
-            tools:ignore="RelativeOverlap" />
+            tools:ignore="RelativeOverlap"
+            tools:text="..." />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

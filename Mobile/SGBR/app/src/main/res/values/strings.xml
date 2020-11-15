@@ -36,10 +36,10 @@
     <string name="alterar_senha_btn">Confirmar</string>
 
     //activity_alterar_senha
-    <string name="toolbar_cardapio">Alterar Senha</string>
+    <string name="toolbar_cardapio">Cardapio</string>
 
     //activity_categoria_cardapio
-    <string name="toolbar_categoria_cardapio">Cardapio</string>
+    <string name="toolbar_categoria_cardapio">Itens</string>
 
     //activity_carrinho_compras
     <string name="toolbar_carrinho_compras">Carrinho de Compras</string>

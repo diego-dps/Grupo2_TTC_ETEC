@@ -16,9 +16,16 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/azulClaro"
-            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-            app:title="@string/toolbar_categoria_cardapio">
+            android:background="@color/azulClaro">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/toolbar_cardapio"
+                android:gravity="center"
+                android:textSize="28dp"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_marginLeft="150dp"/>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -29,7 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/app_bar"
-        android:layout_marginTop="-71dp"
         android:background="@color/colorPrimaryLigth"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/cardapio_cliente">
