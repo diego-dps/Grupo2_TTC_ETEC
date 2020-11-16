@@ -53,7 +53,7 @@ public interface DataService {
     @GET("/ItemPedido/Pedido/{cod_Pedido}")
     Call<List<ItemPedido>> recuperarItemPedido(@Path("cod_Pedido") String cod_Pedido);
 
-    @POST("/ItemPedido")
+    @POST("/ItemPedido/")
     Call<ItemPedido> inserirItemPedido(@Body ItemPedido itemPedido);
 
     @PATCH()
