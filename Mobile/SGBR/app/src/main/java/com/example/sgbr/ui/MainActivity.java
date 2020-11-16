@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void inserirPedido(){
-        
+
         DataService service = conexao.conexao().create(DataService.class);
         Pedido pedido = new Pedido("", "qrcode1");
         Call<Pedido> call = service.inserirPedido(pedido);

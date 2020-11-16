@@ -8,7 +8,7 @@ public class ItemPedido {
     private String observacao_Pedido;
     private String quantidade;
 
-    public ItemPedido(String cod_Pedido, String cod_Item, String nome_Item, String observacao_Pedido, String quantidade) {
+    public ItemPedido(String cod_Item, String quantidade) {
         this.cod_Pedido = cod_Pedido;
         this.cod_Item = cod_Item;
         this.nome_Item = nome_Item;

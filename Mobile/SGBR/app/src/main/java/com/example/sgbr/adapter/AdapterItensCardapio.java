@@ -16,18 +16,27 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
+import com.example.sgbr.api.Conexao;
+import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Item;
+import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.ui.CarrinhoComprasActivity;
 import com.example.sgbr.ui.CategoriaCardapioActivity;
 import com.example.sgbr.ui.MainActivity;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCardapio.ItensViewHolder> {
 
+    private Conexao conexao;
     private  List<Item> listaItens;
     private Context context;
     private Double resultado = 0.0;
+    private Double quantidade;
 
     public AdapterItensCardapio(Context context, List<Item> listaItens) {
         this.listaItens = listaItens;
@@ -73,6 +82,28 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
             }
         });
 
+        holder.btn_add_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                quantidade = Double.parseDouble(holder.txt_valor.getText().toString()) / Double.parseDouble(item.getPreco_Item());
+
+                DataService service = conexao.conexao().create(DataService.class);
+                ItemPedido itemPedido = new ItemPedido(item.getCod_Item() , quantidade.toString());
+                Call<ItemPedido> call = service.inserirItemPedido(itemPedido);
+
+                call.enqueue(new Callback<ItemPedido>() {
+                    @Override
+                    public void onResponse(Call<ItemPedido> call, Response<ItemPedido> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ItemPedido> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
     }
 
     @Override
