@@ -15,11 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.Toast;;
 
 import com.example.sgbr.R;
+import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.adapter.AdapterCategoriaCardapio;
 import com.example.sgbr.controller.RecyclerItemClickListener;
 import com.example.sgbr.model.Cardapio;
 import com.example.sgbr.api.Conexao;
+import com.example.sgbr.model.Item;
 
 import java.util.List;
 
@@ -35,6 +37,8 @@ public class CardapioActivity extends AppCompatActivity {
     public RecyclerView recyclerView;
     private AdapterCategoriaCardapio adapterCategoriaCardapio;
     public Cardapio cod_Cardapio;
+    private  List<Item> listaItens;
+    private  AdapterItensCardapio adapterItensCardapio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,9 +63,32 @@ public class CardapioActivity extends AppCompatActivity {
                             public void onItemClick(View view, int position) {
                                 cod_Cardapio = listaCardapio.get(position);
 
-                                Toast.makeText(CardapioActivity.this, "Você selecionou " + cod_Cardapio.getCod_Cardapio(), Toast.LENGTH_SHORT).show();
-                                Intent it = new Intent(CardapioActivity.this, CategoriaCardapioActivity.class);
-                                startActivity(it);
+                                DataService service = conexao.conexao().create(DataService.class);
+                                Call<List<Item>> call = service.recuperarItens(cod_Cardapio.getCod_Cardapio().toString());
+
+                                call.enqueue(new Callback<List<Item>>() {
+                                    @Override
+                                    public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
+                                        if (response.isSuccessful() && response.body() != null){
+
+                                            Log.d("Resultado", "Aqui tem informação");
+                                            listaItens = response.body();
+                                            for (int i=0; i < listaItens.size(); i++){
+                                                listaItens.get(i);
+                                                Log.d("Resultado: ", "Aqui tem informação " + response.code());
+                                                adapterItensCardapio = new AdapterItensCardapio(CardapioActivity.this,listaItens);
+                                                recyclerView.setAdapter(adapterItensCardapio);
+                                            }
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<List<Item>> call, Throwable t) {
+                                        Log.d("Resultado", "onFailure: Falhou"+ t.getMessage());
+
+                                    }
+                                });
                             }
 
                             @Override
