@@ -107,7 +107,23 @@ public class MainActivity extends AppCompatActivity {
 
         if (result != null) {
             if (result.getContents() != null) {
-                inserirPedido();
+                DataService service = conexao.conexao().create(DataService.class);
+                Pedido pedido = new Pedido("", result.getContents());
+                Call<Pedido> call = service.inserirPedido(pedido);
+
+                call.enqueue(new Callback<Pedido>() {
+                    @Override
+                    public void onResponse(retrofit2.Call<Pedido> call, Response<Pedido> response) {
+                        if (response.isSuccessful()){
+                            //CASO RETORNAR ALGUM DADO TRATAR AQUI
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(retrofit2.Call<Pedido> call, Throwable t) {
+
+                    }
+                });
                 alert("Scan realizado com sucesso!");
                     Intent intent = new Intent(MainActivity.this,CardapioActivity.class);
                     startActivity(intent);
