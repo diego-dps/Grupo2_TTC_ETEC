@@ -9,6 +9,10 @@ public class Pedido {
     private String observacao_Pedido;
     private String qr_Code;
 
+    public Pedido() {
+
+    }
+
     public Pedido(String observacao_Pedido, String qr_Code) {
         this.observacao_Pedido = observacao_Pedido;
         this.qr_Code = qr_Code;

@@ -51,7 +51,7 @@
 
         <TextView
             android:id="@+id/txt_total"
-            android:layout_width="120px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:singleLine="true"
@@ -60,13 +60,13 @@
             android:layout_below="@id/txt_descricao"
             android:layout_alignStart="@id/txt_titulo"
             android:textStyle="bold"
-            android:layout_marginLeft="199dp"
+            android:layout_marginLeft="150dp"
             tools:text="@string/pagamento_total"
             />
 
         <TextView
             android:id="@+id/txt_valor"
-            android:layout_width="155px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:singleLine="true"
@@ -81,7 +81,7 @@
 
         <TextView
             android:id="@+id/txt_quantidade"
-            android:layout_width="230px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:singleLine="true"
@@ -95,16 +95,16 @@
 
         <TextView
             android:id="@+id/txt_valor_quantidade"
-            android:layout_width="145px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="16sp"
             android:singleLine="true"
             android:ellipsize="marquee"
             android:textColor="@color/darkergray"
             android:layout_below="@id/txt_descricao"
-            android:layout_alignStart="@id/txt_total"
+            android:layout_alignStart="@id/txt_quantidade"
             android:textStyle="bold"
-            android:layout_marginLeft="-104dp"
+            android:layout_marginLeft="85dp"
             tools:text="2"
             />
 

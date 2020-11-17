@@ -56,11 +56,11 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
                     holder.txt_descricao.setText(itemPedido.getobservacao_Pedido());
                 }
                 holder.txt_total.setText("Total: ");
-                quantidade = Double.parseDouble(itemPedido.getPreco()) * Double.parseDouble(itemPedido.getQuantidade());
-                holder.txt_valor.setText(quantidade.toString());
                 holder.txt_quantidade.setText("Quantidade:  ");
                 holder.txt_detalhes.setText("...");
                 holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
+                quantidade = Double.parseDouble(itemPedido.getPreco()) * Double.parseDouble(holder.txt_valor_quantidade.getText().toString());
+                holder.txt_valor.setText(quantidade.toString()+"0");
     }
 
     @Override

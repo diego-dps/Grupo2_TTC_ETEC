@@ -4,7 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="horizontal">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -17,30 +19,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/azulClaro">
-            <TextView
-                android:id="@+id/txt_icon_back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/ic_grupo_1"
-                android:gravity="center"
-                android:textColor="@android:color/white"
-                android:textSize="24sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/pagamento_title"
-                android:gravity="center"
-                android:textSize="28dp"
-                android:textColor="@color/colorTextPrimary"
-                android:layout_marginLeft="30dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:gravity="center">
 
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/ic_grupo_2"
-                android:layout_marginLeft="15dp"
-                />
+                <TextView
+                    android:id="@+id/txt_icon_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_grupo_1"
+                    android:layout_marginRight="25dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/pagamento_title"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/ic_grupo_2"
+                    android:layout_marginLeft="25dp"
+                    />
+
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -49,12 +60,11 @@
         android:id="@+id/Main_btn_ConfirmarCodigo"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="60dp"
         android:layout_marginTop="660dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="35dp"
         android:background="@drawable/botao_comum"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:onClick="tt"
         android:text="@string/pagamento_finalizar"
         android:textColor="#FFFFFF"

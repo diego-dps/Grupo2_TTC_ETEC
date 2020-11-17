@@ -42,6 +42,7 @@ public class PagamentoActivity extends AppCompatActivity {
 
     }
 
+
     private void recuperarItensPedidos() {
         DataService service = conexao.conexao().create(DataService.class);
         Call<List<Pedido>> callPedido = service.recuperarPedido();
@@ -51,8 +52,6 @@ public class PagamentoActivity extends AppCompatActivity {
             public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
                 if (response.isSuccessful()){
                     listaPedido = response.body();
-                    for(int i=0; i < listaPedido.size(); i++){
-
                         Pedido pedido = listaPedido.get(listaPedido.size() -1);
 
                         DataService service = conexao.conexao().create(DataService.class);
@@ -79,7 +78,6 @@ public class PagamentoActivity extends AppCompatActivity {
 
                             }
                         });
-                    }
                 }
             }
 

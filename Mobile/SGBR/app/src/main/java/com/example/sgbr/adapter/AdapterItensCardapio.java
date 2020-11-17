@@ -113,29 +113,29 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
 
                                 Pedido pedido = listaPedido.get(listaPedido.size() -1);
                                 Log.d("Resultado", "Resultado: "+ pedido.getCod_Pedido());
-
-
-                                quantidade = Double.parseDouble(holder.txt_valor.getText().toString()) / Double.parseDouble(item.getPreco_Item());
-
-                                DataService service = conexao.conexao().create(DataService.class);
-                                ItemPedido itemPedido = new ItemPedido(pedido.getCod_Pedido(), item.getCod_Item() , quantidade.toString(), resultado.toString());
-                                Call<ItemPedido> call1 = service.inserirItemPedido(itemPedido);
-
-                                call1.enqueue(new Callback<ItemPedido>() {
-                                    @Override
-                                    public void onResponse(Call<ItemPedido> call, Response<ItemPedido> response) {
-                                        if (response.isSuccessful()){
-                                            Toast.makeText(context, "Pedido realizado com sucesso: " + pedido.getCod_Pedido(), Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<ItemPedido> call, Throwable t) {
-
-                                    }
-                                });
-
                             }
+
+                            Pedido pedido = listaPedido.get(listaPedido.size() - 1);
+                            quantidade = Double.parseDouble(holder.txt_valor.getText().toString()) / Double.parseDouble(item.getPreco_Item());
+
+                            DataService service = conexao.conexao().create(DataService.class);
+                            ItemPedido itemPedido = new ItemPedido(pedido.getCod_Pedido(), item.getCod_Item() , quantidade.toString(), resultado.toString());
+                            Call<ItemPedido> call1 = service.inserirItemPedido(itemPedido);
+
+                            call1.enqueue(new Callback<ItemPedido>() {
+                                @Override
+                                public void onResponse(Call<ItemPedido> call, Response<ItemPedido> response) {
+                                    if (response.isSuccessful()){
+                                        Toast.makeText(context, "Pedido realizado com sucesso: " + pedido.getCod_Pedido(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<ItemPedido> call, Throwable t) {
+
+                                }
+                            });
+
 
                         }
                     }
