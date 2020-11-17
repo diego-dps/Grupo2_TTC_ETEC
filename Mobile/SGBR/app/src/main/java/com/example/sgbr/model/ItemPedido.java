@@ -7,13 +7,15 @@ public class ItemPedido {
     private String nome_Item;
     private String observacao_Pedido;
     private String quantidade;
+    private String preco_Item;
 
-    public ItemPedido(String cod_Item, String quantidade) {
+    public ItemPedido(String cod_Pedido, String cod_Item, String quantidade, String preco_Item) {
         this.cod_Pedido = cod_Pedido;
         this.cod_Item = cod_Item;
         this.nome_Item = nome_Item;
         this.observacao_Pedido = observacao_Pedido;
         this.quantidade = quantidade;
+        this.preco_Item = preco_Item;
     }
 
     public String getCod_Pedido() {
@@ -52,5 +54,13 @@ public class ItemPedido {
 
     public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getPreco() {
+        return preco_Item;
+    }
+
+    public void setPreco(String preco) {
+        this.preco_Item = preco_Item;
     }
 }

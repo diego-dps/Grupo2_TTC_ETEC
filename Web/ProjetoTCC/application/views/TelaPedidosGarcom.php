@@ -39,7 +39,13 @@
                         <th scope="col"><?php echo $pedidos['cod_Pedido'] ?></th>
                         <th scope="col"><?php echo $pedidos['numero_Mesa'] ?></th>
                         <th scope="col" class="alinhamentodetexto"><?php echo $pedidos['nome_Item'] ?></th>
-                        <th scope="col" class="alinhamentodetexto"><?php echo $pedidos['observacao_Pedido'] ?></th>
+                        <th scope="col" class="alinhamentodetexto"><?php 
+                            if($pedidos['observacao_Pedido'] != null){
+                                echo $pedidos['observacao_Pedido'];
+                            } else {
+                                echo "Sem Observação";    
+                            }
+                             ?></th>
                         <th scope="col"><?php echo $pedidos['quantidade'] ?></th>
                         <th scope="col"><?php echo FormatarData($pedidos['horario_Pedido']) ?></th>
                         <th scope="col">

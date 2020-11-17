@@ -21,6 +21,9 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
 
     private List<ItemPedido> listaItensPedido;
     private Context context;
+    private Double quantidade;
+    private Double v;
+    private Double q;
 
     public AdapterPagamento(List<ItemPedido> listaItensPedido, Context context) {
         this.listaItensPedido = listaItensPedido;
@@ -42,14 +45,20 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
 
         ItemPedido itemPedido = listaItensPedido.get(position);
                 holder.txt_titulo.setText(itemPedido.getnome_Item());
-                holder.txt_descricao.setText(itemPedido.getobservacao_Pedido());
+                if (itemPedido.getobservacao_Pedido() != null){
+
+                    holder.txt_descricao.setText("Sem observação");
+                }
+                else{
+
+                    holder.txt_descricao.setText(itemPedido.getobservacao_Pedido());
+                }
                 holder.txt_total.setText("Total: ");
-                holder.txt_valor.setText("10");
-                holder.txt_quantidade.setText("Quantidade: ");
+                quantidade = Double.parseDouble(itemPedido.getPreco()) * Double.parseDouble(itemPedido.getQuantidade());
+                holder.txt_valor.setText(quantidade.toString());
+                holder.txt_quantidade.setText("Quantidade:  ");
                 holder.txt_detalhes.setText("...");
                 holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
-                holder.txt_preco_Final.setText("Preço Final: ");
-                holder.txt_preco_Final_Valor.setText("20");
     }
 
     @Override
@@ -67,8 +76,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
         TextView txt_quantidade;
         TextView txt_valor_quantidade;
         TextView txt_detalhes;
-        TextView txt_preco_Final;
-        TextView txt_preco_Final_Valor;
 
         public PagamentoViewHolder(@NonNull View PagamentoView) {
 
@@ -82,7 +89,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
             txt_quantidade = PagamentoView.findViewById(R.id.txt_quantidade);
             txt_valor_quantidade = PagamentoView.findViewById(R.id.txt_valor_quantidade);
             txt_detalhes = PagamentoView.findViewById(R.id.txt_detalhes);
-            txt_preco_Final = PagamentoView.findViewById(R.id.preco_Final);
         }
     }
 }

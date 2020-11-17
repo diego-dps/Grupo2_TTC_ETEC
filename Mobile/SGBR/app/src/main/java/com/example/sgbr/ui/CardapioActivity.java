@@ -63,32 +63,9 @@ public class CardapioActivity extends AppCompatActivity {
                             public void onItemClick(View view, int position) {
                                 cod_Cardapio = listaCardapio.get(position);
 
-                                DataService service = conexao.conexao().create(DataService.class);
-                                Call<List<Item>> call = service.recuperarItens(cod_Cardapio.getCod_Cardapio().toString());
+                                Intent it = new Intent(CardapioActivity.this, CategoriaCardapioActivity.class);
+                                startActivity(it);
 
-                                call.enqueue(new Callback<List<Item>>() {
-                                    @Override
-                                    public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
-                                        if (response.isSuccessful() && response.body() != null){
-
-                                            Log.d("Resultado", "Aqui tem informação");
-                                            listaItens = response.body();
-                                            for (int i=0; i < listaItens.size(); i++){
-                                                listaItens.get(i);
-                                                Log.d("Resultado: ", "Aqui tem informação " + response.code());
-                                                adapterItensCardapio = new AdapterItensCardapio(CardapioActivity.this,listaItens);
-                                                recyclerView.setAdapter(adapterItensCardapio);
-                                            }
-                                        }
-
-                                    }
-
-                                    @Override
-                                    public void onFailure(Call<List<Item>> call, Throwable t) {
-                                        Log.d("Resultado", "onFailure: Falhou"+ t.getMessage());
-
-                                    }
-                                });
                             }
 
                             @Override
@@ -196,6 +173,12 @@ public class CardapioActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void testeTelasCarrinho(View v) {
+
+        Intent it = new Intent(CardapioActivity.this, PagamentoActivity.class);
+        startActivity(it);
     }
 
 }

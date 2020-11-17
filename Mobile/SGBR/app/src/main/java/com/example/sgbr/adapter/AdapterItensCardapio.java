@@ -3,6 +3,7 @@ package com.example.sgbr.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.renderscript.Int2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import com.example.sgbr.ui.CarrinhoComprasActivity;
 import com.example.sgbr.ui.CategoriaCardapioActivity;
 import com.example.sgbr.ui.MainActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -32,10 +35,12 @@ import retrofit2.Response;
 
 public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCardapio.ItensViewHolder> {
 
-    private Conexao conexao;
+    private Conexao conexao = new Conexao();
     private  List<Item> listaItens;
     private Context context;
     private Double resultado = 0.0;
+    private Integer soma;
+    private Integer menos;
     private Double quantidade;
 
     public AdapterItensCardapio(Context context, List<Item> listaItens) {
@@ -60,6 +65,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                 holder.txt_nome_item.setText(item.getNome_Item());
                 holder.txt_preview.setText(item.getDescricao_Item());
                 holder.txt_moeda2.setText("R$");
+                holder.txt_num_itens.setText("0");
                 holder.txt_valor.setText(item.getPreco_Item());
 
                 holder.img_add.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +73,8 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                     public void onClick(View v) {
                         resultado = Double.parseDouble(item.getPreco_Item()) + Double.parseDouble(holder.txt_valor.getText().toString());
                         holder.txt_valor.setText(resultado.toString() + "0");
+                        soma = Integer.parseInt(holder.txt_num_itens.getText().toString()) + Integer.parseInt("1");
+                        holder.txt_num_itens.setText(soma.toString());
                     }
                 });
 
@@ -79,6 +87,9 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                     resultado = Double.parseDouble(item.getPreco_Item());
                 }
                 holder.txt_valor.setText(resultado.toString() + "0");
+
+                soma = Integer.parseInt(holder.txt_num_itens.getText().toString()) - Integer.parseInt("1");
+                holder.txt_num_itens.setText(soma.toString());
             }
         });
 
@@ -88,7 +99,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                 quantidade = Double.parseDouble(holder.txt_valor.getText().toString()) / Double.parseDouble(item.getPreco_Item());
 
                 DataService service = conexao.conexao().create(DataService.class);
-                ItemPedido itemPedido = new ItemPedido(item.getCod_Item() , quantidade.toString());
+                ItemPedido itemPedido = new ItemPedido("7", item.getCod_Item() , quantidade.toString(), resultado.toString());
                 Call<ItemPedido> call = service.inserirItemPedido(itemPedido);
 
                 call.enqueue(new Callback<ItemPedido>() {
@@ -118,6 +129,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
         TextView txt_preview;
         TextView txt_moeda2;
         TextView txt_valor;
+        TextView txt_num_itens;
         ImageButton img_add;
         ImageButton img_remove;
         ImageView img_item;
@@ -134,6 +146,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
             img_remove = itemView.findViewById(R.id.img_remove);
             img_item = itemView.findViewById(R.id.img_item);
             btn_add_item = itemView.findViewById(R.id.btn_add_item);
+            txt_num_itens = itemView.findViewById(R.id.txt_num_itens);
 
         }
     }

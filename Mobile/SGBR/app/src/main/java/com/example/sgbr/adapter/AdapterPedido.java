@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
+import com.example.sgbr.model.Item;
 import com.example.sgbr.model.Pedido;
 import com.google.android.material.button.MaterialButton;
 
@@ -18,6 +19,7 @@ public class AdapterPedido extends RecyclerView.Adapter<AdapterPedido.PedidoView
 
     private List<Pedido> listaPedidos;
     private Context context;
+    private  List<Item> listaItens;
 
     public AdapterPedido(List<Pedido> listaPedidos, Context context) {
         this.listaPedidos = listaPedidos;

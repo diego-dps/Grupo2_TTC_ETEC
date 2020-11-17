@@ -157,9 +157,9 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         });
     }
 
-    public void VoltarCardapio(View v) {
+    public void testeTelasCarrinho(View v) {
 
-        Intent it = new Intent(CategoriaCardapioActivity.this, CardapioActivity.class);
+        Intent it = new Intent(CategoriaCardapioActivity.this, PagamentoActivity.class);
         startActivity(it);
     }
 }
