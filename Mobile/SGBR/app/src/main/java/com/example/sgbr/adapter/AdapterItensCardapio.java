@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.renderscript.Int2;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +24,7 @@ import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
+import com.example.sgbr.model.Pedido;
 import com.example.sgbr.ui.CarrinhoComprasActivity;
 import com.example.sgbr.ui.CategoriaCardapioActivity;
 import com.example.sgbr.ui.MainActivity;
@@ -43,6 +46,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
     private Integer soma;
     private Integer menos;
     private Double quantidade;
+    private List<Pedido> listaPedido;
 
     public AdapterItensCardapio(Context context, List<Item> listaItens) {
         this.listaItens = listaItens;
@@ -97,20 +101,47 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
         holder.btn_add_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quantidade = Double.parseDouble(holder.txt_valor.getText().toString()) / Double.parseDouble(item.getPreco_Item());
-
                 DataService service = conexao.conexao().create(DataService.class);
-                ItemPedido itemPedido = new ItemPedido("7", item.getCod_Item() , quantidade.toString(), resultado.toString());
-                Call<ItemPedido> call = service.inserirItemPedido(itemPedido);
+                Call<List<Pedido>> callPedido = service.recuperarPedido();
 
-                call.enqueue(new Callback<ItemPedido>() {
+                callPedido.enqueue(new Callback<List<Pedido>>() {
                     @Override
-                    public void onResponse(Call<ItemPedido> call, Response<ItemPedido> response) {
+                    public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
+                        if (response.isSuccessful()){
+                            listaPedido = response.body();
+                            for(int i=0; i < listaPedido.size(); i++){
 
+                                Pedido pedido = listaPedido.get(listaPedido.size() -1);
+                                Log.d("Resultado", "Resultado: "+ pedido.getCod_Pedido());
+
+
+                                quantidade = Double.parseDouble(holder.txt_valor.getText().toString()) / Double.parseDouble(item.getPreco_Item());
+
+                                DataService service = conexao.conexao().create(DataService.class);
+                                ItemPedido itemPedido = new ItemPedido(pedido.getCod_Pedido(), item.getCod_Item() , quantidade.toString(), resultado.toString());
+                                Call<ItemPedido> call1 = service.inserirItemPedido(itemPedido);
+
+                                call1.enqueue(new Callback<ItemPedido>() {
+                                    @Override
+                                    public void onResponse(Call<ItemPedido> call, Response<ItemPedido> response) {
+                                        if (response.isSuccessful()){
+                                            Toast.makeText(context, "Pedido realizado com sucesso: " + pedido.getCod_Pedido(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ItemPedido> call, Throwable t) {
+
+                                    }
+                                });
+
+                            }
+
+                        }
                     }
 
                     @Override
-                    public void onFailure(Call<ItemPedido> call, Throwable t) {
+                    public void onFailure(Call<List<Pedido>> call, Throwable t) {
 
                     }
                 });

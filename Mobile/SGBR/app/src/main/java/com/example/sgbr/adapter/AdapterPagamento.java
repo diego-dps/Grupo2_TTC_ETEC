@@ -15,11 +15,13 @@ import com.example.sgbr.R;
 import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.PagamentoViewHolder>{
 
-    private List<ItemPedido> listaItensPedido;
+    private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private Context context;
     private Double quantidade;
     private Double v;

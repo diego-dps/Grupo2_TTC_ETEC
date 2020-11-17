@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(retrofit2.Call<Pedido> call, Response<Pedido> response) {
                 if (response.isSuccessful()){
 
-                    DataService service = conexao.conexao().create(DataService.class);
+                    /*DataService service = conexao.conexao().create(DataService.class);
                     Call<List<Pedido>> call1 = service.recuperarPedido();
                     call1.enqueue(new Callback<List<Pedido>>() {
                         @Override
@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onFailure(Call<List<Pedido>> call, Throwable t) {
 
                         }
-                    });
+                    });*/
                 }
             }
 
