@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;;
 
 import com.example.sgbr.R;
@@ -34,11 +35,9 @@ public class CardapioActivity extends AppCompatActivity {
 
     private Conexao conexao = new Conexao();
     private  List<Cardapio> listaCardapio;
-    public RecyclerView recyclerView;
+    private RecyclerView recyclerView;
     private AdapterCategoriaCardapio adapterCategoriaCardapio;
-    public Cardapio cod_Cardapio;
-    private  List<Item> listaItens;
-    private  AdapterItensCardapio adapterItensCardapio;
+    private Cardapio cardapio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +49,9 @@ public class CardapioActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-        recyclerView.setAdapter(adapterCategoriaCardapio);
-
 
         //EVENTO CLICK DO RECYCLERVIEW
-        recyclerView.addOnItemTouchListener(
+        /*recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(
                         getApplicationContext(),
                         recyclerView,
@@ -65,6 +62,7 @@ public class CardapioActivity extends AppCompatActivity {
 
                                 Intent it = new Intent(CardapioActivity.this, CategoriaCardapioActivity.class);
                                 startActivity(it);
+
 
                             }
 
@@ -80,7 +78,7 @@ public class CardapioActivity extends AppCompatActivity {
                         }
 
                 )
-        );
+        );*/
 
         recuperarCardapio();
 
@@ -101,6 +99,33 @@ public class CardapioActivity extends AppCompatActivity {
                     Log.d("Resultado: ", "Aqui tem informação " + response.code());
                     AdapterCategoriaCardapio adapterCategoriaCardapio = new AdapterCategoriaCardapio(listaCardapio, CardapioActivity.this);
                     recyclerView.setAdapter(adapterCategoriaCardapio);
+
+                    recyclerView.addOnItemTouchListener(
+                            new RecyclerItemClickListener(
+                                    getApplicationContext(),
+                                    recyclerView,
+                                    new RecyclerItemClickListener.OnItemClickListener() {
+                                        @Override
+                                        public void onItemClick(View view, int position) {
+                                            cardapio = listaCardapio.get(position);
+                                            Intent it = new Intent(CardapioActivity.this, CategoriaCardapioActivity.class);
+                                            it.putExtra("key", cardapio.getCod_Cardapio());
+                                            startActivity(it);
+                                        }
+
+                                        @Override
+                                        public void onLongItemClick(View view, int position) {
+
+                                        }
+
+                                        @Override
+                                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                        }
+                                    }
+
+                            )
+                    );
                 }
             }
 
