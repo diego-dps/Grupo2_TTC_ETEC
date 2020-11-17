@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
+import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.adapter.AdapterMesa;
 import com.example.sgbr.adapter.AdapterPagamento;
 import com.example.sgbr.api.Conexao;
@@ -40,10 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
     private Conexao conexao = new Conexao();
     private RecyclerView recyclerView;
-    private List<Pedido> listaPedido;
+    private List<Pedido> listaPedido = new ArrayList<>();
+    private Pedido post;
     private AdapterMesa adapterMesa;
     private List<Mesa> listaMesas = new ArrayList<>();
     private String codQrCode;
+    private int ultimo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,25 +110,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (result != null) {
             if (result.getContents() != null) {
-                DataService service = conexao.conexao().create(DataService.class);
-                Pedido pedido = new Pedido("", result.getContents());
-                Call<Pedido> call = service.inserirPedido(pedido);
-
-                call.enqueue(new Callback<Pedido>() {
-                    @Override
-                    public void onResponse(retrofit2.Call<Pedido> call, Response<Pedido> response) {
-                        if (response.isSuccessful()){
-                            //CASO RETORNAR ALGUM DADO TRATAR AQUI
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(retrofit2.Call<Pedido> call, Throwable t) {
-
-                    }
-                });
+                inserirPedido();
                 alert("Scan realizado com sucesso!");
-                    Intent intent = new Intent(MainActivity.this,CardapioActivity.class);
+                    Intent intent = new Intent(MainActivity.this, CardapioActivity.class);
+                    /*intent.putExtra("cod_pedido", post.getCod_Pedido()); erro*/
                     startActivity(intent);
             } else {
                 alert("Scan Cancelado");
@@ -149,7 +137,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(retrofit2.Call<Pedido> call, Response<Pedido> response) {
                 if (response.isSuccessful()){
-                    //CASO RETORNAR ALGUM DADO TRATAR AQUI
+
+                    DataService service = conexao.conexao().create(DataService.class);
+                    Call<List<Pedido>> call1 = service.recuperarPedido();
+                    call1.enqueue(new Callback<List<Pedido>>() {
+                        @Override
+                        public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
+                            listaPedido = response.body();
+                            for(int i=0; i < listaPedido.size(); i++){
+
+                                Pedido post = listaPedido.get(listaPedido.size() -1);
+                                Log.d("Resultado", "Resultado: "+ post.getCod_Pedido());
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<Pedido>> call, Throwable t) {
+
+                        }
+                    });
                 }
             }
 

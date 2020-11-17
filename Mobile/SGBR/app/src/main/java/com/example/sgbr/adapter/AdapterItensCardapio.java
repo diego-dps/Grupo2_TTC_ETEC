@@ -3,6 +3,7 @@ package com.example.sgbr.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.renderscript.Int2;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,7 +99,6 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
             public void onClick(View v) {
                 quantidade = Double.parseDouble(holder.txt_valor.getText().toString()) / Double.parseDouble(item.getPreco_Item());
 
-
                 DataService service = conexao.conexao().create(DataService.class);
                 ItemPedido itemPedido = new ItemPedido("7", item.getCod_Item() , quantidade.toString(), resultado.toString());
                 Call<ItemPedido> call = service.inserirItemPedido(itemPedido);
@@ -119,9 +119,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
     }
 
     @Override
-    public int getItemCount() {
-        return listaItens.size();
-    }
+    public int getItemCount() { return listaItens.size(); }
 
     public class ItensViewHolder extends RecyclerView.ViewHolder{
 
