@@ -5,32 +5,30 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/azulClaro"
+    android:orientation="vertical"
     tools:context=".ui.LoginActivity">
 
     <TextView
-    android:id="@+id/Login_text_Titulo"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/login_titulo"
-    android:gravity="center"
-    android:textColor="@color/colorTextPrimary"
-    android:textSize="40dp"
-    android:layout_marginTop="50dp"
-    />
+        android:id="@+id/Login_text_Titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/login_titulo"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="40dp" />
 
     <TextView
         android:id="@+id/Login_text_Usuario"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_usuario"
-        android:textColor="@color/colorTextPrimary"
-        android:textSize="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="30dp"
-        />
+        android:text="@string/login_usuario"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="30dp" />
 
     <EditText
         android:id="@+id/Login_editText_Usuario"
@@ -40,23 +38,21 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/plain_text"
-        android:textSize="20dp"
         android:ems="10"
         android:hint="Digite seu Usuario ou Email"
         android:inputType="textPersonName"
-        />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/Login_text_Senha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/login_senha"
-        android:textSize="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginLeft="30dp"
+        android:text="@string/login_senha"
         android:textColor="@color/colorTextPrimary"
-        />
+        android:textSize="30dp" />
 
     <EditText
         android:id="@+id/Login_editText_Senha"
@@ -66,11 +62,10 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/plain_text"
-        android:textSize="20dp"
         android:ems="10"
         android:hint="Digite sua Senha"
         android:inputType="textPersonName"
-        />
+        android:textSize="20dp" />
 
 
     <Button
@@ -82,7 +77,6 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/botao"
         android:gravity="center"
-        android:onClick="validarUsuario"
         android:text="@string/login_btn"
         android:textColor="#FFFFFF"
         android:textSize="25dp" />

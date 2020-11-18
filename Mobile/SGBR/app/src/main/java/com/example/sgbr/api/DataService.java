@@ -89,8 +89,8 @@ public interface DataService {
     Call<Void> removerPedido(@Path("cod_Pedido") int cod_Pedido);
 
     //REQUISIÇÕES FUNCIONÁRIO
-    @GET("/Funcionario")
-    Call<List<Funcionario>> recuperarFuncionarios();
+    @GET("/Funcionario/Email/{email_Funcionario}")
+    Call<List<Funcionario>> recuperarFuncionarios(@Path("email_Funcionario") String email_Funcionario);
 
     @POST()
     Call<Funcionario> inserirFuncionario(@Body Funcionario funcionario);

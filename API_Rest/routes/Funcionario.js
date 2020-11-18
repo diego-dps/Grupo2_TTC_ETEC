@@ -70,7 +70,7 @@ router.get('/Email/:email_Funcionario', (req, res, next) => {
             [req.params.email_Funcionario],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
-                return res.status(200).send({ response: resultado })
+                return res.status(200).send(resultado)
             }
         )
     });
