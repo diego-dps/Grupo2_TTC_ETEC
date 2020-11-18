@@ -77,13 +77,13 @@
         android:id="@+id/Login_btn"
         android:layout_width="200dp"
         android:layout_height="60dp"
-        android:background="@drawable/botao"
-        android:text="@string/login_btn"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp"
+        android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/botao"
         android:gravity="center"
-        android:layout_gravity="center"
-        />
+        android:onClick="validarUsuario"
+        android:text="@string/login_btn"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp" />
 </LinearLayout>

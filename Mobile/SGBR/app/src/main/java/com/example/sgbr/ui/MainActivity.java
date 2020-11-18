@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void testeTelasCarrinho(View v) {
 
-        Intent it = new Intent(MainActivity.this, PagamentoActivity.class);
+        Intent it = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(it);
     }
 }
