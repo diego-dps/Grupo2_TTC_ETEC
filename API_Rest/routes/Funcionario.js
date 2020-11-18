@@ -61,6 +61,53 @@ router.get('/:cod_Funcionario', (req, res, next) => {
     });
 
 });
+// Requisição por email
+router.get('/Email/:email_Funcionario', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Funcionario WHERE email_Funcionario = ?;',
+            [req.params.email_Funcionario],
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send({ response: resultado })
+            }
+        )
+    });
+
+});
+
+// Requisição por senha
+router.get('/Senha/:senha', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Funcionario WHERE senha = ?;',
+            [req.params.senha],
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send({ response: resultado })
+            }
+        )
+    });
+
+});
+
+// Requisição por Email e senha
+router.get('/Email/:email_Funcionario/Senha/:senha', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Funcionario WHERE email_Funcionario = ? AND senha = ?;',
+            [req.params.email_Funcionario,req.params.senha],
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send({ response: resultado })
+            }
+        )
+    });
+
+});
 
 router.patch('/', (req, res, next) => {
 
