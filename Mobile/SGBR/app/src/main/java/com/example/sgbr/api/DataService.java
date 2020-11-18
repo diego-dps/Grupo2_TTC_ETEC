@@ -89,8 +89,8 @@ public interface DataService {
     Call<Void> removerPedido(@Path("cod_Pedido") int cod_Pedido);
 
     //REQUISIÇÕES FUNCIONÁRIO
-    @GET(/*Caminho da ação desejada*/)
-    Call<List<Funcionario>> recuperarFuncionários();
+    @GET("/Funcionario")
+    Call<List<Funcionario>> recuperarFuncionarios();
 
     @POST()
     Call<Funcionario> inserirFuncionario(@Body Funcionario funcionario);

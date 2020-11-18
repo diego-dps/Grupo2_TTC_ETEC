@@ -7,6 +7,7 @@ public class Funcionario {
     private String telefone_Funcionario;
     private String cargo_Funcionario;
     private String Ativo;
+    private String email_Funcionario;
     private String senha;
 
     public Funcionario(String nome_Funcionario, String cpf_Funcionario, String telefone_Funcionario, String cargo_Funcionario, String ativo, String senha) {
@@ -64,6 +65,14 @@ public class Funcionario {
 
     public void setAtivo(String ativo) {
         Ativo = ativo;
+    }
+
+    public String getEmail_Funcionario() {
+        return email_Funcionario;
+    }
+
+    public void setEmail_Funcionario(String email_Funcionario) {
+        this.cod_Funcionario = cod_Funcionario;
     }
 
     public String getSenha() {
