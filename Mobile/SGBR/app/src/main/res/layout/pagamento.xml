@@ -104,7 +104,7 @@
             android:layout_below="@id/txt_descricao"
             android:layout_alignStart="@id/txt_quantidade"
             android:textStyle="bold"
-            android:layout_marginLeft="85dp"
+            android:layout_marginLeft="95dp"
             tools:text="2"
             />
 

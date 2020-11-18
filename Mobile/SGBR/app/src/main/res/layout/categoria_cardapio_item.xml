@@ -111,7 +111,8 @@
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@id/img_remove"
             android:background="@drawable/botao_comum"
-            android:text="@string/btn_add" />
+            android:text="@string/btn_add"
+            android:textSize="10sp" />
 
     </RelativeLayout>
 

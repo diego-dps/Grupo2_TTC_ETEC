@@ -70,7 +70,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                 holder.txt_nome_item.setText(item.getNome_Item());
                 holder.txt_preview.setText(item.getDescricao_Item());
                 holder.txt_moeda2.setText("R$");
-                holder.txt_num_itens.setText("0");
+                holder.txt_num_itens.setText("1");
                 holder.txt_valor.setText(item.getPreco_Item());
 
                 holder.img_add.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +94,9 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                 holder.txt_valor.setText(resultado.toString() + "0");
 
                 soma = Integer.parseInt(holder.txt_num_itens.getText().toString()) - Integer.parseInt("1");
+                if (soma < 1){
+                    soma = Integer.parseInt(holder.txt_num_itens.getText().toString());
+                }
                 holder.txt_num_itens.setText(soma.toString());
             }
         });

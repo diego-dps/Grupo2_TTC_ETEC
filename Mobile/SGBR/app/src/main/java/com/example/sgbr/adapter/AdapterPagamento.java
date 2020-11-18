@@ -38,7 +38,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.pagamento, parent, false);
-
         return new PagamentoViewHolder(view);
     }
 
@@ -56,7 +55,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
                     holder.txt_descricao.setText(itemPedido.getobservacao_Pedido());
                 }
                 holder.txt_total.setText("Total: ");
-                holder.txt_quantidade.setText("Quantidade:  ");
+                holder.txt_quantidade.setText("Quantidade:");
                 holder.txt_detalhes.setText("...");
                 holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
                 quantidade = Double.parseDouble(itemPedido.getPreco()) * Double.parseDouble(holder.txt_valor_quantidade.getText().toString());
@@ -78,6 +77,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
         TextView txt_quantidade;
         TextView txt_valor_quantidade;
         TextView txt_detalhes;
+        TextView preco_Final;
 
         public PagamentoViewHolder(@NonNull View PagamentoView) {
 

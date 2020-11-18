@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Mesa> listaMesas = new ArrayList<>();
     private String codQrCode;
     private int ultimo;
+    private String Pegarqrcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
         if (result != null) {
             if (result.getContents() != null) {
+                Pegarqrcode = result.getContents();
+                Log.d("Resultado", "Resultado do scan: "+ result.getContents());
                 inserirPedido();
                 alert("Scan realizado com sucesso!");
                     Intent intent = new Intent(MainActivity.this, CardapioActivity.class);
@@ -130,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     private void inserirPedido(){
 
         DataService service = conexao.conexao().create(DataService.class);
-        Pedido pedido = new Pedido("", "qrcode1");
+        Pedido pedido = new Pedido("", Pegarqrcode);
         Call<Pedido> call = service.inserirPedido(pedido);
 
         call.enqueue(new Callback<Pedido>() {
