@@ -7,45 +7,150 @@
     tools:showIn="@layout/activity_garcom_home">
 
     <RelativeLayout
-        android:layout_width="190dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:layout_margin="15dp"
+        android:background="@color/darkColor">
+
+        <TextView
+            android:id="@+id/txt_Pedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Pedido:"
+            android:textColor="@color/dangerColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_numPedido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txt_Pedido"
+            android:layout_marginStart="65dp"
+            android:text="12"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_mesa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_Pedido"
+            android:layout_alignStart="@+id/txt_Pedido"
             android:text="Mesa:"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"/>
+            android:textColor="@color/dangerColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txt_num_mesa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/txt_Pedido"
+            android:layout_alignBaseline="@id/txt_mesa"
+            android:layout_marginStart="55dp"
             android:text="12"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_marginLeft="50dp"/>
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_status"
+            android:id="@+id/txt_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status:"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/txt_mesa"/>
+            android:layout_below="@+id/txt_mesa"
+            android:layout_alignStart="@id/txt_Pedido"
+            android:text="Item:"
+            android:textColor="@color/dangerColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_valor_status"
-            android:layout_width="match_parent"
+            android:id="@+id/txt_itemPedido"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pronto"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_below="@+id/txt_mesa"
-            android:layout_marginLeft="60dp"/>
+            android:layout_below="@id/txt_mesa"
+            android:layout_alignBaseline="@+id/txt_item"
+            android:layout_alignStart="@id/txt_Pedido"
+            android:layout_marginStart="40dp"
+            android:text="X-Salada"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_observacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/txt_Pedido"
+            android:layout_marginStart="150dp"
+            android:text="Observação:"
+            android:textColor="@color/dangerColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/observacao"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/txt_mesa"
+            android:layout_alignBaseline="@+id/txt_mesa"
+            android:layout_alignStart="@+id/txt_observacao"
+            android:text="X-Salada sem salada, com calabresa e bacon"
+            android:textAlignment="textStart"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_quantidade2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_item"
+            android:layout_alignStart="@id/txt_Pedido"
+            android:text="Quantidade:"
+            android:textColor="@color/dangerColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/quantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_mesa"
+            android:layout_alignBaseline="@+id/txt_quantidade2"
+            android:layout_marginLeft="98dp"
+            android:text="2x"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_total2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_quantidade2"
+            android:layout_alignStart="@id/txt_Pedido"
+            android:text="Total:"
+            android:textColor="@color/dangerColor"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/preco_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_mesa"
+            android:layout_alignBaseline="@+id/txt_total2"
+            android:layout_marginLeft="55dp"
+            android:text="R$24.00"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
 
     </RelativeLayout>
 
