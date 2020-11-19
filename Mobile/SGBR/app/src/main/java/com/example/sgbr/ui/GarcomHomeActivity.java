@@ -10,9 +10,11 @@ import com.example.sgbr.R;
 import com.example.sgbr.adapter.AdapterCategoriaCardapio;
 import com.example.sgbr.adapter.AdapterChamadaCliente;
 import com.example.sgbr.adapter.AdapterItensCarrinho;
+import com.example.sgbr.adapter.AdapterMesa;
 import com.example.sgbr.adapter.AdapterPedido;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
+import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.model.Mesa;
 import com.example.sgbr.model.Pedido;
 
@@ -28,9 +30,9 @@ public class GarcomHomeActivity extends AppCompatActivity {
     private Conexao conexao = new Conexao();
     private RecyclerView recyclerView;
     private RecyclerView recyclerView2;
-    private AdapterPedido adapterPedido;
+    private AdapterMesa adapterMesa;
     private AdapterChamadaCliente adapterChamadaCliente;
-    private List<Pedido> listaPedidos = new ArrayList<>();
+    private List<ItemPedido> listaItensPedidos = new ArrayList<>();
     private List<Mesa> listaMesas = new ArrayList<>();
 
     @Override
@@ -38,42 +40,39 @@ public class GarcomHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garcom_home);
 
-        recyclerView = findViewById(R.id.cardapio_pedido);
-        recyclerView2 = findViewById(R.id.cardapio_cliente);
+        recyclerView = findViewById(R.id.recyclerview_pedido);
+        recyclerView2 = findViewById(R.id.recyclerview_chamada_cliente);
 
 
 
-        //recuperarPedido();
+        recuperarPedido();
         //recuperarMesas();
     }
 
-    /*private void recuperarPedido() {
+    public void recuperarPedido() {
 
         DataService service = conexao.conexao().create(DataService.class);
-        Call<List<Pedido>> call = service.recuperarPedido();
+        Call<List<ItemPedido>> call = service.recuperarTodosItemPedido();
 
-        call.enqueue(new Callback<List<Pedido>>() {
+        call.enqueue(new Callback<List<ItemPedido>>() {
             @Override
-            public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
+            public void onResponse(Call<List<ItemPedido>> call, Response<List<ItemPedido>> response) {
                 if (response.isSuccessful() && response.body() != null){
 
                     Log.d("Resultado", "Aqui tem informação");
-                    listaPedidos = response.body();
-                    for (int i=0; i < listaPedidos.size(); i++){
-                        listaPedidos.get(i);
-                        Log.d("Resultado: ", "Aqui tem informação " + response.code());
-                        adapterPedido = new AdapterPedido(listaPedidos, GarcomHomeActivity.this);
-                        recyclerView.setAdapter(adapterPedido);
-                    }
+                    listaItensPedidos = response.body();
+
+                        adapterMesa = new AdapterMesa(listaItensPedidos, GarcomHomeActivity.this);
+                        recyclerView.setAdapter(adapterMesa);
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Pedido>> call, Throwable t) {
+            public void onFailure(Call<List<ItemPedido>> call, Throwable t) {
 
             }
         });
-    }*/
+    }
 
     public List<Mesa> recuperarMesas(){
 

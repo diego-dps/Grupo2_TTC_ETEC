@@ -59,7 +59,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cardapio_pedido"
+            android:id="@+id/recyclerview_pedido"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="30dp"
@@ -69,7 +69,7 @@
             tools:listitem="@layout/garcom_pedido" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/cardapio_cliente"
+            android:id="@+id/recyclerview_chamada_cliente"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginHorizontal="30dp"

@@ -57,7 +57,7 @@ router.get('/:cod_Pedido', (req, res, next) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
             'SELECT * FROM Pedido WHERE cod_Pedido = ?;',
-            [req.params.id_produto],
+            [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
@@ -95,12 +95,12 @@ router.patch('/', (req, res, next) => {
     });
 });
 
-router.delete('/', (req, res, next) => {
+router.delete('/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
             `DELETE FROM Pedido WHERE cod_Pedido = ?`,
-            [req.body.id_produto],
+            [req.params.cod_Pedido],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {
