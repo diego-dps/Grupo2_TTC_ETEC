@@ -47,12 +47,6 @@
             android:layout_below="@+id/txt_mesa"
             android:layout_marginLeft="60dp"/>
 
-        <ImageButton
-            android:id="@+id/btn_excluir"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Excluir"
-            android:layout_marginLeft="130dp"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

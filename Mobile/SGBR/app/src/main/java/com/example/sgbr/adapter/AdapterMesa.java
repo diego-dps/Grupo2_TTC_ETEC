@@ -39,6 +39,10 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
         this.context = context;
     }
 
+    public List<ItemPedido> getListaItensPedidos(){
+        return listaItensPedidos;
+    }
+
     @NonNull
     @Override
     public PedidoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -55,27 +59,6 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
         ItemPedido itemPedido = listaItensPedidos.get(position);
         holder.status.setText(itemPedido.getCod_Pedido());
 
-        holder.btn_excluir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DataService service = conexao.conexao().create(DataService.class);
-                Call<Void> call = service.removerItemPedido("2");
-
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if (response.isSuccessful()){
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-
-                    }
-                });
-            }
-        });
     }
 
     @Override
@@ -87,15 +70,12 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
 
         TextView status;
         TextView numero_Mesa;
-        ImageButton btn_excluir;
-
 
         public PedidoViewHolder(@NonNull View PedidoView) {
 
             super(PedidoView);
 
             status = PedidoView.findViewById(R.id.txt_valor_status);
-            btn_excluir = PedidoView.findViewById(R.id.btn_excluir);
         }
 
     }
