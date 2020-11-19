@@ -8,6 +8,7 @@ public class Pedido {
     private String horario_Pedido;
     private String observacao_Pedido;
     private String qr_Code;
+    private String status_Pedido;
 
     public Pedido() {
 
@@ -42,6 +43,14 @@ public class Pedido {
 
     public void setQr_Code(String qr_Code) {
         this.qr_Code = qr_Code;
+    }
+
+    public String getStatus_Pedido() {
+        return status_Pedido;
+    }
+
+    public void setStatus_Pedido(String status_Pedido) {
+        this.status_Pedido = status_Pedido;
     }
 
 

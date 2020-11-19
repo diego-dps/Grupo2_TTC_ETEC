@@ -4,61 +4,99 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
+import com.example.sgbr.api.Conexao;
+import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.model.Mesa;
+import com.example.sgbr.model.Pedido;
+import com.example.sgbr.ui.GarcomHomeActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.MesaViewHolder>{
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private List<Mesa> listaMesa;
+public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHolder>{
+
+    private Conexao conexao = new Conexao();
+    private List<ItemPedido> listaItensPedidos;
     private Context context;
+    private GarcomHomeActivity garcomHomeActivity = new GarcomHomeActivity();
 
-    public AdapterMesa(List<Mesa> listaMesa, Context context) {
-        this.listaMesa = listaMesa;
+    public AdapterMesa(List<ItemPedido> listaItensPedidos, Context context) {
+        this.listaItensPedidos = listaItensPedidos;
         this.context = context;
     }
 
     @NonNull
     @Override
-    public MesaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PedidoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.garcom_pedido, parent, false);
 
-        return new MesaViewHolder(view);
+        return new PedidoViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MesaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PedidoViewHolder holder, int position) {
 
-        Mesa mesa = listaMesa.get(position);
-                holder.qr_Code.setText(mesa.getQr_Code());
-                holder.numero_Mesa.setText(mesa.getNumero_Mesa());
+        ItemPedido itemPedido = listaItensPedidos.get(position);
+        holder.status.setText(itemPedido.getCod_Pedido());
+
+        holder.btn_excluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DataService service = conexao.conexao().create(DataService.class);
+                Call<Void> call = service.removerItemPedido("2");
+
+                call.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if (response.isSuccessful()){
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return listaMesa.size();
+        return listaItensPedidos.size();
     }
 
-    public class MesaViewHolder extends RecyclerView.ViewHolder{
+    public class PedidoViewHolder extends RecyclerView.ViewHolder{
 
-        TextView qr_Code;
+        TextView status;
         TextView numero_Mesa;
+        ImageButton btn_excluir;
 
 
-        public MesaViewHolder(@NonNull View MesaView) {
+        public PedidoViewHolder(@NonNull View PedidoView) {
 
-            super(MesaView);
+            super(PedidoView);
 
+            status = PedidoView.findViewById(R.id.txt_valor_status);
+            btn_excluir = PedidoView.findViewById(R.id.btn_excluir);
         }
+
     }
 }

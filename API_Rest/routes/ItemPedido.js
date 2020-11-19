@@ -83,7 +83,7 @@ router.patch('/', (req, res, next) => {
     });
 });
 
-router.delete('/', (req, res, next) => {
+router.delete('/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
