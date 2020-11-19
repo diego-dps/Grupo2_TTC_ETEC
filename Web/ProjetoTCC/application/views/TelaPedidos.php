@@ -96,7 +96,7 @@
 
 
     <div class="d-md-none d-sm-block">
-        <h1 class="text-center mt-4 display-5 text-white">Somente funcionários da cozinha podem acessar essa página :) !! </h1>
+        <h1 class="text-center mt-4 display-5 text-white">Somente funcionários da cozinha podem acessar essa página :) !! Só um teste</h1>
     </div>
 
     <script src="<?php echo base_url('assets/node_modules/jquery/dist/jquery.js'); ?>"></script>
