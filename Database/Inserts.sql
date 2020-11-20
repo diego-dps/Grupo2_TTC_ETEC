@@ -1,83 +1,4 @@
--- CRIANDO O BANCO DE DADOS
-DROP DATABASE IF EXISTS tcc;
-CREATE DATABASE IF NOT EXISTS tcc
-default character set utf8
-default collate utf8_general_ci;
-
-USE tcc; 
-
-/*criando as tabelas*/
-/*Tabela Cardapio*/
-CREATE TABLE Cardapio(
-cod_Cardapio INT(100) unsigned NOT NULL auto_increment PRIMARY KEY,
-categoria_Cardapio VARCHAR(100) NOT NULL,
-foto_Cardapio VARCHAR(100)
-);
-/*Tabela Item*/
-CREATE TABLE Item (
-cod_Item INT(100) NOT NULL auto_increment PRIMARY KEY,
-cod_Cardapio INT(100) unsigned NOT NULL,
-nome_Item VARCHAR(100) NOT NULL,
-descricao_Item VARCHAR(100) NOT NULL,
-preco_Item VARCHAR(20) NOT NULL,
-Ativo tin INT(1) default 1 NOT NULL,
-foto_Item VARCHAR(100) /*Utilização de Blob para armazenar a Imagem*/
-);
-SELECT * FROM Item;
-/*Tabela Mesa*/
-create table Mesa(
-qr_Code VARCHAR(100) UNIQUE NOT NULL PRIMARY KEY,
-numero_Mesa VARCHAR(100) NOT NULL
-);
-/*tabela Pedido*/
-create table Pedido(
-cod_Pedido INT(100) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-horario_Pedido timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-observacao_Pedido VARCHAR(200),
-qr_Code VARCHAR(100) NOT NULL,
-valor_total DECIMAL(10,2), 
-status_Pedido ENUM('Pendente','Concluido','Entregue') default 'Pendente'
-);
-
-/*tabela ItemPedido*/
-create table ItemPedido(
-cod_Pedido INT(100) NOT NULL,
-cod_Item INT(100) NOT NULL,
-quantidade INT(100) NOT NULL,
-valor_Item DECIMAL (10,2)
-);
-
-/*tabela Funcionario*/
-create table Funcionario(
-cod_Funcionario INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-nome_Funcionario VARCHAR(100) NOT NULL,
-cpf_Funcionario VARCHAR(14) unique NOT NULL,
-telefone_Funcionario VARCHAR(16) unique NOT NULL,
-cargo_Funcionario ENUM('Garçom','Cozinheiro','Administrador'),
-email_Funcionario VARCHAR(100) unique NOT NULL,
-Ativo tin INT(1) default 1 NOT NULL,
-senha VARCHAR(50) NOT NULL
-);
-
-/*adicionando a chaves estrangeiras em suas respectivas tabelas*/
-ALTER TABLE Item ADD CONSTR INT FK_cod_Cardapio
-FOREIGN KEY (cod_Cardapio)
-REFERENCES Cardapio (cod_Cardapio)
-ON DELETE CASCADE;
-
-ALTER TABLE Pedido ADD CONSTR INT FK_qrCode
-FOREIGN KEY (qr_Code)
-REFERENCES Mesa (qr_Code);
-
-ALTER TABLE ItemPedido ADD CONSTR INT FK_Item_Pedido/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
-FOREIGN KEY (cod_Item)
-REFERENCES Item (cod_Item)
-ON DELETE CASCADE;
-
-ALTER TABLE ItemPedido ADD CONSTR INT FK_codigo_Pedidos/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
-FOREIGN KEY (cod_Pedido)
-REFERENCES Pedido (cod_Pedido);
-
+USE tcc;
 
 INSERT INTO Cardapio (categoria_cardapio, foto_Cardapio) VALUES
 ('Lanches','3f1c532ee523035f95fea1984397276d.jpg'),
@@ -86,7 +7,7 @@ INSERT INTO Cardapio (categoria_cardapio, foto_Cardapio) VALUES
 ('Pratos','9752c0cf982211f0771946b653b803ec.jpg');
 SELECT * FROM Cardapio;
 
-INSERT INTO Item (nome_Item, preco_Item, descricao_Item, cod_Cardapio, foto_Item) values
+INSERT INTO Item (nome_Item, preco_Item, descricao_Item, cod_Cardapio, foto_Item) VALUES
 ('X-salada', 13.00, 'hambúrguer de carne bovina 100g, pâo de hambúrguer, salada, tomate e mussarela', 1, '7b4c618f83bacc5d24ba9673855db486.jpg'),
 ('X-egg', 14.50, 'hambúrguer de carne bovina 100g, pâo de hambúrguer, salada, tomate, mussarela e 2 ovos', 1, '2606da6d5e082d3145b51659c7d6e889.jpg'),
 ('Açai', 20.00, 'Açai na tigela 500ml, Acompanhamentos: 2 frutas, granola, leite em pó, leite condensado', 2, '905d3549f6be6dc19b86ac79c53ddc2d.jpg'),
