@@ -76,7 +76,7 @@ router.get('/Entregue', (req, res, next) => {
 
 
 
-router.get('/Itenspedido', (req, res, next) => {
+router.get('/ItensPedidos', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
