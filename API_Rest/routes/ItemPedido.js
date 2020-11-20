@@ -15,6 +15,66 @@ router.get('/', (req, res, next) => {
     });
 });
 
+//Retornando um status de um produto especifico
+router.get('/Status/:cod_Pedido', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT status_Pedido FROM Pedido, ItemPedido WHERE Pedido.cod_Pedido = ItemPedido.cod_Pedido AND ItemPedido.cod_Pedido = ? ;',
+            [req.params.cod_Pedido],
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
+
+//Puxando pedidos aonde o status etiverem como Pendente
+router.get('/Pendente', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Pedido, ItemPedido WHERE Pedido.cod_Pedido = ItemPedido.cod_Pedido AND status_Pedido = 1;',
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
+
+//Puxando pedidos aonde o status etiverem como concluido
+router.get('/Concluido', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Pedido, ItemPedido WHERE Pedido.cod_Pedido = ItemPedido.cod_Pedido AND status_Pedido = 2;',
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
+//Puxando pedidos aonde o status etiverem como Entregue
+router.get('/Entregue', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Pedido, ItemPedido WHERE Pedido.cod_Pedido = ItemPedido.cod_Pedido AND status_Pedido = 3;',
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
+
 router.post('/', (req, res, next) => {
 
     mysql.getConnection((error, conn) => {
@@ -79,8 +139,8 @@ router.patch('/', (req, res, next) => {
                 SET quantidade_Item = ?
                 WHERE cod_Pedido    = ?`,
             [
-                req.body.numero_Mesa,
-                req.body.qr_Code
+                req.body.quantidade_Item,
+                req.body.cod_Pedido
             ],
             (error, resultado, field) => {
                 conn.release();
