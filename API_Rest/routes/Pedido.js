@@ -60,11 +60,27 @@ router.get('/:cod_Pedido', (req, res, next) => {
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
-                return res.status(200).send({ response: resultado })
+                return res.status(200).send(resultado)
             }
         )
     });
 });
+
+
+router.get('/Concluido', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Pedido WHERE status_Pedido = "Concluido" ;',
+            [req.params.status_Pedido],
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
 
 router.patch('/', (req, res, next) => {
 
