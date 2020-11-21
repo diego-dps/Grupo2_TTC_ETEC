@@ -4,29 +4,19 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
 import com.example.sgbr.api.Conexao;
-import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
-import com.example.sgbr.model.Mesa;
 import com.example.sgbr.model.Pedido;
 import com.example.sgbr.ui.GarcomHomeActivity;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHolder>{
 

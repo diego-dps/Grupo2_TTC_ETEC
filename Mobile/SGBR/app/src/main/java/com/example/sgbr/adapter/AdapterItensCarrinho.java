@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.sgbr.R;
 import com.example.sgbr.model.Item;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class AdapterItensCarrinho extends RecyclerView.Adapter<AdapterItensCarrinho.CarrinhoViewHolder> {
 

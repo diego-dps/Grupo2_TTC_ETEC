@@ -5,10 +5,10 @@ public class Cardapio {
     String categoria_Cardapio;
     String foto_Cardapio;
 
-    public  Cardapio(){
+    public Cardapio(){
     }
 
-    public Cardapio( String categoria_Cardapio, String foto_Cardapio) {
+    public Cardapio(String categoria_Cardapio, String foto_Cardapio) {
         this.categoria_Cardapio = categoria_Cardapio;
         this.foto_Cardapio = foto_Cardapio;
     }

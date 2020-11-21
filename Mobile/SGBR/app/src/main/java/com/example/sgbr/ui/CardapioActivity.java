@@ -10,26 +10,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;;
 
 import com.example.sgbr.R;
-import com.example.sgbr.adapter.AdapterItensCardapio;
+import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.adapter.AdapterCategoriaCardapio;
 import com.example.sgbr.controller.RecyclerItemClickListener;
 import com.example.sgbr.model.Cardapio;
-import com.example.sgbr.api.Conexao;
-import com.example.sgbr.model.Item;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class CardapioActivity extends AppCompatActivity {
 

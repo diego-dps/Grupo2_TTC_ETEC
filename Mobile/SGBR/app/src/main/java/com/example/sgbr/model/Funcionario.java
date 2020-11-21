@@ -10,7 +10,7 @@ public class Funcionario {
     private String email_Funcionario;
     private String senha;
 
-    public Funcionario(String nome_Funcionario, String cpf_Funcionario, String telefone_Funcionario, String cargo_Funcionario, String ativo,String email_Funcionario, String senha) {
+    public Funcionario(String nome_Funcionario, String cpf_Funcionario, String telefone_Funcionario, String cargo_Funcionario, String ativo, String email_Funcionario, String senha) {
         this.nome_Funcionario = nome_Funcionario;
         this.cpf_Funcionario = cpf_Funcionario;
         this.telefone_Funcionario = telefone_Funcionario;

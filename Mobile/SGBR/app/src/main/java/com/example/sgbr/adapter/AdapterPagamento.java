@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,10 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
-import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 

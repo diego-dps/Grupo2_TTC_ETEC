@@ -8,21 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.example.sgbr.R;
-import com.example.sgbr.adapter.AdapterCategoriaCardapio;
-import com.example.sgbr.adapter.AdapterChamadaCliente;
-import com.example.sgbr.adapter.AdapterItensCarrinho;
 import com.example.sgbr.adapter.AdapterMesa;
-import com.example.sgbr.adapter.AdapterPedido;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
-import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
-import com.example.sgbr.model.Mesa;
-import com.example.sgbr.model.Pedido;
 
 import java.util.ArrayList;
 import java.util.Collections;

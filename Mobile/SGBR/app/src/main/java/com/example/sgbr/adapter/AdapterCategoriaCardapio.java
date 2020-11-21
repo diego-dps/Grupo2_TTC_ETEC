@@ -1,36 +1,21 @@
 package com.example.sgbr.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.sgbr.R;
-import com.example.sgbr.api.Conexao;
-import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Cardapio;
-import com.example.sgbr.model.Item;
-import com.example.sgbr.ui.CardapioActivity;
-import com.example.sgbr.ui.CategoriaCardapioActivity;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 
 public class AdapterCategoriaCardapio extends RecyclerView.Adapter<AdapterCategoriaCardapio.CategoriaViewHolder> {
@@ -59,6 +44,11 @@ public class AdapterCategoriaCardapio extends RecyclerView.Adapter<AdapterCatego
         Cardapio cardapio = listaCardapio.get(position);
 
         holder.txt_nome_categoria.setText(cardapio.getCategoria_Cardapio());
+
+        Glide.with(context)
+                .load("https://firebasestorage.googleapis.com/v0/b/projetotcc-c01e3.appspot.com/o/cardapio%2F"+cardapio.getFoto_Cardapio()+"?alt=media&token=")
+                .centerCrop()
+                .into(holder.img_categoria);
 
     }
 
