@@ -1,9 +1,11 @@
 package com.example.sgbr.ui;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Conexao conexao = new Conexao();
     private RecyclerView recyclerView;
+    private EditText main_editText_Codigo;
     private List<Pedido> listaPedido = new ArrayList<>();
     private Pedido post;
     private AdapterMesa adapterMesa;
@@ -168,14 +172,41 @@ public class MainActivity extends AppCompatActivity {
     ////////////////////////----Métodos para testes----/////////////////////////////
 
     public void testeTelas(View v) {
-
         Intent it = new Intent(MainActivity.this, CardapioActivity.class);
-                     startActivity(it);
+        startActivity(it);
     }
 
     public void testeTelasCarrinho(View v) {
 
         Intent it = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(it);
+    }
+
+    public void validarCodigoVazio(){
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+
+        //Configura o titulo e mensagem do Alert
+        dialog.setTitle("Erro ao preencher campos!");
+        dialog.setMessage("Campo Código vazio!");
+
+        //Configura o cancelamento do Alert
+        dialog.setCancelable(false);
+
+        //Configura o icone do Alert
+        dialog.setIcon(R.drawable.ic_baseline_error_24);
+
+        //Configura as ações do Alert
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                main_editText_Codigo.requestFocus();
+            }
+        });
+
+        //Cria e exibi o Alert
+        dialog.create();
+        dialog.show();
+
     }
 }

@@ -144,7 +144,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
         });
 
         Glide.with(context)
-                .load("https://firebasestorage.googleapis.com/v0/b/projetotcc-c01e3.appspot.com/o/itens%2F"+item.getFoto_Item()+"?alt=media&token=")
+                .load("http://192.168.15.12:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+item.getFoto_Item())
                 .centerCrop()
                 .into(holder.img_item);
     }

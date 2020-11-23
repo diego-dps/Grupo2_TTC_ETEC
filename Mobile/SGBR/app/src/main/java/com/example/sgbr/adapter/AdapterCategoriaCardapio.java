@@ -46,7 +46,7 @@ public class AdapterCategoriaCardapio extends RecyclerView.Adapter<AdapterCatego
         holder.txt_nome_categoria.setText(cardapio.getCategoria_Cardapio());
 
         Glide.with(context)
-                .load("https://firebasestorage.googleapis.com/v0/b/projetotcc-c01e3.appspot.com/o/cardapio%2F"+cardapio.getFoto_Cardapio()+"?alt=media&token=")
+                .load("http://192.168.15.12:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/cardapio/"+cardapio.getFoto_Cardapio())
                 .centerCrop()
                 .into(holder.img_categoria);
 
