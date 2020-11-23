@@ -114,7 +114,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/botao_comum"
             android:gravity="center"
-            android:onClick="testeTelas"
+            android:onClick="telaCardapio"
             android:text="@string/main_btn_digitar_codigo"
             android:textColor="#FFFFFF"
             android:textSize="25dp" />
@@ -126,7 +126,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:onClick="testeTelasCarrinho"
+            android:onClick="telaLogin"
             android:text="@string/main_link"
             android:textColor="@color/colorTextPrimary" />
     </LinearLayout>

@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         TextView main_text_Texto3 = findViewById(R.id.Main_text_Texto3);
         TextView main_text_Link = findViewById(R.id.Main_text_Link);
 
-        EditText main_editText_Codigo = findViewById(R.id.Main_editText_Codigo);
+        main_editText_Codigo = findViewById(R.id.Main_editText_Codigo);
 
 
         Button main_btn_Escanear = (Button) findViewById(R.id.Main_btn_Escanear);
@@ -104,6 +104,12 @@ public class MainActivity extends AppCompatActivity {
         return codQrcode;
     }
 
+
+    /*
+     *
+     * TELA CARDÁPIO PELO QR CODE, COM VALIDAÇÃO
+     *
+     * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -111,16 +117,43 @@ public class MainActivity extends AppCompatActivity {
         if (result != null) {
             if (result.getContents() != null) {
                 Pegarqrcode = result.getContents();
-                Log.d("Resultado", "Resultado do scan: "+ result.getContents());
-                inserirPedido();
-                alert("Scan realizado com sucesso!");
-                    Intent intent = new Intent(MainActivity.this, CardapioActivity.class);
-                    /*intent.putExtra("cod_pedido", post.getCod_Pedido()); erro*/
-                    startActivity(intent);
-            } else {
-                alert("Scan Cancelado");
+                DataService service = conexao.conexao().create(DataService.class);
+                Call<List<Mesa>> call = service.recuperarMesa(Pegarqrcode);
+
+                call.enqueue(new Callback<List<Mesa>>() {
+                    @Override
+                    public void onResponse(Call<List<Mesa>> call, Response<List<Mesa>> response) {
+                        if (response.body().toString().equals("[]")){
+                            Toast.makeText(MainActivity.this, "QR Code inválido", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+
+                            listaMesas = response.body();
+                            Mesa mesa = listaMesas.get(0);
+
+                            if (mesa.getQr_Code().equals(Pegarqrcode)){
+                                Log.d("Resultado", "Resultado do scan: "+ result.getContents());
+                                inserirPedido();
+                                alert("Scan realizado com sucesso!");
+                                Intent intent = new Intent(MainActivity.this, CardapioActivity.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Toast.makeText(MainActivity.this, "QR Code inválido", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Mesa>> call, Throwable t) {
+                        Toast.makeText(MainActivity.this, "QR Code inválido", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
-        } else {
+        }
+        else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
@@ -129,6 +162,12 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 
+
+    /*
+     *
+     * INSERIR PEDIDO
+     *
+     * */
     private void inserirPedido(){
 
         DataService service = conexao.conexao().create(DataService.class);
@@ -138,28 +177,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Pedido>() {
             @Override
             public void onResponse(retrofit2.Call<Pedido> call, Response<Pedido> response) {
-                if (response.isSuccessful()){
 
-                    /*DataService service = conexao.conexao().create(DataService.class);
-                    Call<List<Pedido>> call1 = service.recuperarPedido();
-                    call1.enqueue(new Callback<List<Pedido>>() {
-                        @Override
-                        public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
-                            listaPedido = response.body();
-                            for(int i=0; i < listaPedido.size(); i++){
-
-                                Pedido post = listaPedido.get(listaPedido.size() -1);
-                                Log.d("Resultado", "Resultado: "+ post.getCod_Pedido());
-
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<List<Pedido>> call, Throwable t) {
-
-                        }
-                    });*/
-                }
             }
 
             @Override
@@ -169,19 +187,68 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    ////////////////////////----Métodos para testes----/////////////////////////////
 
-    public void testeTelas(View v) {
-        Intent it = new Intent(MainActivity.this, CardapioActivity.class);
-        startActivity(it);
+    /*
+    *
+    * TELA CARDÁPIO
+    *
+    * */
+    public void telaCardapio(View v) {
+        if (TextUtils.isEmpty(main_editText_Codigo.getText().toString())){
+            validarCodigoVazio();
+        }
+        else {
+            DataService service = conexao.conexao().create(DataService.class);
+            Call<List<Mesa>> call = service.recuperarMesa(main_editText_Codigo.getText().toString());
+
+            call.enqueue(new Callback<List<Mesa>>() {
+                @Override
+                public void onResponse(Call<List<Mesa>> call, Response<List<Mesa>> response) {
+                    if (response.body().toString().equals("[]")){
+                        validarCodigoErro();
+                    }
+                    else {
+                        listaMesas = response.body();
+                        Mesa mesa = listaMesas.get(0);
+
+                        if (mesa.getQr_Code().equals(main_editText_Codigo.getText().toString())){
+                            Pegarqrcode = main_editText_Codigo.getText().toString();
+                            inserirPedido();
+                            Intent it = new Intent(MainActivity.this, CardapioActivity.class);
+                            startActivity(it);
+                        }
+                        else {
+                            validarCodigoErro();
+                        }
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<Mesa>> call, Throwable t) {
+                    validarCodigoErro();
+                }
+            });
+        }
     }
 
-    public void testeTelasCarrinho(View v) {
 
+    /*
+     *
+     * TELA LOGIN
+     *
+     * */
+    public void telaLogin(View v) {
         Intent it = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(it);
     }
 
+
+    /*
+     *
+     * VÁLIDAÇÃO DO CAMPO CÓDIGO
+     *
+     * */
     public void validarCodigoVazio(){
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
@@ -189,6 +256,34 @@ public class MainActivity extends AppCompatActivity {
         //Configura o titulo e mensagem do Alert
         dialog.setTitle("Erro ao preencher campos!");
         dialog.setMessage("Campo Código vazio!");
+
+        //Configura o cancelamento do Alert
+        dialog.setCancelable(false);
+
+        //Configura o icone do Alert
+        dialog.setIcon(R.drawable.ic_baseline_error_24);
+
+        //Configura as ações do Alert
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                main_editText_Codigo.requestFocus();
+            }
+        });
+
+        //Cria e exibi o Alert
+        dialog.create();
+        dialog.show();
+
+    }
+
+    public void validarCodigoErro(){
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+
+        //Configura o titulo e mensagem do Alert
+        dialog.setTitle("Erro ao preencher campos!");
+        dialog.setMessage("Código inválido!");
 
         //Configura o cancelamento do Alert
         dialog.setCancelable(false);
