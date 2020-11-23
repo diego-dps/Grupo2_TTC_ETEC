@@ -35,4 +35,25 @@ class BuscarPedidoModel extends CI_Model {
         ->get()->result_array();
     }
 
+    public function countpedidosentregues(){
+        return $this->db->select('count(status_Pedido)')
+        ->from('pedido')
+        ->where('status_Pedido = "Entregue"')
+        ->get()->result_array();
+    }
+
+    public function countpedidospendentes(){
+        return $this->db->select('count(status_Pedido)')
+        ->from('pedido')
+        ->where('status_Pedido = "Pendente"')
+        ->get()->result_array();
+    }
+
+    public function countpedidosconcluidos(){
+        return $this->db->select('count(status_Pedido)')
+        ->from('pedido')
+        ->where('status_Pedido = "Concluido"')
+        ->get()->result_array();
+    }
+
 }

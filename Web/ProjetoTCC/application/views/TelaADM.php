@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="<?php echo base_url("assets/img/logo.png")?>" type="image/x-png"/>
     <link href="<?php echo base_url('assets/css/bootstrap.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/estilo2.css'); ?>" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> 
 </head>
 <body>
     <div class="d-none d-md-block">
@@ -58,8 +58,6 @@
                 </li>  
             </ul>
         </nav>
-
-        
     </div>
 
 
@@ -82,5 +80,71 @@
             <h1>Cadastro</h1>
     </div>
    
+    <div class="d-none d-md-block">
+        <div class="container-fluid mt-4 sss" style="background-color: white; border: solid white 15px; border-radius: 10px;">
+            <h1>
+                <?php
+                    date_default_timezone_set('America/Sao_Paulo');
+                    /*Isto é para que consiga a hora da sua região*/
+
+                    $hora_do_dia=date("H");
+
+                    if ($hora_do_dia<6) echo 'Boa madrugada!';
+                    elseif ($hora_do_dia<12) echo 'Bom dia!';
+                    elseif ($hora_do_dia<18) echo 'Boa tarde!';
+                    elseif ($hora_do_dia<24) echo 'Boa noite!';
+                ?>
+            </h1>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                       
+                                
+                            <p class="card-text">Este é o numero de Pedidos Pendentes:<?php echo $pendente['count(status_Pedido)'] ?></p>
+                        
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                       
+                        <p class="card-text">Este é o numero de Pedidos Pendentes: <?php var_dump($concluido) ?></p>
+                    
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                        
+                        <p class="card-text">Este é o numero de Pedidos Pendentes:<?php var_dump($entregue) ?></p>
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div>
+    <div>
 </body>
 </html> 

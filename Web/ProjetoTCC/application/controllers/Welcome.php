@@ -13,7 +13,15 @@ class Welcome extends CI_Controller {
 	}
 	public function telaADM()
 	{
-	  $this->load->view('TelaADM');
+		$this->load->model('BuscarPedidoModel');
+		$lista = $this->BuscarPedidoModel->countpedidospendentes();
+		$dados['pendente'] = $lista;
+		$lista2 = $this->BuscarPedidoModel->countpedidosentregues();
+		$dados['entregue'] = $lista2;
+		$lista3 = $this->BuscarPedidoModel->countpedidosconcluidos();
+		$dados['concluido'] = $lista3;
+
+	  	$this->load->view('TelaADM', $dados);
 	}
 	public function telaCozinheiro()
 	{

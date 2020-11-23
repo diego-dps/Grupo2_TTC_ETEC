@@ -163,7 +163,9 @@ background: #e2e2e2;
 width: 100%;
 height: 100%;
 }
-
+.sss{
+    width: 70%;
+}
 
 @media(max-width: 935px){
     *{
