@@ -64,5 +64,6 @@
     <string name="pagamento_total">Total:</string>
     <string name="pagamento_preco_total">Preço Total:</string>
 
-
+    //activity_garçom_home
+    <string name="toolbar_garçom_home">Pedidos</string>
 </resources>

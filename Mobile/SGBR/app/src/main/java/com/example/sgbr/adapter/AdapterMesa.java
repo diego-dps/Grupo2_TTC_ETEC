@@ -4,33 +4,26 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
 import com.example.sgbr.api.Conexao;
-import com.example.sgbr.api.DataService;
+import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
-import com.example.sgbr.model.Mesa;
 import com.example.sgbr.model.Pedido;
 import com.example.sgbr.ui.GarcomHomeActivity;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHolder>{
 
     private Conexao conexao = new Conexao();
+    private List<Pedido> listaPedidos;
     private List<ItemPedido> listaItensPedidos;
+    private List<Item> listaItens;
     private Context context;
     private GarcomHomeActivity garcomHomeActivity = new GarcomHomeActivity();
 
@@ -57,7 +50,12 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
     public void onBindViewHolder(@NonNull PedidoViewHolder holder, int position) {
 
         ItemPedido itemPedido = listaItensPedidos.get(position);
-        holder.status.setText(itemPedido.getCod_Pedido());
+
+        holder.cod_Pedido.setText(itemPedido.getCod_Pedido());
+        holder.nome_Item.setText(itemPedido.getnome_Item());
+        holder.quantidade.setText(itemPedido.getQuantidade());
+        holder.observacao.setText(itemPedido.getobservacao_Pedido());
+
 
     }
 
@@ -68,14 +66,23 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
 
     public class PedidoViewHolder extends RecyclerView.ViewHolder{
 
-        TextView status;
-        TextView numero_Mesa;
+        TextView cod_Pedido;
+        TextView num_Mesa;
+        TextView nome_Item;
+        TextView quantidade;
+        TextView total;
+        TextView observacao;
 
         public PedidoViewHolder(@NonNull View PedidoView) {
 
             super(PedidoView);
 
-            status = PedidoView.findViewById(R.id.txt_valor_status);
+            cod_Pedido = PedidoView.findViewById(R.id.txt_numPedido);
+            num_Mesa = PedidoView.findViewById(R.id.txt_num_mesa);
+            nome_Item = PedidoView.findViewById(R.id.txt_itemPedido);
+            quantidade = PedidoView.findViewById(R.id.quantidade);
+            total = PedidoView.findViewById(R.id.preco_total);
+            observacao = PedidoView.findViewById(R.id.observacao);
         }
 
     }

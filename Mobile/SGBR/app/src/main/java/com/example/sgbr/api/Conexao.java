@@ -13,7 +13,6 @@ public class Conexao {
                 .baseUrl("http://192.168.15.55:3000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         return retrofit;
     }
 

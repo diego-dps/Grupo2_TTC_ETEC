@@ -65,6 +65,7 @@
         android:ems="10"
         android:hint="Digite sua Senha"
         android:inputType="textPersonName"
+        android:password="true"
         android:textSize="20dp" />
 
 

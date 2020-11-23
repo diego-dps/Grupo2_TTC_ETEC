@@ -4,12 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.sgbr.R;
-import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.adapter.AdapterItensCarrinho;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;

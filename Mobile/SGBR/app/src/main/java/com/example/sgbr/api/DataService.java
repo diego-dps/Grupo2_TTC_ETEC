@@ -33,6 +33,10 @@ public interface DataService {
     Call<Void> removerCardapio(@Path("cod_Cardapio") int cod_Cardapio);
 
     //REQUISIÇÕES ITEM
+    @GET("/Item")
+    Call<List<Item>> recuperarTodosItens();
+
+    //ITENS POR CATEGORIA
     @GET("/Item/Cardapio/{cod_Cardapio}")
     Call<List<Item>> recuperarItens(@Path("cod_Cardapio") String cod_Cardapio);
 
@@ -59,7 +63,7 @@ public interface DataService {
     @GET("/ItemPedido/PedidoPreco/{cod_Pedido}")
     Call<List<ItemPedido>> recuperarItemPedidoPreco(@Path("cod_Pedido") String cod_Pedido);
 
-    @POST("/ItemPedido/")
+    @POST("/ItemPedido")
     Call<ItemPedido> inserirItemPedido(@Body ItemPedido itemPedido);
 
     @PATCH()

@@ -10,14 +10,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sgbr.R;
 import com.example.sgbr.adapter.AdapterItensCardapio;
-import com.example.sgbr.api.DataService;
 import com.example.sgbr.api.Conexao;
-import com.example.sgbr.model.Cardapio;
+import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Item;
 
 

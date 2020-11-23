@@ -48,7 +48,7 @@ router.get('/:qr_Code', (req, res, next) => {
             [req.params.qr_Code],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
-                return res.status(200).send({ response: resultado })
+                return res.status(200).send(resultado)
             }
         )
     });

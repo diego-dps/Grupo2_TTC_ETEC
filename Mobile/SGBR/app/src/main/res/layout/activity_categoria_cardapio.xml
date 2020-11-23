@@ -39,6 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:layout_marginLeft="40dp"
                     android:text="@string/toolbar_categoria_cardapio"
                     android:textColor="@color/colorTextPrimary"
                     android:textSize="28dp" />
@@ -46,7 +47,7 @@
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="95dp"
+                    android:layout_marginLeft="100dp"
                     android:background="@drawable/ic_baseline_shopping_cart_24"
                     android:onClick="testeTelasCarrinho" />
             </LinearLayout>

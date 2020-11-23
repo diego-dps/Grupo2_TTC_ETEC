@@ -15,7 +15,68 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/Itenspedido', (req, res, next) => {
+//Retornando um status de um produto especifico
+router.get('/Status/:cod_Pedido', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT status_Pedido FROM Pedido WHERE cod_Pedido = ?;',
+            [req.params.cod_Pedido],
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
+
+//Puxando pedidos aonde o status etiverem como Pendente
+router.get('/Pendente', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Pedido WHERE status_Pedido = 1;',
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
+
+//Puxando pedidos aonde o status etiverem como concluido
+router.get('/Concluido', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Pedido WHERE status_Pedido = 2;',
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
+//Puxando pedidos aonde o status etiverem como Entregue
+router.get('/Entregue', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Pedido WHERE status_Pedido = 3;',
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+});
+
+
+
+router.get('/ItensPedidos', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
@@ -60,11 +121,13 @@ router.get('/:cod_Pedido', (req, res, next) => {
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
-                return res.status(200).send({ response: resultado })
+                return res.status(200).send(resultado)
             }
         )
     });
 });
+
+
 
 router.patch('/', (req, res, next) => {
 

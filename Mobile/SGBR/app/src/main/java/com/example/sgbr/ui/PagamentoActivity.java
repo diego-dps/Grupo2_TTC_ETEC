@@ -3,17 +3,14 @@ package com.example.sgbr.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.example.sgbr.R;
-import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.adapter.AdapterPagamento;
 import com.example.sgbr.adapter.AdapterPagamento2;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
-import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.model.Pedido;
 
