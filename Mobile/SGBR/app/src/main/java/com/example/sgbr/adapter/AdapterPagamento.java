@@ -21,7 +21,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private Context context;
     private Double quantidade;
-    private Double v;
+    private Float v;
     private Double q;
 
     public AdapterPagamento(List<ItemPedido> listaItensPedido, Context context) {
@@ -55,6 +55,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
                 holder.txt_quantidade.setText("Quantidade:");
                 holder.txt_detalhes.setText("...");
                 holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
+                
                 quantidade = Double.parseDouble(itemPedido.getPreco()) * Double.parseDouble(holder.txt_valor_quantidade.getText().toString());
                 holder.txt_valor.setText(quantidade.toString()+"0");
     }

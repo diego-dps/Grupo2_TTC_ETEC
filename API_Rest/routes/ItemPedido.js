@@ -91,8 +91,7 @@ router.post('/', (req, res, next) => {
                     });
                 }
                 res.status(201).send({
-                    mensagem: 'ItemPedido inserido com sucesso!',
-                    cod_Pedido: resultado.insertId
+                    mensagem: 'ItemPedido inserido com sucesso!'
                 })
             }
         )

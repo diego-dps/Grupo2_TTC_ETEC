@@ -1612,12 +1612,12 @@ $(function() {
                 if (data == "Sucesso") {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Atualização realizada com sucesso!',
+                        title: 'Cadastro realizado com sucesso!',
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
                         if (result.value) {
-                            window.location.replace("TelaItens");
+                            window.location.replace("TelaCardapio");
                         }
                     })
                 }
@@ -1653,12 +1653,12 @@ $(function() {
                 if (data == "Sucesso") {
                     Swal.fire({
                         icon: 'success',
-                        title: 'Atualização realizada com sucesso!',
+                        title: 'Cadastro realizado com sucesso!',
                         confirmButtonColor: " #dc3545",
                         confirmButtonText: 'OK'
                     }).then((result) => {
                         if (result.value) {
-                            window.location.replace("TelaItens");
+                            window.location.replace("TelaCardapio");
                         }
                     })
                 }
