@@ -48,7 +48,7 @@ public class GarcomHomeActivity extends AppCompatActivity {
     public void recuperarComanda() {
 
         DataService serviceItemPedido = conexao.conexao().create(DataService.class);
-        Call<List<ItemPedido>> callItemPedido = serviceItemPedido.recuperarTodosItemPedido();
+        Call<List<ItemPedido>> callItemPedido = serviceItemPedido.recuperarPedidosConcluidos("Concluido");
 
         callItemPedido.enqueue(new Callback<List<ItemPedido>>() {
             @Override

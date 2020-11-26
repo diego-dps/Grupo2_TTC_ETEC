@@ -51,7 +51,7 @@ router.get('/Concluido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT * FROM Pedido, ItemPedido WHERE Pedido.cod_Pedido = ItemPedido.cod_Pedido AND status_Pedido = 2;',
+            'SELECT c.cod_Pedido, d.numero_Mesa, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, c.status_Pedido FROM itempedido a, item b, pedido c, mesa d WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and d.qr_Code = c.qr_Code and c.status_Pedido = "Concluido" ORDER BY c.cod_Pedido asc;',
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)

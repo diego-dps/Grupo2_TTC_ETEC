@@ -66,4 +66,7 @@
 
     //activity_garçom_home
     <string name="toolbar_garçom_home">Pedidos</string>
+
+    //activity_garcom_chamada
+    <string name="toolbar_garcom_chamada">Mesas</string>
 </resources>

@@ -32,6 +32,8 @@ public interface DataService {
     @DELETE()
     Call<Void> removerCardapio(@Path("cod_Cardapio") int cod_Cardapio);
 
+
+
     //REQUISIÇÕES ITEM
     @GET("/Item")
     Call<List<Item>> recuperarTodosItens();
@@ -39,10 +41,6 @@ public interface DataService {
     //ITENS POR CATEGORIA
     @GET("/Item/Cardapio/{cod_Cardapio}")
     Call<List<Item>> recuperarItens(@Path("cod_Cardapio") String cod_Cardapio);
-
-    /*@GET("/Item")
-    Call<List<Item>> recuperarItens(
-    );*/
 
     @POST("/Item")
     Call<Item> inserirItem(@Body Item item);
@@ -53,9 +51,14 @@ public interface DataService {
     @DELETE()
     Call<Void> removerItem(@Path("cod_Item") int cod_Item);
 
+
+
     //REQUISIÇÕES ITEM PEDIDO
     @GET("/ItemPedido")
     Call<List<ItemPedido>> recuperarTodosItemPedido();
+
+    @GET("/ItemPedido/{status_Pedido}")
+    Call<List<ItemPedido>> recuperarPedidosConcluidos(@Path("status_Pedido") String status_Pedido);
 
     @GET("/ItemPedido/Pedido/{cod_Pedido}")
     Call<List<ItemPedido>> recuperarItemPedido(@Path("cod_Pedido") String cod_Pedido);
@@ -72,6 +75,8 @@ public interface DataService {
     @DELETE("/ItemPedido/{cod_Pedido}")
     Call<Void> removerItemPedido(@Path("cod_Pedido") String cod_Pedido);
 
+
+
     //REQUISIÇÕES MESA
     @GET("/Mesa/{qr_Code}")
     Call<List<Mesa>> recuperarMesa(@Path("qr_Code") String qr_Code);
@@ -85,6 +90,8 @@ public interface DataService {
     @DELETE()
     Call<Void> removerMesa(@Path("qr_Code") int qr_Code);
 
+
+
     //REQUISIÇÕES PEDIDO
     @GET("/Pedido")
     Call<List<Pedido>> recuperarPedido();
@@ -97,6 +104,8 @@ public interface DataService {
 
     @DELETE("/Pedido/{cod_Pedido}")
     Call<Void> removerPedido(@Path("cod_Pedido") String cod_Pedido);
+
+
 
     //REQUISIÇÕES FUNCIONÁRIO
     @GET("/Funcionario/Email/{email_Funcionario}")

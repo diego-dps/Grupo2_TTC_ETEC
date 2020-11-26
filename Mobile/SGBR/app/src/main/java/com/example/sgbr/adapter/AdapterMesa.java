@@ -21,9 +21,7 @@ import java.util.List;
 public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHolder>{
 
     private Conexao conexao = new Conexao();
-    private List<Pedido> listaPedidos;
     private List<ItemPedido> listaItensPedidos;
-    private List<Item> listaItens;
     private Context context;
     private GarcomHomeActivity garcomHomeActivity = new GarcomHomeActivity();
 
@@ -52,6 +50,7 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
         ItemPedido itemPedido = listaItensPedidos.get(position);
 
         holder.cod_Pedido.setText(itemPedido.getCod_Pedido());
+        holder.num_Mesa.setText(itemPedido.getNumero_Mesa());
         holder.nome_Item.setText(itemPedido.getnome_Item());
         holder.quantidade.setText(itemPedido.getQuantidade());
         holder.observacao.setText(itemPedido.getobservacao_Pedido());
