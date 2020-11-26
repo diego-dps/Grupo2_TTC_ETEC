@@ -68,7 +68,7 @@ public class ItemPedido {
         this.quantidade = quantidade;
     }
 
-    public String getPrecox() { return valor_Item; }
+    public String getPreco() { return valor_Item; }
 
     public void setPreco(String valor_Item) {
         this.valor_Item = valor_Item;
