@@ -57,6 +57,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
                 holder.txt_quantidade.setText("Quantidade:");
                 holder.txt_detalhes.setText("...");
                 holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
+                holder.txt_valor.setText(itemPedido.getPreco());
 
                 Glide.with(context)
                         .load("http://192.168.0.14:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
@@ -88,6 +89,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
             txt_titulo = PagamentoView.findViewById(R.id.txt_titulo);
             txt_descricao = PagamentoView.findViewById(R.id.txt_descricao);
             txt_total = PagamentoView.findViewById(R.id.txt_total);
+            txt_valor = PagamentoView.findViewById(R.id.txt_valor);
             txt_quantidade = PagamentoView.findViewById(R.id.txt_quantidade);
             txt_valor_quantidade = PagamentoView.findViewById(R.id.txt_valor_quantidade);
             txt_detalhes = PagamentoView.findViewById(R.id.txt_detalhes);

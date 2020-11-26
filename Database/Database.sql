@@ -13,7 +13,6 @@ cod_Cardapio int(100) unsigned not null auto_increment primary key,
 categoria_Cardapio VARCHAR(100) NOT NULL,
 foto_Cardapio VARCHAR(100)
 );
-
 /*Tabela Item*/
 create table Item (
 cod_Item int(100) not null auto_increment primary key,
@@ -24,13 +23,11 @@ preco_Item varchar(20) NOT NULL,
 Ativo tinyint(1) default 1 not null,
 foto_Item VARCHAR(100) /*Utilização de Blob para armazenar a Imagem*/
 );
-
 /*Tabela Mesa*/
 create table Mesa(
 qr_Code VARCHAR(100) UNIQUE not null primary key,
 numero_Mesa VARCHAR(100) NOT NULL
 );
-
 /*tabela Pedido*/
 create table Pedido(
 cod_Pedido INT(100) NOT NULL AUTO_INCREMENT primary key,
@@ -40,7 +37,6 @@ qr_Code VARCHAR(100) NOT NULL,
 valor_total decimal(10,2), 
 status_Pedido ENUM('Pendente','Concluido','Entregue') default 'Pendente'
 );
-
 /*tabela ItemPedido*/
 create table ItemPedido(
 cod_Item INT(100) not null,
@@ -49,7 +45,6 @@ quantidade INT(100) not null,
 valor_Item decimal(10,2) NOT NULL,
 foto_Item VARCHAR(100)
 );
-
 /*tabela Funcionario*/
 create table Funcionario(
 cod_Funcionario INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
