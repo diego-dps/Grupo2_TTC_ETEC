@@ -1,61 +1,64 @@
-/*CRIANDO O BANCO DE DADOS*/
+-- CRIANDO O BANCO DE DADOS
 DROP DATABASE IF EXISTS tcc;
 CREATE DATABASE IF NOT EXISTS tcc
 default character set utf8
 default collate utf8_general_ci;
 
-USE tcc; 
+use tcc; 
 
 /*criando as tabelas*/
 /*Tabela Cardapio*/
-CREATE TABLE Cardapio(
-cod_Cardapio INT(100) unsigned NOT NULL auto_increment PRIMARY KEY,
+create table Cardapio(
+cod_Cardapio int(100) unsigned not null auto_increment primary key,
 categoria_Cardapio VARCHAR(100) NOT NULL,
 foto_Cardapio VARCHAR(100)
 );
+
 /*Tabela Item*/
-CREATE TABLE Item (
-cod_Item INT(100) NOT NULL auto_increment PRIMARY KEY,
-cod_Cardapio INT(100) unsigned NOT NULL,
+create table Item (
+cod_Item int(100) not null auto_increment primary key,
+cod_Cardapio int(100) unsigned not null,
 nome_Item VARCHAR(100) NOT NULL,
 descricao_Item VARCHAR(100) NOT NULL,
-preco_Item VARCHAR(20) NOT NULL,
-Ativo TINYINT(1) default 1 NOT NULL,
+preco_Item varchar(20) NOT NULL,
+Ativo tinyint(1) default 1 not null,
 foto_Item VARCHAR(100) /*Utilização de Blob para armazenar a Imagem*/
 );
-SELECT * FROM Item;
+
 /*Tabela Mesa*/
-CREATE TABLE Mesa(
-qr_Code VARCHAR(100) UNIQUE NOT NULL PRIMARY KEY,
+create table Mesa(
+qr_Code VARCHAR(100) UNIQUE not null primary key,
 numero_Mesa VARCHAR(100) NOT NULL
 );
+
 /*tabela Pedido*/
-CREATE TABLE Pedido(
-cod_Pedido INT(100) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+create table Pedido(
+cod_Pedido INT(100) NOT NULL AUTO_INCREMENT primary key,
 horario_Pedido timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 observacao_Pedido VARCHAR(200),
 qr_Code VARCHAR(100) NOT NULL,
-valor_total DECIMAL(10,2), 
+valor_total decimal(10,2), 
 status_Pedido ENUM('Pendente','Concluido','Entregue') default 'Pendente'
 );
 
 /*tabela ItemPedido*/
-CREATE TABLE ItemPedido(
+create table ItemPedido(
+cod_Item INT(100) not null,
 cod_Pedido INT(100) NOT NULL,
-cod_Item INT(100) NOT NULL,
-quantidade INT(100) NOT NULL,
-valor_Item DECIMAL (10,2)
+quantidade INT(100) not null,
+valor_Item decimal(10,2) NOT NULL,
+foto_Item VARCHAR(100)
 );
 
 /*tabela Funcionario*/
-CREATE TABLE Funcionario(
-cod_Funcionario INT(100) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+create table Funcionario(
+cod_Funcionario INT(100) UNSIGNED NOT NULL AUTO_INCREMENT primary key,
 nome_Funcionario VARCHAR(100) NOT NULL,
-cpf_Funcionario VARCHAR(14) unique NOT NULL,
-telefone_Funcionario VARCHAR(16) unique NOT NULL,
+cpf_Funcionario varchar(14) unique not null,
+telefone_Funcionario varchar(16) unique not null,
 cargo_Funcionario ENUM('Garçom','Cozinheiro','Administrador'),
 email_Funcionario VARCHAR(100) unique NOT NULL,
-Ativo TINYINT(1) default 1 NOT NULL,
+Ativo tinyint(1) default 1 not null,
 senha VARCHAR(50) NOT NULL
 );
 
@@ -77,5 +80,3 @@ ON DELETE CASCADE;
 ALTER TABLE ItemPedido ADD CONSTRAINT FK_codigo_Pedidos/*as FK nao tem o mesmo nome pois o banco não permite nomes duplicados*/
 FOREIGN KEY (cod_Pedido)
 REFERENCES Pedido (cod_Pedido);
-
-

@@ -27,6 +27,7 @@ android {
 }
 
 dependencies {
+    implementation 'de.hdodenhof:circleimageview:2.0.0'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
@@ -51,6 +52,5 @@ dependencies {
 
     implementation 'com.google.zxing:core:3.4.1'
     implementation'com.journeyapps:zxing-android-embedded:3.2.0@aar'
-
 }
     apply plugin: 'com.google.gms.google-services'

@@ -8,14 +8,16 @@ public class ItemPedido {
     private String observacao_Pedido;
     private String quantidade;
     private String valor_Item;
+    private String foto_Item;
 
-    public ItemPedido(String cod_Pedido, String cod_Item, String quantidade, String valor_Item) {
+    public ItemPedido(String cod_Pedido, String cod_Item, String quantidade, String valor_Item, String foto_Item) {
         this.cod_Pedido = cod_Pedido;
         this.cod_Item = cod_Item;
         this.nome_Item = nome_Item;
         this.observacao_Pedido = observacao_Pedido;
         this.quantidade = quantidade;
         this.valor_Item = valor_Item;
+        this.foto_Item = foto_Item;
     }
 
     public String getCod_Pedido() {
@@ -56,12 +58,18 @@ public class ItemPedido {
         this.quantidade = quantidade;
     }
 
-    public String getPreco() {
-        return valor_Item;
+    public String getPrecox() { return valor_Item; }
+
+    public void setPreco(String valor_Item) {
+        this.valor_Item = valor_Item;
     }
 
-    public void setPreco(String preco) {
-        this.valor_Item = valor_Item;
+    public String getFoto_Item() {
+        return foto_Item;
+    }
+
+    public void setFoto_Item(String foto_Item) {
+        this.foto_Item = foto_Item;
     }
 
 }

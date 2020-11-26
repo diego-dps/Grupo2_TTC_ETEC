@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, b.preco_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido ORDER BY c.cod_Pedido ASC;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, b.preco_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido ORDER BY c.cod_Pedido ASC;',
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
@@ -80,8 +80,8 @@ router.post('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'INSERT INTO ItemPedido (cod_Item, cod_Pedido, quantidade, valor_Item) VALUE (?,?,?,?)',
-            [req.body.cod_Item, req.body.cod_Pedido, req.body.quantidade, req.body.valor_Item],
+            'INSERT INTO ItemPedido (cod_Item, cod_Pedido, quantidade, valor_Item, foto_Item) VALUE (?,?,?,?,?)',
+            [req.body.cod_Item, req.body.cod_Pedido, req.body.quantidade, req.body.valor_Item, req.body.foto_Item],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {
@@ -103,7 +103,7 @@ router.get('/Pedido/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, b.preco_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, b.preco_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }

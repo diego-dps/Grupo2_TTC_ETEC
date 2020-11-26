@@ -12,7 +12,7 @@
     <title>Itens</title>
     <script>
         $(document).ready(function() {
-            $('#preco').mask('#.##0,00', {reverse: true})
+            $('#preco').mask('#.##0.00', {reverse: true})
         });
     </script>
 </head>

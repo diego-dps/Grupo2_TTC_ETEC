@@ -10,19 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.sgbr.R;
+import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.PagamentoViewHolder>{
 
-    private List<ItemPedido> listaItensPedido = new ArrayList<>();
+    private List<ItemPedido> listaItensPedido;
     private Context context;
     private Double quantidade;
     private Float v;
     private Double q;
+    private Item item;
 
     public AdapterPagamento(List<ItemPedido> listaItensPedido, Context context) {
         this.listaItensPedido = listaItensPedido;
@@ -55,9 +57,11 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
                 holder.txt_quantidade.setText("Quantidade:");
                 holder.txt_detalhes.setText("...");
                 holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
-                
-                quantidade = Double.parseDouble(itemPedido.getPreco()) * Double.parseDouble(holder.txt_valor_quantidade.getText().toString());
-                holder.txt_valor.setText(quantidade.toString()+"0");
+
+                Glide.with(context)
+                        .load("http://192.168.0.14:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
+                        .centerCrop()
+                        .into(holder.txt_img);
     }
 
     @Override
@@ -75,7 +79,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
         TextView txt_quantidade;
         TextView txt_valor_quantidade;
         TextView txt_detalhes;
-        TextView preco_Final;
 
         public PagamentoViewHolder(@NonNull View PagamentoView) {
 
@@ -85,7 +88,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
             txt_titulo = PagamentoView.findViewById(R.id.txt_titulo);
             txt_descricao = PagamentoView.findViewById(R.id.txt_descricao);
             txt_total = PagamentoView.findViewById(R.id.txt_total);
-            txt_valor = PagamentoView.findViewById(R.id.txt_valor);
             txt_quantidade = PagamentoView.findViewById(R.id.txt_quantidade);
             txt_valor_quantidade = PagamentoView.findViewById(R.id.txt_valor_quantidade);
             txt_detalhes = PagamentoView.findViewById(R.id.txt_detalhes);

@@ -116,7 +116,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                             valor = Double.parseDouble(holder.txt_num_itens.getText().toString()) * Double.parseDouble(item.getPreco_Item());
 
                             DataService service = conexao.conexao().create(DataService.class);
-                            ItemPedido itemPedido = new ItemPedido(pedido.getCod_Pedido(), item.getCod_Item() , quantidade.toString(), valor.toString());
+                            ItemPedido itemPedido = new ItemPedido(pedido.getCod_Pedido(), item.getCod_Item() , quantidade.toString(), valor.toString(), item.getFoto_Item());
                             Call<ItemPedido> call1 = service.inserirItemPedido(itemPedido);
 
                             call1.enqueue(new Callback<ItemPedido>() {
