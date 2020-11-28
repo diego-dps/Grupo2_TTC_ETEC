@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.sgbr.GarcomChamada2Activity;
 import com.example.sgbr.R;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
@@ -129,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
         dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent it = new Intent(LoginActivity.this, GarcomHomeActivity.class);
+                Intent it = new Intent(LoginActivity.this, GarcomChamada2Activity.class);
                 startActivity(it);
             }
         });

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,7 +36,8 @@ public class AdapterChamadaCliente extends RecyclerView.Adapter<AdapterChamadaCl
 
     @Override
     public void onBindViewHolder(@NonNull ChamadaViewHolder holder, int position) {
-
+        Mesa mesa = listaMesas.get(position);
+        holder.chamada_mesa.setText("Mesa "+mesa.getNumero_Mesa()+" chamando!!!");
     }
 
     @Override
@@ -45,8 +47,13 @@ public class AdapterChamadaCliente extends RecyclerView.Adapter<AdapterChamadaCl
 
     public class ChamadaViewHolder extends RecyclerView.ViewHolder{
 
+
+        TextView chamada_mesa;
+
         public ChamadaViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            chamada_mesa = itemView.findViewById(R.id.txt_chamadaMesa);
         }
     }
 }
