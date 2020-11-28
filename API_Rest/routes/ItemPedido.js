@@ -118,7 +118,7 @@ router.get('/PedidoPreco/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'select sum(preco_Item) from itempedido where cod_Pedido = ?;',
+            'select sum(valor_Item) from itempedido where cod_Pedido = ?;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }

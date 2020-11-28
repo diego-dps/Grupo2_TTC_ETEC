@@ -58,7 +58,6 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
                 holder.txt_detalhes.setText("...");
                 holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
                 holder.txt_valor.setText(itemPedido.getPreco());
-
                 Glide.with(context)
                         .load("http://192.168.0.14:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
                         .centerCrop()

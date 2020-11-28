@@ -32,11 +32,8 @@ public class PagamentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamento);
-
         recyclerView = findViewById(R.id.recycler_view_pagamento);
-
         recuperarItensPedidos();
-
     }
 
 
@@ -84,4 +81,5 @@ public class PagamentoActivity extends AppCompatActivity {
             }
         });
     }
+
 }
