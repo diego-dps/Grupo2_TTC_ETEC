@@ -55,17 +55,32 @@ router.get('/:qr_Code', (req, res, next) => {
 
 });
 
-router.patch('/', (req, res, next) => {
+router.get('/Chamada/:chamada_Mesa', (req, res, next) => {
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            'SELECT * FROM Mesa WHERE chamada_mesa = 1;',
+            [req.params.chamada_Mesa],
+            (error, resultado, fields) => {
+                if (error) { return req.status(500).send({ error: error }) }
+                return res.status(200).send(resultado)
+            }
+        )
+    });
+
+});
+
+router.patch('/:qr_Code', (req, res, next) => {
 
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
             `UPDATE Mesa
-                SET numero_Mesa = ?
+                SET chamada_mesa = ?
                 WHERE qr_Code   = ?`,
             [
-                req.body.numero_Mesa,
-                req.body.qr_Code
+                req.body.chamada_mesa,
+                req.params.qr_Code
             ],
             (error, resultado, field) => {
                 conn.release();

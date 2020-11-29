@@ -81,11 +81,14 @@ public interface DataService {
     @GET("/Mesa/{qr_Code}")
     Call<List<Mesa>> recuperarMesa(@Path("qr_Code") String qr_Code);
 
+    @GET("/Mesa/Chamada/{chamada_Mesa}")
+    Call<List<Mesa>> recuperarMesaChamada(@Path("chamada_Mesa") String chamada_Mesa);
+
     @POST()
     Call<Mesa> inserirMesa(@Body Mesa mesa);
 
-    @PATCH()
-    Call<Mesa> atualizarMesa(@Path("qr_Code") int qr_Code, @Body Mesa mesa);
+    @PATCH("/Mesa/{qr_Code}")
+    Call<Mesa> atualizarMesa(@Path("qr_Code") String qr_Code, @Body Mesa mesa);
 
     @DELETE()
     Call<Void> removerMesa(@Path("qr_Code") int qr_Code);
