@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;;
@@ -38,6 +39,7 @@ public class CardapioActivity extends AppCompatActivity {
     private AdapterCategoriaCardapio adapterCategoriaCardapio;
     private Cardapio cardapio;
     private List<Pedido> listaPedidos = new ArrayList();
+    private Button btn_chamarGarcom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,14 @@ public class CardapioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cardapio);
 
         recyclerView =findViewById(R.id.recyclerview_cardapio);
+        btn_chamarGarcom = findViewById(R.id.btn_chamarGarcom);
+
+        btn_chamarGarcom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testeChamarGarcom();
+            }
+        });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
@@ -179,24 +189,27 @@ public class CardapioActivity extends AppCompatActivity {
 
     public void testeChamarGarcom() {
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String valor = extras.getString("qrcode");
+            DataService service1 = conexao.conexao().create(DataService.class);
+            Mesa mesa = new Mesa("1");
+            Call<Mesa> callMesa = service1.atualizarMesa(valor, mesa);
 
-                    DataService service1 = conexao.conexao().create(DataService.class);
-                    Mesa mesa = new Mesa( 1);
-                    Call<Mesa> callMesa = service1.atualizarMesa("qrcode2", mesa);
+            callMesa.enqueue(new Callback<Mesa>() {
+                @Override
+                public void onResponse(Call<Mesa> call, Response<Mesa> response) {
+                    if (response.isSuccessful() && response != null) {
+                        Toast.makeText(CardapioActivity.this, "Deu certo!", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
-                    callMesa.enqueue(new Callback<Mesa>() {
-                        @Override
-                        public void onResponse(Call<Mesa> call, Response<Mesa> response) {
-                            if (response.isSuccessful() && response != null){
-                                Toast.makeText(CardapioActivity.this, "Deu certo!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+                @Override
+                public void onFailure(Call<Mesa> call, Throwable t) {
 
-                        @Override
-                        public void onFailure(Call<Mesa> call, Throwable t) {
-
-                        }
-                    });
+                }
+            });
+        }
     }
 
 }

@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
                             Pegarqrcode = main_editText_Codigo.getText().toString();
                             inserirPedido();
                             Intent it = new Intent(MainActivity.this, CardapioActivity.class);
+                            it.putExtra("qrcode",mesa.getQr_Code());
                             startActivity(it);
                         }
                         else {

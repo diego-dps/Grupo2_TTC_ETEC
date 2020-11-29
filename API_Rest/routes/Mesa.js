@@ -76,10 +76,10 @@ router.patch('/:qr_Code', (req, res, next) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
             `UPDATE Mesa
-                SET chamada_mesa = ?
+                SET chamada_Mesa = ?
                 WHERE qr_Code   = ?`,
             [
-                req.body.chamada_mesa,
+                req.body.chamada_Mesa,
                 req.params.qr_Code
             ],
             (error, resultado, field) => {
