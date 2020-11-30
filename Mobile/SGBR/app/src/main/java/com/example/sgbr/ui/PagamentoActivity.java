@@ -54,8 +54,9 @@ public class PagamentoActivity extends AppCompatActivity {
                     Pedido pedido = listaPedido.get(listaPedido.size() -1);
 
                     DataService service = conexao.conexao().create(DataService.class);
-                    Call<List<ItemPedido>> callPedidoPagamento = service.recuperarTodosItemPedido(pedido.getCod_Pedido());
-                    callPedidoPagamento.enqueue(new Callback<List<ItemPedido>>() {
+                    Call<List<ItemPedido>> callItemPedido = service.recuperarItemPedido(pedido.getCod_Pedido());
+
+                    callItemPedido.enqueue(new Callback<List<ItemPedido>>() {
                         @Override
                         public void onResponse(Call<List<ItemPedido>> call, Response<List<ItemPedido>> response) {
 
@@ -65,6 +66,7 @@ public class PagamentoActivity extends AppCompatActivity {
                                 listaItensPedido.get(i);
                                 Log.d("Resultado: ", "Aqui tem informação " + response.code());
                                 adapterPagamento = new AdapterPagamento(listaItensPedido,PagamentoActivity.this);
+                                recyclerView.setAdapter(adapterPagamento);
                             }
                         }
 

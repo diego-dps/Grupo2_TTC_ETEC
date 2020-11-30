@@ -56,7 +56,7 @@ public interface DataService {
 
     //REQUISIÇÕES ITEM PEDIDO
     @GET("/ItemPedido/PedidoPreco/{cod_Pedido}")
-    Call<List<ItemPedido>> recuperarTodosItemPedido(@Path("cod_Pedido") String cod_Pedido);
+    Call<List<Pedido>> recuperarTodosItemPedido(@Path("cod_Pedido") String cod_Pedido);
 
     @GET("/ItemPedido/{status_Pedido}")
     Call<List<ItemPedido>> recuperarPedidosConcluidos(@Path("status_Pedido") String status_Pedido);

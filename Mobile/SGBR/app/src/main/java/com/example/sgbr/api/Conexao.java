@@ -15,8 +15,4 @@ public class Conexao {
                 .build();
         return retrofit;
     }
-
-
-
-
 }

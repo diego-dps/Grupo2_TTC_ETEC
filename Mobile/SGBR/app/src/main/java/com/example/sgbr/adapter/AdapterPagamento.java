@@ -42,7 +42,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
     public void onBindViewHolder(@NonNull PagamentoViewHolder holder, int position) {
 
         ItemPedido itemPedido = listaItensPedido.get(position);
-                holder.preco_Final_Valor.setText(itemPedido.getPreco());
+                holder.preco_Final_Valor.setText("www");
 
     }
 
@@ -60,7 +60,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
 
             super(PagamentoView);
 
-            preco_Final_Valor = PagamentoView.findViewById(R.id.preco_Final_Valor);
+            preco_Final_Valor = PagamentoView.findViewById(R.id.txt_titulo);
         }
     }
 }

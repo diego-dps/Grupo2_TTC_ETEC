@@ -118,7 +118,7 @@ router.get('/PedidoPreco/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'select sum(valor_Item) from itempedido where cod_Pedido = ?;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, sum(a.valor_Item) as valor_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
