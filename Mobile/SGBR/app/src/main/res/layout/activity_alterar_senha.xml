@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/azulClaro"
+    android:background="@color/blackDarktheme"
     tools:context=".ui.AlterarSenhaActivity">
 
     <TextView
@@ -79,6 +79,7 @@
         android:text="@string/alterar_senha_btn"
         android:textColor="#FFFFFF"
         android:textSize="25dp"
+        android:background="@drawable/botao_comum"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
