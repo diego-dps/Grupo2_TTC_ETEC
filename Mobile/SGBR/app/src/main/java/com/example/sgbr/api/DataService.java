@@ -5,6 +5,7 @@ import com.example.sgbr.model.Funcionario;
 import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.model.Mesa;
+import com.example.sgbr.model.Observacao;
 import com.example.sgbr.model.Pedido;
 
 import java.util.List;
@@ -54,8 +55,8 @@ public interface DataService {
 
 
     //REQUISIÇÕES ITEM PEDIDO
-    @GET("/ItemPedido")
-    Call<List<ItemPedido>> recuperarTodosItemPedido();
+    @GET("/ItemPedido/PedidoPreco/{cod_Pedido}")
+    Call<List<ItemPedido>> recuperarTodosItemPedido(@Path("cod_Pedido") String cod_Pedido);
 
     @GET("/ItemPedido/{status_Pedido}")
     Call<List<ItemPedido>> recuperarPedidosConcluidos(@Path("status_Pedido") String status_Pedido);
@@ -69,11 +70,11 @@ public interface DataService {
     @POST("/ItemPedido/")
     Call<ItemPedido> inserirItemPedido(@Body ItemPedido itemPedido);
 
-    @PATCH()
-    Call<Mesa> atualizarItemPedido(@Path("cod_Pedido") int cod_Pedido, @Body ItemPedido itemPedido);
+    @PATCH("/ItemPedido/")
+    Call<Observacao> atualizarItemPedido(@Body Observacao observacao);
 
-    @DELETE("/ItemPedido/{cod_Pedido}")
-    Call<Void> removerItemPedido(@Path("cod_Pedido") String cod_Pedido);
+    @DELETE("/ItemPedido/{cod_Pedido}/{cod_Item}")
+    Call<Void> removerItemPedido(@Path("cod_Pedido") String cod_Pedido, @Path("cod_Item") String cod_Item);
 
 
 

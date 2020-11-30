@@ -15,7 +15,15 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp" >
+
+        <TextView
+            android:id="@+id/preco_Final_Valor"
+            android:layout_width="240px"
+            android:layout_height="50px"
+            android:textColor="@color/darkergray"
+            tools:text="22232,00"
+        android:layout_marginBottom="16dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/txt_img"
@@ -66,15 +74,9 @@
             android:layout_below="@id/txt_descricao"
             android:layout_alignStart="@id/txt_titulo"
             android:textStyle="bold"
-            android:layout_marginLeft="150dp"
-            tools:text="@string/pagamento_total"
-            />
+            android:layout_marginTop="60dp" />
 
         <TextView
-            android:id="@+id/txt_valor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
             android:singleLine="true"
             android:ellipsize="marquee"
             android:textColor="@android:color/white"

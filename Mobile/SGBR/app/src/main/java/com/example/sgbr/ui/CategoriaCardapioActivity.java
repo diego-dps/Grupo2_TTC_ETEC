@@ -1,10 +1,5 @@
 package com.example.sgbr.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,12 +7,16 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.sgbr.R;
 import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Item;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -160,7 +159,7 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
 
     public void testeTelasCarrinho(View v) {
 
-        Intent it = new Intent(CategoriaCardapioActivity.this, PagamentoActivity.class);
+        Intent it = new Intent(CategoriaCardapioActivity.this, CarrinhoComprasActivity.class);
         startActivity(it);
     }
 }
