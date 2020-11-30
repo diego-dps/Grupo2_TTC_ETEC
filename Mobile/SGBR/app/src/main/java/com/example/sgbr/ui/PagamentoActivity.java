@@ -2,6 +2,7 @@ package com.example.sgbr.ui;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,6 +28,7 @@ public class PagamentoActivity extends AppCompatActivity {
     private AdapterPagamento adapterPagamento;
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private List<Pedido> listaPedido = new ArrayList<>();
+    private TextView preco;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,10 @@ public class PagamentoActivity extends AppCompatActivity {
 
 
     private void recuperarItensPedidos() {
+
+        this.preco = findViewById(R.id.preco_Final);
+        preco.setText("Preço Final:");
+
         DataService service = conexao.conexao().create(DataService.class);
         Call<List<Pedido>> callPedido = service.recuperarPedido();
 
