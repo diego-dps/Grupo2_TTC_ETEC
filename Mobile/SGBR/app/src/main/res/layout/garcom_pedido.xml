@@ -9,8 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_margin="15dp"
-        android:background="@color/darkColor">
+        android:background="@color/blackDarktheme">
 
         <TextView
             android:id="@+id/txt_Pedido"
@@ -19,7 +18,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="Pedido:"
-            android:textColor="@color/dangerColor"
+            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -41,7 +40,7 @@
             android:layout_below="@+id/txt_Pedido"
             android:layout_alignStart="@+id/txt_Pedido"
             android:text="Mesa:"
-            android:textColor="@color/dangerColor"
+            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -64,7 +63,7 @@
             android:layout_below="@+id/txt_mesa"
             android:layout_alignStart="@id/txt_Pedido"
             android:text="Item:"
-            android:textColor="@color/dangerColor"
+            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -88,18 +87,18 @@
             android:layout_below="@+id/btn_removerPedido"
             android:layout_marginStart="190dp"
             android:text="Observação:"
-            android:textColor="@color/dangerColor"
+            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/btn_removerPedido"
             android:layout_width="70dp"
-            android:layout_height="20dp"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="10dp"
-            android:background="@color/dangerColor"
+            android:background="@drawable/botao_remover"
             android:text="Remover"
             android:textStyle="bold"
             android:textSize="12dp"
@@ -125,7 +124,7 @@
             android:layout_below="@+id/txt_item"
             android:layout_alignStart="@id/txt_Pedido"
             android:text="Quantidade:"
-            android:textColor="@color/dangerColor"
+            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -148,7 +147,7 @@
             android:layout_below="@+id/txt_quantidade2"
             android:layout_alignStart="@id/txt_Pedido"
             android:text="Total:"
-            android:textColor="@color/dangerColor"
+            android:textColor="@android:color/white"
             android:textSize="16sp"
             android:textStyle="bold" />
 
