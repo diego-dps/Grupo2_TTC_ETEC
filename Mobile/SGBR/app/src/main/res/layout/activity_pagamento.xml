@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@color/blackDarktheme"
     android:orientation="horizontal">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -18,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/azulClaro">
+            android:background="@color/blueDarktheme">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -59,16 +60,14 @@
     <Button
         android:id="@+id/Main_btn_ConfirmarCodigo"
         android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:layout_marginTop="660dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="35dp"
+        android:layout_centerHorizontal="true"
         android:background="@drawable/botao_comum"
-        android:gravity="center_horizontal"
         android:onClick="tt"
         android:text="@string/pagamento_finalizar"
         android:textColor="#FFFFFF"
-        android:textSize="25dp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/preco_Final"
@@ -124,12 +123,13 @@
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:background="@android:color/white"
+        android:background="@color/blackDarktheme"
         android:layout_width="match_parent"
         android:layout_height="460dp"
         android:id="@+id/recycler_view_pagamento"
         android:layout_below="@id/app_bar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/pagamento"/>
+        tools:listitem="@layout/pagamento"
+        />
 
 </RelativeLayout>
