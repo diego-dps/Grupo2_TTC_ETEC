@@ -27,7 +27,7 @@ foto_Item VARCHAR(100) /*Utilização de Blob para armazenar a Imagem*/
 create table Mesa(
 qr_Code VARCHAR(100) UNIQUE not null primary key,
 numero_Mesa VARCHAR(100) NOT NULL,
-chamada_mesa bit default 0
+chamada_Mesa ENUM('1', '0') default '0' NULL
 );
 /*tabela Pedido*/
 create table Pedido(

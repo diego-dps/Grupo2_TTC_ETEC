@@ -25,9 +25,17 @@
                 android:gravity="center"
                 android:textSize="28dp"
                 android:textColor="@color/colorTextPrimary"
-                android:layout_marginLeft="150dp"/>
+                android:layout_margin="15dp"/>
 
-
+            <Button
+                android:id="@+id/btn_chamarGarcom"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Chamar garcom"
+                android:background="@drawable/botao_comum"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/white"/>
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

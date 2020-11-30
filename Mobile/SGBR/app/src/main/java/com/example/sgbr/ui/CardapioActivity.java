@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;;
 
 import com.example.sgbr.R;
@@ -19,7 +21,10 @@ import com.example.sgbr.api.DataService;
 import com.example.sgbr.adapter.AdapterCategoriaCardapio;
 import com.example.sgbr.controller.RecyclerItemClickListener;
 import com.example.sgbr.model.Cardapio;
+import com.example.sgbr.model.Mesa;
+import com.example.sgbr.model.Pedido;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,6 +38,8 @@ public class CardapioActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterCategoriaCardapio adapterCategoriaCardapio;
     private Cardapio cardapio;
+    private List<Pedido> listaPedidos = new ArrayList();
+    private Button btn_chamarGarcom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,40 +47,18 @@ public class CardapioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cardapio);
 
         recyclerView =findViewById(R.id.recyclerview_cardapio);
+        btn_chamarGarcom = findViewById(R.id.btn_chamarGarcom);
+
+        btn_chamarGarcom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testeChamarGarcom();
+            }
+        });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-
-        //EVENTO CLICK DO RECYCLERVIEW
-        /*recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(
-                        getApplicationContext(),
-                        recyclerView,
-                        new RecyclerItemClickListener.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(View view, int position) {
-                                cod_Cardapio = listaCardapio.get(position);
-
-                                Intent it = new Intent(CardapioActivity.this, CategoriaCardapioActivity.class);
-                                startActivity(it);
-
-
-                            }
-
-                            @Override
-                            public void onLongItemClick(View view, int position) {
-
-                            }
-
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                            }
-                        }
-
-                )
-        );*/
 
         recuperarCardapio();
 
@@ -95,6 +80,7 @@ public class CardapioActivity extends AppCompatActivity {
                     AdapterCategoriaCardapio adapterCategoriaCardapio = new AdapterCategoriaCardapio(listaCardapio, CardapioActivity.this);
                     recyclerView.setAdapter(adapterCategoriaCardapio);
 
+                    //EVENTO CLICK DO RECYCLERVIEW
                     recyclerView.addOnItemTouchListener(
                             new RecyclerItemClickListener(
                                     getApplicationContext(),
@@ -199,6 +185,31 @@ public class CardapioActivity extends AppCompatActivity {
 
         Intent it = new Intent(CardapioActivity.this, PagamentoActivity.class);
         startActivity(it);
+    }
+
+    public void testeChamarGarcom() {
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String valor = extras.getString("qrcode");
+            DataService service1 = conexao.conexao().create(DataService.class);
+            Mesa mesa = new Mesa("1");
+            Call<Mesa> callMesa = service1.atualizarMesa(valor, mesa);
+
+            callMesa.enqueue(new Callback<Mesa>() {
+                @Override
+                public void onResponse(Call<Mesa> call, Response<Mesa> response) {
+                    if (response.isSuccessful() && response != null) {
+                        Toast.makeText(CardapioActivity.this, "Deu certo!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Mesa> call, Throwable t) {
+
+                }
+            });
+        }
     }
 
 }
