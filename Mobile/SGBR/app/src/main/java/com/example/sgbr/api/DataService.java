@@ -103,8 +103,8 @@ public interface DataService {
     @POST("/Pedido/")
     Call<Pedido> inserirPedido(@Body Pedido pedido);
 
-    @PATCH()
-    Call<Pedido> atualizarPedido(@Path("cod_Pedido") int cod_Pedido, @Body Pedido pedido);
+    @PATCH("/Pedido/Status/{cod_Pedido}")
+    Call<Pedido> atualizarPedido(@Path("cod_Pedido") String cod_Pedido, @Body Pedido pedido);
 
     @DELETE("/Pedido/{cod_Pedido}")
     Call<Void> removerPedido(@Path("cod_Pedido") String cod_Pedido);

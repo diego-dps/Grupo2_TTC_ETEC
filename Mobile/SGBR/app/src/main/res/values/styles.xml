@@ -8,10 +8,10 @@
     </style>
 
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColor">@color/blackDarktheme</item>
     </style>
 
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/dangerColor</item>
+        <item name="android:textColor">@color/blueDarktheme</item>
     </style>
 </resources>

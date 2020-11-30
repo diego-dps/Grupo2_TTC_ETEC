@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.GarcomChamadaActivity"></activity>
+        <activity android:name=".ui.MenuActivity"></activity>
+        <activity android:name=".ui.GarcomChamadaActivity" />
         <activity android:name=".ui.PagamentoActivity" />
         <activity android:name=".ui.CardapioActivity" />
         <activity android:name=".ui.CategoriaCardapioActivity" />

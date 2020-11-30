@@ -158,6 +158,34 @@ router.patch('/', (req, res, next) => {
     });
 });
 
+router.patch('/Status/:cod_Pedido', (req, res, next) => {
+
+    mysql.getConnection((error, conn) => {
+        if (error) { return req.status(500).send({ error: error }) }
+        conn.query(
+            `UPDATE Pedido
+                SET status_Pedido = ?
+                WHERE cod_Pedido      = ?`,
+            [
+                req.body.status_Pedido,
+                req.params.cod_Pedido
+            ],
+            (error, resultado, field) => {
+                conn.release();
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    });
+                }
+                res.status(202).send({
+                    mensagem: 'Pedido alterado com sucesso!',
+                })
+            }
+        )
+    });
+});
+
 router.delete('/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }

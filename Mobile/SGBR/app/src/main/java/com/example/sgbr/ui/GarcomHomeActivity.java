@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.sgbr.R;
@@ -58,14 +60,7 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
                     adapterMesa = new AdapterMesa(listaItensPedidos, GarcomHomeActivity.this);
                     recyclerView.setAdapter(adapterMesa);
-                    recyclerView.scrollToPosition(0);
 
-                    ItemTouchHelper helper = new ItemTouchHelper(
-                            new ItemTouchHandler(0,
-                                    ItemTouchHelper.LEFT)
-                    );
-
-                    helper.attachToRecyclerView(recyclerView);
                 }
             }
 
@@ -77,28 +72,10 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
     }
 
-    private class ItemTouchHandler extends ItemTouchHelper.SimpleCallback {
-
-        public ItemTouchHandler(int dragDirs, int swipeDirs) {
-            super(dragDirs, swipeDirs);
-        }
-
-        @Override
-        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
-            int from = viewHolder.getAdapterPosition();
-            int to = target.getAdapterPosition();
-
-            Collections.swap(adapterMesa.getListaItensPedidos(), from, to);
-            adapterMesa.notifyItemMoved(from, to);
-
-            return true;
-        }
-
-        @Override
-        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-            adapterMesa.getListaItensPedidos().remove(viewHolder.getAdapterPosition());
-            adapterMesa.notifyItemRemoved(viewHolder.getAdapterPosition());
-        }
+    public void telaChamadaCliente(View view){
+        Intent intent = new Intent(GarcomHomeActivity.this, GarcomChamadaActivity.class);
+        startActivity(intent);
     }
+
 
 }

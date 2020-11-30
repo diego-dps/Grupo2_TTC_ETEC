@@ -15,5 +15,12 @@
     <color name="darkColor">#343a40</color>
     <color name="azulClaro">#17a2b8</color>
 
+
+    //Tema novo
+
+    <color name="blackDarktheme">#343837</color>
+    <color name="blueDarktheme">#03719C</color>
+    <color name="blueGreenDarktheme">#17a2b8</color>
+
     <color name="darkergray">#FF444444</color>
 </resources>
