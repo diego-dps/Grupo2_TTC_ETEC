@@ -21,6 +21,14 @@
             app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
             app:title="@string/toolbar_garçom_home"
             android:textAlignment="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:onClick="telaChamadaCliente"
+                android:src="@drawable/ic_baseline_message_24" />
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -45,12 +45,13 @@ public class GarcomChamadaActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
-        timer.scheduleAtFixedRate(new TimerTask() {
+        /*timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 recuperarMesas();
             }
-        }, delay, intervalo);
+        }, delay, intervalo);*/
+        recuperarMesas();
     }
 
     private void recuperarMesas(){

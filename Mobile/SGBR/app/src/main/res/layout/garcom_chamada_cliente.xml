@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="@layout/activity_garcom_chamada2">
+    tools:showIn="@layout/activity_garcom_chamada">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -35,6 +35,7 @@
             android:textSize="24sp"/>
 
         <ImageView
+            android:id="@+id/btn_removerMesa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_emoji_emotions_48"

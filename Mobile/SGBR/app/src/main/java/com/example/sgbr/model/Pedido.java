@@ -12,6 +12,10 @@ public class Pedido {
 
     }
 
+    public Pedido(String status_Pedido){
+        this.status_Pedido = status_Pedido;
+    }
+
     public Pedido(String observacao_Pedido, String qr_Code) {
         this.observacao_Pedido = observacao_Pedido;
         this.qr_Code = qr_Code;
