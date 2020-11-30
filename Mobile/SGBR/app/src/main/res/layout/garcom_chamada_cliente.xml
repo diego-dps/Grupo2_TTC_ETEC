@@ -26,20 +26,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mesa 12 chamando!!!"
-            android:textColor="@android:color/white"
+            android:textColor="@color/dangerColor"
             android:layout_alignStart="@+id/txt_ajuda"
             android:layout_below="@+id/txt_ajuda"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:textSize="24sp"/>
 
-        <ImageView
+        <Button
             android:id="@+id/btn_removerMesa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_emoji_emotions_48"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="25dp"/>
+            android:layout_marginRight="10dp"
+            android:background="@drawable/botao_remover"
+            android:text="Remover"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:textColor="@android:color/white"/>
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

@@ -3,17 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/card_view_background"
-    tools:showIn="@layout/activity_categoria_cardapio">
+    tools:showIn="@layout/activity_categoria_cardapio"
+    app:cardBackgroundColor="@color/blackDarktheme">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp">
+        android:layout_marginBottom="16dp"
+        android:background="@color/blackDarktheme">
 
         <ImageView
             android:id="@+id/img_item"
@@ -31,7 +32,7 @@
             android:layout_marginStart="16dp"
             android:layout_toEndOf="@id/img_item"
             android:layout_alignTop="@id/img_item"
-            android:textColor="@color/colorTextDark"
+            android:textColor="@android:color/white"
             />
 
 
@@ -46,7 +47,7 @@
             android:layout_below="@id/txt_nome_item"
             android:layout_alignStart="@id/txt_nome_item"
             tools:text="Ex: hamburguer, alface, queijo, pão, tomate etc..."
-            android:textColor="@color/colorTextDark"
+            android:textColor="@android:color/white"
             />
 
         <TextView
@@ -55,6 +56,7 @@
             android:layout_height="wrap_content"
             android:text="R$"
             android:textSize="22sp"
+            android:textColor="@android:color/white"
             android:paddingBottom="5dp"
             android:paddingRight="5dp"
             android:layout_toEndOf="@id/img_item"
@@ -67,6 +69,7 @@
             android:layout_height="wrap_content"
             tools:text="00,00"
             android:textSize="22sp"
+            android:textColor="@android:color/white"
             android:paddingBottom="5dp"
             android:paddingRight="5dp"
             android:layout_toEndOf="@id/txt_moeda2"
@@ -88,6 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="22sp"
+            android:textColor="@android:color/white"
             android:paddingBottom="5dp"
             tools:text="0"
             android:layout_below="@+id/txt_preview"
@@ -109,10 +113,12 @@
             android:layout_height="42dp"
             android:layout_below="@id/txt_preview"
             android:layout_alignParentBottom="true"
+            android:layout_marginRight="5dp"
             android:layout_toEndOf="@id/img_remove"
             android:background="@drawable/botao_comum"
             android:text="@string/btn_add"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textColor="@android:color/white"/>
 
     </RelativeLayout>
 

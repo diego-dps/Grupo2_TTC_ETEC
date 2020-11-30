@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;;
@@ -39,7 +40,7 @@ public class CardapioActivity extends AppCompatActivity {
     private AdapterCategoriaCardapio adapterCategoriaCardapio;
     private Cardapio cardapio;
     private List<Pedido> listaPedidos = new ArrayList();
-    private Button btn_chamarGarcom;
+    private ImageView btn_chamarGarcom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

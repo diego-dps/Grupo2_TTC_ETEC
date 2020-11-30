@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/azulClaro">
+            android:background="@color/blackDarktheme">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -27,15 +27,13 @@
                 android:textColor="@color/colorTextPrimary"
                 android:layout_margin="15dp"/>
 
-            <Button
+            <ImageView
                 android:id="@+id/btn_chamarGarcom"
-                android:layout_width="150dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chamar garcom"
-                android:background="@drawable/botao_comum"
-                android:layout_marginRight="15dp"
-                android:layout_marginTop="5dp"
-                android:textColor="@android:color/white"/>
+                android:background="@drawable/ic_baseline_help_24"
+                android:layout_marginLeft="180dp"/>
+
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -45,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/app_bar"
-        android:background="@color/colorPrimaryLigth"
+        android:background="@color/blackDarktheme"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/cardapio_cliente">
 
