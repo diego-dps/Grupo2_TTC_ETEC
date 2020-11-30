@@ -85,19 +85,32 @@
             android:id="@+id/txt_observacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/txt_Pedido"
-            android:layout_marginStart="150dp"
+            android:layout_below="@+id/btn_removerPedido"
+            android:layout_marginStart="190dp"
             android:text="Observação:"
             android:textColor="@color/dangerColor"
             android:textSize="16sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btn_removerPedido"
+            android:layout_width="70dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:background="@color/dangerColor"
+            android:text="Remover"
+            android:textStyle="bold"
+            android:textSize="12dp"
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:id="@+id/observacao"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_below="@id/txt_mesa"
-            android:layout_alignBaseline="@+id/txt_mesa"
+            android:layout_marginTop="1dp"
             android:layout_alignStart="@+id/txt_observacao"
             android:text="X-Salada sem salada, com calabresa e bacon"
             android:textAlignment="textStart"

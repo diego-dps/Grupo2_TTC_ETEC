@@ -129,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
         dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent it = new Intent(LoginActivity.this, GarcomChamadaActivity.class);
+                Intent it = new Intent(LoginActivity.this, GarcomHomeActivity.class);
                 startActivity(it);
             }
         });

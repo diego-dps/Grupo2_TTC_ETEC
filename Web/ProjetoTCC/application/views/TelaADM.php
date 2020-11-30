@@ -95,19 +95,17 @@
                     elseif ($hora_do_dia<24) echo 'Boa noite!';
                 ?>
             </h1>
+            <p style="border-top: 3px solid #000;"></p>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                       
-                                
-                            <p class="card-text">Este é o numero de Pedidos Pendentes:<?php echo $pendente['count(status_Pedido)'] ?></p>
-                        
-                        
+                            <?php foreach ($pendente as $pendentes) : ?>        
+                                <p class="card-text">Pedidos Pendentes: <?php echo $pendentes['count(status_Pedido)'] ?></p>                      
+                            <?php endforeach ?>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                            <button class="btn btn-sm btn-outline-primary" type="button">Ver</button>
                             </div>
                         </div>
                         </div>
@@ -116,13 +114,12 @@
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                       
-                        <p class="card-text">Este é o numero de Pedidos Pendentes: <?php var_dump($concluido) ?></p>
-                    
+                            <?php foreach ($concluido as $concluidos) : ?>
+                                <p class="card-text">Pedidos Concluidos: <?php echo $concluidos['count(status_Pedido)'] ?></p>
+                            <?php endforeach ?>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                            <button class="btn btn-sm btn-outline-primary" type="button">Ver</button>
                             </div>
                         </div>
                         </div>
@@ -131,13 +128,12 @@
                 <div class="col-md-4">
                     <div class="card mb-4 shadow-sm">
                         <div class="card-body">
-                        
-                        <p class="card-text">Este é o numero de Pedidos Pendentes:<?php var_dump($entregue) ?></p>
-                        
+                            <?php foreach ($entregue as $entregues) : ?>
+                                <p class="card-text">Pedidos Entregues:<?php echo $entregues['count(status_Pedido)'] ?></p>
+                            <?php endforeach ?>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Editar</button>
+                            <button class="btn btn-sm btn-outline-primary" type="button">Ver</button>
                             </div>
                         </div>
                         </div>
