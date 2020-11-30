@@ -43,6 +43,7 @@
 
     //activity_carrinho_compras
     <string name="toolbar_carrinho_compras">Carrinho de Compras</string>
+    <string name="toolbar_fazer_pedido">Fazer Pedido</string>
 
     //activity_observação
     <string name="observacao_toolbar">Observações</string>
@@ -53,6 +54,7 @@
     //Layout Strings comuns
     <string name="btn_add">Adicionar</string>
     <string name="btn_remove">Remover</string>
+    <string name="btn_observacao">Observação</string>
 
     //activity_pagamento
     <string name="pagamento_title">Forma de Pagamento</string>
@@ -61,7 +63,7 @@
     <string name="pagamento_radio_debito">Cartão de Debito</string>
     <string name="pagamento_radio_dinheiro">Dinheiro</string>
     <string name="pagamento_quantidade">Quantidade:</string>
-    <string name="pagamento_total">Total:</string>
+    <string name="pagamento_total">Total: </string>
     <string name="pagamento_preco_total">Preço Total:</string>
 
     //activity_garçom_home

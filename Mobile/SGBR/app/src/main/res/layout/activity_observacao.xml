@@ -1,46 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/azulClaro"
-    android:orientation="vertical"
-    tools:context=".ui.ObservacaoActivity">
+    android:layout_gravity="center"
+    android:orientation="horizontal">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azulClaro">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_icon_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="88dp"
+                    android:background="@drawable/ic_grupo_1"
+                    android:onClick="VoltarTelaCarrinho"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/btn_observacao"
+                    android:layout_marginRight="80dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="25dp"
+                    />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/txt_alguma_Observacaoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/observacao_titulo"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_below="@id/app_bar"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="96dp"
+        />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine"
-        android:layout_width="261dp"
-        android:layout_height="276dp"
+        android:id="@+id/observacao"
+        android:layout_width="390dp"
+        android:layout_height="490dp"
         android:background="#FFFFFF"
         android:ems="10"
         android:hint="@string/observacao_hint"
+        android:layout_below="@id/txt_alguma_Observacaoc"
         android:gravity="start|top"
+        android:layout_marginLeft="10dp"
         android:inputType="textMultiLine"
+        android:layout_marginTop="10dp"
         tools:layout_editor_absoluteX="75dp"
-        tools:layout_editor_absoluteY="200dp" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textColor="#FFFFFF"
-        android:text="@string/observacao_titulo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="61dp" />
+        tools:layout_editor_absoluteY="200dp"/>
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/observacao"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/botao_comum"
+        android:onClick="adcionarObservacao"
         android:text="@string/observacao_btn"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
-        android:background="@drawable/botao_comum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="602dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

@@ -11,7 +11,7 @@ public class ItemPedido {
     private String valor_Item;
     private String foto_Item;
 
-    public ItemPedido(String cod_Pedido, String cod_Item, String quantidade, String valor_Item, String foto_Item) {
+    public ItemPedido(String cod_Pedido, String cod_Item, String quantidade, String valor_Item, String foto_Item, String observacao_Pedido) {
         this.cod_Pedido = cod_Pedido;
         this.cod_Item = cod_Item;
         this.numero_Mesa = numero_Mesa;

@@ -1,29 +1,43 @@
 package com.example.sgbr.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.sgbr.R;
+import com.example.sgbr.api.Conexao;
+import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Item;
+import com.example.sgbr.model.ItemPedido;
+import com.example.sgbr.ui.CarrinhoComprasActivity;
+import com.example.sgbr.ui.ObservacaoActivity;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class AdapterItensCarrinho extends RecyclerView.Adapter<AdapterItensCarrinho.CarrinhoViewHolder> {
 
+    private Conexao conexao = new Conexao();
+    private List<ItemPedido> listaItensPedido;
     private List<Item> listaItens;
     private Context context;
+    private CarrinhoComprasActivity carrinhoComprasActivity = new CarrinhoComprasActivity();
 
-    public AdapterItensCarrinho(List<Item> listaItens, Context context) {
-        this.listaItens = listaItens;
+    public AdapterItensCarrinho(List<ItemPedido> listaItensPedido, Context context) {
+        this.listaItensPedido = listaItensPedido;
         this.context = context;
     }
 
@@ -42,42 +56,83 @@ public class AdapterItensCarrinho extends RecyclerView.Adapter<AdapterItensCarri
     public void onBindViewHolder(@NonNull CarrinhoViewHolder holder, int position) {
         //CONFIGURA OS ITENS QUE VÃO SER MOSTRADOS NA TELA
 
-        Item item = listaItens.get(position);
-        holder.txt_nome_item.setText(item.getNome_Item());
-        holder.txt_preview.setText(item.getDescricao_Item());
-        holder.txt_moeda2.setText("R$");
-        holder.txt_valor.setText(item.getPreco_Item());
+        ItemPedido itemPedido = listaItensPedido.get(position);
+        holder.txt_titulo.setText(itemPedido.getnome_Item());
+        holder.txt_descricao.setText(itemPedido.getobservacao_Pedido());
+        holder.txt_total.setText("Total: ");
+        holder.txt_quantidade.setText("Quantidade:");
+        holder.txt_detalhes.setText("...");
+        holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
+        holder.txt_valor.setText(itemPedido.getPreco());
+        Glide.with(context)
+                .load("http://192.168.0.14:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
+                .centerCrop()
+                .into(holder.txt_img);
+        holder.btn_remove_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DataService service = conexao.conexao().create(DataService.class);
+                Call<Void> callItemPedido = service.removerItemPedido(itemPedido.getCod_Pedido(),itemPedido.getCod_Item());
+                callItemPedido.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        Log.d("Resultado", "Apagou porra");
+
+                        Intent intent = new Intent(context, CarrinhoComprasActivity.class);
+                        context.startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
+        holder.btn_observação.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ObservacaoActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
         //QUANTIDADE DE ITENS QUE VÃO SER MOSTRADOS
-        return listaItens.size();
+        return listaItensPedido.size();
     }
 
 
     public class  CarrinhoViewHolder extends  RecyclerView.ViewHolder{
 
-        TextView txt_nome_item;
-        TextView txt_preview;
-        TextView txt_moeda2;
+        TextView txt_titulo;
+        TextView txt_descricao;
+        TextView txt_total;
         TextView txt_valor;
-        ImageButton img_add;
-        ImageButton img_remove;
-        ImageView img_item;
+        TextView txt_quantidade;
+        TextView txt_valor_quantidade;
+        TextView txt_detalhes;
+        ImageView txt_img;
         Button btn_remove_item;
+        Button btn_observação;
 
         public CarrinhoViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            txt_nome_item = itemView.findViewById(R.id.txt_nome_item);
-            txt_preview = itemView.findViewById(R.id.txt_preview);
-            txt_moeda2 = itemView.findViewById(R.id.txt_moeda2);
+            txt_img = itemView.findViewById(R.id.txt_img);
+            txt_titulo = itemView.findViewById(R.id.txt_titulo);
+            txt_descricao = itemView.findViewById(R.id.txt_descricao);
+            txt_total = itemView.findViewById(R.id.txt_total);
             txt_valor = itemView.findViewById(R.id.txt_valor);
-            img_add = itemView.findViewById(R.id.img_add);
-            img_remove = itemView.findViewById(R.id.img_remove);
-            img_item = itemView.findViewById(R.id.img_item);
+            txt_quantidade = itemView.findViewById(R.id.txt_quantidade);
+            txt_valor_quantidade = itemView.findViewById(R.id.txt_valor_quantidade);
+            txt_detalhes = itemView.findViewById(R.id.txt_detalhes);
             btn_remove_item = itemView.findViewById(R.id.btn_remove_item);
+            btn_observação = itemView.findViewById(R.id.btn_observação);
 
         }
     }

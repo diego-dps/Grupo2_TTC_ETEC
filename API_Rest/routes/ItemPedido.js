@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, a.valor_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido ORDER BY c.cod_Pedido ASC;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, a.valor_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido ORDER BY c.cod_Pedido ASC;',
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
@@ -103,7 +103,7 @@ router.get('/Pedido/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, a.valor_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, a.valor_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 if (error) { return req.status(500).send({ error: error }) }
@@ -134,12 +134,13 @@ router.patch('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            `UPDATE ItemPedido
-                SET quantidade_Item = ?
-                WHERE cod_Pedido    = ?`,
+            `UPDATE itempedido
+                SET observacao_Pedido = ?
+                WHERE cod_Pedido = ? AND cod_Item = ?`,
             [
-                req.body.quantidade_Item,
-                req.body.cod_Pedido
+                req.body.observacao_Pedido,
+                req.body.cod_Pedido,
+                req.body.cod_Item
             ],
             (error, resultado, field) => {
                 conn.release();
@@ -150,19 +151,22 @@ router.patch('/', (req, res, next) => {
                     });
                 }
                 res.status(202).send({
-                    mensagem: 'quantidade alterada com sucesso!',
+                    mensagem: 'Observação alterada com sucesso!',
                 })
             }
         )
     });
 });
 
-router.delete('/:cod_Pedido', (req, res, next) => {
+router.delete('/:cod_Pedido/:cod_Item', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            `DELETE FROM ItemPedido WHERE cod_Pedido = ?`,
-            [req.body.cod_Pedido],
+            `DELETE FROM ItemPedido WHERE cod_Pedido = ? AND cod_Item = ?`,
+            [
+                req.params.cod_Pedido,
+                req.params.cod_Item
+            ],
             (error, resultado, field) => {
                 conn.release();
                 if (error) {

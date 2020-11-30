@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:background="@drawable/card_view_background"
     tools:showIn="@layout/activity_carrinho_compras">
 
@@ -15,100 +15,138 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp">
 
-        <ImageView
-            android:id="@+id/img_item"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/txt_img"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
             android:textSize="24sp"
+            android:textColor="@android:color/white"
             android:background="@drawable/ic_baseline_image_24"
+            android:gravity="center"
             />
+
         <TextView
-            android:id="@+id/txt_nome_item"
+            android:id="@+id/txt_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            tools:text="Nome do prato ou item"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/darkergray"
             android:layout_marginStart="16dp"
-            android:layout_toEndOf="@id/img_item"
-            android:layout_alignTop="@id/img_item"
-            android:textColor="@color/colorTextDark"
+            android:layout_toEndOf="@id/txt_img"
+            android:layout_alignTop="@id/txt_img"
+            tools:text="Coca Cola"
             />
 
-
         <TextView
-            android:id="@+id/txt_preview"
+            android:id="@+id/txt_descricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="marquee"
             android:textSize="16sp"
-            android:layout_below="@id/txt_nome_item"
-            android:layout_alignStart="@id/txt_nome_item"
-            tools:text="Ex: hamburguer, alface, queijo, pão, tomate etc..."
-            android:textColor="@color/colorTextDark"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textColor="@color/darkergray"
+            android:layout_below="@id/txt_titulo"
+            android:layout_alignStart="@id/txt_titulo"
+            tools:text="Coca Cola Lata 350ml"
             />
 
         <TextView
-            android:id="@+id/txt_moeda2"
+            android:id="@+id/txt_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="R$"
-            android:textSize="22sp"
-            android:paddingBottom="5dp"
-            android:paddingRight="5dp"
-            android:layout_toEndOf="@id/img_item"
-            android:layout_below="@id/txt_preview"
-            android:layout_alignParentBottom="true"/>
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textColor="@color/darkergray"
+            android:layout_below="@id/txt_descricao"
+            android:layout_alignStart="@id/txt_titulo"
+            android:textStyle="bold"
+            android:layout_marginLeft="150dp"
+            tools:text="@string/pagamento_total"
+            />
 
         <TextView
             android:id="@+id/txt_valor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="00,00"
-            android:textSize="22sp"
-            android:paddingBottom="5dp"
-            android:paddingRight="5dp"
-            android:layout_toEndOf="@id/txt_moeda2"
-            android:layout_below="@id/txt_preview"
-            android:layout_alignParentBottom="true"/>
-
-        <ImageButton
-            android:id="@+id/img_add"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_toEndOf="@id/txt_valor"
-            android:layout_below="@id/txt_preview"
-            android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_baseline_add_24"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textColor="@color/darkergray"
+            android:layout_below="@id/txt_descricao"
+            android:layout_alignStart="@id/txt_total"
+            android:textStyle="bold"
+            android:layout_marginLeft="46dp"
+            tools:text="12,00"
             />
 
         <TextView
-            android:id="@+id/txt_num_itens"
+            android:id="@+id/txt_quantidade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:paddingBottom="5dp"
-            tools:text="0"
-            android:layout_below="@+id/txt_preview"
-            android:layout_toEndOf="@id/img_add"
-            android:layout_alignParentBottom="true"/>
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textColor="@color/darkergray"
+            android:layout_below="@id/txt_descricao"
+            android:layout_alignStart="@id/txt_titulo"
+            android:layout_marginEnd="24dp"
+            tools:text="@string/pagamento_quantidade"
+            />
 
-        <ImageButton
-            android:id="@+id/img_remove"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_toEndOf="@id/txt_num_itens"
-            android:layout_below="@id/txt_preview"
+        <TextView
+            android:id="@+id/txt_valor_quantidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textColor="@color/darkergray"
+            android:layout_below="@id/txt_descricao"
+            android:layout_alignStart="@id/txt_quantidade"
+            android:textStyle="bold"
+            android:layout_marginLeft="95dp"
+            tools:text="2"
+            />
+
+        <TextView
+            android:id="@+id/txt_detalhes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textColor="@color/darkergray"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="RelativeOverlap"
+            tools:text="..." />
+
+        <Button
+            android:id="@+id/btn_observação"
+            android:layout_width="86dp"
+            android:layout_height="32dp"
+            android:layout_below="@id/txt_quantidade"
+            android:layout_alignStart="@id/txt_titulo"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/ic_baseline_remove_24" />
+            android:layout_marginLeft="26dp"
+            android:background="@drawable/botao_comum_verde"
+            android:text="@string/btn_observacao"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/btn_remove_item"
-            android:layout_width="96dp"
-            android:layout_height="42dp"
-            android:layout_below="@id/txt_preview"
+            android:layout_width="86dp"
+            android:layout_height="32dp"
+            android:layout_below="@id/txt_quantidade"
+            android:layout_alignStart="@id/btn_observação"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@id/img_remove"
+            android:layout_marginLeft="116dp"
+            android:layout_marginTop="5dp"
             android:background="@drawable/botao_comum"
-            android:text="@string/btn_remove" />
+            android:text="@string/btn_remove"
+            android:textSize="10sp" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

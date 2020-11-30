@@ -34,7 +34,6 @@ public class PagamentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamento);
-        recyclerView = findViewById(R.id.recycler_view_pagamento);
         recuperarItensPedidos();
     }
 
@@ -52,32 +51,28 @@ public class PagamentoActivity extends AppCompatActivity {
             public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
                 if (response.isSuccessful()){
                     listaPedido = response.body();
-                        Pedido pedido = listaPedido.get(listaPedido.size() -1);
+                    Pedido pedido = listaPedido.get(listaPedido.size() -1);
 
-                        DataService service = conexao.conexao().create(DataService.class);
-                        Call<List<ItemPedido>> callItemPedido = service.recuperarItemPedido(pedido.getCod_Pedido());
+                    DataService service = conexao.conexao().create(DataService.class);
+                    Call<List<ItemPedido>> callPedidoPagamento = service.recuperarTodosItemPedido(pedido.getCod_Pedido());
+                    callPedidoPagamento.enqueue(new Callback<List<ItemPedido>>() {
+                        @Override
+                        public void onResponse(Call<List<ItemPedido>> call, Response<List<ItemPedido>> response) {
 
-                        callItemPedido.enqueue(new Callback<List<ItemPedido>>() {
-                            @Override
-                            public void onResponse(Call<List<ItemPedido>> call, Response<List<ItemPedido>> response) {
-                                if (response.isSuccessful() && response.body() != null){
-
-                                    Log.d("Resultado", "Aqui tem informação");
-                                    listaItensPedido = response.body();
-                                    for (int i=0; i < listaItensPedido.size(); i++){
-                                        listaItensPedido.get(i);
-                                        Log.d("Resultado: ", "Aqui tem informação " + response.code());
-                                        adapterPagamento = new AdapterPagamento(listaItensPedido, PagamentoActivity.this);
-                                        recyclerView.setAdapter(adapterPagamento);
-                                    }
-                                }
+                            Log.d("Resultado", "Aqui tem informação");
+                            listaItensPedido = response.body();
+                            for (int i=0; i < listaItensPedido.size(); i++) {
+                                listaItensPedido.get(i);
+                                Log.d("Resultado: ", "Aqui tem informação " + response.code());
+                                adapterPagamento = new AdapterPagamento(listaItensPedido,PagamentoActivity.this);
                             }
+                        }
 
-                            @Override
-                            public void onFailure(Call<List<ItemPedido>> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<List<ItemPedido>> call, Throwable t) {
 
-                            }
-                        });
+                        }
+                    });
                 }
             }
 
