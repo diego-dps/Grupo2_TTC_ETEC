@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blueDarktheme"
+            android:background="@color/blackDarktheme"
             app:titleTextColor="@android:color/white"
             app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
             app:title="@string/toolbar_garçom_home"
@@ -26,7 +26,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="200dp"
+                android:layout_marginLeft="250dp"
                 android:onClick="telaChamadaCliente"
                 android:src="@drawable/ic_baseline_message_24" />
 

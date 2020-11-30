@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@color/blackDarktheme">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -63,6 +64,7 @@
         android:layout_height="wrap_content"
         android:text="@string/observacao_titulo"
         android:textStyle="bold"
+        android:textColor="@android:color/white"
         android:textSize="24sp"
         android:layout_below="@id/app_bar"
         android:layout_marginTop="15dp"
