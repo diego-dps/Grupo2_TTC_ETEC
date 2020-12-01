@@ -19,22 +19,20 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
 
     private List<ItemPedido> listaItensPedido;
     private Context context;
-    private Double quantidade;
-    private Float v;
-    private Double q;
-    private Item item;
+    private Double resultado = 0.0;
 
     public AdapterPagamento(List<ItemPedido> listaItensPedido, Context context) {
         this.listaItensPedido = listaItensPedido;
         this.context = context;
     }
 
+
     @NonNull
     @Override
     public PagamentoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.activity_pagamento, parent, false);
+                .inflate(R.layout.pagamento, parent, false);
         return new PagamentoViewHolder(view);
     }
 
@@ -42,7 +40,13 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
     public void onBindViewHolder(@NonNull PagamentoViewHolder holder, int position) {
 
         ItemPedido itemPedido = listaItensPedido.get(position);
-                holder.preco_Final_Valor.setText("www");
+        holder.nome_item.setText(itemPedido.getnome_Item());
+        holder.valor_quantidade.setText(itemPedido.getQuantidade());
+
+        resultado = Double.parseDouble(holder.valor_quantidade.getText().toString()) * Double.parseDouble(itemPedido.getPreco());
+
+        holder.valor_totalItem.setText(resultado.toString());
+
 
     }
 
@@ -53,14 +57,17 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
 
     public class PagamentoViewHolder extends RecyclerView.ViewHolder{
 
-
-        TextView preco_Final_Valor;
+        TextView nome_item;
+        TextView valor_quantidade;
+        TextView valor_totalItem;
 
         public PagamentoViewHolder(@NonNull View PagamentoView) {
 
             super(PagamentoView);
 
-            preco_Final_Valor = PagamentoView.findViewById(R.id.txt_titulo);
+            nome_item = PagamentoView.findViewById(R.id.txt_titulo);
+            valor_quantidade = PagamentoView.findViewById(R.id.txt_valor_quantidade);
+            valor_totalItem = PagamentoView.findViewById(R.id.txt_total);
         }
     }
 }

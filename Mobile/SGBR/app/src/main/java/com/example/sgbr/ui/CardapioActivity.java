@@ -53,7 +53,7 @@ public class CardapioActivity extends AppCompatActivity {
         btn_chamarGarcom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                testeChamarGarcom();
+                ChamarGarcom();
             }
         });
 
@@ -188,7 +188,7 @@ public class CardapioActivity extends AppCompatActivity {
         startActivity(it);
     }
 
-    public void testeChamarGarcom() {
+    public void ChamarGarcom() {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -201,7 +201,7 @@ public class CardapioActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Mesa> call, Response<Mesa> response) {
                     if (response.isSuccessful() && response != null) {
-                        Toast.makeText(CardapioActivity.this, "Deu certo!", Toast.LENGTH_SHORT).show();
+
                     }
                 }
 

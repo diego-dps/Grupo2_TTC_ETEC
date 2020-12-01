@@ -2,6 +2,7 @@ package com.example.sgbr.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.model.Mesa;
 import com.example.sgbr.model.Pedido;
+import com.example.sgbr.ui.CarrinhoComprasActivity;
 import com.example.sgbr.ui.GarcomHomeActivity;
 
 import java.util.List;
@@ -94,6 +96,8 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
                             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                                 if (response.isSuccessful() && response != null){
                                     Toast.makeText(context, "Item removido com sucesso!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(context, GarcomHomeActivity.class);
+                                    context.startActivity(intent);
                                 }
                             }
 

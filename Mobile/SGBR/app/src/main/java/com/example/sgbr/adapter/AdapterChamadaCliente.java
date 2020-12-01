@@ -2,6 +2,7 @@ package com.example.sgbr.adapter;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,8 @@ import com.example.sgbr.R;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Mesa;
+import com.example.sgbr.ui.CarrinhoComprasActivity;
+import com.example.sgbr.ui.GarcomChamadaActivity;
 
 import java.util.List;
 
@@ -79,6 +82,8 @@ public class AdapterChamadaCliente extends RecyclerView.Adapter<AdapterChamadaCl
                             public void onResponse(Call<Mesa> call, Response<Mesa> response) {
                                 if (response.isSuccessful() && response != null){
                                     Toast.makeText(context, "Item removido com sucesso!", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(context, GarcomChamadaActivity.class);
+                                    context.startActivity(intent);
                                 }
                             }
 

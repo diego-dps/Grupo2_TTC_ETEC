@@ -61,39 +61,40 @@
         android:id="@+id/Main_btn_ConfirmarCodigo"
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="660dp"
+        android:layout_marginTop="640dp"
+        android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/botao_comum"
         android:onClick="tt"
         android:text="@string/pagamento_finalizar"
-        android:textColor="#FFFFFF"
+        android:textColor="@android:color/white"
         android:textSize="25sp" />
 
     <TextView
         android:id="@+id/preco_Final"
-        android:layout_width="250px"
-        android:layout_height="55px"
-        android:textColor="@color/darkergray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
         android:layout_below="@id/recycler_view_pagamento"
-        android:layout_alignStart="@id/radio_grup"
-        tools:text="@string/pagamento_preco_total"
+        android:layout_alignParentEnd="true"
+        android:text="@string/pagamento_preco_total"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:layout_marginLeft="207dp"
-        android:layout_marginTop="60dp" />
+        android:layout_marginRight="90dp"
+        android:layout_marginTop="50dp" />
 
     <TextView
         android:id="@+id/preco_Final_Valor"
-        android:layout_width="240px"
-        android:layout_height="50px"
-        android:textColor="@color/darkergray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
         android:layout_below="@id/recycler_view_pagamento"
-        android:layout_alignStart="@id/radio_grup"
-        tools:text="22232,00"
+        android:text="22232,00"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:layout_marginLeft="299dp"
-        android:layout_marginTop="60dp" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="50dp" />
 
     <RadioGroup
         android:id="@+id/radio_grup"
@@ -101,7 +102,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/recycler_view_pagamento"
         android:layout_marginTop="16dp"
-        android:layout_marginLeft="30dp">
+        android:layout_marginStart="16dp">
 
         <RadioButton
             android:id="@+id/radio_dinheiro"
