@@ -38,7 +38,7 @@ qr_Code VARCHAR(100) NOT NULL,
 valor_total decimal(10,2), 
 status_Pedido ENUM('Pendente','Concluido','Entregue') default 'Pendente'
 );
-//*tabela ItemPedido*/
+/*tabela ItemPedido*/
 CREATE TABLE ItemPedido(
 cod_Item INT(100) NOT NULL,
 cod_Pedido INT(100) NOT NULL,
