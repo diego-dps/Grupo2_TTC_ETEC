@@ -4,7 +4,7 @@ CREATE DATABASE IF NOT EXISTS tcc
 default character set utf8
 default collate utf8_general_ci;
 
-use tcc; 
+USE tcc; 
 
 /*criando as tabelas*/
 /*Tabela Cardapio*/
