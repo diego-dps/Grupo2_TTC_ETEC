@@ -29,6 +29,7 @@ public class ObservacaoActivity extends AppCompatActivity {
     private String ob;
     private Conexao conexao = new Conexao();
     private RecyclerView recyclerView;
+    private List<Observacao> listaObeservacao;
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private List<Pedido> listaPedido = new ArrayList<>();
     private List<Observacao> listaObservacao = new ArrayList<>();
@@ -51,54 +52,42 @@ public class ObservacaoActivity extends AppCompatActivity {
         Call<List<Pedido>> callPedido = service.recuperarPedido();
 
         callPedido.enqueue(new Callback<List<Pedido>>() {
-            @Override
-            public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
-                if (response.isSuccessful()){
-                    listaPedido = response.body();
-                    Pedido pedido = listaPedido.get(listaPedido.size() -1);
+                               @Override
+                               public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
 
-                    DataService service = conexao.conexao().create(DataService.class);
-                    Call<List<ItemPedido>> callItemPedido = service.recuperarItemPedido(pedido.getCod_Pedido());
+                                   if (response.isSuccessful()) {
+                                       listaPedido = response.body();
+                                       Pedido pedido = listaPedido.get(listaPedido.size() - 1);
 
-                    callItemPedido.enqueue(new Callback<List<ItemPedido>>() {
+                                       Bundle extras = getIntent().getExtras();
+                                       if (extras != null) {
+                                           String valor = extras.getString("key");
+                                           DataService service = conexao.conexao().create(DataService.class);
+                                           Observacao observacao = new Observacao(pedido.getCod_Pedido(), valor, ob);
+                                           Call<Observacao> callObervacao = service.atualizarItemPedido(observacao);
+
+                                           callObervacao.enqueue(new Callback<Observacao>() {
+
                                                @Override
-                                               public void onResponse(Call<List<ItemPedido>> call, Response<List<ItemPedido>> response) {
-                                                   if (response.isSuccessful()){
-                                                       listaItensPedido = response.body();
-                                                       ItemPedido itemPedido = listaItensPedido.get(listaItensPedido.size() -1);
-
-                                                       DataService service = conexao.conexao().create(DataService.class);
-                                                       Observacao observacao = new Observacao(pedido.getCod_Pedido(), itemPedido.getCod_Item(), ob);
-                                                       Call<Observacao> callObervacao = service.atualizarItemPedido(observacao);
-
-                                                       callObervacao.enqueue(new Callback<Observacao>() {
-                                                           @Override
-                                                           public void onResponse(Call<Observacao> call, Response<Observacao> response) {
-
-                                                               Intent it = new Intent(ObservacaoActivity.this, CarrinhoComprasActivity.class);
-                                                               startActivity(it);
-                                                           }
-
-                                                           @Override
-                                                           public void onFailure(Call<Observacao> call, Throwable t) {
-
-                                                           }
-                                                       });
-                                                   }
+                                               public void onResponse(Call<Observacao> call, Response<Observacao> response) {
+                                                   Intent it = new Intent(ObservacaoActivity.this, CarrinhoComprasActivity.class);
+                                                   startActivity(it);
                                                }
 
                                                @Override
-                                               public void onFailure(Call<List<ItemPedido>> call, Throwable t) {
+                                               public void onFailure(Call<Observacao> call, Throwable t) {
 
                                                }
                                            });
-                }
-            }
 
-            @Override
-            public void onFailure(Call<List<Pedido>> call, Throwable t) {
+                                       }
+                                   }
 
-            }
+                               }
+
+                               @Override
+                               public void onFailure(Call<List<Pedido>> call, Throwable t) {
+                               }
         });
     }
 

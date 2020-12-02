@@ -93,8 +93,11 @@ public class AdapterItensCarrinho extends RecyclerView.Adapter<AdapterItensCarri
         holder.btn_observação.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(context, ObservacaoActivity.class);
+                intent.putExtra("key", itemPedido.getCod_Item());
                 context.startActivity(intent);
+
             }
         });
 
