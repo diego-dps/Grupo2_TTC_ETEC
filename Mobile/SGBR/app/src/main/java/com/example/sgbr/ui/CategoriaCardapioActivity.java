@@ -39,11 +39,6 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterItensCardapio adapterItensCardapio;
     private List<Item> listaItens = new ArrayList<>();
-    private TextView qtd_carrinho;
-
-    int delay = 2000;
-    int intervalo = 2000;
-    Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +47,6 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerciew_categoria_cardapio);
 
-        qtd_carrinho = findViewById(R.id.qtd_carrinho);
 
         //Configura o Adapter
         adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this,listaItens);
@@ -62,12 +56,6 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
-        /*timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                recuperarItens();
-            }
-        }, delay, intervalo);*/
         recuperarItens();
     }
 
@@ -90,7 +78,6 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
                             adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this, listaItens);
                             recyclerView.setAdapter(adapterItensCardapio);
 
-                            qtd_carrinho.setText("1");
                         }
                     }
 
@@ -162,7 +149,7 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         });
     }
 
-    public void testeTelasCarrinho(View v) {
+    public void telaCarrinho(View v) {
 
         Intent it = new Intent(CategoriaCardapioActivity.this, CarrinhoComprasActivity.class);
         startActivity(it);

@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
                             Funcionario funcionario = listaFuncionarios.get(0);
                             if (funcionario.getEmail_Funcionario().equals(login_editText_Usuario.getText().toString())
                                     && funcionario.getSenha().equals(login_editText_Senha.getText().toString())) {
-                                validarUsuarioSucesso();
+                                validarUsuarioSucesso(funcionario.getNome_Funcionario(), funcionario.getCargo_Funcionario());
                             }
                             else {
                                 validarUsuarioErro();
@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void validarUsuarioSucesso(){
+    private void validarUsuarioSucesso(String nome, String cargo){
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
 
@@ -130,6 +130,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent it = new Intent(LoginActivity.this, GarcomHomeActivity.class);
+                it.putExtra("nome", nome);
+                it.putExtra("cargo", cargo);
                 startActivity(it);
             }
         });

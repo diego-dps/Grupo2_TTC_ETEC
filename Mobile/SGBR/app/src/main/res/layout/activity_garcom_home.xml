@@ -11,7 +11,9 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:elevation="0dp"
+        app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -20,19 +22,95 @@
             android:background="@color/blackDarktheme"
             app:titleTextColor="@android:color/white"
             app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-            app:title="@string/toolbar_garçom_home"
             android:textAlignment="center">
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="250dp"
-                android:onClick="telaChamadaCliente"
-                android:src="@drawable/ic_baseline_message_24" />
+                android:layout_marginStart="15dp">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_home_48"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Início"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:onClick="telaChamadaCliente"
+                    android:src="@drawable/ic_baseline_message_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_ajuda"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_mais"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_baseline_more_vert_24"
+                    android:textAlignment="viewEnd"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_ajuda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_mais"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_help_24" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/nome_funcionario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="15dp"
+        tools:text="Nome do funcionário"/>
+
+    <TextView
+        android:id="@+id/cargo_funcionario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nome_funcionario"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp"
+        android:layout_alignStart="@+id/nome_funcionario"
+        tools:text="Cargo do funcionário"/>
 
     <TextView
         android:id="@+id/txt_tituloPedidos"
@@ -42,7 +120,7 @@
         android:textSize="36sp"
         android:textColor="@android:color/white"
         android:text="Pedidos a entregar"
-        android:layout_below="@id/app_bar"
+        android:layout_below="@id/cargo_funcionario"
         android:layout_margin="15dp"/>
 
 

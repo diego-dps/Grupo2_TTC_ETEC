@@ -58,14 +58,16 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <Button
-        android:id="@+id/Main_btn_ConfirmarCodigo"
+        android:id="@+id/btn_finalizarPedido"
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="640dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radio_grup"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/botao_comum"
-        android:onClick="tt"
+        android:onClick="finalizarPedido"
         android:text="@string/pagamento_finalizar"
         android:textColor="@android:color/white"
         android:textSize="25sp" />
@@ -101,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/recycler_view_pagamento"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp">
 
         <RadioButton
@@ -129,7 +131,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:background="@color/blackDarktheme"
         android:layout_width="match_parent"
-        android:layout_height="460dp"
+        android:layout_height="450dp"
         android:id="@+id/recycler_view_pagamento"
         android:layout_below="@id/app_bar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

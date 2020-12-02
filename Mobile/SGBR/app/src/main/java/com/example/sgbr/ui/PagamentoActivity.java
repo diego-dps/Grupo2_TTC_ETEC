@@ -1,7 +1,9 @@
 package com.example.sgbr.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -100,6 +102,12 @@ public class PagamentoActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void finalizarPedido(View view){
+
+        Intent intent = new Intent(PagamentoActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

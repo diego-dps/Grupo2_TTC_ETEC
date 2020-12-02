@@ -59,7 +59,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerciew_carrinho_compras"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="550dp"
         android:layout_below="@id/app_bar"
         android:layout_marginTop="-4dp"
         android:background="@color/blackDarktheme"
@@ -69,16 +69,16 @@
     <Button
         android:id="@+id/carrinho_compras_btn_ConfirmarCodigo"
         android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/recyclerciew_carrinho_compras"
-        android:layout_marginLeft="55dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="8dp"
         android:background="@drawable/botao_comum"
-        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
         android:onClick="testeTelasPagamento"
-        android:text="@string/toolbar_fazer_pedido"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp" />
+        android:text="Seguir para o caixa"
+        android:textColor="@android:color/white"
+        android:textSize="25sp"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>
 
