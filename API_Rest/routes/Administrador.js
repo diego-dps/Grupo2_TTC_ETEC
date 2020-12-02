@@ -8,6 +8,7 @@ router.get('/', (req, res, next) => {
         conn.query(
             'SELECT * FROM Administrador;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -47,6 +48,7 @@ router.get('/:cod_ADM', (req, res, next) => {
             'SELECT * FROM Administrador WHERE cod_ADM = ?;',
             [req.params.cod_Item],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
             }

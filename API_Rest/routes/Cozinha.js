@@ -8,6 +8,7 @@ router.get('/', (req, res, next) => {
         conn.query(
             'SELECT * FROM Cozinha;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -47,6 +48,7 @@ router.get('/:cod_Funcionario', (req, res, next) => {
             'SELECT * FROM Cozinha WHERE cod_Funcionario = ?;',
             [req.params.cod_Item],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
             }

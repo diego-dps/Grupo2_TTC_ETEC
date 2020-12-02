@@ -8,6 +8,7 @@ router.get('/', (req, res, next) => {
         conn.query(
             'SELECT * FROM Mesa;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -47,6 +48,7 @@ router.get('/:qr_Code', (req, res, next) => {
             'SELECT * FROM Mesa WHERE qr_Code = ?;',
             [req.params.qr_Code],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -62,6 +64,7 @@ router.get('/Chamada/:chamada_Mesa', (req, res, next) => {
             'SELECT * FROM Mesa WHERE chamada_mesa = 1;',
             [req.params.chamada_Mesa],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }

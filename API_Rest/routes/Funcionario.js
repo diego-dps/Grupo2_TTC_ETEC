@@ -8,6 +8,7 @@ router.get('/', (req, res, next) => {
         conn.query(
             'SELECT * FROM Funcionario;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -54,6 +55,7 @@ router.get('/:cod_Funcionario', (req, res, next) => {
             'SELECT * FROM Funcionario WHERE cod_Funcionario = ?;',
             [req.params.cod_Funcionario],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
             }
@@ -69,6 +71,7 @@ router.get('/Email/:email_Funcionario', (req, res, next) => {
             'SELECT * FROM Funcionario WHERE email_Funcionario = ?;',
             [req.params.email_Funcionario],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -85,6 +88,7 @@ router.get('/Senha/:senha', (req, res, next) => {
             'SELECT * FROM Funcionario WHERE senha = ?;',
             [req.params.senha],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
             }
@@ -101,6 +105,7 @@ router.get('/Email/:email_Funcionario/Senha/:senha', (req, res, next) => {
             'SELECT * FROM Funcionario WHERE email_Funcionario = ? AND senha = ?;',
             [req.params.email_Funcionario,req.params.senha],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send({ response: resultado })
             }

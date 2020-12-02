@@ -8,6 +8,7 @@ router.get('/', (req, res, next) => {
         conn.query(
             'SELECT * FROM Pedido;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -23,6 +24,7 @@ router.get('/Status/:cod_Pedido', (req, res, next) => {
             'SELECT status_Pedido FROM Pedido WHERE cod_Pedido = ?;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -38,6 +40,7 @@ router.get('/Pendente', (req, res, next) => {
         conn.query(
             'SELECT * FROM Pedido WHERE status_Pedido = 1;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -53,6 +56,7 @@ router.get('/Concluido', (req, res, next) => {
         conn.query(
             'SELECT * FROM Pedido WHERE status_Pedido = 2;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -67,6 +71,7 @@ router.get('/Entregue', (req, res, next) => {
         conn.query(
             'SELECT * FROM Pedido WHERE status_Pedido = 3;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -82,6 +87,7 @@ router.get('/ItensPedidos', (req, res, next) => {
         conn.query(
             'SELECT  c.cod_Pedido, d.numero_Mesa, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, b.cod_Cardapio, e.categoria_Cardapio, c.status_Pedido FROM itempedido a, item b, pedido c, mesa d, cardapio e where a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and d.qr_Code = c.qr_Code and b.cod_Cardapio = e.cod_Cardapio;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -120,6 +126,7 @@ router.get('/:cod_Pedido', (req, res, next) => {
             'SELECT * FROM Pedido WHERE cod_Pedido = ?;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }

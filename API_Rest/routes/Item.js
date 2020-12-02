@@ -8,6 +8,7 @@ router.get('/', (req, res, next) => {
         conn.query(
             'SELECT * FROM Item;',
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -47,6 +48,7 @@ router.get('/:cod_Item', (req, res, next) => {
             'SELECT * FROM Item WHERE cod_Item = ?;',
             [req.params.cod_Item],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
@@ -63,6 +65,7 @@ router.get('/Cardapio/:cod_Cardapio', (req, res, next) => {
             'SELECT * FROM Item WHERE cod_Cardapio = ?;',
             [req.params.cod_Cardapio],
             (error, resultado, fields) => {
+                conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
                 return res.status(200).send(resultado)
             }
