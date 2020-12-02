@@ -65,7 +65,7 @@ public class AdapterItensCarrinho extends RecyclerView.Adapter<AdapterItensCarri
         holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
         holder.txt_valor.setText(itemPedido.getPreco());
         Glide.with(context)
-                .load("http://192.168.15.12:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
+                .load("http://192.168.0.14:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
                 .centerCrop()
                 .into(holder.txt_img);
         holder.btn_remove_item.setOnClickListener(new View.OnClickListener() {

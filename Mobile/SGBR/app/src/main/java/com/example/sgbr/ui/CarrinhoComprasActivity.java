@@ -149,9 +149,9 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
         });
     }
 
-    public void testeTelasObservação(View v) {
+    public void testeTelasItens(View v) {
 
-        Intent it = new Intent(CarrinhoComprasActivity.this, ObservacaoActivity.class);
+        Intent it = new Intent(CarrinhoComprasActivity.this, CategoriaCardapioActivity.class);
         startActivity(it);
     }
 

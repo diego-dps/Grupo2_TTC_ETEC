@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blackDarktheme">
 
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_carrinho_compras"
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
@@ -16,21 +17,52 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/azulClaro"
-            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-            app:title="@string/toolbar_carrinho_compras">
+            android:background="@color/blackDarktheme">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_icon_back"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="-10dp"
+                    android:background="@drawable/ic_grupo_1"
+                    android:onClick="testeTelasItens"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/toolbar_carrinho_compras"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorTextPrimary" />
+
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="25dp"
+                    />
+
+            </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerciew_carrinho_compras"
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:layout_below="@+id/app_bar_carrinho_compras"
+        android:layout_below="@id/app_bar"
         android:layout_marginTop="-4dp"
-        android:background="@color/colorPrimaryLigth"
+        android:background="@color/blackDarktheme"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/carrinho_compras" />
 
