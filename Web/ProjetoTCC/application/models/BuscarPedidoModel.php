@@ -43,6 +43,7 @@ class BuscarPedidoModel extends CI_Model {
     }
 
     public function countpedidospendentes(){
+        
         return $this->db->select('count(status_Pedido)')
         ->from('pedido')
         ->where('status_Pedido = "Pendente"')
@@ -54,6 +55,7 @@ class BuscarPedidoModel extends CI_Model {
         ->from('pedido')
         ->where('status_Pedido = "Concluido"')
         ->get()->result_array();
+
     }
 
 }
