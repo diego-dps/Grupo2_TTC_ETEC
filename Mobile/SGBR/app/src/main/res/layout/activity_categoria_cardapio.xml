@@ -48,9 +48,17 @@
                 <TextView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="70dp"
+                    android:layout_marginLeft="50dp"
                     android:background="@drawable/ic_baseline_shopping_cart_24"
-                    android:onClick="testeTelasCarrinho" />
+                    android:onClick="testeTelasCarrinho"/>
+
+                <TextView
+                    android:id="@+id/qtd_carrinho"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:layout_marginLeft="10dp"/>
             </LinearLayout>
 
 

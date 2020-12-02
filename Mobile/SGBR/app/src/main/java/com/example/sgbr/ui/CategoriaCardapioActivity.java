@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +15,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
 import com.example.sgbr.adapter.AdapterItensCardapio;
+import com.example.sgbr.adapter.AdapterPagamento;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Item;
+import com.example.sgbr.model.ItemPedido;
+import com.example.sgbr.model.Pedido;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +39,11 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterItensCardapio adapterItensCardapio;
     private List<Item> listaItens = new ArrayList<>();
+    private TextView qtd_carrinho;
+
+    int delay = 2000;
+    int intervalo = 2000;
+    Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +51,8 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categoria_cardapio);
 
         recyclerView = findViewById(R.id.recyclerciew_categoria_cardapio);
+
+        qtd_carrinho = findViewById(R.id.qtd_carrinho);
 
         //Configura o Adapter
         adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this,listaItens);
@@ -47,6 +62,12 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
+        /*timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                recuperarItens();
+            }
+        }, delay, intervalo);*/
         recuperarItens();
     }
 
@@ -62,13 +83,14 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
                 public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
                     if (response.isSuccessful() && response.body() != null) {
 
-                        Log.d("Resultado", "Aqui tem informação");
                         listaItens = response.body();
                         for (int i = 0; i < listaItens.size(); i++) {
                             listaItens.get(i);
-                            Log.d("Resultado: ", "Aqui tem informação " + response.code());
+
                             adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this, listaItens);
                             recyclerView.setAdapter(adapterItensCardapio);
+
+                            qtd_carrinho.setText("1");
                         }
                     }
 
@@ -82,23 +104,6 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
             });
         }
     }
-
-   /* private void Resultado(JSONArray jsonArray) {
-
-        for (int i=0; i < jsonArray.length(); i++){
-            try {
-                JSONObject object = jsonArray.getJSONObject(i);
-                Item item = new Item();
-                item.setNome_Item(object.getString("nome_Item"));
-                listaItens.add(item);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this,listaItens);
-            recyclerView.setAdapter(adapterItensCardapio);
-        }
-    }*/
-
 
     private void inserirItem(){
 

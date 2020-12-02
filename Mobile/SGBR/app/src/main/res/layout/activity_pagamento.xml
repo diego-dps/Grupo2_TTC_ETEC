@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blueDarktheme">
+            android:background="@color/blackDarktheme">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_below="@id/recycler_view_pagamento"
-        android:text="22232,00"
+        tools:text="22232,00"
         android:textStyle="bold"
         android:textSize="16sp"
         android:layout_alignParentEnd="true"
@@ -108,19 +108,22 @@
             android:id="@+id/radio_dinheiro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dinheiro" />
+            android:text="Dinheiro"
+            android:textColor="@android:color/white"/>
 
         <RadioButton
             android:id="@+id/radio_debito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cartão de Debito" />
+            android:text="Cartão de Debito"
+            android:textColor="@android:color/white"/>
 
         <RadioButton
             android:id="@+id/radio_credito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cartão de Credito" />
+            android:text="Cartão de Credito"
+            android:textColor="@android:color/white"/>
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -131,6 +134,6 @@
         android:layout_below="@id/app_bar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/pagamento"
-        />
+        android:layout_marginTop="8dp"/>
 
 </RelativeLayout>

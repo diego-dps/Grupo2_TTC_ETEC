@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +32,7 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
     private AdapterItensCarrinho adapterItensCarrinho;
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private List<Pedido> listaPedido = new ArrayList<>();
+
     int delay = 2000;
     int intervalo = 2000;
     Timer timer = new Timer();
@@ -38,7 +41,9 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrinho_compras);
+
         recyclerView = findViewById(R.id.recyclerciew_carrinho_compras);
+
         recuperarItensPedidos();
         /*timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -69,11 +74,10 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
                         public void onResponse(Call<List<ItemPedido>> call, Response<List<ItemPedido>> response) {
                             if (response.isSuccessful() && response.body() != null){
 
-                                Log.d("Resultado", "Aqui tem informação");
                                 listaItensPedido = response.body();
                                 for (int i=0; i < listaItensPedido.size(); i++){
                                     listaItensPedido.get(i);
-                                    Log.d("Resultado: ", "Aqui tem informação " + response.code());
+
                                     adapterItensCarrinho = new AdapterItensCarrinho(listaItensPedido, CarrinhoComprasActivity.this);
                                     recyclerView.setAdapter(adapterItensCarrinho);
                                 }
