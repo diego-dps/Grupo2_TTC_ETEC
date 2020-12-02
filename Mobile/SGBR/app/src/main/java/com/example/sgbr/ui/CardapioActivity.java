@@ -1,25 +1,23 @@
 package com.example.sgbr.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
+import com.example.sgbr.adapter.AdapterCategoriaCardapio;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
-import com.example.sgbr.adapter.AdapterCategoriaCardapio;
 import com.example.sgbr.controller.RecyclerItemClickListener;
 import com.example.sgbr.model.Cardapio;
 import com.example.sgbr.model.Mesa;
@@ -31,6 +29,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+;
 
 public class CardapioActivity extends AppCompatActivity {
 
@@ -47,7 +47,7 @@ public class CardapioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardapio);
 
-        recyclerView =findViewById(R.id.recyclerview_cardapio);
+        recyclerView = findViewById(R.id.recyclerview_cardapio);
         btn_chamarGarcom = findViewById(R.id.btn_chamarGarcom);
 
         btn_chamarGarcom.setOnClickListener(new View.OnClickListener() {
