@@ -31,8 +31,7 @@ public class PagamentoActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterPagamento adapterPagamento;
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
-    private Double valor_totalItem;
-    private Double valor_totalItem1;
+    private List<Pedido> listaPedido = new ArrayList<>();
     private TextView total;
 
     @Override
@@ -55,10 +54,20 @@ public class PagamentoActivity extends AppCompatActivity {
 
     private void recuperarItensPedidos() {
 
-                    DataService service = conexao.conexao().create(DataService.class);
-                    Call<List<ItemPedido>> call = service.recuperarItemPedido("1");
+        DataService service = conexao.conexao().create(DataService.class);
+        Call<List<Pedido>> callPedido = service.recuperarPedido();
 
-                    call.enqueue(new Callback<List<ItemPedido>>() {
+        callPedido.enqueue(new Callback<List<Pedido>>() {
+            @Override
+            public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
+                if (response.isSuccessful()){
+                    listaPedido = response.body();
+                    Pedido pedido = listaPedido.get(listaPedido.size() -1);
+
+                    DataService service = conexao.conexao().create(DataService.class);
+                    Call<List<ItemPedido>> callItem = service.recuperarItemPedido(pedido.getCod_Pedido());
+
+                    callItem.enqueue(new Callback<List<ItemPedido>>() {
                         @Override
                         public void onResponse(Call<List<ItemPedido>> call, Response<List<ItemPedido>> response) {
                             if (response.isSuccessful() && response != null) {
@@ -67,14 +76,11 @@ public class PagamentoActivity extends AppCompatActivity {
                                 Double resultado = 0.0;
                                 for (int i = 0; i < listaItensPedido.size(); i++) {
 
-                                    resultado = Double.parseDouble(listaItensPedido.get(i).getPreco());
+                                    resultado += Double.parseDouble(listaItensPedido.get(i).getPreco());
                                     adapterPagamento = new AdapterPagamento(listaItensPedido, PagamentoActivity.this);
                                     recyclerView.setAdapter(adapterPagamento);
 
-                                    //valor_totalItem = Double.parseDouble(listaItensPedido.get(i).getPreco()) * Double.parseDouble(listaItensPedido.get(i).getQuantidade());
-                                    //valor_totalItem1 = Double.parseDouble(itemPedido1.getPreco()) * Double.parseDouble(itemPedido1.getQuantidade());
-                                    resultado = valor_totalItem;
-                                    total.setText(resultado.toString());
+                                    total.setText(resultado.toString()+"0");
                                 }
 
                             }
@@ -85,6 +91,15 @@ public class PagamentoActivity extends AppCompatActivity {
 
                         }
                     });
+
                 }
+            }
+
+            @Override
+            public void onFailure(Call<List<Pedido>> call, Throwable t) {
+
+            }
+        });
+    }
 
 }

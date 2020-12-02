@@ -41,11 +41,11 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
 
         ItemPedido itemPedido = listaItensPedido.get(position);
         holder.nome_item.setText(itemPedido.getnome_Item());
-        holder.valor_quantidade.setText(itemPedido.getQuantidade());
+        holder.valor_quantidade.setText(itemPedido.getQuantidade()+"X");
 
-        resultado = Double.parseDouble(holder.valor_quantidade.getText().toString()) * Double.parseDouble(itemPedido.getPreco());
+        resultado = Double.parseDouble(itemPedido.getPreco()) * Double.parseDouble(itemPedido.getQuantidade()) / Double.parseDouble(itemPedido.getQuantidade());
 
-        holder.valor_totalItem.setText(resultado.toString());
+        holder.valor_totalItem.setText(resultado.toString()+"0");
 
 
     }
