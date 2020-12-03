@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mesa 12 chamando!!!"
-            android:textColor="@color/dangerColor"
+            android:textColor="@android:color/white"
             android:layout_alignStart="@+id/txt_ajuda"
             android:layout_below="@+id/txt_ajuda"
             android:layout_marginTop="10dp"

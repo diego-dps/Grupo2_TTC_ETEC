@@ -1,13 +1,12 @@
 package com.example.sgbr.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sgbr.R;
 import com.example.sgbr.adapter.AdapterMesa;
@@ -25,8 +23,6 @@ import com.example.sgbr.model.ItemPedido;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -45,8 +41,9 @@ public class GarcomHomeActivity extends AppCompatActivity {
     private TextView cargo_funcionario;
     private ImageView btn_ajuda;
     private ImageView btn_mais;
-    int delay = 2000;
-    int intervalo = 2000;
+    private Dialog dialog_customizado;
+    int delay = 3000;
+    int intervalo = 3000;
     Timer timer = new Timer();
 
     @Override
@@ -54,7 +51,7 @@ public class GarcomHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garcom_home);
 
-        btn_ajuda = findViewById(R.id.btn_ajuda);
+        btn_ajuda = findViewById(R.id.btn_ajudaChamada);
 
         btn_ajuda.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +65,15 @@ public class GarcomHomeActivity extends AppCompatActivity {
         btn_mais.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                carregarMais();
+                dialog_customizado = new Dialog(GarcomHomeActivity.this);
+
+                dialog_customizado.show();
+
+                dialog_customizado.setContentView(R.layout.dialog_customizado);
+
+                dialog_customizado.getWindow().setBackgroundDrawableResource(
+                        android.R.color.white
+                );
             }
         });
 
@@ -189,25 +194,6 @@ public class GarcomHomeActivity extends AppCompatActivity {
         dialog.setMessage("Os pedidos que a cozinha concluir chegaram aqui para que " +
                 "você possa saber quando e pra qual mesa entregar a refeição.");
 
-
-        //Configura o cancelamento do Alert
-        dialog.setCancelable(true);
-
-
-        //Cria e exibi o Alert
-        dialog.create();
-        dialog.show();
-    }
-
-    private void carregarMais(){
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
-
-        dialog.setPositiveButton("Alterar senha", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(GarcomHomeActivity.this, RecuperarSenhaActivity.class);
-            }
-        });
 
         //Configura o cancelamento do Alert
         dialog.setCancelable(true);

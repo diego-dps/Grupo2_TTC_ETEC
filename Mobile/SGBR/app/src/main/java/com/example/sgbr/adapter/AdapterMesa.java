@@ -1,5 +1,6 @@
 package com.example.sgbr.adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -36,6 +37,7 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
     private List<ItemPedido> listaItensPedidos;
     private Context context;
     private GarcomHomeActivity garcomHomeActivity = new GarcomHomeActivity();
+    private ProgressDialog progressDialog;
 
     public AdapterMesa(List<ItemPedido> listaItensPedidos, Context context) {
         this.listaItensPedidos = listaItensPedidos;
@@ -91,14 +93,19 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
                         Pedido pedido = new Pedido("Entregue");
                         Call<Pedido> call = service.atualizarPedido(itemPedido.getCod_Pedido(), pedido);
 
+                        progressDialog = new ProgressDialog(context);
+                        progressDialog.show();
+                        progressDialog.setContentView(R.layout.progress_dialog);
+                        progressDialog.getWindow().setBackgroundDrawableResource(
+                                android.R.color.transparent
+                        );
                         call.enqueue(new Callback<Pedido>() {
                             @Override
                             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                                 if (response.isSuccessful() && response != null){
-                                    Toast.makeText(context, "Item removido com sucesso!", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(context, GarcomHomeActivity.class);
-                                    context.startActivity(intent);
+
                                 }
+                                progressDialog.dismiss();
                             }
 
                             @Override

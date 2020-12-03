@@ -1,12 +1,16 @@
 package com.example.sgbr.ui;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.sgbr.R;
@@ -30,6 +34,7 @@ public class GarcomChamadaActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterChamadaCliente adapterChamadaCliente;
     private List<Mesa> listaMesas = new ArrayList<>();
+    ImageView btn_ajudaChamada;
     int delay = 5000;
     int intervalo = 5000;
     Timer timer = new Timer();
@@ -38,6 +43,15 @@ public class GarcomChamadaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garcom_chamada);
+
+        btn_ajudaChamada = findViewById(R.id.btn_ajudaChamada);
+
+        btn_ajudaChamada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ajudarChamada();
+            }
+        });
 
         recyclerView = findViewById(R.id.recyclerview_chamada);
 
@@ -74,5 +88,30 @@ public class GarcomChamadaActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void telaGarcomHome(View view){
+
+        Intent intent = new Intent(GarcomChamadaActivity.this, GarcomHomeActivity.class);
+        startActivity(intent);
+    }
+
+    private void ajudarChamada(){
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+
+        //Configura o titulo e mensagem do Alert
+        dialog.setTitle("Ajuda!");
+        dialog.setMessage("Os pedidos que a cozinha concluir chegaram aqui para que " +
+                "você possa saber quando e pra qual mesa entregar a refeição.");
+
+
+        //Configura o cancelamento do Alert
+        dialog.setCancelable(true);
+
+
+        //Cria e exibi o Alert
+        dialog.create();
+        dialog.show();
     }
 }
