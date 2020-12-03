@@ -7,7 +7,7 @@ class BuscarItensCardapio extends CI_Model {
         $termo = $this->input->post('id');
         $where = "cod_Cardapio='$termo' and Ativo=1";
         $this->db->where($where);
-        return $this->db->get("item")->result_array();
+        return $this->db->get("Item")->result_array();
     }
 
 }
