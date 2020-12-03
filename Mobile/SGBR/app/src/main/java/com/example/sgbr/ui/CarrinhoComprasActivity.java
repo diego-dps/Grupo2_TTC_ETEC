@@ -169,7 +169,7 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
         startActivity(it);
     }
 
-    public void testeTelasPagamento(View v) {
+    public void telaPagamento(View v) {
 
         Intent it = new Intent(CarrinhoComprasActivity.this, PagamentoActivity.class);
         startActivity(it);

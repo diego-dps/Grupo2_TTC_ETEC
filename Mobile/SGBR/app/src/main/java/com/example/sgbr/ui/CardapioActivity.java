@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -40,7 +41,7 @@ public class CardapioActivity extends AppCompatActivity {
     private AdapterCategoriaCardapio adapterCategoriaCardapio;
     private Cardapio cardapio;
     private List<Pedido> listaPedidos = new ArrayList();
-    private ImageView btn_chamarGarcom;
+    private Button btn_chamarGarcom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,12 +181,6 @@ public class CardapioActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    public void testeTelasCarrinho(View v) {
-
-        Intent it = new Intent(CardapioActivity.this, PagamentoActivity.class);
-        startActivity(it);
     }
 
     public void ChamarGarcom() {
