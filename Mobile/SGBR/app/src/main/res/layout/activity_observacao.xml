@@ -33,7 +33,7 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginRight="88dp"
-                    android:background="@drawable/ic_grupo_1"
+                    android:background="@drawable/ic_baseline_arrow_back_24"
                     android:onClick="VoltarTelaCarrinho"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
