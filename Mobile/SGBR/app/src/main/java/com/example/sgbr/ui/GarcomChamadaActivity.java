@@ -35,8 +35,8 @@ public class GarcomChamadaActivity extends AppCompatActivity {
     private AdapterChamadaCliente adapterChamadaCliente;
     private List<Mesa> listaMesas = new ArrayList<>();
     ImageView btn_ajudaChamada;
-    int delay = 5000;
-    int intervalo = 5000;
+    int delay = 3000;
+    int intervalo = 3000;
     Timer timer = new Timer();
 
     @Override
@@ -59,12 +59,12 @@ public class GarcomChamadaActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
-        /*timer.scheduleAtFixedRate(new TimerTask() {
+        timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 recuperarMesas();
             }
-        }, delay, intervalo);*/
+        }, delay, intervalo);
         recuperarMesas();
     }
 

@@ -23,6 +23,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.sgbr.ui.CategoriaCardapioActivity.valor;
+
 public class ObservacaoActivity extends AppCompatActivity {
 
     private EditText observacao;
@@ -61,9 +63,9 @@ public class ObservacaoActivity extends AppCompatActivity {
 
                                        Bundle extras = getIntent().getExtras();
                                        if (extras != null) {
-                                           String valor = extras.getString("key");
+                                           String itemPedidoCod = extras.getString("key");
                                            DataService service = conexao.conexao().create(DataService.class);
-                                           Observacao observacao = new Observacao(pedido.getCod_Pedido(), valor, ob);
+                                           Observacao observacao = new Observacao(pedido.getCod_Pedido(), itemPedidoCod, ob);
                                            Call<Observacao> callObervacao = service.atualizarItemPedido(observacao);
 
                                            callObervacao.enqueue(new Callback<Observacao>() {
@@ -71,6 +73,7 @@ public class ObservacaoActivity extends AppCompatActivity {
                                                @Override
                                                public void onResponse(Call<Observacao> call, Response<Observacao> response) {
                                                    Intent it = new Intent(ObservacaoActivity.this, CarrinhoComprasActivity.class);
+                                                   it.putExtra("key", valor);
                                                    startActivity(it);
                                                }
 

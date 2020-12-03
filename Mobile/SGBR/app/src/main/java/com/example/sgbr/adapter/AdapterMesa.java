@@ -26,6 +26,7 @@ import com.example.sgbr.ui.CarrinhoComprasActivity;
 import com.example.sgbr.ui.GarcomHomeActivity;
 
 import java.util.List;
+import java.util.Timer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -93,19 +94,34 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
                         Pedido pedido = new Pedido("Entregue");
                         Call<Pedido> call = service.atualizarPedido(itemPedido.getCod_Pedido(), pedido);
 
-                        progressDialog = new ProgressDialog(context);
-                        progressDialog.show();
-                        progressDialog.setContentView(R.layout.progress_dialog);
-                        progressDialog.getWindow().setBackgroundDrawableResource(
-                                android.R.color.transparent
-                        );
                         call.enqueue(new Callback<Pedido>() {
                             @Override
                             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                                 if (response.isSuccessful() && response != null){
+                                    /*progressDialog = new ProgressDialog(context);
+                                    progressDialog.show();
+                                    progressDialog.setContentView(R.layout.progress_dialog);
+                                    progressDialog.getWindow().setBackgroundDrawableResource(
+                                            android.R.color.transparent
+                                    );
 
+                                    progressDialog.dismiss();*/
+
+                                    AlertDialog.Builder dialog1 = new AlertDialog.Builder(context, R.style.AlertDialogCustom);
+
+                                    dialog1.setTitle("Sucesso!");
+                                    dialog1.setMessage("Item removido com sucesso!");
+                                    dialog1.setIcon(R.drawable.ic_baseline_check_circle_24);
+                                    dialog1.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
+                                    dialog1.setCancelable(false);
+                                    dialog1.create();
+                                    dialog1.show();
                                 }
-                                progressDialog.dismiss();
                             }
 
                             @Override
@@ -129,7 +145,6 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
                 dialog.show();
             }
         });
-
 
     }
 

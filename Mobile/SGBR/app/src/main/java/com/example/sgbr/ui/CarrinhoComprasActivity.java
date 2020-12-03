@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
@@ -20,6 +24,7 @@ import com.example.sgbr.model.Pedido;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,8 +38,8 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private List<Pedido> listaPedido = new ArrayList<>();
 
-    int delay = 2000;
-    int intervalo = 2000;
+    int delay = 3000;
+    int intervalo = 3000;
     Timer timer = new Timer();
 
     @Override
@@ -44,15 +49,18 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerciew_carrinho_compras);
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+
         recuperarItensPedidos();
-        /*timer.scheduleAtFixedRate(new TimerTask() {
+        timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 recuperarItensPedidos();
             }
-        }, delay, intervalo);*/
+        }, delay, intervalo);
     }
-
 
     public void recuperarItensPedidos() {
 
@@ -153,9 +161,11 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
         });
     }
 
-    public void testeTelasItens(View v) {
-
+    public void telaItens(View v) {
+        Bundle bundle = getIntent().getExtras();
+        String valor = bundle.getString("key");
         Intent it = new Intent(CarrinhoComprasActivity.this, CategoriaCardapioActivity.class);
+        it.putExtra("key", valor);
         startActivity(it);
     }
 

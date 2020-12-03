@@ -39,6 +39,7 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterItensCardapio adapterItensCardapio;
     private List<Item> listaItens = new ArrayList<>();
+    public static String valor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,7 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
     public void recuperarItens(){
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String valor = extras.getString("key");
+            valor = extras.getString("key");
             DataService service = conexao.conexao().create(DataService.class);
             Call<List<Item>> call = service.recuperarItens(valor);
 
@@ -92,66 +93,17 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         }
     }
 
-    private void inserirItem(){
-
-        DataService service = conexao.conexao().create(DataService.class);
-        Item item = new Item(null, null, null, null, null, null);
-        Call<Item> call = service.inserirItem(item);
-
-        call.enqueue(new Callback<Item>() {
-            @Override
-            public void onResponse(Call<Item> call, Response<Item> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<Item> call, Throwable t) {
-                Toast.makeText(CategoriaCardapioActivity.this, "Falhou", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
-
-    private void  atualizarItem(){
-
-        DataService service = conexao.conexao().create(DataService.class);
-        Item item = new Item(null, null, null, null, null, null);
-        Call<Item> call = service.atualizarItem(1, item);
-
-        call.enqueue(new Callback<Item>() {
-            @Override
-            public void onResponse(Call<Item> call, Response<Item> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<Item> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private  void removerItem(){
-
-        DataService service = conexao.conexao().create(DataService.class);
-        Call<Void> call = service.removerItem(1);
-
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-
-            }
-        });
-    }
-
     public void telaCarrinho(View v) {
 
+        Bundle bundle = getIntent().getExtras();
+        String valor = bundle.getString("key");
         Intent it = new Intent(CategoriaCardapioActivity.this, CarrinhoComprasActivity.class);
+        it.putExtra("key", valor);
+        startActivity(it);
+    }
+
+    public void telaCardapio(View v){
+        Intent it = new Intent(CategoriaCardapioActivity.this, CardapioActivity.class);
         startActivity(it);
     }
 }
