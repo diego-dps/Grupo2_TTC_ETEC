@@ -47,11 +47,14 @@ public class MainActivity extends AppCompatActivity {
     private String codQrCode;
     private int ultimo;
     private String Pegarqrcode;
+    private Toast toast;
+    private long lastBackPressTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //Atribuição de id
 
@@ -96,6 +99,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    int contador = 0;
+
+    @Override
+    public void onBackPressed() {
+        contador+=1;
+        Toast.makeText(this, "Pressione o Botão Voltar novamente para sair do Aplicativo", Toast.LENGTH_LONG).show();
+        if (contador>1) {
+            super.onBackPressed();
+        }
     }
 
     private String numeroQrCode(int requestCode, int resultCode, @Nullable Intent data){

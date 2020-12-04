@@ -18,6 +18,7 @@ import com.example.sgbr.adapter.AdapterItensCardapio;
 import com.example.sgbr.adapter.AdapterPagamento;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
+import com.example.sgbr.model.Cardapio;
 import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.model.Pedido;
@@ -58,6 +59,12 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
         recuperarItens();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CategoriaCardapioActivity.this, CardapioActivity.class);
+        startActivity(intent);
     }
 
     public void recuperarItens(){

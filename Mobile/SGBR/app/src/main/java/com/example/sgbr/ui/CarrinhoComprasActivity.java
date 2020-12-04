@@ -30,6 +30,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.sgbr.ui.CategoriaCardapioActivity.valor;
+
 public class CarrinhoComprasActivity extends AppCompatActivity {
 
     private Conexao conexao = new Conexao();
@@ -37,10 +39,6 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
     private AdapterItensCarrinho adapterItensCarrinho;
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private List<Pedido> listaPedido = new ArrayList<>();
-
-    int delay = 3000;
-    int intervalo = 3000;
-    Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +52,13 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
         recuperarItensPedidos();
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                recuperarItensPedidos();
-            }
-        }, delay, intervalo);
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CarrinhoComprasActivity.this, CategoriaCardapioActivity.class);
+        intent.putExtra("key", valor);
+        startActivity(intent);
     }
 
     public void recuperarItensPedidos() {

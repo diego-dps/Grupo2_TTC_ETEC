@@ -66,6 +66,11 @@ public class CardapioActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CardapioActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
 
     private void recuperarCardapio(){
 
