@@ -73,7 +73,7 @@
 
     <div class="d-md-none d-sm-block">
         <div class="caixaCadastroPFuncionarios mt-4 font-weight-bold">
-            <h2 class="text-center titulo">Cadastrar Funcionario</h2>
+            <h2 class="text-center titulo">Cadastrar Funcionário</h2>
             <form class="form-row mt-2" action="<?php echo base_url("index.php/CadastroFuncionario/validarCadastroFuncionarioresponsivo"); ?>" method="POST" id="cadastroFuncionarioresponsivo">
                 <div class="form-group mx-auto col-12">
                     <label for="nome">Nome</label>

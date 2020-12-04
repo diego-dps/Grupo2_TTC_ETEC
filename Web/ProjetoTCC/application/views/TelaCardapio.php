@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="text-center my-auto cor">   
-        <h1 class="estilo">CARDAPIO</h1>
+        <h1 class="estilo">CARDÁPIO</h1>
     </div>
           
     <div class="container-fluid mt-4">

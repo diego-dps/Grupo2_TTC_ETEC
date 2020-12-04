@@ -8,7 +8,7 @@ class BuscarLoginModel extends CI_Model {
         $where = "email_Funcionario='$usuario' and senha='$senha' and Ativo=1";
         $this->db->where($where);
 
-        $resultado = $this->db->get("funcionario")->row_array();
+        $resultado = $this->db->get("Funcionario")->row_array();
         return $resultado;
     }
 
@@ -17,9 +17,23 @@ class BuscarLoginModel extends CI_Model {
         $where = "email_Funcionario='$email' and Ativo=1";
         $this->db->where($where);
 
+<<<<<<< HEAD
         $resultado = $this->db->get("funcionario")->row_array();
         return $resultado;
     }
 
+=======
+        $resultado = $this->db->get("Funcionario")->row_array();
+        if($resultado > 0){
+            enviar_email($email);
+        }else{
+
+        }
+    }
+
+    public function enviar_email($email){
+        mail($email, "Teste de recuperar senha", "Minha senha é essa");
+    }
+>>>>>>> d75e40194d5c8b9b2f30dfa53745c41c14f6beaf
 }
 ?>

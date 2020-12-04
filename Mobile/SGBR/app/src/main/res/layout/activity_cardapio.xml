@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.CategoriaCardapioActivity">
+    tools:context=".ui.CategoriaCardapioActivity"
+    android:background="@color/blackDarktheme">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -21,14 +22,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/toolbar_cardapio"
+                android:text="@string/app_name"
                 android:gravity="center"
                 android:textSize="28dp"
                 android:textColor="@color/colorTextPrimary"
                 android:layout_margin="15dp"/>
 
             <ImageView
-                android:id="@+id/btn_chamarGarcom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_baseline_help_24"
@@ -38,11 +38,35 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:id="@+id/txt_cardapio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cardápio"
+        android:textStyle="bold"
+        android:textSize="36sp"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="15dp"
+        android:layout_below="@id/app_bar"/>
+
+    <Button
+        android:id="@+id/btn_chamarGarcom"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/app_bar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="15dp"
+        android:layout_alignBaseline="@+id/txt_cardapio"
+        android:text="Garçom"
+        android:background="@drawable/botao_comum"
+        android:gravity="center"
+        android:textColor="@android:color/white"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_cardapio"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/app_bar"
+        android:layout_below="@+id/txt_cardapio"
         android:background="@color/blackDarktheme"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/cardapio_cliente">

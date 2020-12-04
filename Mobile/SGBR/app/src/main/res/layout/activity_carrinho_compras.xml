@@ -19,39 +19,35 @@
             android:layout_height="wrap_content"
             android:background="@color/blackDarktheme">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="15dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
-                <TextView
-                    android:id="@+id/txt_icon_back"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="-10dp"
-                    android:background="@drawable/ic_grupo_1"
-                    android:onClick="testeTelasItens"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp" />
+                <ImageView
+                    android:id="@+id/btn_voltar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="telaItens"
+                    android:src="@drawable/ic_baseline_arrow_back_48" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="@string/toolbar_carrinho_compras"
-                    android:layout_marginLeft="55dp"
-                    android:layout_marginTop="5dp"
+                    android:textColor="@color/colorTextPrimary"
                     android:textSize="20sp"
-                    android:textColor="@color/colorTextPrimary" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.346"
+                    app:layout_constraintStart_toEndOf="@+id/btn_voltar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.523" />
 
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="25dp"
-                    />
-
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -59,7 +55,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerciew_carrinho_compras"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="550dp"
         android:layout_below="@id/app_bar"
         android:layout_marginTop="-4dp"
         android:background="@color/blackDarktheme"
@@ -68,17 +64,17 @@
 
     <Button
         android:id="@+id/carrinho_compras_btn_ConfirmarCodigo"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:layout_below="@id/recyclerciew_carrinho_compras"
-        android:layout_marginLeft="55dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="8dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/botao_comum"
-        android:gravity="center_horizontal"
-        android:onClick="testeTelasPagamento"
-        android:text="@string/toolbar_fazer_pedido"
-        android:textColor="#FFFFFF"
-        android:textSize="25dp" />
+        android:onClick="telaPagamento"
+        android:text="Pagar"
+        android:textColor="@android:color/white"
+        android:textSize="25sp" />
 </RelativeLayout>
 

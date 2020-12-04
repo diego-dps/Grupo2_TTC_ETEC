@@ -2,6 +2,7 @@ package com.example.sgbr.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,8 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.sgbr.ui.CategoriaCardapioActivity.valor;
 
 public class AdapterItensCarrinho extends RecyclerView.Adapter<AdapterItensCarrinho.CarrinhoViewHolder> {
 
@@ -65,9 +68,10 @@ public class AdapterItensCarrinho extends RecyclerView.Adapter<AdapterItensCarri
         holder.txt_valor_quantidade.setText(itemPedido.getQuantidade());
         holder.txt_valor.setText(itemPedido.getPreco());
         Glide.with(context)
-                .load("http://192.168.0.14:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
+                .load("http://192.168.15.12:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
                 .centerCrop()
                 .into(holder.txt_img);
+
         holder.btn_remove_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,9 +81,9 @@ public class AdapterItensCarrinho extends RecyclerView.Adapter<AdapterItensCarri
                 callItemPedido.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
-                        Log.d("Resultado", "Apagou porra");
 
                         Intent intent = new Intent(context, CarrinhoComprasActivity.class);
+                        intent.putExtra("key", valor);
                         context.startActivity(intent);
                     }
 

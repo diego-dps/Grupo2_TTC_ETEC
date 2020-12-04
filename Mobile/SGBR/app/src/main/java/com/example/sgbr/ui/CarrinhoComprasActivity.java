@@ -4,8 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
@@ -18,10 +24,13 @@ import com.example.sgbr.model.Pedido;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.sgbr.ui.CategoriaCardapioActivity.valor;
 
 public class CarrinhoComprasActivity extends AppCompatActivity {
 
@@ -30,24 +39,27 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
     private AdapterItensCarrinho adapterItensCarrinho;
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private List<Pedido> listaPedido = new ArrayList<>();
-    int delay = 2000;
-    int intervalo = 2000;
-    Timer timer = new Timer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrinho_compras);
+
         recyclerView = findViewById(R.id.recyclerciew_carrinho_compras);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+
         recuperarItensPedidos();
-        /*timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                recuperarItensPedidos();
-            }
-        }, delay, intervalo);*/
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CarrinhoComprasActivity.this, CategoriaCardapioActivity.class);
+        intent.putExtra("key", valor);
+        startActivity(intent);
+    }
 
     public void recuperarItensPedidos() {
 
@@ -69,11 +81,10 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
                         public void onResponse(Call<List<ItemPedido>> call, Response<List<ItemPedido>> response) {
                             if (response.isSuccessful() && response.body() != null){
 
-                                Log.d("Resultado", "Aqui tem informação");
                                 listaItensPedido = response.body();
                                 for (int i=0; i < listaItensPedido.size(); i++){
                                     listaItensPedido.get(i);
-                                    Log.d("Resultado: ", "Aqui tem informação " + response.code());
+
                                     adapterItensCarrinho = new AdapterItensCarrinho(listaItensPedido, CarrinhoComprasActivity.this);
                                     recyclerView.setAdapter(adapterItensCarrinho);
                                 }
@@ -149,13 +160,15 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
         });
     }
 
-    public void testeTelasItens(View v) {
-
+    public void telaItens(View v) {
+        Bundle bundle = getIntent().getExtras();
+        String valor = bundle.getString("key");
         Intent it = new Intent(CarrinhoComprasActivity.this, CategoriaCardapioActivity.class);
+        it.putExtra("key", valor);
         startActivity(it);
     }
 
-    public void testeTelasPagamento(View v) {
+    public void telaPagamento(View v) {
 
         Intent it = new Intent(CarrinhoComprasActivity.this, PagamentoActivity.class);
         startActivity(it);

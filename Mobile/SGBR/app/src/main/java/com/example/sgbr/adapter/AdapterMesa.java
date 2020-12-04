@@ -1,5 +1,6 @@
 package com.example.sgbr.adapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -25,6 +26,7 @@ import com.example.sgbr.ui.CarrinhoComprasActivity;
 import com.example.sgbr.ui.GarcomHomeActivity;
 
 import java.util.List;
+import java.util.Timer;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,6 +38,7 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
     private List<ItemPedido> listaItensPedidos;
     private Context context;
     private GarcomHomeActivity garcomHomeActivity = new GarcomHomeActivity();
+    private ProgressDialog progressDialog;
 
     public AdapterMesa(List<ItemPedido> listaItensPedidos, Context context) {
         this.listaItensPedidos = listaItensPedidos;
@@ -95,9 +98,29 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
                             @Override
                             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                                 if (response.isSuccessful() && response != null){
-                                    Toast.makeText(context, "Item removido com sucesso!", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(context, GarcomHomeActivity.class);
-                                    context.startActivity(intent);
+                                    /*progressDialog = new ProgressDialog(context);
+                                    progressDialog.show();
+                                    progressDialog.setContentView(R.layout.progress_dialog);
+                                    progressDialog.getWindow().setBackgroundDrawableResource(
+                                            android.R.color.transparent
+                                    );
+
+                                    progressDialog.dismiss();*/
+
+                                    AlertDialog.Builder dialog1 = new AlertDialog.Builder(context, R.style.AlertDialogCustom);
+
+                                    dialog1.setTitle("Sucesso!");
+                                    dialog1.setMessage("Item removido com sucesso!");
+                                    dialog1.setIcon(R.drawable.ic_baseline_check_circle_24);
+                                    dialog1.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    });
+                                    dialog1.setCancelable(false);
+                                    dialog1.create();
+                                    dialog1.show();
                                 }
                             }
 
@@ -122,7 +145,6 @@ public class AdapterMesa extends RecyclerView.Adapter<AdapterMesa.PedidoViewHold
                 dialog.show();
             }
         });
-
 
     }
 

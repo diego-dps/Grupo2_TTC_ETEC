@@ -6,7 +6,7 @@ class BuscarItemModel extends CI_Model {
     public function buscarTodos(){
         $this->db->where("Ativo = 1");
         $this->db->order_by('nome_Item', 'asc');
-        return $this->db->get("item")->result_array();
+        return $this->db->get("Item")->result_array();
     }
 
     public function buscar(){
@@ -14,7 +14,7 @@ class BuscarItemModel extends CI_Model {
         $termo = $this->input->post('pesquisar');
         $this->db->select('*');
         $this->db->like('nome_Item', $termo);
-        return $this->db->get("item")->result_array();
+        return $this->db->get("Item")->result_array();
     }
 
 }

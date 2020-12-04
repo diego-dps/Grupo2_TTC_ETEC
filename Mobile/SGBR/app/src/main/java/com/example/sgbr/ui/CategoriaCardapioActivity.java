@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,12 +15,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sgbr.R;
 import com.example.sgbr.adapter.AdapterItensCardapio;
+import com.example.sgbr.adapter.AdapterPagamento;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
+import com.example.sgbr.model.Cardapio;
 import com.example.sgbr.model.Item;
+import com.example.sgbr.model.ItemPedido;
+import com.example.sgbr.model.Pedido;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +40,7 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private AdapterItensCardapio adapterItensCardapio;
     private List<Item> listaItens = new ArrayList<>();
+    public static String valor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +48,7 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categoria_cardapio);
 
         recyclerView = findViewById(R.id.recyclerciew_categoria_cardapio);
+
 
         //Configura o Adapter
         adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this,listaItens);
@@ -50,10 +61,16 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         recuperarItens();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(CategoriaCardapioActivity.this, CardapioActivity.class);
+        startActivity(intent);
+    }
+
     public void recuperarItens(){
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            String valor = extras.getString("key");
+            valor = extras.getString("key");
             DataService service = conexao.conexao().create(DataService.class);
             Call<List<Item>> call = service.recuperarItens(valor);
 
@@ -62,13 +79,13 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
                 public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
                     if (response.isSuccessful() && response.body() != null) {
 
-                        Log.d("Resultado", "Aqui tem informação");
                         listaItens = response.body();
                         for (int i = 0; i < listaItens.size(); i++) {
                             listaItens.get(i);
-                            Log.d("Resultado: ", "Aqui tem informação " + response.code());
+
                             adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this, listaItens);
                             recyclerView.setAdapter(adapterItensCardapio);
+
                         }
                     }
 
@@ -83,83 +100,17 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
         }
     }
 
-   /* private void Resultado(JSONArray jsonArray) {
+    public void telaCarrinho(View v) {
 
-        for (int i=0; i < jsonArray.length(); i++){
-            try {
-                JSONObject object = jsonArray.getJSONObject(i);
-                Item item = new Item();
-                item.setNome_Item(object.getString("nome_Item"));
-                listaItens.add(item);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            adapterItensCardapio = new AdapterItensCardapio(CategoriaCardapioActivity.this,listaItens);
-            recyclerView.setAdapter(adapterItensCardapio);
-        }
-    }*/
-
-
-    private void inserirItem(){
-
-        DataService service = conexao.conexao().create(DataService.class);
-        Item item = new Item(null, null, null, null, null, null);
-        Call<Item> call = service.inserirItem(item);
-
-        call.enqueue(new Callback<Item>() {
-            @Override
-            public void onResponse(Call<Item> call, Response<Item> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<Item> call, Throwable t) {
-                Toast.makeText(CategoriaCardapioActivity.this, "Falhou", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
-
-    private void  atualizarItem(){
-
-        DataService service = conexao.conexao().create(DataService.class);
-        Item item = new Item(null, null, null, null, null, null);
-        Call<Item> call = service.atualizarItem(1, item);
-
-        call.enqueue(new Callback<Item>() {
-            @Override
-            public void onResponse(Call<Item> call, Response<Item> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<Item> call, Throwable t) {
-
-            }
-        });
-    }
-
-    private  void removerItem(){
-
-        DataService service = conexao.conexao().create(DataService.class);
-        Call<Void> call = service.removerItem(1);
-
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-
-            }
-        });
-    }
-
-    public void testeTelasCarrinho(View v) {
-
+        Bundle bundle = getIntent().getExtras();
+        String valor = bundle.getString("key");
         Intent it = new Intent(CategoriaCardapioActivity.this, CarrinhoComprasActivity.class);
+        it.putExtra("key", valor);
+        startActivity(it);
+    }
+
+    public void telaCardapio(View v){
+        Intent it = new Intent(CategoriaCardapioActivity.this, CardapioActivity.class);
         startActivity(it);
     }
 }

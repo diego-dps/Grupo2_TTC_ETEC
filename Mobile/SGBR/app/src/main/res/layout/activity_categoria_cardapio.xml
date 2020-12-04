@@ -20,38 +20,35 @@
             android:layout_height="wrap_content"
             android:background="@color/blackDarktheme">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:gravity="center_vertical">
+                android:gravity="center">
 
-                <TextView
-                    android:id="@+id/txt_icon_back"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginRight="95dp"
-                    android:background="@drawable/ic_grupo_1"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp" />
-
-                <TextView
+                <ImageView
+                    android:id="@+id/btn_voltar"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_marginLeft="40dp"
-                    android:text="@string/toolbar_categoria_cardapio"
-                    android:textColor="@color/colorTextPrimary"
-                    android:textSize="28dp" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_arrow_back_48"
+                    android:onClick="telaCardapio"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="70dp"
-                    android:background="@drawable/ic_baseline_shopping_cart_24"
-                    android:onClick="testeTelasCarrinho" />
-            </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:onClick="telaCarrinho"
+                    android:src="@drawable/ic_baseline_shopping_cart_48"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.appcompat.widget.Toolbar>

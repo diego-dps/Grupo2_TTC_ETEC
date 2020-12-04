@@ -1,6 +1,8 @@
 package com.example.sgbr.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,8 @@ import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Item;
 import com.example.sgbr.model.ItemPedido;
 import com.example.sgbr.model.Pedido;
+import com.example.sgbr.ui.CarrinhoComprasActivity;
+import com.example.sgbr.ui.CategoriaCardapioActivity;
 
 import java.util.List;
 
@@ -107,11 +111,11 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                             for(int i=0; i < listaPedido.size(); i++){
 
                                 Pedido pedido = listaPedido.get(listaPedido.size() -1);
-                                Log.d("Resultado", "Resultado: "+ pedido.getCod_Pedido());
+
                             }
 
                             Pedido pedido = listaPedido.get(listaPedido.size() - 1);
-                            Toast.makeText(context, ""+pedido.getCod_Pedido(), Toast.LENGTH_SHORT).show();
+
                             quantidade = Double.parseDouble(holder.txt_valor.getText().toString()) / Double.parseDouble(item.getPreco_Item());
                             valor = Double.parseDouble(holder.txt_num_itens.getText().toString()) * Double.parseDouble(item.getPreco_Item());
 
@@ -123,7 +127,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
                                 @Override
                                 public void onResponse(Call<ItemPedido> call, Response<ItemPedido> response) {
                                     if (response.isSuccessful()){
-                                        Toast.makeText(context, "Pedido realizado com sucesso: " + pedido.getCod_Pedido(), Toast.LENGTH_SHORT).show();
+
                                     }
                                 }
 
@@ -146,7 +150,7 @@ public class AdapterItensCardapio extends RecyclerView.Adapter<AdapterItensCarda
         });
 
         Glide.with(context)
-                .load("http://192.168.0.14:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+item.getFoto_Item())
+                .load("http://192.168.15.12:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+item.getFoto_Item())
                 .centerCrop()
                 .into(holder.img_item);
     }

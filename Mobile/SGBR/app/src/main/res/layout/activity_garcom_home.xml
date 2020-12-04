@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/blackDarktheme"
     android:orientation="horizontal">
 
@@ -11,50 +11,138 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+        android:elevation="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blackDarktheme"
-            app:titleTextColor="@android:color/white"
+            android:textAlignment="center"
             app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-            app:title="@string/toolbar_garçom_home"
-            android:textAlignment="center">
+            app:titleTextColor="@android:color/white">
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="250dp"
-                android:onClick="telaChamadaCliente"
-                android:src="@drawable/ic_baseline_message_24" />
+                android:layout_marginStart="15dp">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_home_48"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="Início"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/imageView2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:onClick="telaChamadaCliente"
+                    android:src="@drawable/ic_baseline_message_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_ajudaChamada"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_mais"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_baseline_more_vert_24"
+                    android:textAlignment="viewEnd"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/btn_ajudaChamada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_mais"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_help_24" />
+
+                <ImageView
+                    android:id="@+id/btn_sair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_baseline_exit_to_app_24" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
+        android:id="@+id/nome_funcionario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_bar"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        tools:text="Nome do funcionário" />
+
+    <TextView
+        android:id="@+id/cargo_funcionario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nome_funcionario"
+        android:layout_alignStart="@+id/nome_funcionario"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        tools:text="Cargo do funcionário" />
+
+    <TextView
         android:id="@+id/txt_tituloPedidos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="36sp"
-        android:textColor="@android:color/white"
+        android:layout_below="@id/cargo_funcionario"
+        android:layout_margin="15dp"
         android:text="Pedidos a entregar"
-        android:layout_below="@id/app_bar"
-        android:layout_margin="15dp"/>
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
 
     <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_pedido"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/txt_tituloPedidos"
-            android:layout_weight="1"
-            android:background="@color/blackDarktheme"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/garcom_pedido">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/recyclerview_pedido"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/txt_tituloPedidos"
+        android:layout_weight="1"
+        android:background="@color/blackDarktheme"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/garcom_pedido"></androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

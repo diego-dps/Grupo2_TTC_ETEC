@@ -19,53 +19,68 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blueDarktheme">
+            android:background="@color/blackDarktheme">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="8dp"
                 android:orientation="horizontal"
                 android:gravity="center">
 
-                <TextView
-                    android:id="@+id/txt_icon_back"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/ic_grupo_1"
-                    android:layout_marginRight="25dp"
-                    android:textColor="@android:color/white"
-                    android:textSize="24sp" />
-
-                <TextView
+                <ImageView
+                    android:id="@+id/btn_voltar"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/pagamento_title"
-                    android:gravity="center"
-                    android:textSize="20sp"
-                    android:textColor="@color/colorTextPrimary" />
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_arrow_back_48"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/ic_grupo_2"
-                    android:layout_marginLeft="25dp"
-                    />
+                    android:id="@+id/txt_pagamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/pagamento_title"
+                    android:textColor="@color/colorTextPrimary"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btn_add"
+                    app:layout_constraintHorizontal_bias="0.577"
+                    app:layout_constraintStart_toEndOf="@+id/btn_voltar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.523" />
 
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/btn_add"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_baseline_add_48"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.517" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <Button
-        android:id="@+id/Main_btn_ConfirmarCodigo"
+        android:id="@+id/btn_finalizarPedido"
         android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="640dp"
-        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/radio_grup"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/botao_comum"
-        android:onClick="tt"
+        android:onClick="finalizarPedido"
         android:text="@string/pagamento_finalizar"
         android:textColor="@android:color/white"
         android:textSize="25sp" />
@@ -89,7 +104,7 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:layout_below="@id/recycler_view_pagamento"
-        android:text="22232,00"
+        tools:text="22232,00"
         android:textStyle="bold"
         android:textSize="16sp"
         android:layout_alignParentEnd="true"
@@ -101,36 +116,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/recycler_view_pagamento"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="16dp">
 
         <RadioButton
             android:id="@+id/radio_dinheiro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dinheiro" />
+            android:text="Dinheiro"
+            android:textColor="@android:color/white"
+            android:buttonTint="@android:color/white"/>
 
         <RadioButton
             android:id="@+id/radio_debito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cartão de Debito" />
+            android:text="Cartão de Debito"
+            android:textColor="@android:color/white"
+            android:buttonTint="@android:color/white"/>
 
         <RadioButton
             android:id="@+id/radio_credito"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cartão de Credito" />
+            android:text="Cartão de Credito"
+            android:textColor="@android:color/white"
+            android:buttonTint="@android:color/white"/>
     </RadioGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:background="@color/blackDarktheme"
         android:layout_width="match_parent"
-        android:layout_height="460dp"
+        android:layout_height="450dp"
         android:id="@+id/recycler_view_pagamento"
         android:layout_below="@id/app_bar"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/pagamento"
-        />
+        android:layout_marginTop="8dp"/>
 
 </RelativeLayout>

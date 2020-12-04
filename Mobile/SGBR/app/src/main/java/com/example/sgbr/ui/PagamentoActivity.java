@@ -1,7 +1,10 @@
 package com.example.sgbr.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +28,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.sgbr.ui.CategoriaCardapioActivity.valor;
+
 public class PagamentoActivity extends AppCompatActivity {
 
     private Conexao conexao = new Conexao();
@@ -33,11 +38,34 @@ public class PagamentoActivity extends AppCompatActivity {
     private List<ItemPedido> listaItensPedido = new ArrayList<>();
     private List<Pedido> listaPedido = new ArrayList<>();
     private TextView total;
+    private ImageView btn_voltar;
+    private ImageView btn_add;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagamento);
+
+        btn_voltar = findViewById(R.id.btn_voltar);
+        btn_add = findViewById(R.id.btn_add);
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PagamentoActivity.this, CategoriaCardapioActivity.class);
+                intent.putExtra("key", valor);
+                startActivity(intent);
+            }
+        });
+
+        btn_voltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PagamentoActivity.this, CarrinhoComprasActivity.class);
+                intent.putExtra("key", valor);
+                startActivity(intent);
+            }
+        });
 
         total = findViewById(R.id.preco_Final_Valor);
 
@@ -100,6 +128,12 @@ public class PagamentoActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void finalizarPedido(View view){
+
+        Intent intent = new Intent(PagamentoActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
