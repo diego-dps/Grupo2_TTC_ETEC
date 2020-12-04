@@ -1,6 +1,6 @@
 /*Validações do Login*/
 $(function() {
-    $('#login').submit(function() {
+    $('#Login').submit(function() {
         var obj = this;
         var form = $(obj);
         var dados = new FormData(obj);
@@ -13,7 +13,6 @@ $(function() {
             contentType: false,
             success: function(data) {
                 if (data == "ErroUsuario") {
-
                     Swal.fire({
                         icon: 'warning',
                         title: 'Erro ao preencher campos',
@@ -23,39 +22,38 @@ $(function() {
                     });
                 }
                 if (data == "ErroSenha") {
-
-                        Swal.fire({
-                            icon: 'warning',
-                            title: 'Erro ao preencher campos',
-                            text: 'O campo de senha está vazio!',
-                            confirmButtonColor: " #dc3545",
-                            confirmButtonText: 'OK'
-                        });
-                    }
-                    if(data == "SucessoGarçom"){
-                        Swal.fire({
-                          title: 'Login realizado com sucesso!',
-                          icon: 'success',
-                          confirmButtonText: 'OK'
-                        }).then((result) => {
-                          if (result.value){
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Erro ao preencher campos',
+                        text: 'O campo de senha está vazio!',
+                        confirmButtonColor: " #dc3545",
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if(data == "SucessoGarçom"){
+                    Swal.fire({
+                        title: 'Login realizado com sucesso!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
                             window.location.replace("TelaPedidosGarcom");
-                          }
-                        })
-                      }
-                      if(data == "SucessoCozinheiro"){
-                        Swal.fire({
-                          title: 'Login realizado com sucesso!',
-                          icon: 'success',
-                          confirmButtonText: 'OK'
-                        }).then((result) => {
-                          if (result.value){
-                            window.location.replace("TelaPedidosCozinha");
-                          }
-                        });
-                      }
-                      if(data == "SucessoADM"){
-                        Swal.fire({
+                        }
+                    });
+                }
+                if(data == "SucessoCozinheiro"){
+                    Swal.fire({
+                        title: 'Login realizado com sucesso!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then((result) => {
+                        if (result.value){
+                        window.location.replace("TelaPedidosCozinha");
+                        }
+                    });
+                }
+                if(data == "SucessoADM"){
+                    Swal.fire({
                           title: 'Login realizado com sucesso!',
                           icon: 'success',
                           confirmButtonText: 'OK'
@@ -66,6 +64,14 @@ $(function() {
                     });
                 }
                 if (data == "FalhaLogin") {
+                    Swal.fire({
+                        title: 'ERRO!',
+                        text: 'Usuário ou senha inválidos!',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                }
+                if (data == "ErroLogin") {
                     Swal.fire({
                         title: 'ERRO!',
                         text: 'Usuário ou senha inválidos!',
