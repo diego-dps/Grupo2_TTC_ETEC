@@ -6,25 +6,195 @@
     android:layout_height="match_parent"
     tools:context=".ui.MenuActivity"
     android:background="@color/blackDarktheme">
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <androidx.gridlayout.widget.GridLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp">
+    <TextView
+        android:id="@+id/menu_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Menu"
+        android:textColor="@color/cardview_light_background"
+        android:textAlignment="center"
+        android:textSize="35sp"
+        />
+        <TextView
+            android:id="@+id/menu_subtitle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:text="Aguarde o pedido ou selecione a opção desejada:"
+            android:textColor="@color/textGrey"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+
+
+    <androidx.gridlayout.widget.GridLayout
+
+        android:background="@color/blackDarktheme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         app:columnCount="2"
         app:rowCount="3"
         app:alignmentMode="alignMargins"
         app:columnOrderPreserved="false">
 
-        <androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_garcom"
+            android:background="@color/blackDarktheme"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:cardElevation="15dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="12dp">
+            <LinearLayout
+                android:background="@color/blackDarktheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
 
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/garcom"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chamar Garçom"
+                    android:textSize="15sp"
+                    android:textColor="@color/cardview_light_background"/>
+
+
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_cardapio"
+            android:background="@color/blackDarktheme"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:cardElevation="15dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="12dp">
+            <LinearLayout
+                android:background="@color/blackDarktheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/cardapio"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="19dp"
+                    android:text="Cardapio"
+                    android:textSize="20sp"
+                    android:textColor="@color/cardview_light_background"/>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_carrinho"
+            android:background="@color/blackDarktheme"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:cardElevation="15dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="12dp">
+            <LinearLayout
+                android:background="@color/blackDarktheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/pagamento"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carrinho"
+                    android:textSize="20sp"
+                    android:textColor="@color/cardview_light_background"/>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_sair"
+            android:background="@color/blackDarktheme"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1"
+            app:cardElevation="15dp"
+            app:cardCornerRadius="12dp"
+            android:layout_margin="12dp">
+            <LinearLayout
+                android:background="@color/blackDarktheme"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="16dp">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/sair"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sair"
+                    android:textSize="20sp"
+                    android:textColor="@color/cardview_light_background"/>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </androidx.gridlayout.widget.GridLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:id="@+id/menu_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Obrigado, volte sempre!"
+                android:textColor="@color/textGrey"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                />
+        </LinearLayout>
     </LinearLayout>
-
 </ScrollView>
