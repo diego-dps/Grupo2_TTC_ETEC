@@ -91,8 +91,12 @@ public class GarcomChamadaActivity extends AppCompatActivity {
     }
 
     public void telaGarcomHome(View view){
-
+        Bundle extras = getIntent().getExtras();
+        String nome = extras.getString("nome");
+        String cargo = extras.getString("cargo");
         Intent intent = new Intent(GarcomChamadaActivity.this, GarcomHomeActivity.class);
+        intent.putExtra("nome", nome);
+        intent.putExtra("cargo", cargo);
         startActivity(intent);
     }
 

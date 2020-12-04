@@ -19,6 +19,7 @@ import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.Funcionario;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -72,6 +73,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
     public void validarUsuario(){
         if (TextUtils.isEmpty(login_editText_Usuario.getText().toString())){
             validarUsuarioErroUsuario();
@@ -95,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                             Funcionario funcionario = listaFuncionarios.get(0);
                             if (funcionario.getEmail_Funcionario().equals(login_editText_Usuario.getText().toString())
                                     && funcionario.getSenha().equals(login_editText_Senha.getText().toString())) {
-                                validarUsuarioSucesso(funcionario.getNome_Funcionario(), funcionario.getCargo_Funcionario());
+                                validarUsuarioSucesso(funcionario.getNome_Funcionario(), funcionario.getCargo_Funcionario(), funcionario.getEmail_Funcionario());
                             }
                             else {
                                 validarUsuarioErro();
@@ -111,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void validarUsuarioSucesso(String nome, String cargo){
+    private void validarUsuarioSucesso(String nome, String cargo, String email){
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
 
@@ -129,10 +136,51 @@ public class LoginActivity extends AppCompatActivity {
         dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent it = new Intent(LoginActivity.this, GarcomHomeActivity.class);
-                it.putExtra("nome", nome);
-                it.putExtra("cargo", cargo);
-                startActivity(it);
+
+                Calendar calendar = Calendar.getInstance();
+                int horaAtual = calendar.get(Calendar.HOUR_OF_DAY);
+
+                String dia = "Bom dia ";
+                String tarde = "Boa tarde ";
+                String noite = "Boa noite ";
+
+                AlertDialog.Builder dialog1 = new AlertDialog.Builder(LoginActivity.this, R.style.AlertDialogCustom);
+
+                if (horaAtual < 12 && horaAtual >= 6) {
+                    //Configura o titulo e mensagem do Alert
+                    dialog1.setTitle(dia+nome);
+                    dialog1.setMessage("Os clientes estão te esperando! Hora de trabalhar!");
+                } else {
+                    if (horaAtual < 18 && horaAtual >= 12) {
+                        //Configura o titulo e mensagem do Alert
+                        dialog1.setTitle(tarde+nome);
+                        dialog1.setMessage("Os clientes estão te esperando! Hora de trabalhar!");
+                    } else {
+                        //Configura o titulo e mensagem do Alert
+                        dialog1.setTitle(noite+nome);
+                        dialog1.setMessage("Os clientes estão te esperando! Hora de trabalhar!");
+                    }
+                }
+
+                //Configura o cancelamento do Alert
+                dialog1.setCancelable(false);
+
+
+                //Configura as ações do Alert
+                dialog1.setPositiveButton("Começar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent it = new Intent(LoginActivity.this, GarcomHomeActivity.class);
+                        it.putExtra("nome", nome);
+                        it.putExtra("cargo", cargo);
+                        it.putExtra("email", email);
+                        startActivity(it);
+                    }
+                });
+
+                //Cria e exibi o Alert
+                dialog1.create();
+                dialog1.show();
             }
         });
 

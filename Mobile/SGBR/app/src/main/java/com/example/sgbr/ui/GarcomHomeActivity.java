@@ -41,6 +41,7 @@ public class GarcomHomeActivity extends AppCompatActivity {
     private TextView cargo_funcionario;
     private ImageView btn_ajuda;
     private ImageView btn_mais;
+    private ImageView btn_sair;
     private Dialog dialog_customizado;
     int delay = 3000;
     int intervalo = 3000;
@@ -77,6 +78,15 @@ public class GarcomHomeActivity extends AppCompatActivity {
             }
         });
 
+        btn_sair = findViewById(R.id.btn_sair);
+
+        btn_sair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sair();
+            }
+        });
+
         nome_funcionario = findViewById(R.id.nome_funcionario);
         cargo_funcionario = findViewById(R.id.cargo_funcionario);
 
@@ -97,6 +107,11 @@ public class GarcomHomeActivity extends AppCompatActivity {
                 recuperarComanda();
             }
         }, delay, intervalo);
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 
     public void recuperarComanda() {
@@ -125,7 +140,12 @@ public class GarcomHomeActivity extends AppCompatActivity {
     }
 
     public void telaChamadaCliente(View view){
+        Bundle extras = getIntent().getExtras();
+        String nome = extras.getString("nome");
+        String cargo = extras.getString("cargo");
         Intent intent = new Intent(GarcomHomeActivity.this, GarcomChamadaActivity.class);
+        intent.putExtra("nome", nome);
+        intent.putExtra("cargo", cargo);
         startActivity(intent);
     }
 
@@ -133,16 +153,16 @@ public class GarcomHomeActivity extends AppCompatActivity {
     private void iniciarTela(){
 
 
-        Calendar calendar = Calendar.getInstance();
-
-        int horaAtual = calendar.get(Calendar.HOUR_OF_DAY);
-
         Bundle extras = getIntent().getExtras();
         String nome = extras.getString("nome");
         String cargo = extras.getString("cargo");
 
         nome_funcionario.setText(nome);
         cargo_funcionario.setText(cargo);
+
+
+        /*Calendar calendar = Calendar.getInstance();
+        int horaAtual = calendar.get(Calendar.HOUR_OF_DAY);
 
         String dia = "Bom dia ";
         String tarde = "Boa tarde ";
@@ -181,7 +201,7 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
             //Cria e exibi o Alert
             dialog.create();
-            dialog.show();
+            dialog.show();*/
 
     }
 
@@ -201,6 +221,38 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
         //Cria e exibi o Alert
         dialog.create();
+        dialog.show();
+    }
+
+    private void sair(){
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(GarcomHomeActivity.this, R.style.AlertDialogCustom);
+
+        dialog.setTitle("Logout");
+        dialog.setMessage("Deseja finalizar sessão?");
+
+        dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Bundle extras = getIntent().getExtras();
+                String email = extras.getString("email");
+                Intent intent = new Intent(GarcomHomeActivity.this, LoginActivity.class);
+                intent.putExtra("email", email);
+                startActivity(intent);
+            }
+        });
+
+        dialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        dialog.setCancelable(false);
+
+        dialog.create();
+
         dialog.show();
     }
 
