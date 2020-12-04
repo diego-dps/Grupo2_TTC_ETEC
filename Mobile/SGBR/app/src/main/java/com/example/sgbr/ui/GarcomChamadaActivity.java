@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.NotificationManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -68,6 +69,17 @@ public class GarcomChamadaActivity extends AppCompatActivity {
         recuperarMesas();
     }
 
+    @Override
+    public void onBackPressed() {
+        Bundle extras = getIntent().getExtras();
+        String nome = extras.getString("nome");
+        String cargo = extras.getString("cargo");
+        Intent intent = new Intent(GarcomChamadaActivity.this, GarcomHomeActivity.class);
+        intent.putExtra("nome", nome);
+        intent.putExtra("cargo", cargo);
+        startActivity(intent);
+    }
+
     private void recuperarMesas(){
         DataService service = conexao.conexao().create(DataService.class);
         Call<List<Mesa>> call = service.recuperarMesaChamada("1");
@@ -79,7 +91,7 @@ public class GarcomChamadaActivity extends AppCompatActivity {
                     listaMesas = response.body();
                     adapterChamadaCliente = new AdapterChamadaCliente(listaMesas, GarcomChamadaActivity.this);
                     recyclerView.setAdapter(adapterChamadaCliente);
-                    Log.d("Resposta", "Deu certo: ");
+
                 }
             }
 

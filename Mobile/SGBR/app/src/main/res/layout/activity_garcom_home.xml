@@ -87,11 +87,24 @@
                     android:id="@+id/btn_sair"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="20dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/imageView4"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_baseline_exit_to_app_24" />
+
+                <TextView
+                    android:id="@+id/txt_notificacaonumero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/imageView4"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:visibility="invisible"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 

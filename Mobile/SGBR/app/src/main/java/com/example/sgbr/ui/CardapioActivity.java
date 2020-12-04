@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -42,6 +43,7 @@ public class CardapioActivity extends AppCompatActivity {
     private Cardapio cardapio;
     private List<Pedido> listaPedidos = new ArrayList();
     private Button btn_chamarGarcom;
+    private ImageView btn_ajudarCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +51,22 @@ public class CardapioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cardapio);
 
         recyclerView = findViewById(R.id.recyclerview_cardapio);
+
         btn_chamarGarcom = findViewById(R.id.btn_chamarGarcom);
+        btn_ajudarCliente = findViewById(R.id.btn_ajudarCliente);
+
 
         btn_chamarGarcom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ChamarGarcom();
+            }
+        });
+
+        btn_ajudarCliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ajudarCliente();
             }
         });
 
@@ -211,6 +223,25 @@ public class CardapioActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private void ajudarCliente(){
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+
+        //Configura o titulo e mensagem do Alert
+        dialog.setTitle("Ajuda!");
+        dialog.setMessage("Seja Bem Vindo ao nosso Sistema!!! " +
+                "Em caso de dúvidas basta apertar o botão abaixo e logo você será atendido. Boa refeição.");
+
+
+        //Configura o cancelamento do Alert
+        dialog.setCancelable(true);
+
+
+        //Cria e exibi o Alert
+        dialog.create();
+        dialog.show();
     }
 
 }
