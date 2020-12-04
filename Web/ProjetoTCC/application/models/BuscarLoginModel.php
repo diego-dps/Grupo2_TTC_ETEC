@@ -13,19 +13,13 @@ class BuscarLoginModel extends CI_Model {
     }
 
     public function verificar_dados($email){
+
         $where = "email_Funcionario='$email' and Ativo=1";
         $this->db->where($where);
 
         $resultado = $this->db->get("funcionario")->row_array();
-        if($resultado > 0){
-            enviar_email($email);
-        }else{
-
-        }
+        return $resultado;
     }
 
-    public function enviar_email($email){
-        mail($email, "Teste de recuperar senha", "Minha semha é essa");
-    }
 }
 ?>
