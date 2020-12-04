@@ -27,13 +27,13 @@
                 <li>
                     <a href="<?php echo base_url('index.php/Welcome/telaCardapioCozinha'); ?>">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/cardapio.png'); ?>"></i>
-                        <span class="nav-text">Cardapio</span>
+                        <span class="nav-text">Cardápio</span>
                     </a>  
                 </li>
                 <li class="has-subnav">
                     <a href="#">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/config.png'); ?>"></i>
-                        <span class="nav-text">Cofigurações</span>
+                        <span class="nav-text">Configurações</span>
                     </a>        
                 </li>
             </ul>
