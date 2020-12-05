@@ -1,4 +1,7 @@
 <?php
+ ini_set('display_startup_errors',1);
+ ini_set('display_errors',1);
+ error_reporting(E_ALL);
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
