@@ -44,15 +44,11 @@ public class CardapioActivity extends AppCompatActivity {
     private List<Pedido> listaPedidos = new ArrayList();
     private Button btn_chamarGarcom;
     private ImageView btn_ajudarCliente;
-    public static String qrcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cardapio);
-
-        Bundle bundle = getIntent().getExtras();
-        qrcode = bundle.getString("qrcode");
 
         recyclerView = findViewById(R.id.recyclerview_cardapio);
 
@@ -112,6 +108,7 @@ public class CardapioActivity extends AppCompatActivity {
                                         @Override
                                         public void onItemClick(View view, int position) {
                                             cardapio = listaCardapio.get(position);
+                                            Bundle extras = getIntent().getExtras();
                                             Intent it = new Intent(CardapioActivity.this, CategoriaCardapioActivity.class);
                                             it.putExtra("key", cardapio.getCod_Cardapio());
                                             startActivity(it);
@@ -208,7 +205,7 @@ public class CardapioActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            qrcode = extras.getString("qrcode");
+            String qrcode = extras.getString("qrcode");
             DataService service1 = conexao.conexao().create(DataService.class);
             Mesa mesa = new Mesa("1");
             Call<Mesa> callMesa = service1.atualizarMesa(qrcode, mesa);

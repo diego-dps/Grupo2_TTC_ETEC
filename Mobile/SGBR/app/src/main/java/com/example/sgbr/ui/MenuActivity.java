@@ -16,8 +16,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.example.sgbr.ui.CardapioActivity.qrcode;
 import static com.example.sgbr.ui.CategoriaCardapioActivity.valor;
+import static com.example.sgbr.ui.MainActivity.qrcode;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -62,6 +62,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void chamarGarcom(){
+        //Bundle bundle = getIntent().getExtras();
+        //String qrcode = bundle.getString("qrcode");
         DataService service1 = conexao.conexao().create(DataService.class);
         Mesa mesa = new Mesa("1");
         Call<Mesa> callMesa = service1.atualizarMesa(qrcode, mesa);

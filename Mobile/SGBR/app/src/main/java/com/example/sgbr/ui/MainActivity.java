@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private String Pegarqrcode;
     private Toast toast;
     private long lastBackPressTime = 0;
+    public static String qrcode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,7 +230,8 @@ public class MainActivity extends AppCompatActivity {
                             Pegarqrcode = main_editText_Codigo.getText().toString();
                             inserirPedido();
                             Intent it = new Intent(MainActivity.this, CardapioActivity.class);
-                            it.putExtra("qrcode",mesa.getQr_Code());
+                            qrcode = mesa.getQr_Code();
+                            it.putExtra("qrcode", qrcode);
                             startActivity(it);
                         }
                         else {

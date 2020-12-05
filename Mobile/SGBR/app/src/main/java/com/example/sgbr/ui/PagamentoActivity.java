@@ -132,7 +132,10 @@ public class PagamentoActivity extends AppCompatActivity {
 
     public void finalizarPedido(View view){
 
+        Bundle bundle = getIntent().getExtras();
+        String qrcode = bundle.getString("qrcode");
         Intent intent = new Intent(PagamentoActivity.this, MenuActivity.class);
+        intent.putExtra("qrcode", qrcode);
         startActivity(intent);
     }
 

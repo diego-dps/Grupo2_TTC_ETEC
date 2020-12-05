@@ -103,9 +103,11 @@ public class CategoriaCardapioActivity extends AppCompatActivity {
     public void telaCarrinho(View v) {
 
         Bundle bundle = getIntent().getExtras();
+        String qrcode = bundle.getString("qrcode");
         String valor = bundle.getString("key");
         Intent it = new Intent(CategoriaCardapioActivity.this, CarrinhoComprasActivity.class);
         it.putExtra("key", valor);
+        it.putExtra("qrcode", qrcode);
         startActivity(it);
     }
 

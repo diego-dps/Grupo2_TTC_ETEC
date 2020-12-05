@@ -170,7 +170,10 @@ public class CarrinhoComprasActivity extends AppCompatActivity {
 
     public void telaPagamento(View v) {
 
+        Bundle extras = getIntent().getExtras();
+        String qrcode = extras.getString("qrcode");
         Intent it = new Intent(CarrinhoComprasActivity.this, PagamentoActivity.class);
+        it.putExtra("qrcode", qrcode);
         startActivity(it);
     }
 }
