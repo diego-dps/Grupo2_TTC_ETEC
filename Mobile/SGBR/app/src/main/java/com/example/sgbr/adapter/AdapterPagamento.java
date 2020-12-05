@@ -53,7 +53,7 @@ public class AdapterPagamento extends RecyclerView.Adapter<AdapterPagamento.Paga
         holder.valor_totalItem.setText(resultado.toString()+"0");
 
         Glide.with(context)
-                .load("http://192.168.15.12:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
+                .load("http://192.168.1.100:80/Grupo2_TTC_ETEC/Web/ProjetoTCC/assets/img/itens/"+itemPedido.getFoto_Item())
                 .centerCrop()
                 .into(holder.img_item);
 

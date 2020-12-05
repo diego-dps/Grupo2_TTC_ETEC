@@ -6,7 +6,7 @@ router.get('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, a.valor_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido ORDER BY c.cod_Pedido ASC;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, a.valor_Item, b.foto_Item FROM ItemPedido a, Item b, Pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido ORDER BY c.cod_Pedido ASC;',
             (error, resultado, fields) => {
                 conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
@@ -33,7 +33,7 @@ router.get('/Status/:cod_Pedido', (req, res, next) => {
 });
 
 
-//Puxando pedidos aonde o status etiverem como Pendente
+//Puxando Pedidos aonde o status etiverem como Pendente
 router.get('/Pendente', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
@@ -49,12 +49,12 @@ router.get('/Pendente', (req, res, next) => {
 });
 
 
-//Puxando pedidos aonde o status etiverem como concluido
+//Puxando Pedidos aonde o status etiverem como concluido
 router.get('/Concluido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT c.cod_Pedido, d.numero_Mesa, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, c.status_Pedido FROM itempedido a, item b, pedido c, mesa d WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and d.qr_Code = c.qr_Code and c.status_Pedido = "Concluido" ORDER BY c.cod_Pedido asc;',
+            'SELECT c.cod_Pedido, d.numero_Mesa, a.cod_Item, b.nome_Item, c.observacao_Pedido, a.quantidade, c.horario_Pedido, c.status_Pedido FROM ItemPedido a, Item b, Pedido c, Mesa d WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and d.qr_Code = c.qr_Code and c.status_Pedido = "Concluido" ORDER BY c.cod_Pedido asc;',
             (error, resultado, fields) => {
                 conn.release();
                 if (error) { return req.status(500).send({ error: error }) }
@@ -64,7 +64,7 @@ router.get('/Concluido', (req, res, next) => {
     });
 });
 
-//Puxando pedidos aonde o status etiverem como Entregue
+//Puxando Pedidos aonde o status etiverem como Entregue
 router.get('/Entregue', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
@@ -108,7 +108,7 @@ router.get('/Pedido/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, a.valor_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, a.valor_Item, b.foto_Item FROM ItemPedido a, Item b, Pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 conn.release();
@@ -124,7 +124,7 @@ router.get('/PedidoPreco/:cod_Pedido', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, sum(a.valor_Item) as valor_Item, b.foto_Item FROM itempedido a, item b, pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
+            'SELECT c.cod_Pedido, a.cod_Item, b.nome_Item, a.observacao_Pedido, a.quantidade, c.horario_Pedido, sum(a.valor_Item) as valor_Item, b.foto_Item FROM ItemPedido a, Item b, Pedido c WHERE a.cod_Item = b.cod_Item and c.cod_Pedido = a.cod_Pedido and c.cod_Pedido = ? ORDER BY c.cod_Pedido ASC;',
             [req.params.cod_Pedido],
             (error, resultado, fields) => {
                 conn.release();
@@ -141,7 +141,7 @@ router.patch('/', (req, res, next) => {
     mysql.getConnection((error, conn) => {
         if (error) { return req.status(500).send({ error: error }) }
         conn.query(
-            `UPDATE itempedido
+            `UPDATE ItemPedido
                 SET observacao_Pedido = ?
                 WHERE cod_Pedido = ? AND cod_Item = ?`,
             [
