@@ -33,7 +33,7 @@
                 <li class="has-subnav">
                     <a href="#">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/config.png'); ?>"></i>
-                        <span class="nav-text">Cofigurações</span>
+                        <span class="nav-text">Configurações</span>
                     </a>        
                 </li>
             </ul>
@@ -105,7 +105,7 @@
             <img class="logo" src="<?php echo base_url('assets/img/logo.png'); ?>">
             <ul>
                 <li><a href="<?php echo base_url("index.php/Welcome/telaPedidosGarcom"); ?>">Pedidos</a></li>
-                <li><a href="#">Cardapio</a></li>
+                <li><a href="#">Cardápio</a></li>
                 <li><a href="#">Configurações</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>

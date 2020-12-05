@@ -33,19 +33,19 @@
                 <li>
                     <a href="<?php echo base_url('index.php/Welcome/telaFuncionarios'); ?>">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/funcionarios.png'); ?>"></i>
-                        <span class="nav-text">Funcionarios</span>
+                        <span class="nav-text">Funcionários</span>
                     </a>  
                 </li>
                 <li>
                     <a href="<?php echo base_url('index.php/Welcome/telaCardapio'); ?>">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/cardapio.png'); ?>"></i>
-                        <span class="nav-text">Cardapio</span>
+                        <span class="nav-text">Cardápio</span>
                     </a>  
                 </li>
                 <li class="has-subnav">
                     <a href="#">
                         <i class="fa fa-2x"><img class="icones" src="<?php echo base_url('assets/img/config.png'); ?>"></i>
-                        <span class="nav-text">Cofigurações</span>
+                        <span class="nav-text">Configurações</span>
                     </a>        
                 </li>
             </ul>
@@ -71,9 +71,9 @@
             <ul>
                 <li><a href="<?php echo base_url('index.php/Welcome/telaPedidos'); ?>">Pedidos</a></li>
                 <li><a href="<?php echo base_url('index.php/Welcome/telaItens'); ?>">Itens</a></li>
-                <li><a href="<?php echo base_url('index.php/Welcome/telaFuncionarios'); ?>">Funcionarios</a></li>
-                <li><a href="<?php echo base_url('index.php/Welcome/telaCardapio'); ?>">Cardapio</a></li>
-                <li><a href="#">Cofigurações</a></li>
+                <li><a href="<?php echo base_url('index.php/Welcome/telaFuncionarios'); ?>">Funcionários</a></li>
+                <li><a href="<?php echo base_url('index.php/Welcome/telaCardapio'); ?>">Cardápio</a></li>
+                <li><a href="#">Configurações</a></li>
             </ul>
         </nav>
         <br><br><br><br>

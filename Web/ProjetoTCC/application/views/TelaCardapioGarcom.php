@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="text-center my-auto cor">   
-        <h1 class="estilo">CARDAPIOS</h1>
+        <h1 class="estilo">CARDÁPIOS</h1>
     </div>
     <div class="text-center my-auto cor2 borda sub">
         <ul>

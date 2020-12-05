@@ -8,6 +8,8 @@ class Login extends CI_Controller {
         $usuario = $this->input->post("user");
         $senha = $this->input->post("pass");
 
+        $this->load->model('BuscarLoginModel');
+        
         if(empty($usuario)){
             echo "ErroUsuario";
             die();
@@ -18,7 +20,6 @@ class Login extends CI_Controller {
             die();
         }
 
-        $this->load->model('BuscarLoginModel');
         $resultado = $this->BuscarLoginModel->logarUsuario($usuario, $senha);
         
         /*var_dump($resultado);*/

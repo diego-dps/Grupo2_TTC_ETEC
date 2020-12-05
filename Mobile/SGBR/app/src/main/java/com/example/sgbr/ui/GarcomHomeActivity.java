@@ -2,24 +2,37 @@ package com.example.sgbr.ui;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.sgbr.R;
+import com.example.sgbr.adapter.AdapterChamadaCliente;
 import com.example.sgbr.adapter.AdapterMesa;
 import com.example.sgbr.api.Conexao;
 import com.example.sgbr.api.DataService;
 import com.example.sgbr.model.ItemPedido;
+import com.example.sgbr.model.Mesa;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,7 +54,10 @@ public class GarcomHomeActivity extends AppCompatActivity {
     private TextView cargo_funcionario;
     private ImageView btn_ajuda;
     private ImageView btn_mais;
+    private ImageView btn_sair;
     private Dialog dialog_customizado;
+    private List<Mesa> listaMesas = new ArrayList<>();
+    private  TextView txt_notificacaoNumero;
     int delay = 3000;
     int intervalo = 3000;
     Timer timer = new Timer();
@@ -50,6 +66,8 @@ public class GarcomHomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_garcom_home);
+
+        txt_notificacaoNumero = findViewById(R.id.txt_notificacaonumero);
 
         btn_ajuda = findViewById(R.id.btn_ajudaChamada);
 
@@ -77,6 +95,15 @@ public class GarcomHomeActivity extends AppCompatActivity {
             }
         });
 
+        btn_sair = findViewById(R.id.btn_sair);
+
+        btn_sair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sair();
+            }
+        });
+
         nome_funcionario = findViewById(R.id.nome_funcionario);
         cargo_funcionario = findViewById(R.id.cargo_funcionario);
 
@@ -90,6 +117,7 @@ public class GarcomHomeActivity extends AppCompatActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
 
         recuperarComanda();
+        recuperarMesas();
 
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -97,7 +125,16 @@ public class GarcomHomeActivity extends AppCompatActivity {
                 recuperarComanda();
             }
         }, delay, intervalo);
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                recuperarMesas();
+            }
+        }, delay, intervalo);
     }
+
+
 
     public void recuperarComanda() {
 
@@ -124,8 +161,80 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
     }
 
+    private void recuperarMesas(){
+        DataService service = conexao.conexao().create(DataService.class);
+        Call<List<Mesa>> call = service.recuperarMesaChamada("1");
+
+        call.enqueue(new Callback<List<Mesa>>() {
+            @Override
+            public void onResponse(Call<List<Mesa>> call, Response<List<Mesa>> response) {
+                if (response.isSuccessful() && response != null){
+                    listaMesas = response.body();
+
+                    int resultado = 0;
+
+                    for (int i = 0; i < listaMesas.size(); i++){
+                        resultado += Integer.parseInt(listaMesas.get(i).getChamada_Mesa());
+
+                        if (resultado > 0){
+                            txt_notificacaoNumero.setText(String.valueOf(resultado));
+                            txt_notificacaoNumero.setVisibility(View.VISIBLE);
+
+                            /*NotificationManager nm = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+                            PendingIntent p = PendingIntent.getActivity(GarcomHomeActivity.this, 0, new Intent(GarcomHomeActivity.this, GarcomChamadaActivity.class),0);
+
+                            NotificationCompat.Builder builder = new NotificationCompat.Builder(GarcomHomeActivity.this);
+                            builder.setTicker("Texto");
+                            builder.setContentTitle("Título");
+                            builder.setSmallIcon(R.drawable.common_google_signin_btn_text_light_normal_background);
+                            builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.coca));
+                            builder.setContentIntent(p);
+
+                            NotificationCompat.InboxStyle style = new NotificationCompat.InboxStyle();
+                            String[] descs = new String[]{"1","2"};
+
+                            for (int j = 0; j < descs.length; j++){
+                                style.addLine(descs[j]);
+                            }
+
+                            builder.setStyle(style);
+
+                            Notification n = builder.build();
+                            n.vibrate = new long[]{150, 300, 150, 600};
+                            n.flags = Notification.FLAG_AUTO_CANCEL;
+                            nm.notify(111, n);
+
+                            try {
+                                Uri som = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                                Ringtone toque = RingtoneManager.getRingtone(GarcomHomeActivity.this, som);
+                                toque.play();
+                            }
+
+                            catch (Exception e){}*/
+
+                        }
+                        if(resultado > 9){
+                            txt_notificacaoNumero.setText("9+");
+                            txt_notificacaoNumero.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Mesa>> call, Throwable t) {
+
+            }
+        });
+    }
+
     public void telaChamadaCliente(View view){
+        Bundle extras = getIntent().getExtras();
+        String nome = extras.getString("nome");
+        String cargo = extras.getString("cargo");
         Intent intent = new Intent(GarcomHomeActivity.this, GarcomChamadaActivity.class);
+        intent.putExtra("nome", nome);
+        intent.putExtra("cargo", cargo);
         startActivity(intent);
     }
 
@@ -133,16 +242,16 @@ public class GarcomHomeActivity extends AppCompatActivity {
     private void iniciarTela(){
 
 
-        Calendar calendar = Calendar.getInstance();
-
-        int horaAtual = calendar.get(Calendar.HOUR_OF_DAY);
-
         Bundle extras = getIntent().getExtras();
         String nome = extras.getString("nome");
         String cargo = extras.getString("cargo");
 
         nome_funcionario.setText(nome);
         cargo_funcionario.setText(cargo);
+
+
+        /*Calendar calendar = Calendar.getInstance();
+        int horaAtual = calendar.get(Calendar.HOUR_OF_DAY);
 
         String dia = "Bom dia ";
         String tarde = "Boa tarde ";
@@ -181,7 +290,7 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
             //Cria e exibi o Alert
             dialog.create();
-            dialog.show();
+            dialog.show();*/
 
     }
 
@@ -201,6 +310,38 @@ public class GarcomHomeActivity extends AppCompatActivity {
 
         //Cria e exibi o Alert
         dialog.create();
+        dialog.show();
+    }
+
+    private void sair(){
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(GarcomHomeActivity.this, R.style.AlertDialogCustom);
+
+        dialog.setTitle("Logout");
+        dialog.setMessage("Deseja finalizar sessão?");
+
+        dialog.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Bundle extras = getIntent().getExtras();
+                String email = extras.getString("email");
+                Intent intent = new Intent(GarcomHomeActivity.this, LoginActivity.class);
+                intent.putExtra("email", email);
+                startActivity(intent);
+            }
+        });
+
+        dialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        dialog.setCancelable(false);
+
+        dialog.create();
+
         dialog.show();
     }
 
