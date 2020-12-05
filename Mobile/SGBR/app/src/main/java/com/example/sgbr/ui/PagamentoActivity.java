@@ -132,7 +132,7 @@ public class PagamentoActivity extends AppCompatActivity {
 
     public void finalizarPedido(View view){
 
-        Intent intent = new Intent(PagamentoActivity.this, MainActivity.class);
+        Intent intent = new Intent(PagamentoActivity.this, MenuActivity.class);
         startActivity(intent);
     }
 

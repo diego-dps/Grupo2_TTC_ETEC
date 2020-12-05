@@ -68,9 +68,10 @@
                 android:padding="16dp">
 
                 <ImageView
+                    android:id="@+id/btn_chamarGarcom"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/garcom"/>
+                    android:src="@drawable/garcom" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,7 +105,8 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/cardapio"/>
+                    android:onClick="telaCardapio2"
+                    android:src="@drawable/cardapio" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -137,7 +139,8 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/pagamento"/>
+                    android:onClick="telaCarrinho2"
+                    android:src="@drawable/pagamento" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -169,7 +172,8 @@
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/sair"/>
+                    android:onClick="telaInicialApp"
+                    android:src="@drawable/sair" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
